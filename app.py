@@ -16,6 +16,7 @@ from optimizer import load_data, optimize, BAND_TRAITS
 from visuals import Artwork, COST_COLORS
 from pool_picker import PoolPicker
 from champion_grid import ChampionGrid
+from trait_rows import TraitRow, badge_style, STYLE_ORDER
 
 
 class App(tk.Tk):
@@ -30,7 +31,7 @@ class App(tk.Tk):
         self.bundle = Path(getattr(sys, '_MEIPASS', Path(__file__).parent))
         self.data = load_data(self.bundle / 'data' / 'set19.json')
         self.artwork = Artwork(self, self.bundle / 'assets')
-        self.team_cards = []
+        self.detail_widgets = []
         self.card_columns = 1
         self.champions = {c['name']: c for c in self.data['champions']}
         self.collab, self.locked, self.excluded = set(), set(), set()
@@ -147,8 +148,6 @@ class App(tk.Tk):
         self.detail.pack(side='left', fill='both', expand=True)
         detail_scroll.pack(side='right', fill='y')
         self.detail.tag_configure('heading', foreground='#c4b5fd', font=('Segoe UI', 12, 'bold'), spacing1=10, spacing3=8)
-        self.detail.tag_configure('active', foreground='#e5e7eb', spacing3=6)
-        self.detail.tag_configure('inactive', foreground='#9ca3af', spacing3=6)
         self.detail.bind('<Configure>', self.resize_cards)
         actions = ttk.Frame(right)
         actions.pack(fill='x', pady=8)
@@ -329,38 +328,34 @@ class App(tk.Tk):
                 tk.Label(card, text=badges, fg=color, bg='#192337', font=('Segoe UI', 9)).pack()
                 if champion['unlockable']:
                     tk.Label(card, text='Unlock required', fg='#9ca3af', bg='#192337', font=('Segoe UI', 8)).pack()
-                self.team_cards.append(card)
+                self.detail_widgets.append(card)
                 self.detail.window_create('end', window=card, padx=3, pady=4, align='top')
                 if (index + 1) % self.card_columns == 0:
                     self.detail.insert('end', '\n')
-            self.detail.insert('end', f"\nACTIVE TRAITS  ({result['active']} non-unique)\n", 'heading')
-            for trait in sorted(result['traits'], key=lambda t: (t['unique'], t['name'])):
-                if trait['tier']:
-                    self.insert_trait(trait, active=True)
-            self.detail.insert('end', '\nNEXT BREAKPOINTS\n', 'heading')
-            for trait in sorted(result['traits'], key=lambda t: t['name']):
-                if trait['next'] is not None:
-                    self.insert_trait(trait, active=False)
+            definitions = {trait['name']: trait for trait in self.data['traits']}
+            unique_active = sum(bool(trait['tier']) and trait['unique'] for trait in result['traits'])
+            self.detail.insert('end', f"\nTRAITS  ·  {result['active']} active + {unique_active} unique\n", 'heading')
+            rows = sorted(result['traits'], key=lambda trait: (
+                STYLE_ORDER[badge_style(trait, definitions[trait['name']])],
+                -trait['count'], trait['name'],
+            ))
+            for trait in rows:
+                row = TraitRow(self.detail, trait, definitions[trait['name']], self.artwork)
+                self.detail_widgets.append(row)
+                self.detail.window_create('end', window=row, padx=2, pady=1, align='top')
+                self.detail.insert('end', '\n')
             self.detail.configure(state='disabled')
             self.detail.yview_moveto(0)
 
-    def insert_trait(self, trait, active):
-        self.detail.image_create('end', image=self.artwork.traits[trait['name']], padx=5, pady=3)
-        count = str(trait['count']) + (' stars' if trait['name'] == 'K/DA' else '')
-        if active:
-            text = f" {trait['name']}  ·  {count} → {trait['tier']}" + ('  (unique)' if trait['unique'] else '')
-        else:
-            text = f" {trait['name']}  ·  {count} / {trait['next']}  (+{trait['next'] - trait['count']})"
-        self.detail.insert('end', text + '\n', 'active' if active else 'inactive')
 
     def resize_cards(self, event):
         if max(1, (event.width - 36) // 112) != self.card_columns and self.results:
             self.show_result()
 
     def set_detail(self, text):
-        for card in self.team_cards:
-            card.destroy()
-        self.team_cards.clear()
+        for widget in self.detail_widgets:
+            widget.destroy()
+        self.detail_widgets.clear()
         self.detail.configure(state='normal')
         self.detail.delete('1.0', 'end')
         self.detail.insert('1.0', text)

@@ -59,6 +59,9 @@ def main():
             white.putalpha(image.getchannel('A'))
             filename = f'trait-{index}.png'
             white.save(directory / filename)
+            dark = Image.new('RGBA', image.size, '#14202b')
+            dark.putalpha(image.getchannel('A'))
+            dark.save(directory / f'trait-{index}-dark.png')
             return kind, name, {'file': filename, 'url': url}
         image = Image.open(BytesIO(raw)).convert('RGBA')
         result = {'url': url}

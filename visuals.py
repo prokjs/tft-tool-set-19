@@ -12,8 +12,11 @@ class Artwork:
         self.champions = {}
         self.portraits = {}
         self.traits = {}
+        self.trait_dark = {}
         for name, asset in manifest['champions'].items():
             self.champions[name] = tk.PhotoImage(master=root, file=str(directory / asset['small']))
             self.portraits[name] = tk.PhotoImage(master=root, file=str(directory / asset['large']))
         for name, asset in manifest['traits'].items():
-            self.traits[name] = tk.PhotoImage(master=root, file=str(directory / asset['file']))
+            path = directory / asset['file']
+            self.traits[name] = tk.PhotoImage(master=root, file=str(path))
+            self.trait_dark[name] = tk.PhotoImage(master=root, file=str(path.with_name(path.stem + '-dark.png')))
