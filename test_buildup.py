@@ -4,7 +4,7 @@ import copy
 import json
 import unittest
 
-from buildup import SHOP_SOURCE, _Planner, format_buildup, recommend_with_buildups
+from buildup import SHOP_SOURCE, _Planner, _chain_exclusions, _upgrade_phases, format_buildup, recommend_with_buildups
 from optimizer import _evaluate_team, optimize
 
 
@@ -95,7 +95,9 @@ class BuildupTests(unittest.TestCase):
         result = self.search(locked=["Sona"])[0]
         for step in result["buildup"][:-1]:
             self.assertNotIn("Sona", step["board"]["champions"])
-        self.assertIn("Sona", result["buildup"][-1]["board"]["champions"])
+        final = result["buildup"][-1]
+        self.assertIn("Sona", final["goal_board"]["champions"])
+        self.assertIn("Sona", (final["upgrades"][-1]["board"] if final["upgrades"] else final["board"])["champions"])
         for step in result["buildup"][:2]:
             self.assertTrue(all(self.champions[name]["cost"] == 1 for name in step["board"]["champions"]))
         early = result["buildup"][2]["board"]
@@ -116,7 +118,10 @@ class BuildupTests(unittest.TestCase):
             expected = sum(name in set(pool) | {"Sona"} for name in board["champions"])
             actual = next((trait["count"] for trait in board["traits"] if trait["name"] == "Collab"), 0)
             self.assertEqual(actual, expected)
-        self.assertEqual(result["buildup"][-1]["board"]["champions"], result["champions"])
+        final = result["buildup"][-1]
+        self.assertEqual(final["goal_board"]["champions"], result["champions"])
+        self.assertEqual((final["upgrades"][-1]["board"] if final["upgrades"] else final["board"])["champions"],
+                         result["champions"])
 
     def test_final_gating_and_exact_optimizer_stats(self):
         # At level 3 only the ordinary one/two-cost champions are shop-eligible.
@@ -128,8 +133,11 @@ class BuildupTests(unittest.TestCase):
                                     [], excluded, 0, mode, limit=4, stars={"B": 3})
                 self.assertEqual([{key: item[key] for key in expected[0]} for item in result], expected)
                 for item in result:
-                    self.assertEqual(item["buildup"][-1]["board"],
-                                     {key: item[key] for key in expected[0]})
+                    final = item["buildup"][-1]
+                    expected_board = {key: item[key] for key in expected[0]}
+                    self.assertEqual(final["goal_board"], expected_board)
+                    self.assertEqual(final["upgrades"][-1]["board"] if final["upgrades"] else final["board"],
+                                     expected_board)
                     for step in item["buildup"][:-1]:
                         self.assertTrue(all(star == 1 for star in step["stars"].values()))
         with self.assertRaisesRegex(ValueError, "Premium.*level 3.*5-cost"):
@@ -248,7 +256,7 @@ class BuildupTests(unittest.TestCase):
         self.assertIn("Late Guard (★★)", format_buildup(result, self.champions))
         self.assertEqual(result["planned_stars"]["Late Guard"], 2)
         self.assertEqual(requested, {"B": 4})
-        final = result["buildup"][-1]["board"]
+        final = result["buildup"][-1]["goal_board"]
         final["planned_stars"]["Late Guard"] = 1
         final["strategy_notes"].append("changed")
         self.assertEqual(result["planned_stars"]["Late Guard"], 2)
@@ -332,13 +340,16 @@ class BuildupTests(unittest.TestCase):
                              ["Fixed", "Senna"])
 
     def test_temporary_swaps_and_target_specific_paths(self):
-        first = self.search(size=5, min_collab=0, locked=["A", "B", "C", "Late Guard", "Xayah"])[0]
-        second = self.search(size=5, min_collab=0, locked=["E", "F", "G", "H", "Tibbers"])[0]
+        first = self.search(size=7, min_collab=0,
+                            locked=["A", "B", "C", "D", "G", "Late Guard", "Xayah"])[0]
+        second = self.search(size=7, min_collab=0,
+                             locked=["E", "F", "G", "H", "I", "J", "Tibbers"])[0]
         self.assertNotEqual(first["buildup"][0]["board"]["champions"],
                             second["buildup"][0]["board"]["champions"])
-        self.assertTrue(first["buildup"][3]["temporary"])
-        self.assertIn("Xayah", first["buildup"][-1]["added"])
-        self.assertTrue(first["buildup"][-1]["removed"])
+        self.assertTrue(first["buildup"][5]["temporary"])
+        self.assertIn("Xayah", first["buildup"][-1]["goal_board"]["champions"])
+        self.assertTrue(any(step["removed"] for step in first["buildup"]) or
+                        first["buildup"][-1]["upgrades"])
         previous = set()
         for step in first["buildup"]:
             current = set(step["board"]["champions"])
@@ -426,13 +437,326 @@ class BuildupTests(unittest.TestCase):
         self.assertEqual(self.slots(result["buildup"][-1]["board"]), 11)
         self.assertIn("special level-cap extension", format_buildup(result, self.champions))
 
-    def test_rare_shop_hit_is_explicit_and_locks_wait_for_published_minimum(self):
-        result = self.search(size=5, min_collab=0, locked=["Xayah"])[0]
-        self.assertTrue(any("2%" in item for item in result["buildup"][-1]["milestones"]))
+    def test_conservative_shop_timing_and_published_unlock_minimum(self):
+        for size, name, minimum in ((5, "Xayah", 7), (6, "Xayah", 7), (8, "Premium", 9)):
+            with self.subTest(size=size, name=name):
+                with self.assertRaisesRegex(ValueError, f"{name}.*planning level {minimum}"):
+                    self.search(size=size, min_collab=0, locked=[name])
         tibbers = self.champions["Tibbers"]
         tibbers["unlock_level"] = "Level 7"
         with self.assertRaisesRegex(ValueError, "Tibbers.*Level 7"):
             self.search(size=6, min_collab=0, locked=["Tibbers"])
+
+
+class RealisticPathTests(unittest.TestCase):
+    def make_data(self, baron=False):
+        traits = [
+            {"name": "Padding", "breakpoints": [99], "unique": False},
+            {"name": "Collab", "breakpoints": [3], "unique": False},
+        ]
+        cheap = [{"name": f"Starter {i}", "traits": ["Padding"], "cost": 1,
+                  "unlockable": False} for i in range(11)]
+        legends = [{"name": f"Legend {i}", "traits": ["Padding"], "cost": 5,
+                    "unlockable": False} for i in range(8 if baron else 10)]
+        if baron:
+            legends.append({
+                "name": "Baron Nashor", "traits": ["Padding"], "cost": 7, "slots": 2,
+                "unlockable": True, "unlock_condition": "Complete the ensemble and damage task.",
+                "unlock_level": "Any", "unlock_source": "https://example.test/baron",
+            })
+        return {"traits": traits, "champions": cheap + legends}, [c["name"] for c in legends]
+
+    def search(self, data, **changes):
+        options = dict(data=data, collab=[], size=10, locked=[], excluded=[],
+                       min_collab=0, mode="balanced", limit=1)
+        options.update(changes)
+        return recommend_with_buildups(**options)
+
+    def assert_path(self, data, result, excluded=(), mode="balanced"):
+        champions = {c["name"]: c for c in data["champions"]}
+        traits = {t["name"]: t for t in data["traits"]}
+        previous = set()
+        previous_fallback = set()
+        for step in result["buildup"]:
+            level = step["level"]
+            board = step["board"]
+            current = set(board["champions"]) if board else set()
+            self.assertEqual(step["added"], sorted(current - previous))
+            self.assertEqual(step["removed"], sorted(previous - current))
+            self.assertEqual(step["retained"], sorted(current & previous))
+            self.assertLessEqual(len(previous - current), 2 if level >= 8 else 1)
+            fallback = step["fallback"]
+            fallback_names = set(fallback["champions"]) if fallback else set()
+            self.assertLessEqual(len(previous_fallback - fallback_names), 2 if level >= 8 else 1)
+            self.assertFalse(any(champions[n].get("unlockable") for n in fallback_names))
+            phase_previous = current
+            for phase in step["upgrades"]:
+                names = set(phase["board"]["champions"])
+                self.assertEqual(phase["added"], sorted(names - phase_previous))
+                self.assertEqual(phase["removed"], sorted(phase_previous - names))
+                self.assertEqual(phase["retained"], sorted(phase_previous & names))
+                self.assertLessEqual(len(phase["removed"]), 2)
+                self.assertEqual(phase["stars"], phase["board"]["planned_stars"])
+                self.assertEqual({u["name"] for u in phase["unlocks"]},
+                                 {n for n in names if champions[n].get("unlockable")})
+                self.assertIn("Buy", phase["milestones"][0])
+                phase_previous = names
+            boards = [board, fallback, step["goal_board"]] + [p["board"] for p in step["upgrades"]]
+            for item in boards:
+                if item is None:
+                    continue
+                names = item["champions"]
+                self.assertEqual(len(names), len(set(names)))
+                self.assertFalse(set(names) & set(excluded))
+                self.assertEqual(sum(champions[n].get("slots", 1) for n in names), level)
+                groups = [champions[n]["exclusive_group"] for n in names
+                          if champions[n].get("exclusive_group")]
+                self.assertEqual(len(groups), len(set(groups)))
+                for name in names:
+                    if champions[name]["cost"] == 4:
+                        self.assertGreaterEqual(level, 7)
+                    if champions[name]["cost"] == 5:
+                        self.assertGreaterEqual(level, 9)
+                expected = _evaluate_team(names, traits, champions, result["collab_pool"],
+                                          mode, result["sona_band"],
+                                          item["planned_stars"], level=level)
+                self.assertEqual(item, expected)
+            if level < len(result["buildup"]):
+                self.assertIsNone(step["goal_board"])
+                self.assertEqual(step["upgrades"], [])
+            previous, previous_fallback = current, fallback_names
+        final = result["buildup"][-1]
+        expected = {key: result[key] for key in final["goal_board"]}
+        self.assertEqual(final["goal_board"], expected)
+        self.assertEqual(final["upgrades"][-1]["board"] if final["upgrades"] else final["board"],
+                         final["goal_board"])
+        self.assertIsNot(final["goal_board"], result)
+        json.dumps(result)
+
+    def test_many_late_legends_have_stable_arrival_and_gradual_exact_goal(self):
+        data, goal = self.make_data()
+        result = self.search(data, locked=goal, excluded=["Starter 10"])[0]
+        self.assert_path(data, result, ["Starter 10"])
+        final = result["buildup"][-1]
+        self.assertNotEqual(final["board"]["champions"], result["champions"])
+        self.assertGreater(len(final["upgrades"]), 1)
+        self.assertTrue(all(len(p["removed"]) == 1 for p in final["upgrades"]))
+        for step in result["buildup"][:8]:
+            self.assertTrue(all(name.startswith("Starter") for name in step["board"]["champions"]))
+        snapshot = copy.deepcopy(result)
+        final["goal_board"]["planned_stars"][goal[0]] = 4
+        final["goal_board"]["champions"].append("changed")
+        self.assertEqual(result["champions"], snapshot["champions"])
+        self.assertEqual(final["upgrades"][-1], snapshot["buildup"][-1]["upgrades"][-1])
+        text = format_buildup(snapshot, data["champions"])
+        self.assertIn("Primary arrival", text)
+        self.assertIn("Upgrade phase 1", text)
+        self.assertIn("Then sell/remove", text)
+        self.assertIn("Exact final-level goal", text)
+
+    def test_baron_upgrade_path_preserves_two_slots_and_exact_stats(self):
+        data, goal = self.make_data(baron=True)
+        result = self.search(data, locked=goal)[0]
+        self.assert_path(data, result)
+        self.assertTrue(result["buildup"][-1]["upgrades"])
+        self.assertIn("Baron Nashor", result["buildup"][-1]["goal_board"]["champions"])
+        self.assertIn("Manual chain lock: Baron Nashor", format_buildup(result, data["champions"]))
+        baron_phase = next(p for p in result["buildup"][-1]["upgrades"]
+                           if "Baron Nashor" in p["added"])
+        self.assertEqual(len(baron_phase["removed"]), 2)
+        self.assertIn("https://example.test/baron", format_buildup(result, data["champions"]))
+
+    def test_four_and_five_cost_timing_applies_to_every_board_and_phase(self):
+        data = fixture()
+        result = self.search(data, locked=["Late Guard", "Premium", "Akali (K/DA)"],
+                             excluded=["A", "Xayah"])[0]
+        self.assert_path(data, result, ["A", "Xayah"])
+        self.assertIn("Late Guard", result["buildup"][-1]["goal_board"]["champions"])
+        for step in result["buildup"]:
+            for board in [step["board"], step["fallback"]] + [p["board"] for p in step["upgrades"]]:
+                self.assertNotIn("Akali (True Damage)", board["champions"])
+
+    def test_named_off_trait_helper_prepares_actual_goal_before_acquisition(self):
+        data = fixture()
+        result = self.search(data, size=7, locked=["Tibbers"])[0]
+        phases = [phase for step in result["buildup"] for phase in [step] + step["upgrades"]]
+        first = next(i for i, phase in enumerate(phases)
+                     if "Tibbers" in phase["board"]["champions"])
+        preparation = [phase for phase in phases[:first]
+                       if "Annie" in phase["board"]["champions"]]
+        self.assertTrue(preparation)
+        task = next(p for p in preparation[0]["unlock_prep"] if p["name"] == "Tibbers")
+        self.assertIn("Annie", task["helpers"])
+        self.assertIn("2-star Annie holding 1 item", task["condition"])
+        self.assertEqual(preparation[0]["board"]["planned_stars"]["Annie"], 1)
+        self.assertIn("replace after unlock is complete", format_buildup(result, data["champions"]))
+
+    def test_retained_count_is_hard_beam_feasibility_not_small_bonus(self):
+        data, _ = self.make_data()
+        champions = {c["name"]: c for c in data["champions"]}
+        traits = {t["name"]: t for t in data["traits"]}
+        previous = {f"Starter {i}" for i in range(7)}
+        pool = sorted(champions)
+        weights = {name: 0 if name in previous else 100000 for name in pool}
+        planner = _Planner(traits, champions, [], "balanced", "")
+        for level, minimum in ((7, 6), (8, 5)):
+            for order in (pool, list(reversed(pool))):
+                board = planner._search(level, order, weights, False, previous)
+                self.assertGreaterEqual(len(previous & set(board)), minimum)
+
+    def test_hyperpop_chase_requires_actual_collab_band_but_ziggs_is_normal(self):
+        data, _ = self.make_data()
+        data["traits"].append({"name": "Hyperpop", "breakpoints": [2, 3], "unique": False})
+        data["champions"].extend([
+            {"name": "Ziggs", "traits": ["Hyperpop"], "cost": 1, "unlockable": False},
+            {"name": "Kobuko", "traits": ["Hyperpop"], "cost": 1, "unlockable": True,
+             "unlock_condition": "Field Ziggs holding 2 items.", "unlock_level": "Any",
+             "unlock_source": "https://example.test/kobuko"},
+            {"name": "Teemo", "traits": ["Hyperpop"], "cost": 5, "unlockable": True,
+             "unlock_condition": "Collect 900 Hyperpop Hype.", "unlock_level": "Any",
+             "unlock_source": "https://example.test/teemo"},
+        ])
+        plain = self.search(data, locked=["Ziggs"])[0]
+        self.assertNotIn("Kobuko", plain["champions"])
+        self.assertNotIn("Teemo", plain["champions"])
+        for step in plain["buildup"]:
+            self.assertFalse({"Kobuko", "Teemo"} & set(step["board"]["champions"]))
+        supported = self.search(data, collab=["Ziggs"])[0]
+        self.assertIn("Kobuko", supported["champions"])
+        manual = self.search(data, locked=["Teemo"])[0]
+        self.assertIn("Teemo", manual["champions"])
+        self.assertNotIn("Kobuko", manual["champions"])
+        self.assertIn("Manual chain lock: Teemo", format_buildup(manual, data["champions"]))
+        prep = [entry for step in manual["buildup"] for entry in step["unlock_prep"]
+                if entry["name"] == "Teemo"]
+        self.assertTrue(any("Ziggs" in entry["helpers"] for entry in prep))
+        self.assertTrue(any("Kobuko" in step["board"]["champions"] for step in manual["buildup"]))
+        champions = {c["name"]: c for c in data["champions"]}
+        self.assertNotIn("Kobuko", _chain_exclusions(champions, [], "Hyperpop", set()))
+
+    def test_other_long_chains_require_relevant_support_or_explicit_lock(self):
+        data = fixture()
+        bands = {"Aphelios": "Heartsteel", "Gwen": "Ionic Spark",
+                 "Mordekaiser": "Pentakill", "Taliyah": "Beach Pop"}
+        for name, band in bands.items():
+            data["champions"].append({
+                "name": name, "traits": [band], "cost": 5, "unlockable": True,
+                "unlock_condition": "Complete the sourced band task.", "unlock_level": "Any",
+                "unlock_source": "https://example.test/task",
+            })
+        champions = {c["name"]: c for c in data["champions"]}
+        blocked = _chain_exclusions(champions, [], "", set())
+        required = set(bands) | {"Gu Feng Quest", "Akali (K/DA)", "Akali (True Damage)", "Baron Nashor"}
+        self.assertTrue(required <= blocked)
+        self.assertNotIn("Tibbers", blocked)
+        self.assertNotIn("Baron Nashor", _chain_exclusions(champions, ["Baron Nashor"], "", set()))
+        champions["Rakan"] = {
+            "name": "Rakan", "traits": ["Boy Band"], "cost": 7, "unlockable": True,
+        }
+        champions["Smeech"] = {
+            "name": "Smeech", "traits": ["Jazz"], "cost": 7, "unlockable": True,
+        }
+        self.assertIn("Rakan", _chain_exclusions(champions, [], "", set()))
+        self.assertNotIn("Rakan", _chain_exclusions(champions, ["Rakan"], "", set()))
+        self.assertNotIn("Smeech", _chain_exclusions(champions, [], "", set()))
+        for name, band in bands.items():
+            self.assertNotIn(name, _chain_exclusions(champions, [], band, set()))
+            self.assertNotIn(name, _chain_exclusions(champions, [], "", {name}))
+        results = self.search(fixture(), size=9, limit=4)
+        for result in results:
+            self.assertFalse(required & set(result["champions"]))
+            for step in result["buildup"]:
+                self.assertFalse(required & set(step["board"]["champions"]))
+
+    def test_evelynn_prep_fields_three_distinct_kda_before_acquisition(self):
+        data, _ = self.make_data()
+        data["traits"].extend([
+            {"name": "K/DA", "breakpoints": [3], "unique": False, "count_mode": "stars"},
+            {"name": "Renegade", "breakpoints": [2], "unique": False},
+        ])
+        for name in ("Lillia", "Neeko", "Gragas"):
+            data["champions"].append({"name": name, "traits": ["K/DA"], "cost": 1, "unlockable": False})
+        data["champions"].append({
+            "name": "Evelynn", "traits": ["K/DA", "Renegade"], "cost": 3, "unlockable": True,
+            "unlock_condition": "Have 3 K/DA or Renegade champions.", "unlock_level": "Any",
+            "unlock_source": "https://example.test/evelynn",
+        })
+        result = self.search(data, size=6, locked=["Evelynn"], stars={"Lillia": 3}, mode="high_value")[0]
+        first = next(i for i, step in enumerate(result["buildup"])
+                     if "Evelynn" in step["board"]["champions"])
+        prep_steps = [step for step in result["buildup"][:first]
+                      if {"Lillia", "Neeko", "Gragas"} <= set(step["board"]["champions"])]
+        self.assertTrue(prep_steps)
+        recipe = next(p for p in prep_steps[0]["unlock_prep"] if p["name"] == "Evelynn")
+        self.assertEqual(recipe["count"], 3)
+        self.assertEqual(recipe["count_mode"], "distinct_champions")
+        self.assertEqual(set(recipe["helpers"]), {"Lillia", "Neeko", "Gragas"})
+        text = format_buildup(result, data["champions"])
+        self.assertIn("confirm the unlock", text)
+        self.assertIn("stars do not replace distinct units", text)
+        self.assert_path(data, result, mode="high_value")
+
+
+    def test_source_worded_distinct_band_recipes_prepare_later_four_costs(self):
+        for name, count, primary, secondary in (
+            ("Alune", 4, "Heartsteel", "Prodigy"),
+            ("Kayle", 4, "Pentakill", "Swiftstriker"),
+            ("Zac", 5, "Beach Pop", "Juggernaut"),
+        ):
+            with self.subTest(name=name):
+                data, _ = self.make_data()
+                data["traits"].extend(
+                    {"name": trait, "breakpoints": [count], "unique": False}
+                    for trait in (primary, secondary)
+                )
+                helpers = {f"Helper {i}" for i in range(count)}
+                data["champions"].extend(
+                    {"name": helper, "traits": [primary], "cost": 1, "unlockable": False}
+                    for helper in sorted(helpers)
+                )
+                data["champions"].append({
+                    "name": name, "traits": [primary], "cost": 4, "unlockable": True,
+                    "unlock_condition": f"Have {count} unique {primary} or {secondary} champions.",
+                    "unlock_level": "Level 7", "unlock_source": "https://example.test/recipe",
+                })
+                result = self.search(data, size=8, locked=[name])[0]
+                first = next(i for i, step in enumerate(result["buildup"])
+                             if name in step["board"]["champions"])
+                self.assertTrue(any(helpers <= set(step["board"]["champions"])
+                                    for step in result["buildup"][:first]))
+                self.assertGreaterEqual(first + 1, 7)
+                self.assert_path(data, result)
+
+    def test_forced_large_weighted_exchange_is_explicit_not_empty_filler(self):
+        data, _ = self.make_data()
+        data["champions"].append({
+            "name": "Weighted", "traits": ["Padding"], "cost": 1, "slots": 3,
+            "unlockable": False,
+        })
+        planner = _Planner({t["name"]: t for t in data["traits"]},
+                           {c["name"]: c for c in data["champions"]}, [], "balanced", "", final_level=3)
+        arrival = planner.evaluate(3, ["Starter 0", "Starter 1", "Starter 2"])
+        goal = planner.evaluate(3, ["Weighted"])
+        phases = _upgrade_phases(planner, 3, arrival, goal)
+        self.assertEqual(len(phases), 1)
+        self.assertEqual(phases[-1]["board"], goal)
+        self.assertEqual(len(phases[0]["removed"]), 3)
+        self.assertTrue(any("larger simultaneous exchange" in note for note in phases[0]["milestones"]))
+
+    def test_full_board_merit_never_awards_unearned_trait_progress(self):
+        traits = {
+            "Near": {"name": "Near", "breakpoints": [3], "unique": False},
+            "Padding": {"name": "Padding", "breakpoints": [99], "unique": False},
+        }
+        champions = {
+            "Fixed": {"name": "Fixed", "traits": ["Near"], "cost": 1},
+            "A Ordinary": {"name": "A Ordinary", "traits": ["Padding"], "cost": 1},
+            "Z Near": {"name": "Z Near", "traits": ["Near"], "cost": 1},
+        }
+        planner = _Planner(traits, champions, [], "synergies", "")
+        weights = {"Fixed": 1000, "A Ordinary": 0, "Z Near": 0}
+        for order in (list(champions), list(reversed(champions))):
+            self.assertEqual(planner._search(2, order, weights, False), ["A Ordinary", "Fixed"])
 
 
 if __name__ == "__main__":

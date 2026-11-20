@@ -35,6 +35,7 @@ class App(tk.Tk):
         self.bundle = Path(getattr(sys, '_MEIPASS', Path(__file__).parent))
         self.data = load_data(self.bundle / 'data' / 'set19.json')
         self.artwork = Artwork(self, self.bundle / 'assets')
+        self.artwork.mark_unlockables(self.data['champions'])
         self.champions = {c['name']: c for c in self.data['champions']}
         self.collab, self.locked, self.excluded = set(), set(), set()
         self.pool_locked = False

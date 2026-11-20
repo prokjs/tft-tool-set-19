@@ -13,6 +13,7 @@ class Artwork:
         self.portraits = {}
         self.traits = {}
         self.trait_dark = {}
+        self.unlock_icon = tk.PhotoImage(master=root, file=str(directory / 'unlock-badge.png'))
         for name, asset in manifest['champions'].items():
             self.champions[name] = tk.PhotoImage(master=root, file=str(directory / asset['small']))
             self.portraits[name] = tk.PhotoImage(master=root, file=str(directory / asset['large']))
@@ -20,3 +21,12 @@ class Artwork:
             path = directory / asset['file']
             self.traits[name] = tk.PhotoImage(master=root, file=str(path))
             self.trait_dark[name] = tk.PhotoImage(master=root, file=str(path.with_name(path.stem + '-dark.png')))
+
+    def mark_unlockables(self, champions):
+        """Stamp both cached portrait sizes once, covering every portrait surface."""
+        for champion in champions:
+            if champion['unlockable']:
+                for images in (self.champions, self.portraits):
+                    portrait = images[champion['name']]
+                    portrait.tk.call(str(portrait), 'copy', str(self.unlock_icon),
+                                     '-to', 1, 1, '-compositingrule', 'overlay')

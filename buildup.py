@@ -3,7 +3,8 @@
 Shop access uses TFT Flow Patch 19.1's cost 1..5 odds (levels 1..11):
 https://tftflow.com/tables/set19/shop-odds-pool-size-xp-table
 A nonzero shop chance AND a published unlock minimum are necessary, not a
-promise of a copy. Low-odds hits receive planning penalties and warnings.
+promise of a copy. Default planning waits for level 7 four-costs and level 9
+five-costs; these are conservative timing choices, not game impossibilities.
 Seven-cost units are quest-only: Sona 10, Rakan 8, Smeech 9; Baron 9 is an
 explicit late-game planning heuristic, NOT a published unlock minimum.
 Guaranteed earlier quest-copy rewards are not modeled: these gates are
@@ -22,6 +23,7 @@ import re
 from bisect import bisect_right
 from functools import cache
 
+from itertools import combinations
 from champion_info import is_tank, star_text
 from optimizer import (
     FRONTLINE_TRAITS, _evaluate_team, _frontline_anchor_value, _integer, _jazz_bonus,
@@ -38,6 +40,12 @@ SHOP_ODDS = (
     (5, 10, 20, 40, 25), (1, 2, 12, 50, 35),
 )
 QUEST_PLANNING_LEVELS = {"Sona": 10, "Rakan": 8, "Smeech": 9, "Baron Nashor": 9}
+SHOP_PLANNING_LEVELS = {1: 1, 2: 3, 3: 4, 4: 7, 5: 9}
+CHAIN_BANDS = {
+    "Aphelios": "Heartsteel", "Akali (K/DA)": "K/DA",
+    "Akali (True Damage)": "True Damage", "Gwen": "Ionic Spark",
+    "Mordekaiser": "Pentakill", "Taliyah": "Beach Pop",
+}
 _RESULT_KEYS = (
     "champions", "traits", "active", "tiers", "frontline", "cost", "score",
     "planned_stars", "frontline_anchor", "strategy_notes",
@@ -64,7 +72,7 @@ def _minimum_level(champion: dict) -> int:
     minimum = int(match.group(1)) if match else 1
     if champion["cost"] == 7 and champion.get("unlockable"):
         return max(minimum, QUEST_PLANNING_LEVELS.get(champion["name"], 9))
-    return minimum
+    return max(minimum, SHOP_PLANNING_LEVELS.get(champion["cost"], 1))
 
 
 def _eligible(champion: dict, level: int) -> bool:
@@ -89,6 +97,65 @@ def _helpers(target: set[str], champions: dict[str, dict]) -> set[str]:
             if other != name and re.search(r"(?<!\w)" + re.escape(other) + r"(?!\w)", positive):
                 helpers.add(other)
     return helpers
+
+
+def _chain_exclusions(champions, collab, sona_band, locked):
+    """Default chase policy, separate from shop/unlock eligibility and hard locks."""
+    bands = {trait for name in collab for trait in champions[name]["traits"]}
+    if sona_band:
+        bands.add(sona_band)
+    blocked = set()
+    for name, champion in champions.items():
+        if not champion.get("unlockable") or name in locked:
+            continue
+        native = set(champion["traits"])
+        required = ("Hyperpop" if "Hyperpop" in native else
+                    "Gu Feng" if "Gu Feng" in native else CHAIN_BANDS.get(name))
+        if required and required not in bands:
+            blocked.add(name)
+        if name == "Baron Nashor" and not ({"Baron Nashor", "Malzahar"} & set(collab)):
+            blocked.add(name)
+        if name == "Rakan" and name not in collab:
+            blocked.add(name)
+    return blocked
+
+
+def _dependency_helpers(target, champions):
+    """Named prerequisites are purposeful setup, including prerequisites of helpers."""
+    helpers = set()
+    pending = set(target)
+    while pending:
+        found = _helpers(pending, champions) - helpers - set(target)
+        helpers.update(found)
+        pending = found
+    return helpers
+
+
+def _prep_recipes(target, champions, excluded=()):
+    """Source-worded distinct-unit recipes, never star-level substitutes."""
+    recipes = {}
+    for name in sorted(target):
+        champion = champions[name]
+        match = re.fullmatch(r"Have (\d+) (?:unique )?(.+?) champions\.",
+                             champion.get("unlock_condition", ""))
+        if not match:
+            continue
+        alternatives = match.group(2).split(" or ")
+        count = int(match.group(1))
+        candidates = [
+            other for other, unit in champions.items() if other != name
+            and not unit.get("unlockable") and other not in excluded
+            and set(unit["traits"]) & set(alternatives)
+        ]
+        primary = [other for other in candidates if alternatives[0] in champions[other]["traits"]]
+        if len(primary) >= count:
+            candidates = primary
+        recipes[name] = {
+            "traits": alternatives, "count": count, "count_mode": "distinct_champions",
+            "candidates": sorted(candidates, key=lambda other: (
+                _minimum_level(champions[other]), champions[other]["cost"], other)),
+        }
+    return recipes
 
 
 class _Planner:
@@ -217,8 +284,8 @@ class _Planner:
             odds = SHOP_ODDS[level - 1][cost - 1] if cost <= 5 else 100
             rarity_penalty = max(0, 10 - odds) * 15
             weights[name] = (
-                240 * int(name in target) + 55 * int(name in previous)
-                + 320 * int(name in helpers) + 9 * len(self.unit_traits[name] & target_traits)
+                600 * int(name in target) + 450 * int(name in previous)
+                + 850 * int(name in helpers) + 12 * len(self.unit_traits[name] & target_traits)
                 + (85 if prepare_sona and name in self.collab else 0)
                 - 9 * cost - rarity_penalty - 25 * int(champion.get("unlockable", False))
             )
@@ -227,26 +294,27 @@ class _Planner:
         pool = [name for name in ranked if name in core]
         support = [name for name in ranked if name not in core]
         pool += support[:14]
-        answer = self._search(level, pool, weights, prepare_sona)
-        if answer is None and len(pool) < len(ranked):
-            # Compact pools must never turn a feasible weighted board into None.
-            answer = self._search(level, ranked, weights, prepare_sona)
-        return None if answer is None else _evaluate_team(
-            answer, self.traits, self.champions, sorted(self.collab - {"Sona"}),
+        answer = self._search(level, pool, weights, prepare_sona, previous)
+        cap = 2 if level >= 8 else 1
+        if len(pool) < len(ranked) and (answer is None or len(previous - set(answer)) > cap):
+            # A compact pool must not lose exact-slot or retention feasibility.
+            answer = self._search(level, ranked, weights, prepare_sona, previous)
+        return None if answer is None else self.evaluate(level, answer)
+
+    def evaluate(self, level, names):
+        return _evaluate_team(
+            names, self.traits, self.champions, sorted(self.collab - {"Sona"}),
             self.mode, self.sona_band,
             self.requested_stars if level >= 10 or level == self.final_level else {},
             level=level,
         )
 
-    def _search(self, level, pool, weights, prepare_sona):
-        # Sequential knapsack beam, partitioned by slot total AND exclusion mask.
-        # Feasibility depends only on those keys and the remaining suffix, so
-        # pruning objective alternatives cannot destroy exact-slot feasibility.
-        # State also carries fielded identity/bridge and active traits so Jazz
-        # updates depend on this prefix, never an unfielded catalog partner.
-        # State also keeps unearned tier progress for partial-beam pruning only.
+    def _search(self, level, pool, weights, prepare_sona, previous=frozenset()):
+        # Retained count is a feasibility key, not merely a scoring bonus.
+        # A high-merit low-retention prefix cannot prune a smooth completion.
+        # Unearned tier progress guides partial prefixes, never full-board merit.
         empty = (0.0, (), (0,) * len(self.trait_names), 0, 0, 0, False, 0, 0.0, 0.0)
-        buckets = [{0: [empty]}] + [{} for _ in range(level)]
+        buckets = [{(0, 0): [empty]}] + [{} for _ in range(level)]
         increments = self.stage_increments[level]
         context = self.stage_context[level]
         unit_values = self.stage_units[level]
@@ -262,10 +330,10 @@ class _Planner:
             partners = self.jazz_partners[name]
             direct = name in self.jazz_direct
             for filled in range(level - slots, -1, -1):
-                for blocked, states in list(buckets[filled].items()):
+                for (blocked, retained), states in list(buckets[filled].items()):
                     if blocked & group:
                         continue
-                    key = blocked | group
+                    key = (blocked | group, retained + int(name in previous))
                     destination = buckets[filled + slots].setdefault(key, [])
                     for merit, picks, old_counts, frontline, collab_count, mask, bridge, active, anchor, future in states:
                         counts = list(old_counts)
@@ -311,11 +379,68 @@ class _Planner:
                         tuple(sorted(state[1])),
                     ))
                     del destination[8:]
-        finalists = [state for states in buckets[level].values() for state in states]
+        minimum = max(0, len(previous) - (2 if level >= 8 else 1))
+        feasible = buckets[level]
+        if feasible:
+            # Weighted/exclusion inputs can force a larger exchange. In that
+            # case preserve as much as possible and disclose it in the guide.
+            minimum = min(minimum, max(retained for _, retained in feasible))
+        finalists = [state for (_, retained), states in feasible.items()
+                     if retained >= minimum for state in states]
         if not finalists:
             return None
         winner = min(finalists, key=lambda state: (-state[0], tuple(sorted(state[1]))))
         return sorted(winner[1])
+
+
+def _upgrade_phases(planner, level, arrival, goal):
+    """Buy-before-sell, exact-slot exchanges; never invent a bench or empty filler."""
+    if arrival is None:
+        return []
+    current = set(arrival["champions"])
+    target = set(goal["champions"])
+    phases = []
+    slots = lambda names: sum(planner.champions[name].get("slots", 1) for name in names)
+    while current != target:
+        outgoing, incoming = sorted(current - target), sorted(target - current)
+        exchange = None
+        # Prefer one-for-one, then the two-for-one needed by Baron. Larger
+        # artificial weighted fixtures remain honest, complete exchanges.
+        for count in range(1, len(outgoing) + 1):
+            choices = []
+            for removed in combinations(outgoing, count):
+                budget = slots(removed)
+                for added_count in range(1, len(incoming) + 1):
+                    for added in combinations(incoming, added_count):
+                        if slots(added) == budget:
+                            choices.append((len(added), removed, added))
+            if choices:
+                _, removed, added = min(choices)
+                exchange = (set(removed), set(added))
+                break
+        if exchange is None:
+            raise ValueError("Final upgrade path has inconsistent exact-slot goals.")
+        removed, added = exchange
+        following = (current - removed) | added
+        board = planner.evaluate(level, sorted(following))
+        unlocks = [_unlock(planner.champions[name]) for name in sorted(following)
+                   if planner.champions[name].get("unlockable")]
+        milestones = [
+            "Buy the listed additions before selling the outgoing units; hold the arrival board until the required hits and unlock tasks are complete. No owned copies, bench space or gold are assumed.",
+        ]
+        if len(removed) > 2 or len(added) > 2:
+            milestones.append("These weighted slot sizes require a larger simultaneous exchange; no empty-slot or invented filler board is shown.")
+        if any(planner.champions[name].get("slots", 1) == 2 for name in removed | added):
+            milestones.append("Baron / weighted two-slot exchange: secure all incoming units before freeing both required slots.")
+        phases.append({
+            "board": _copy_board(board), "added": sorted(added),
+            "removed": sorted(removed), "retained": sorted(current & following),
+            "reason": "Conditional final-level upgrade, not an instant leveling pivot. Buy before selling; replace setup helpers only after the relevant unlock is complete.",
+            "stars": dict(board["planned_stars"]), "unlocks": unlocks,
+            "milestones": milestones,
+        })
+        current = following
+    return phases
 
 
 def recommend_with_buildups(
@@ -325,10 +450,9 @@ def recommend_with_buildups(
 ) -> list[dict]:
     """Return optimizer teams plus complete conditional builds, without mutating inputs.
 
-    All final candidates are eligibility-gated BEFORE optimization. Locks describe
-    end goals, not forced early copies. Every level has an exact-slot board or an
-    honest None, and an independent all-quests-incomplete fallback. Primary final
-    stats exactly match the optimizer under the same eligible pool and star map.
+    Shop timing and chase restrictions apply before final optimization. ``board``
+    is a stable arrival, ``goal_board`` a detached final-only exact end goal;
+    ``upgrades`` holds conditional exact-slot exchanges reaching that goal.
     """
     traits, champions = _validate_data(data)
     for champion in champions.values():
@@ -353,48 +477,99 @@ def recommend_with_buildups(
         if name in gated:
             champion = champions[name]
             minimum = _minimum_level(champion)
-            access = (f"planning level {minimum} or above" if champion["cost"] == 7 else
-                      f"nonzero {champion['cost']}-cost shop odds and unlock level {champion.get('unlock_level', 'Any')}")
-            raise ValueError(f"{name} cannot be planned at level {size}; requires {access}. "
+            raise ValueError(f"{name} cannot be planned at level {size}; requires planning level {minimum} or above "
+                             f"({champion['cost']}-cost; published unlock minimum: {champion.get('unlock_level', 'Any')}). "
+                             f"This is conservative timing, not game impossibility. "
                              f"Unlock task: {champion.get('unlock_condition', 'No special unlock requirement.')}")
-    results = optimize(data, collab, size, locked, sorted(set(excluded) | gated),
+    default_blocked = _chain_exclusions(champions, collab, sona_band, set())
+    chain_blocked = default_blocked - set(locked)
+    results = optimize(data, collab, size, locked, sorted(set(excluded) | gated | chain_blocked),
                        min_collab, mode, sona_band, limit, stars)
     planner = _Planner(traits, champions, collab, mode, sona_band, stars, size)
     excluded_set = set(excluded)
-    availability = {
-        level: sorted(name for name, champion in champions.items()
-                      if name not in excluded_set and _eligible(champion, level))
-        for level in range(1, size + 1)
-    }
-    # Cache immutable inputs only; each recommendation owns its result dictionaries.
+    # Cache immutable inputs only; each recommendation owns its dictionaries.
     @cache
-    def plan(level, target, previous, helpers, prepare_sona, fallback):
-        eligible = availability[level]
-        if fallback:
-            eligible = [name for name in eligible if not champions[name].get("unlockable")]
+    def plan(level, target, previous, helpers, prepare_sona, fallback, dependencies, waiting):
+        eligible = sorted(
+            name for name, champion in champions.items()
+            if name not in excluded_set and _eligible(champion, level)
+            and (name not in chain_blocked or name in dependencies)
+            and (not fallback or not champion.get("unlockable"))
+            and name not in waiting
+        )
         return planner.board(level, eligible, set(target), set(previous), set(helpers), prepare_sona)
-
     for result in results:
         result["collab_pool"] = [name for name in collab if name != "Sona"]
         result["sona_band"] = sona_band
         target = set(result["champions"])
-        helpers = _helpers(target, champions)
+        helpers = _dependency_helpers(target, champions)
+        dependencies = helpers.copy()
+        if "Teemo" in target or any(name in locked and "Hyperpop" in champions[name]["traits"] for name in target):
+            dependencies.update(name for name, champion in champions.items()
+                                if "Hyperpop" in champion["traits"])
+        recipes = _prep_recipes(target, champions, excluded_set)
+        prepared = set()
         previous = set()
         previous_fallback = set()
         steps = []
         for level in range(1, size + 1):
             final = level == size
-            prepare_sona = "Sona" in target and not final
-            board = ({key: result[key] for key in _RESULT_KEYS} if final else
-                     plan(level, tuple(sorted(target)), tuple(sorted(previous)),
-                          tuple(sorted(helpers)), prepare_sona, False))
+            pending = {name for name in target - previous if champions[name].get("unlockable")}
+            useful_helpers = _dependency_helpers(pending, champions)
+            for name, recipe in recipes.items():
+                if len(previous & set(recipe["candidates"])) >= recipe["count"]:
+                    prepared.add(name)
+            waiting = set(recipes) - prepared - previous
+            recipe_goals = pending & recipes.keys()
+            focus = min(recipe_goals, key=lambda name: (_minimum_level(champions[name]), name)) if recipe_goals else None
+            if focus:
+                recipe = recipes[focus]
+                candidates = [other for other in recipe["candidates"]
+                              if other not in excluded_set and _eligible(champions[other], level)]
+                useful_helpers.update(candidates[:recipe["count"]])
+                if focus in prepared:
+                    # The setup roster has been shown, not the task completed.
+                    # Prioritize this conditional acquisition over another chain.
+                    useful_helpers.add(focus)
+            if "Teemo" in pending:
+                useful_helpers.update(name for name in dependencies - target
+                                      if "Hyperpop" in champions[name]["traits"])
+            useful_helpers.update(_dependency_helpers(useful_helpers - previous, champions))
+            for name in (target | dependencies) - previous:
+                if champions[name].get("unlockable"):
+                    named = _helpers({name}, champions)
+                    if named and not named & previous:
+                        waiting.add(name)
+            prepare_sona = "Sona" in pending
+            board = plan(level, tuple(sorted(target)), tuple(sorted(previous)),
+                         tuple(sorted(useful_helpers)), prepare_sona, False,
+                         tuple(sorted(dependencies)), tuple(sorted(waiting)))
+            if board is None and waiting:
+                # A recipe can be impossible under explicit exclusions. Keep
+                # the goal conditional rather than inventing prerequisite units.
+                board = plan(level, tuple(sorted(target)), tuple(sorted(previous)),
+                             tuple(sorted(useful_helpers)), prepare_sona, False,
+                             tuple(sorted(dependencies)), ())
             fallback = plan(level, tuple(sorted(target)), tuple(sorted(previous_fallback)),
-                            tuple(sorted(helpers)), prepare_sona, True)
-            # Cached boards are copied so consumers cannot change another build.
+                            (), prepare_sona, True, (), ())
             board = _copy_board(board)
             fallback = _copy_board(fallback)
             current = set(board["champions"]) if board else set()
             goals = sorted(name for name in target | current if champions[name].get("unlockable"))
+            goal = _copy_board({key: result[key] for key in _RESULT_KEYS}) if final else None
+            upgrades = _upgrade_phases(planner, level, board, goal) if final else []
+            prep_goals = target | (useful_helpers & dependencies)
+            prep = [{**_unlock(champions[name]),
+                     "helpers": sorted(_dependency_helpers({name}, champions) & current)}
+                    for name in sorted(prep_goals - current) if champions[name].get("unlockable")]
+            for item in prep:
+                recipe = recipes.get(item["name"])
+                if recipe:
+                    item.update({key: recipe[key] for key in ("traits", "count", "count_mode")})
+                    item["helpers"] = sorted(current & set(recipe["candidates"]))
+                if item["name"] == "Teemo":
+                    item["helpers"] = sorted(name for name in current & dependencies
+                                             if "Hyperpop" in champions[name]["traits"])
             conditional = sorted(name for name in current if champions[name].get("unlockable"))
             unlocks = [_unlock(champions[name]) for name in conditional]
             milestones = []
@@ -404,14 +579,22 @@ def recommend_with_buildups(
                 milestones.append("No exact-slot no-unlock alternative exists at this level under these exclusions and slot constraints.")
             if unlocks:
                 milestones.append("Conditional plan only: complete each listed task before fielding its champion; quest progress is not assumed or simulated.")
+            for item in prep:
+                milestones.append(f"Unlock prep for {item['name']}: {item['condition']} "
+                                  "Required stars, items and progress must be earned, not inferred from this board. "
+                                  "Keep useful setup helpers; replace after unlock is complete.")
+                if item.get("count_mode") == "distinct_champions":
+                    milestones.append(f"{item['name']}: field {item['count']} distinct champions from "
+                                      f"{' or '.join(item['traits'])}; planned stars do not replace distinct units. "
+                                      "Play the required combat / confirm the unlock, then buy the champion; the roster alone does not complete the task.")
             for name in goals:
                 minimum = _minimum_level(champions[name])
                 if level < minimum:
                     milestones.append(f"{name}: wait until planning level {minimum}; published unlock minimum: {champions[name].get('unlock_level', 'Any')}.")
-            for helper in sorted(helpers & current):
-                helped = [name for name in goals if helper in _helpers({name}, champions)]
-                for name in helped:
-                    milestones.append(f"Field {helper} to work toward {name}: {champions[name]['unlock_condition']} Required upgrades/items/progress still need to be earned.")
+            for helper in sorted(useful_helpers & current):
+                for name in sorted(pending):
+                    if helper in _dependency_helpers({name}, champions):
+                        milestones.append(f"Field {helper} to work toward {name}: {champions[name]['unlock_condition']} Replace after unlock is complete; required upgrades/items/progress still need to be earned.")
             collab_count = sum(name in planner.collab for name in current)
             if "Sona" in target:
                 milestones.append(
@@ -419,31 +602,37 @@ def recommend_with_buildups(
                     if collab_count >= 3 else
                     "Build toward 3 Collab to begin Sona's 15-inspiration task; no progress is assumed."
                 )
-            for name in sorted(current):
+            for name in sorted(current | (target if final else set())):
                 champion = champions[name]
-                cost = champion["cost"]
-                if name not in previous and 1 <= cost <= 5 and SHOP_ODDS[level - 1][cost - 1] <= 5:
-                    odds = SHOP_ODDS[level - 1][cost - 1]
-                    milestones.append(f"Rare shop hit: {name}'s {cost}-cost tier has {odds}% odds per shop slot at level {level}; not a guaranteed copy.")
-                if cost == 7:
+                if champion["cost"] == 7:
                     milestones.append(f"{name} is quest-only, not a regular shop roll; unlock completion is conditional.")
                 if name == "Baron Nashor":
                     milestones.append("Baron consumes 2 board slots. Level 9 is a conservative late-game planning heuristic, not a published unlock minimum (Any).")
             if level == 11:
                 milestones.append("Level 11 requires a special level-cap extension; ordinary leveling is not assumed to reach it.")
             temporary = sorted(current - target)
-            reason = ("Exact requested end composition; requested final star assumptions apply." if final else
-                      "Prefer obtainable target members, retained units and useful synergies; temporary units bridge unavailable targets.")
+            reason = "Stable arrival: retain most previous units, add obtainable goals and make small replacements; purposeful off-trait helpers prepare future unlocks."
+            if upgrades:
+                reason += " Hold this arrival until hits/tasks are ready, then follow the separate buy-before-sell upgrades; the exact end goal is not an instant pivot."
+            cap = 2 if level >= 8 else 1
+            for label, old, new in (
+                ("Primary", previous, current),
+                ("No-unlock alternative", previous_fallback,
+                 set(fallback["champions"]) if fallback else set()),
+            ):
+                if len(old - new) > cap:
+                    milestones.append(f"{label}: weighted slots/exclusions force {len(old - new)} removals beyond the usual {cap}; no smooth exact-slot completion exists. No empty filler is invented.")
             if not board:
                 reason = "No feasible exact-slot board from eligible champions at this level; do not invent a unit or claim the next-level board is available early."
             elif temporary:
-                reason += " Replace temporary units as target members become eligible; shop access is not a purchase guarantee."
+                reason += " Replace useful temporary setup only after the relevant unlock is complete; shop access is not a purchase guarantee."
             step_stars = dict(fallback["planned_stars"]) if fallback else {}
             if board:
                 step_stars.update(board["planned_stars"])
             steps.append({
                 "level": level, "board": board, "fallback": fallback,
                 "added": sorted(current - previous), "removed": sorted(previous - current),
+                "goal_board": goal, "upgrades": upgrades, "unlock_prep": prep,
                 "retained": sorted(current & previous), "temporary": temporary,
                 "unlocks": unlocks, "milestones": milestones, "stars": step_stars, "reason": reason,
             })
@@ -456,10 +645,16 @@ def recommend_with_buildups(
             "Planned upgrades are targets, not owned units. Fast-10 rankings apply conditional trait, Senna-preference and reroll-path heuristics, not gold or win-rate estimates.",
             "End-goal locks are not forced at earlier levels. Temporary units are replaced as target units become eligible; exclusions apply throughout.",
             "A nonzero ordinary-shop chance and published unlock minimum gate eligibility. Guaranteed earlier unlock-copy rewards are not modeled.",
-            "Seven-cost units are quest-only. Baron level 9 is a planning heuristic, not its published minimum (Any); Sona 10, Rakan 8 and Smeech 9 retain their published gates.",
+            "Four-cost planning starts at level 7; five-cost planning starts at level 9. These realistic defaults are not claims earlier hits are impossible; published unlock minima still apply.",
             "No-unlock alternatives exclude every unlockable unit and may not satisfy the final Collab minimum or end-goal locks. None means no exact-slot alternative exists.",
             f"Shop odds source: TFT Flow Patch 19.1 — {SHOP_SOURCE}",
         ]
+        result["buildup_notes"].extend([
+            "Primary arrivals normally remove at most one unit per level below 8 and two at 8+. Final upgrades are separate exact-slot conditional exchanges: buy before selling and hold arrival until ready.",
+            "Unrelated long unlock chains require an actual Collab native band or featured band. Purposeful dependencies of selected goals are allowed in the guide only; no quest progress is assumed.",
+        ])
+        for name in sorted(set(locked) & default_blocked):
+            result["buildup_notes"].append(f"Manual chain lock: {name} overrides the default unrelated-chain restriction. Complete its task and dependencies; no acquired copies, stars, items or progress are assumed.")
         if size == 11:
             result["buildup_notes"].append("Level 11 requires a special level-cap extension, not ordinary leveling.")
     return results
@@ -475,47 +670,61 @@ def _copy_board(board):
 
 
 def format_buildup(result: dict, champions) -> str:
-    """Plain-text shared copy/export format for an already-computed build."""
+    """Copy/export arrivals, complete upgrades, tasks and the exact end goal."""
     champion_map = champions if isinstance(champions, dict) else {c["name"]: c for c in champions}
-    lines = ["Final team: " + ", ".join(
-        f"{name} ({star_text(result['planned_stars'][name])})"
-        for name in result["champions"]
-    )]
+    lines = []
+
+    def roster(label, board):
+        if board is None:
+            lines.append(label + ": no feasible exact-slot board.")
+            return
+        lines.append(label + ": " + ", ".join(
+            f"{name} ({star_text(board['planned_stars'].get(name, 1))}" +
+            (", conditional unlock" if champion_map.get(name, {}).get("unlockable") else "") + ")"
+            for name in board["champions"]
+        ))
+        lines.append(_format_traits(board))
+        if board["frontline_anchor"]:
+            lines.append("Frontline anchor: " + board["frontline_anchor"])
+        lines.extend("Strategy: " + note for note in board["strategy_notes"])
+
+    def task(unlock, label):
+        lines.append(f"{label} {unlock['name']} [{unlock['level']}]: {unlock['condition']}")
+        if unlock.get("helpers"):
+            lines.append("  Fielded setup helpers: " + ", ".join(unlock["helpers"]))
+        if unlock.get("count_mode") == "distinct_champions":
+            lines.append(f"  Requires {unlock['count']} distinct champions from " +
+                         " or ".join(unlock["traits"]) + "; stars do not replace distinct units.")
+        if unlock["source"]:
+            lines.append("  Source: " + unlock["source"])
+        if unlock.get("note"):
+            lines.append("  " + unlock["note"])
+
+    roster("Exact end goal (not the leveling arrival)", result)
     lines.extend("Note: " + note for note in result.get("buildup_notes", []))
     for step in result.get("buildup", []):
-        board = step["board"]
         lines.append(f"\nLevel {step['level']}")
-        if board is None:
-            lines.append("Primary: no feasible exact-slot board.")
-        else:
-            units = [f"{name} ({star_text(step['stars'].get(name, 1))}" +
-                     (", conditional unlock" if champion_map.get(name, {}).get("unlockable") else "") + ")"
-                     for name in board["champions"]]
-            lines.append("Primary: " + ", ".join(units))
-            lines.append(_format_traits(board))
-            if board["frontline_anchor"]:
-                lines.append("Frontline anchor: " + board["frontline_anchor"])
-            lines.extend("Strategy: " + note for note in board["strategy_notes"])
+        roster("Primary arrival", step["board"])
         for label, key in (("Add", "added"), ("Remove", "removed"), ("Keep", "retained"),
                            ("Temporary", "temporary")):
             lines.append(f"{label}: " + (", ".join(step[key]) or "none"))
         for unlock in step["unlocks"]:
-            lines.append(f"Conditional {unlock['name']} [{unlock['level']}]: {unlock['condition']}")
-            if unlock["source"]:
-                lines.append("  Source: " + unlock["source"])
-            if unlock.get("note"):
-                lines.append("  " + unlock["note"])
-        fallback = step["fallback"]
-        lines.append("No-unlock alternative: " +
-                     (", ".join(f"{name} ({star_text(step['stars'].get(name, 1))})" for name in fallback["champions"])
-                      if fallback else "no feasible exact-slot board"))
-        if fallback:
-            lines.append(_format_traits(fallback))
-            if fallback["frontline_anchor"]:
-                lines.append("Alternative frontline anchor: " + fallback["frontline_anchor"])
-            lines.extend("Alternative strategy: " + note for note in fallback["strategy_notes"])
+            task(unlock, "Conditional")
+        for unlock in step.get("unlock_prep", []):
+            task(unlock, "Future unlock prep for")
+        roster("No-unlock alternative", step["fallback"])
         lines.extend("Milestone: " + item for item in step["milestones"])
         lines.append("Reason: " + step["reason"])
+        if step.get("goal_board") is not None:
+            roster("Exact final-level goal after upgrades", step["goal_board"])
+        for index, phase in enumerate(step.get("upgrades", []), 1):
+            roster(f"Upgrade phase {index} — buy before selling", phase["board"])
+            for label, key in (("Buy/add", "added"), ("Then sell/remove", "removed"), ("Keep", "retained")):
+                lines.append(f"{label}: " + (", ".join(phase[key]) or "none"))
+            for unlock in phase["unlocks"]:
+                task(unlock, "Conditional")
+            lines.extend("Milestone: " + item for item in phase["milestones"])
+            lines.append("Reason: " + phase["reason"])
     return "\n".join(lines)
 
 

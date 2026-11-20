@@ -27,6 +27,22 @@ def fetch(url):
     return response.content
 
 
+def create_unlock_badge(directory):
+    """Generate the shared small padlock; runtime only loads this cached PNG."""
+    scale = 3
+    image = Image.new('RGBA', (16 * scale, 18 * scale), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(image)
+    draw.rounded_rectangle((0, 0, 16 * scale - 1, 18 * scale - 1), radius=3 * scale, fill='#111827')
+    draw.arc((4 * scale, 1 * scale, 12 * scale, 11 * scale), 180, 360, fill='#f1d69b', width=2 * scale)
+    draw.line((4 * scale, 5 * scale, 4 * scale, 9 * scale), fill='#f1d69b', width=2 * scale)
+    draw.line((12 * scale, 5 * scale, 12 * scale, 9 * scale), fill='#f1d69b', width=2 * scale)
+    draw.rounded_rectangle((3 * scale, 7 * scale, 13 * scale, 16 * scale), radius=scale,
+                           fill='#253047', outline='#f1d69b', width=scale)
+    draw.ellipse((7 * scale, 10 * scale, 9 * scale, 12 * scale), fill='#f1d69b')
+    draw.line((8 * scale, 12 * scale, 8 * scale, 14 * scale), fill='#f1d69b', width=scale)
+    image.resize((16, 18), Image.Resampling.LANCZOS).save(directory / 'unlock-badge.png')
+
+
 def main():
     data = json.loads((ROOT / 'data/set19.json').read_text(encoding='utf-8'))
     page = BeautifulSoup(fetch(SOURCE), 'html.parser')
@@ -45,6 +61,7 @@ def main():
         raise ValueError('Artwork source roster differs from bundled data; review before publishing.')
     directory = ROOT / 'assets'
     directory.mkdir(exist_ok=True)
+    create_unlock_badge(directory)
     manifest = {'source': SOURCE, 'attribution': 'Champion and trait artwork © Riot Games. Images sourced from TFT Ninja Set 19.', 'champions': {}, 'traits': {}}
     costs = {c['name']: c['cost'] for c in data['champions']}
 

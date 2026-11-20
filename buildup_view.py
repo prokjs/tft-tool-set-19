@@ -36,6 +36,10 @@ class BuildupWindow(tk.Toplevel):
         self.steps = sorted(result['buildup'], key=lambda step: step['level'])
         self.target = set(result['champions'])
         self.index = 0
+        self.selected_level = None
+        self.selected_step = None
+        self.selected_phase = 0
+        self.selected_board = None
         self.wrap_labels = []
         self.level_buttons = []
         self.title('Level-by-level build-up')
@@ -74,6 +78,19 @@ class BuildupWindow(tk.Toplevel):
                                highlightthickness=1, highlightbackground='#344155', cursor='hand2')
             self.level_buttons.append(button)
         self.overview.bind('<Configure>', self._overview_resize)
+        self.phase_controls = tk.Frame(header, bg=BG)
+        tk.Label(self.phase_controls, text='Final pivot:', bg=BG, fg=ACCENT,
+                 font=('Segoe UI', 9, 'bold')).pack(side='left', padx=(0, 8))
+        self.phase_previous = ttk.Button(self.phase_controls, text='← Phase', width=9,
+                                         command=lambda: self.select_phase(self.selected_phase - 1))
+        self.phase_previous.pack(side='left')
+        self.phase_selector = ttk.Combobox(self.phase_controls, state='readonly', width=24)
+        self.phase_selector.pack(side='left', fill='x', expand=True, padx=6)
+        self.phase_selector.bind('<<ComboboxSelected>>',
+                                 lambda _event: self.select_phase(self.phase_selector.current()))
+        self.phase_next = ttk.Button(self.phase_controls, text='Phase →', width=9,
+                                     command=lambda: self.select_phase(self.selected_phase + 1))
+        self.phase_next.pack(side='left')
 
         scroll_frame = tk.Frame(self, bg=BG)
         scroll_frame.grid(row=1, column=0, sticky='nsew', padx=12)
@@ -188,31 +205,84 @@ class BuildupWindow(tk.Toplevel):
         step = self.steps[index]
         self.selected_level = step['level']
         self.selected_step = step
-        self.level_title.configure(text=f"Level {step['level']} · {'final composition' if index == len(self.steps) - 1 else 'build-up'}")
         self.previous_button.configure(state='normal' if index else 'disabled')
         self.next_button.configure(state='normal' if index < len(self.steps) - 1 else 'disabled')
         for button_index, button in enumerate(self.level_buttons):
             button.configure(bg='#5b3c91' if button_index == index else PANEL,
                              highlightbackground=ACCENT if button_index == index else '#344155',
                              relief='sunken' if button_index == index else 'flat')
+        upgrades = step.get('upgrades', [])
+        if upgrades:
+            self.phase_selector.configure(values=['Arrival · hold lineup'] + [
+                f"Upgrade {phase}/{len(upgrades)}" + (' · ideal end goal' if phase == len(upgrades) else '')
+                for phase in range(1, len(upgrades) + 1)
+            ])
+            self.phase_controls.pack(fill='x', pady=(8, 0))
+        else:
+            self.phase_controls.pack_forget()
+        return self.select_phase(0)
+
+    def select_phase(self, index: int):
+        """Select 0 for Arrival, or 1..N for precomputed same-level upgrades."""
+        if self.selected_step is None:
+            return 'break'
+        step = self.selected_step
+        upgrades = step.get('upgrades', [])
+        if not 0 <= index <= len(upgrades):
+            raise ValueError(f'Phase {index} is not present at level {step["level"]}.')
+        self.selected_phase = index
+        phase = step if index == 0 else upgrades[index - 1]
+        self.selected_board = phase['board']
+        context = dict(phase, level=step['level'])
+        if upgrades:
+            self.phase_selector.current(index)
+            self.phase_previous.configure(state='normal' if index else 'disabled')
+            self.phase_next.configure(state='normal' if index < len(upgrades) else 'disabled')
+        label = (f'upgrade {index}/{len(upgrades)}' if index else
+                 'final-level arrival' if self.index == len(self.steps) - 1 else 'build-up arrival')
+        self.level_title.configure(text=f"Level {step['level']} · {label}")
         for child in self.content.winfo_children():
             child.destroy()
         self.wrap_labels.clear()
         self._text(self.content,
-                   'Conditional plan: no quest completion is assumed. Early boards use ★; '
-                   'later upgrades are planning targets, not confirmed purchases or guaranteed hits.',
+                   'Conditional plan: no quest completion is assumed. Stars are upgrade targets, '
+                   'not confirmed purchases or guaranteed hits.',
                    WARNING, pady=(6, 10))
-        self._board('Main board — if listed unlocks complete', step['board'], step, fallback=False)
-        transition = self._section('Changes from the previous primary board')
-        for label, key, color in (('Add', 'added', '#86efac'), ('Remove', 'removed', '#fca5a5'),
+        if upgrades:
+            self._text(self.content,
+                       'Hold the Arrival lineup until the incoming champions are found and their unlock tasks are complete. '
+                       'Buy before selling: secure the next phase’s additions before replacing its listed removals. '
+                       'These phases do not assert owned units, available gold, or completed unlocks.',
+                       WARNING)
+        title = ('Arrival board — hold while finding upgrades' if upgrades and index == 0 else
+                 f'Upgrade {index}/{len(upgrades)} — conditional board' if index else
+                 'Arrival board — conditional on listed unlocks')
+        self._board(title, self.selected_board, context, fallback=False)
+        transition = self._section('Changes from the previous arrival board' if index == 0 else
+                                   'Changes from ' + ('Arrival' if index == 1 else f'Upgrade {index - 1}'))
+        for label, key, color in (('Buy / add first', 'added', '#86efac'), ('Then replace / remove', 'removed', '#fca5a5'),
                                   ('Keep', 'retained', TEXT)):
-            self._text(transition, f"{label}: {', '.join(step[key]) or '—'}", color)
-        self._text(transition, step['reason'], MUTED)
-        for milestone in step['milestones']:
+            self._text(transition, f"{label}: {', '.join(phase[key]) or '—'}", color)
+        self._text(transition, phase['reason'], MUTED)
+        for milestone in phase['milestones']:
             self._text(transition, '• ' + milestone, WARNING)
 
-        self._unlocks(step)
-        if step['unlocks'] or step['board'] is None:
+        self._unlocks(context)
+        self._unlock_prep(context)
+        goal = step.get('goal_board')
+        if goal is not None:
+            ideal = self._section('Ideal end goal — distinct from the arrival lineup')
+            self._text(ideal, ', '.join(
+                f"{name} ({star_text(goal['planned_stars'].get(name, 1))})"
+                for name in goal['champions']))
+            if upgrades:
+                self._text(ideal, f'The last of {len(upgrades)} upgrades is this exact selected goal. '
+                           'Use the phase selector to inspect each actual lineup; stay on Arrival until ready.',
+                           MUTED)
+            else:
+                self._text(ideal, 'Arrival already matches the selected end goal; purchases, upgrades and unlocks remain conditional.',
+                           MUTED)
+        if phase['unlocks'] or self.selected_board is None:
             self._board('Playable alternative — when quests are incomplete', step['fallback'], step, fallback=True)
         notes = self._section('Source policy & planning assumptions')
         for note in self.result['buildup_notes']:
@@ -238,23 +308,30 @@ class BuildupWindow(tk.Toplevel):
         self._text(section, f"{slots}/{step['level']} slots · {len(names)} champions · "
                    f"{board['active']} active non-unique traits · {board['cost']}g base unit cost", MUTED)
         if fallback:
-            self._text(section, 'Only champions without conditional unlocks. This board is an alternative to the '
-                       'primary board above; the Add / Remove / Keep list describes primary-to-primary changes.', MUTED)
+            self._text(section, 'Only champions without conditional unlocks. This is an independent alternative, '
+                       'not another pivot phase; the Add / Remove / Keep list describes the selected primary board.', MUTED)
         elif not step['unlocks']:
-            self._text(section, 'No conditional unlocks are required by this level’s primary board.', MUTED)
+            self._text(section, 'No conditional unlocks are required by the selected board.', MUTED)
         portraits = tk.Frame(section, bg=PANEL)
         portraits.pack(fill='x')
         cards = []
-        temporary = set(step['temporary']) if not fallback else set(names) - self.target
+        temporary = set(names) - self.target
+        preparation = {}
+        if not fallback:
+            for unlock in step.get('unlock_prep', []):
+                for helper in unlock['helpers']:
+                    preparation.setdefault(helper, []).append(unlock['name'])
         for name in names:
             champion = self.champions[name]
             color = COST_COLORS[champion['cost']]
             card = tk.Frame(portraits, bg=PANEL, highlightbackground=color, highlightthickness=1,
                             width=116, padx=4, pady=5)
-            tk.Label(card, image=self.artwork.portraits[name], bg=PANEL).pack()
+            portrait = tk.Label(card, image=self.artwork.portraits[name], bg=PANEL)
+            portrait.pack()
             tk.Label(card, text=name, bg=PANEL, fg=TEXT, width=14, wraplength=104,
                      font=('Segoe UI', 9, 'bold')).pack()
-            stars = step['stars'].get(name, 1)
+            stars = (board['planned_stars'].get(name, 1) if fallback else
+                     step['stars'].get(name, board['planned_stars'].get(name, 1)))
             badges = f"{champion['cost']}g · {star_text(stars)}"
             if champion.get('slots', 1) > 1:
                 badges += f" · {champion['slots']} slots"
@@ -262,6 +339,9 @@ class BuildupWindow(tk.Toplevel):
             tk.Label(card, text='TEMPORARY' if name in temporary else 'FINAL TARGET',
                      bg='#40371f' if name in temporary else '#293d49',
                      fg=WARNING if name in temporary else '#b9dfd7', font=('Segoe UI', 8, 'bold')).pack(pady=2)
+            if name in preparation:
+                tk.Label(card, text='UNLOCK PREPARATION\n→ ' + ', '.join(preparation[name]),
+                         bg=PANEL, fg=WARNING, wraplength=104, font=('Segoe UI', 8)).pack(pady=2)
             if champion['unlockable']:
                 tk.Button(card, text='Conditional · details', command=lambda name=name: self.on_unlock(name),
                           bg=PANEL, fg=WARNING, activebackground='#253047', activeforeground='white',
@@ -282,11 +362,48 @@ class BuildupWindow(tk.Toplevel):
                              members=trait_members(self.data, trait['name'], self.collab_pool, self.sona_band))
                     for trait in active]
             self._reflow_grid(traits_frame, rows, 318)
+        if board.get('frontline_anchor'):
+            self._text(section, 'Planned frontline anchor: ' + board['frontline_anchor'], MUTED, pady=(8, 3))
+        for note in board.get('strategy_notes', []):
+            self._text(section, note, MUTED)
+
+    def _unlock_prep(self, step):
+        preparation = step.get('unlock_prep', [])
+        if not preparation:
+            return
+        section = self._section('Unlock preparation — intentional helpers for future targets')
+        self._text(section, 'These helpers prepare the listed end-goal quests, not unrelated chain recommendations. '
+                   'Their displayed stars are planning assumptions, not proof of the required upgrade, item or progress. '
+                   'Keep the setup until the full task is earned; only then make the conditional handoff.', WARNING)
+        self._text(section, 'Field-member tasks require different champions, not a trait’s aggregate star count. '
+                   'After the required combat or other progress, confirm the actual unlock in game before handing off.',
+                   WARNING)
+        for unlock in preparation:
+            task = tk.Frame(section, bg=PANEL)
+            task.pack(fill='x', pady=(7, 5))
+            name = unlock['name']
+            tk.Button(task, text='Future target: ' + name + ' — sourced unlock details ↗',
+                      command=lambda name=name: self.on_unlock(name),
+                      bg=PANEL, fg=WARNING, activebackground='#253047', activeforeground='white',
+                      relief='flat', borderwidth=0, cursor='hand2', anchor='w',
+                      font=('Segoe UI', 10, 'bold')).pack(anchor='w')
+            self._text(task, 'Preparation helpers: ' + ', '.join(
+                f"{helper} ({star_text(step['stars'].get(helper, 1))} planned)"
+                for helper in unlock['helpers']), MUTED)
+            self._text(task, 'Required task — not yet confirmed: ' + unlock['condition'])
+            if unlock.get('count_mode') == 'distinct_champions':
+                traits = ' / '.join(unlock['traits'])
+                self._text(task, f"Setup requirement: field {unlock['count']} different {traits} champions; "
+                           'aggregate trait stars do not satisfy this task.', WARNING)
+            self._text(task, 'Published player-level requirement: ' + unlock['level'], WARNING)
+            if unlock.get('note'):
+                self._text(task, unlock['note'], WARNING)
+            self._text(task, 'Source: ' + unlock['source'], MUTED)
 
     def _unlocks(self, step):
         if not step['unlocks']:
             return
-        section = self._section('Required unlocks — verify every task before using the primary board')
+        section = self._section('Selected board’s required unlocks — verify every task before fielding')
         self._text(section, 'These are conditions, not confirmed rewards. Published minimums and '
                    'planning availability are distinct; “Any” does not guarantee shop access.', WARNING)
         for unlock in step['unlocks']:
