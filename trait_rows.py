@@ -26,6 +26,7 @@ def badge_style(trait, definition):
 class TraitRow(tk.Canvas):
     def __init__(self, parent, trait, definition, artwork):
         super().__init__(parent, width=306, height=44, bg='#192337', highlightthickness=0, takefocus=False)
+        self.bind('<MouseWheel>', self.wheel)
         self.trait = trait
         self.definition = definition
         self.style_name = badge_style(trait, definition)
@@ -54,3 +55,8 @@ class TraitRow(tk.Canvas):
             if current:
                 self.create_line(x, 39, x + width - 2, 39, fill=palette['edge'], width=2, tags='active-breakpoint')
             x += width
+
+    def wheel(self, event):
+        if event.delta:
+            self.master.yview_scroll(-1 if event.delta > 0 else 1, 'units')
+        return 'break'
