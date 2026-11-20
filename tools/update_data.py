@@ -5,7 +5,8 @@ Refresh-only dependency: python -m pip install beautifulsoup4
 The desktop application itself does not need Beautiful Soup or internet access.
 
 For archived/reproducible input, use --html-dir DIRECTORY containing full UTF-8
-traits.html, units.html, and collab.html responses from the three URLs below.
+traits.html, units.html, collab.html, unlocks.html and unlock_roster.html responses
+from the URLs below. unlocks.html may contain content-negotiated Markdown.
 HTTPS certificate verification is never disabled. A fetch or parsing failure
 leaves the existing snapshot unchanged. Review source changes before publishing.
 
@@ -16,8 +17,10 @@ The two Akali variants have reciprocal unlock exclusions and share one exclusive
 group; this is preserved from the roster's unlock text, not inferred from names.
 Repeated numeric thresholds (Pentakill and True Damage) are deduplicated rather
 than guessing a missing threshold or treating alternate descriptions as tiers.
-Unspecified prismatic thresholds are not invented. Conditional trait effects,
-unlock requirements, items, and combat simulation are outside this data format.
+Unspecified prismatic thresholds are not invented. Unlock tasks and player levels
+come from the newer Mobalytics guide, cross-checked against Blitz's current
+unlock roster. Conditional trait effects, items and combat simulation
+are outside this data format.
 """
 
 from __future__ import annotations
@@ -35,11 +38,18 @@ try:
 except ImportError as exc:
     raise SystemExit("Refresh requires Beautiful Soup: python -m pip install beautifulsoup4") from exc
 
+if __package__:
+    from .update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
+else:
+    from update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
+
 
 SOURCES = {
     "traits": "https://tft.ninja/sets/19/traits",
     "units": "https://tft.ninja/sets/19/units",
     "collab": "https://tftflow.com/tables/set19/collab",
+    "unlocks": GUIDE_URL,
+    "unlock_roster": BLITZ_URL,
 }
 EXPECTED = {"traits": 47, "champions": 94, "collab_groups": 40}
 AKALI_EXCLUSION_NOTE = (
@@ -67,7 +77,10 @@ def fetch_pages(html_dir: Path | None) -> dict[str, str]:
         if html_dir is not None:
             pages[key] = (html_dir / f"{key}.html").read_text(encoding="utf-8-sig")
         else:
-            request = Request(url, headers={"User-Agent": "Set19CollabOptimizer/1.0"})
+            request = Request(url, headers={
+                "User-Agent": "Set19CollabOptimizer/1.0",
+                "Accept": "text/markdown" if key == "unlocks" else "text/html",
+            })
             with urlopen(request, timeout=45) as response:
                 charset = response.headers.get_content_charset() or "utf-8"
                 pages[key] = response.read().decode(charset)
@@ -154,6 +167,7 @@ def parse_pages(pages: dict[str, str], snapshot_date: str) -> dict:
         "champions": champions,
         "collab_groups": groups,
     }
+    data["sources"].extend(apply_unlocks(champions, pages["unlocks"], pages["unlock_roster"], snapshot_date))
     validate_data(data, source_members, champion_slugs)
     return data
 
@@ -165,13 +179,17 @@ def validate_data(data: dict, source_members: dict[str, set[str]], champion_slug
     champions = {champion["name"]: champion for champion in data["champions"]}
     require(len(traits) == EXPECTED["traits"], "Duplicate trait names")
     require(len(champions) == EXPECTED["champions"], "Duplicate champion names")
-    require(sum(champion["unlockable"] for champion in champions.values()) == 36, "Unlockable roster changed")
+    require(sum(champion["unlockable"] for champion in champions.values()) == 32, "Current unlockable roster changed")
     require(sum(trait["unique"] for trait in traits.values()) == 19, "Unique trait classification changed")
     for champion in champions.values():
         require(champion["cost"] in {1, 2, 3, 4, 5, 7}, f"Unexpected cost for {champion['name']}")
         names = champion["traits"]
         require(bool(names) and len(names) == len(set(names)), f"Missing/duplicate traits for {champion['name']}")
         require(set(names) <= traits.keys(), f"Unknown traits for {champion['name']}")
+        if champion["unlockable"]:
+            for field in ("unlock_condition", "unlock_level", "unlock_source"):
+                require(isinstance(champion.get(field), str) and bool(champion[field].strip()),
+                        f"Missing {field} for {champion['name']}")
     for name, expected_members in source_members.items():
         actual_members = {slug for slug, champion in champion_slugs.items() if name in champion["traits"]}
         require(actual_members == expected_members, f"Trait/champion source disagreement for {name}")

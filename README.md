@@ -10,6 +10,8 @@ The main roster uses a responsive portrait grid. Click a portrait to select, Ctr
 
 Results use TFT-inspired trait bars: hexagonal icons, current counts, and full breakpoint tracks with the active breakpoint highlighted. Active traits sort above dimmed inactive traits; K/DA counts show stars, and unique traits appear once. Bronze/silver/gold badges indicate breakpoint progress, not official patch-specific rarity colors.
 
+Unlockable champions show sourced unlock tasks and player-level requirements in portrait tooltips, selected-champion details, the Collab pool picker, and team results. Click **Unlock details** on a team card for the full requirement and its source. Copied teams and JSON exports include the requirements. These are offline reference conditions—not automatic tracking of in-game progress; pre-release source uncertainties are shown explicitly.
+
 ## Rankings
 
 - **High value** (default): rewards higher-cost units alongside active traits, trait tiers, and frontline balance. Scores add 30 points per gold of base champion cost, 100 per active non-unique trait, and 10 per trait tier. This can trade a little synergy for more expensive units; it does not blindly maximize gold.

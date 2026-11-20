@@ -2,6 +2,7 @@
 import tkinter as tk
 from tkinter import ttk
 from visuals import COST_COLORS
+from champion_info import unlock_text
 
 
 class ChampionGrid(tk.Frame):
@@ -162,9 +163,9 @@ class ChampionGrid(tk.Frame):
         self.tip.overrideredirect(True)
         self.tip.attributes('-topmost', True)
         text = f"{name}  ·  {entry['cost']}g  ·  {entry['stars']}★\n" + ', '.join(entry['traits'])
-        if entry['unlockable']:
-            text += '\nUnlock required'
-        tk.Label(self.tip, text=text, justify='left', wraplength=280, bg='#253047', fg='#ffffff', padx=10, pady=7, font=('Segoe UI', 10)).pack()
+        if entry['unlockable'] or entry.get('unlock_note'):
+            text += '\n' + unlock_text(entry)
+        tk.Label(self.tip, text=text, justify='left', wraplength=440, bg='#253047', fg='#ffffff', padx=10, pady=7, font=('Segoe UI', 10)).pack()
         self.tip.update_idletasks()
         x = max(0, min(x + 14, self.winfo_screenwidth() - self.tip.winfo_reqwidth()))
         y = max(0, min(y + 18, self.winfo_screenheight() - self.tip.winfo_reqheight()))

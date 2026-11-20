@@ -13,6 +13,20 @@
     {
       "name": "TFT Flow Set 19 Collab tables",
       "url": "https://tftflow.com/tables/set19/collab"
+    },
+    {
+      "name": "Mobalytics Set 19 unlock guide",
+      "url": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "updated": "2026-11-19",
+      "retrieved": "2026-11-20",
+      "note": "Tasks and player levels for all 32 currently unlockable champions; preferred when PBE numeric thresholds disagree."
+    },
+    {
+      "name": "Blitz Set 19 unlock roster cross-check",
+      "url": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "updated": "2026-11-19",
+      "retrieved": "2026-11-20",
+      "note": "Both newer sources list 32 unlocks. The older Ninja roster marks Nasus, Renata Glasc, Galio and Syndra locked; the current complete eight-champion 1–3-cost quest table excludes all four. Blitz also explicitly places Nasus/Renata in the starting shop and Syndra in the normal 3-cost Beach Pop progression. These four are therefore stored without special unlock requirements."
     }
   ],
   "traits": [
@@ -461,7 +475,10 @@
         "Hyperpop",
         "Frontman"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "2-star Ziggs with 1 Item",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Lillia",
@@ -564,7 +581,10 @@
         "Beach Pop",
         "Swiftstriker"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have a Beach Pop champion holding 2 items.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Camille",
@@ -638,7 +658,10 @@
         "Hyperpop",
         "Choreographer"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have your Hyperpop champions cast 10 times with the trait active.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Lux",
@@ -656,7 +679,9 @@
         "Classical",
         "Bodyguard"
       ],
-      "unlockable": true
+      "unlockable": false,
+      "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
     },
     {
       "name": "Qiyana",
@@ -674,7 +699,9 @@
         "Classical",
         "Choreographer"
       ],
-      "unlockable": true
+      "unlockable": false,
+      "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
     },
     {
       "name": "Renekton",
@@ -693,7 +720,10 @@
         "Renegade",
         "Trickshot"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have a Classical, Renegade, or Trickshot champion holding 2 items.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Seraphine",
@@ -701,7 +731,10 @@
       "traits": [
         "Indie"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Reroll 4 times before the Stage 2 carousel.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Tristana",
@@ -710,7 +743,10 @@
         "Hyperpop",
         "Hitmaker"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Get 5 kills with Hyperpop active.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Amumu",
@@ -773,7 +809,10 @@
         "K/DA",
         "Renegade"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 3 K/DA or Renegade champions.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Galio",
@@ -782,7 +821,9 @@
         "Jazz",
         "Frontman"
       ],
-      "unlockable": true
+      "unlockable": false,
+      "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
     },
     {
       "name": "K'Sante",
@@ -837,7 +878,9 @@
         "Beach Pop",
         "Choreographer"
       ],
-      "unlockable": true
+      "unlockable": false,
+      "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
     },
     {
       "name": "Tibbers",
@@ -846,7 +889,10 @@
         "Ionic Spark",
         "Bodyguard"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have a 2-star Annie holding 1 item.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Viego",
@@ -873,7 +919,10 @@
       "traits": [
         "Country"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Equip a Chain Vest to a Caster or Marksman.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Alune",
@@ -883,7 +932,10 @@
         "Manager",
         "Prodigy"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 4 unique Heartsteel or Prodigy champions.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Aurora",
@@ -928,7 +980,10 @@
         "Ionic Spark",
         "Hitmaker"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have an Ionic Spark or Hitmaker champion holding 3 items.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Kayle",
@@ -937,7 +992,10 @@
         "Pentakill",
         "Swiftstriker"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 4 unique Pentakill or Swiftstriker champions.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Leona",
@@ -983,7 +1041,11 @@
         "Classical",
         "Frontman"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have enemies spend 300 seconds Captivated by Classical.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Enemies spend 275 seconds Captivated by Classical. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
     },
     {
       "name": "Vayne",
@@ -992,7 +1054,10 @@
         "Rock",
         "Trickshot"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Field Rock for 3 combats.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Wukong",
@@ -1000,7 +1065,10 @@
       "traits": [
         "Gu Feng"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have allies deal 25,000 damage while fielding Xayah.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Xayah",
@@ -1018,7 +1086,11 @@
         "True Damage",
         "Slayer"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 7 star levels of True Damage and Slayer champions.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Level 7, 6 unique star levels of True Damage or Slayer champions. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
     },
     {
       "name": "Yone",
@@ -1054,7 +1126,10 @@
         "Beach Pop",
         "Juggernaut"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 5 unique Beach Pop or Juggernaut champions.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Akali (K/DA)",
@@ -1063,7 +1138,10 @@
         "K/DA"
       ],
       "unlockable": true,
-      "exclusive_group": "akali"
+      "exclusive_group": "akali",
+      "unlock_condition": "Have 12 unique star levels of K/DA without True Damage Akali unlocked.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Akali (True Damage)",
@@ -1073,7 +1151,11 @@
         "Freestyle"
       ],
       "unlockable": true,
-      "exclusive_group": "akali"
+      "exclusive_group": "akali",
+      "unlock_condition": "Earn 375 True Damage Bling without K/DA Akali unlocked.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 350 True Damage Bling, without the other Akali unlocked. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
     },
     {
       "name": "Aphelios",
@@ -1081,7 +1163,10 @@
       "traits": [
         "Heartsteel"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have a 2-star Alune or Yone.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Dr. Mundo",
@@ -1099,7 +1184,10 @@
         "Ionic Spark",
         "Melodic Heart"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have Ionic Spark fans cheer 250 times.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Janna",
@@ -1109,7 +1197,11 @@
         "Windblessed",
         "Prodigy"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Earn 20 interest while fielding Xayah.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 25 gold of interest while fielding Xayah. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
     },
     {
       "name": "Lee Sin",
@@ -1117,7 +1209,10 @@
       "traits": [
         "Gu Feng"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Deal 40 player damage while fielding Xayah.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Miss Fortune",
@@ -1134,7 +1229,10 @@
       "traits": [
         "Pentakill"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 10 unique star levels of Pentakill.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Nidalee",
@@ -1161,7 +1259,10 @@
         "Rock",
         "Renegade"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 85 or more gold at the end of combat.",
+      "unlock_level": "Level 7",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Rell",
@@ -1179,7 +1280,10 @@
         "Beach Pop",
         "Encore"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have a champion of each cost start in a Beach Pop hex.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Teemo",
@@ -1188,7 +1292,10 @@
         "Hyperpop",
         "Hype Man"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Collect 900 Hyperpop Hype.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Twisted Fate",
@@ -1215,7 +1322,10 @@
         "Classical",
         "Arcanist"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have only 1 champions in the front two rows of the battlefield.",
+      "unlock_level": "Level 8",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Zeri",
@@ -1233,7 +1343,10 @@
         "One Monster Band"
       ],
       "unlockable": true,
-      "slots": 2
+      "slots": 2,
+      "unlock_condition": "Collect all 5 members of Baron’s ensemble and deal 60,000 damage with your strongest Malzahar.",
+      "unlock_level": "Any",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Rakan",
@@ -1241,7 +1354,10 @@
       "traits": [
         "Boy Band"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Win 4 combats in a row at level 8 or above, and lose 3 combats in a row at level 8 or above.",
+      "unlock_level": "Level 8",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Smeech",
@@ -1250,7 +1366,10 @@
         "Jazz",
         "Slayer"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have 8 or more non-unique traits active.",
+      "unlock_level": "Level 9",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     },
     {
       "name": "Sona",
@@ -1259,7 +1378,10 @@
         "Producer",
         "Collab"
       ],
-      "unlockable": true
+      "unlockable": true,
+      "unlock_condition": "Have Collab champions become inspired 15 times.",
+      "unlock_level": "Level 10",
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
     }
   ],
   "collab_groups": [

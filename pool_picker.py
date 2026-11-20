@@ -5,6 +5,7 @@ The main team-building roster is deliberately not filtered by these pool rules.
 """
 import tkinter as tk
 from tkinter import ttk
+from champion_info import unlock_text
 
 
 def eligible_champions(champions, selected):
@@ -23,8 +24,8 @@ class PoolPicker(tk.Toplevel):
     def __init__(self, parent, champions, artwork, selected, on_save):
         super().__init__(parent)
         self.title('Load your current Collab pool')
-        self.geometry('1040x650')
-        self.minsize(850, 550)
+        self.geometry('1040x800')
+        self.minsize(900, 760)
         self.configure(bg='#111827')
         self.transient(parent)
         self.champions = champions
@@ -53,6 +54,19 @@ class PoolPicker(tk.Toplevel):
         ttk.Label(picked, text='CURRENT POOL  ·  + Sona automatically', font=('Segoe UI', 11, 'bold')).pack(anchor='w', pady=6)
         self.picked = self.make_tree(picked)
         ttk.Button(picked, text='← Remove selected champion', command=self.remove).pack(fill='x', pady=8)
+        details = ttk.LabelFrame(root, text='Champion unlock details', padding=8)
+        details.pack(fill='x', pady=(8, 0))
+        self.detail_name = tk.StringVar()
+        ttk.Label(details, textvariable=self.detail_name, font=('Segoe UI', 11, 'bold')).pack(anchor='w')
+        detail_body = ttk.Frame(details)
+        detail_body.pack(fill='x', pady=(4, 0))
+        self.detail_text = tk.Text(detail_body, height=6, wrap='word', state='disabled',
+                                   bg='#192337', fg='#ffffff', font=('Segoe UI', 10),
+                                   relief='flat', padx=8, pady=6)
+        detail_scroll = ttk.Scrollbar(detail_body, orient='vertical', command=self.detail_text.yview)
+        self.detail_text.configure(yscrollcommand=detail_scroll.set)
+        self.detail_text.pack(side='left', fill='x', expand=True)
+        detail_scroll.pack(side='right', fill='y')
         footer = ttk.Frame(root)
         footer.pack(fill='x', pady=(8, 0))
         ttk.Button(footer, text='Clear picks', command=self.clear).pack(side='left')
@@ -61,6 +75,8 @@ class PoolPicker(tk.Toplevel):
         self.save_button.pack(side='right', padx=8)
         self.available.bind('<Double-1>', lambda _: self.add())
         self.picked.bind('<Double-1>', lambda _: self.remove())
+        self.available.bind('<<TreeviewSelect>>', lambda _: self.show_selection(self.available))
+        self.picked.bind('<<TreeviewSelect>>', lambda _: self.show_selection(self.picked))
         self.search.trace_add('write', lambda *_: self.refresh())
         self.refresh()
         self.grab_set()
@@ -81,6 +97,19 @@ class PoolPicker(tk.Toplevel):
         scroll.pack(side='right', fill='y')
         return tree
 
+    def show_selection(self, tree):
+        selection = tree.selection()
+        if selection:
+            self.show_details(selection[0])
+
+    def show_details(self, name):
+        self.detail_name.set(name + (' · Automatically included' if name == 'Sona' else ''))
+        self.detail_text.configure(state='normal')
+        self.detail_text.delete('1.0', 'end')
+        self.detail_text.insert('1.0', unlock_text(self.champions[name]))
+        self.detail_text.configure(state='disabled')
+        self.detail_text.yview_moveto(0)
+
     def refresh(self):
         self.available.delete(*self.available.get_children())
         self.picked.delete(*self.picked.get_children())
@@ -97,6 +126,7 @@ class PoolPicker(tk.Toplevel):
                     shown += 1
         self.summary.set(f'{len(self.selected)}/5 picked + Sona  ·  {len(eligible)} eligible  ·  {shown} matching search' + ('  ·  Pool complete' if len(self.selected) == 5 else ''))
         self.save_button.state(['!disabled'] if len(self.selected) == 5 else ['disabled'])
+        self.show_details('Sona')
 
     def add(self):
         selection = self.available.selection()

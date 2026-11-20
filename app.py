@@ -17,6 +17,7 @@ from visuals import Artwork, COST_COLORS
 from pool_picker import PoolPicker
 from champion_grid import ChampionGrid
 from trait_rows import TraitRow, badge_style, STYLE_ORDER
+from champion_info import unlock_text
 
 
 class App(tk.Tk):
@@ -148,6 +149,8 @@ class App(tk.Tk):
         self.detail.pack(side='left', fill='both', expand=True)
         detail_scroll.pack(side='right', fill='y')
         self.detail.tag_configure('heading', foreground='#c4b5fd', font=('Segoe UI', 12, 'bold'), spacing1=10, spacing3=8)
+        self.detail.tag_configure('unlock', foreground='#f1d69b', spacing3=6)
+        self.detail.tag_configure('unlock_name', foreground='#f1d69b', font=('Segoe UI', 10, 'bold'), spacing1=8)
         self.detail.bind('<Configure>', self.resize_cards)
         actions = ttk.Frame(right)
         actions.pack(fill='x', pady=8)
@@ -229,7 +232,34 @@ class App(tk.Tk):
             self.champion_label.configure(image='', text='Click a portrait to select; hover for champion details.')
         else:
             c = self.champions[name]
-            self.champion_label.configure(image=self.artwork.portraits[name], compound='left', padding=(0, 0, 6, 0), text=f"  {name} — {', '.join(c['traits'])}" + (' | Unlock required' if c['unlockable'] else ''))
+            self.champion_label.configure(image=self.artwork.portraits[name], compound='left', padding=(0, 0, 6, 0), text=f"  {name} — {', '.join(c['traits'])}\n" + unlock_text(c))
+
+    def show_unlock(self, name):
+        champion = self.champions[name]
+        popup = tk.Toplevel(self)
+        popup.title(name + ' — Unlock requirements')
+        popup.geometry('640x380')
+        popup.minsize(520, 300)
+        popup.transient(self)
+        body = ttk.Frame(popup, padding=16)
+        body.pack(fill='both', expand=True)
+        ttk.Label(body, text=name, image=self.artwork.portraits[name], compound='left', padding=6, font=('Segoe UI', 15, 'bold')).pack(anchor='w')
+        ttk.Label(body, text=', '.join(champion['traits']), style='Muted.TLabel', wraplength=580).pack(anchor='w', pady=(4, 10))
+        text_frame = ttk.Frame(body)
+        text_frame.pack(fill='both', expand=True)
+        text = tk.Text(text_frame, wrap='word', height=5, bg='#192337', fg='#f1d69b', font=('Segoe UI', 11), relief='flat', padx=10, pady=10)
+        scroll = ttk.Scrollbar(text_frame, orient='vertical', command=text.yview)
+        text.configure(yscrollcommand=scroll.set)
+        text.pack(side='left', fill='both', expand=True)
+        scroll.pack(side='right', fill='y')
+        text.insert('1.0', unlock_text(champion))
+        text.configure(state='disabled')
+        footer = ttk.Frame(body)
+        footer.pack(fill='x', pady=(12, 0))
+        if champion['unlockable']:
+            ttk.Button(footer, text='Requirement source', command=lambda: webbrowser.open(champion['unlock_source'])).pack(side='left')
+        ttk.Button(footer, text='Close', command=popup.destroy).pack(side='right')
+
     def freeze_inputs(self, busy):
         def visit(widget):
             for child in widget.winfo_children():
@@ -297,6 +327,8 @@ class App(tk.Tk):
             if name in self.locked: flags.append('locked')
             if c['unlockable']: flags.append('unlock required')
             lines.append(f"{name}  ·  {self.stars.get(name, 1)}★  ·  {c['cost']}g" + ('  [' + ', '.join(flags) + ']' if flags else ''))
+            if c['unlockable']:
+                lines.append('  ' + unlock_text(c).replace('\n', '\n  '))
         lines.extend(['', f"ACTIVE TRAITS  ({result['active']} non-unique)", ''])
         for trait in sorted(result['traits'], key=lambda t: (not bool(t['tier']), t['unique'], t['name'])):
             if trait['tier']:
@@ -327,7 +359,7 @@ class App(tk.Tk):
                     badges += ' · L'
                 tk.Label(card, text=badges, fg=color, bg='#192337', font=('Segoe UI', 9)).pack()
                 if champion['unlockable']:
-                    tk.Label(card, text='Unlock required', fg='#9ca3af', bg='#192337', font=('Segoe UI', 8)).pack()
+                    tk.Button(card, text='Unlock details', command=lambda name=name: self.show_unlock(name), fg='#f1d69b', bg='#192337', activebackground='#253047', activeforeground='#ffffff', font=('Segoe UI', 8, 'underline'), borderwidth=0, cursor='hand2').pack()
                 self.detail_widgets.append(card)
                 self.detail.window_create('end', window=card, padx=3, pady=4, align='top')
                 if (index + 1) % self.card_columns == 0:
@@ -344,6 +376,12 @@ class App(tk.Tk):
                 self.detail_widgets.append(row)
                 self.detail.window_create('end', window=row, padx=2, pady=1, align='top')
                 self.detail.insert('end', '\n')
+            unlockable_names = [name for name in result['champions'] if self.champions[name]['unlockable']]
+            if unlockable_names:
+                self.detail.insert('end', '\nUNLOCK REQUIREMENTS\n', 'heading')
+                for name in unlockable_names:
+                    self.detail.insert('end', name + '\n', 'unlock_name')
+                    self.detail.insert('end', unlock_text(self.champions[name]) + '\n', 'unlock')
             self.detail.configure(state='disabled')
             self.detail.yview_moveto(0)
 
@@ -374,7 +412,10 @@ class App(tk.Tk):
         path = filedialog.asksaveasfilename(parent=self, defaultextension='.json', filetypes=[('JSON', '*.json')], initialfile='collab-teams.json')
         if path:
             try:
-                Path(path).write_text(json.dumps({'version': self.data['version'], 'results': self.results}, indent=2), encoding='utf-8')
+                unlocks = {name: {key: value for key, value in self.champions[name].items() if key.startswith('unlock_')}
+                           for name in sorted({name for result in self.results for name in result['champions']})
+                           if self.champions[name]['unlockable']}
+                Path(path).write_text(json.dumps({'version': self.data['version'], 'results': self.results, 'unlocks': unlocks}, indent=2), encoding='utf-8')
                 self.status.set('Results exported to ' + path)
             except OSError as exc:
                 messagebox.showerror('Export failed', str(exc), parent=self)
@@ -382,7 +423,7 @@ class App(tk.Tk):
     def sources(self):
         popup = tk.Toplevel(self)
         popup.title('Data sources and limitations')
-        popup.geometry('650x350')
+        popup.geometry('700x520')
         ttk.Label(popup, text="prokjs's Set 19 TFT tool · Developed by prokjs\n" + str(self.data['version']), wraplength=610).pack(anchor='w', padx=16, pady=12)
         for source in self.data['sources']:
             ttk.Button(popup, text=source['name'], command=lambda url=source['url']: webbrowser.open(url)).pack(anchor='w', padx=16, pady=4)
