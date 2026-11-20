@@ -116,6 +116,56 @@ class _State:
     exclusive: int
 
 
+def _evaluate_team(
+    names: list[str], trait_map: dict[str, dict], champion_map: dict[str, dict],
+    collab: list[str], mode: str, sona_band: str, stars: dict[str, int],
+) -> dict:
+    """Evaluate a legal board with prevalidated inputs; shared with buildup."""
+    counts: dict[str, int] = {}
+    dynamic_collab = set(collab) | {"Sona"}
+    frontline = 0
+    cost = 0
+    for name in names:
+        champion = champion_map[name]
+        traits = set(champion["traits"]) - {"Collab"}
+        if name in dynamic_collab:
+            traits.add("Collab")
+        if name == "Sona" and sona_band:
+            traits.add(sona_band)
+        frontline += int(bool(traits & FRONTLINE_TRAITS))
+        cost += champion["cost"]
+        for trait in traits:
+            increment = stars.get(name, 1) if trait_map[trait].get("count_mode") == "stars" else 1
+            counts[trait] = counts.get(trait, 0) + increment
+    rows = []
+    active = tiers = unique = 0
+    for name, count in sorted(counts.items()):
+        trait = trait_map[name]
+        points = trait["breakpoints"]
+        tier = bisect_right(points, count)
+        if trait["unique"]:
+            unique += int(tier > 0)
+        else:
+            active += int(tier > 0)
+            tiers += tier
+        rows.append({
+            "name": name, "count": count,
+            "tier": points[tier - 1] if tier else 0,
+            "next": points[tier] if tier < len(points) else None,
+            "unique": trait["unique"],
+        })
+    score = active * 100.0 + tiers * 10.0 + unique
+    if mode in ("balanced", "high_value"):
+        score += 30.0 * min(frontline, 2)
+        score += 20.0 * int(len(names) > frontline)
+    if mode == "high_value":
+        score += 30.0 * cost
+    return {
+        "champions": sorted(names), "traits": rows, "active": active, "tiers": tiers,
+        "frontline": frontline, "cost": cost, "score": score,
+    }
+
+
 def optimize(
     data: dict,
     collab: list[str],
@@ -130,7 +180,7 @@ def optimize(
 ) -> list[dict]:
     """Return diverse, deterministic approximate teams, or raise ValueError.
 
-    ``size`` is an exact 3..11 slot budget. Each champion occurs at most once.
+    ``size`` is an exact 1..11 slot budget. Each champion occurs at most once.
     Collab is granted to the selected group and always to Sona, never inherited
     from another champion's static data. A selected Sona band is added once.
     Star-counting traits use the per-champion 1..4 ``stars`` map (default one).
@@ -141,9 +191,9 @@ def optimize(
     The finite beam still approximates objective optimization.
     """
     trait_map, champion_map = _validate_data(data)
-    _integer(size, "size", 3)
+    _integer(size, "size", 1)
     if size > 11:
-        raise ValueError("size must be between 3 and 11 slots.")
+        raise ValueError("size must be between 1 and 11 slots.")
     _integer(min_collab, "min_collab")
     if min_collab not in (0, 3, 5):
         raise ValueError("min_collab must be 0, 3, or 5.")
@@ -351,23 +401,8 @@ def optimize(
             penalties[index] = max(penalties[index], 30.0 * overlap)
     chosen.sort(key=lambda state: (-score(state), -state.active, -state.tiers,
                                    -state.cost if mode == "high_value" else state.cost, team_names(state)))
-    results = []
-    for state in chosen:
-        rows = []
-        for index, count in enumerate(state.counts):
-            if not count:
-                continue
-            tier = values[index][count][0]
-            points = breakpoints[index]
-            rows.append({
-                "name": trait_names[index], "count": count,
-                "tier": points[tier - 1] if tier else 0,
-                "next": points[tier] if tier < len(points) else None,
-                "unique": is_unique[index],
-            })
-        results.append({
-            "champions": list(team_names(state)), "traits": rows,
-            "active": state.active, "tiers": state.tiers,
-            "frontline": state.frontline, "cost": state.cost, "score": score(state),
-        })
-    return results
+    return [
+        _evaluate_team(list(team_names(state)), trait_map, champion_map,
+                       collab, mode, sona_band, stars)
+        for state in chosen
+    ]

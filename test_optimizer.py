@@ -277,9 +277,16 @@ class OptimizerTests(unittest.TestCase):
             self.search(collab=[], size=4)
         self.assertEqual(len(self.search(collab=[], size=3)), 2)
 
+    def test_one_and_two_slot_boards(self):
+        for size in (1, 2):
+            for result in self.search(size=size):
+                self.assertEqual(sum(
+                    2 if name == "Baron Nashor" else 1 for name in result["champions"]
+                ), size)
+
     def test_invalid_constraints_raise_value_error(self):
         cases = [
-            {"size": 2}, {"size": 12}, {"size": True}, {"size": 3.0},
+            {"size": 0}, {"size": 12}, {"size": True}, {"size": 3.0},
             {"min_collab": 1}, {"min_collab": True}, {"mode": "strongest"},
             {"limit": 0}, {"limit": False}, {"collab": "A"},
             {"collab": ["A", "A"]}, {"locked": ["A", "A"]},

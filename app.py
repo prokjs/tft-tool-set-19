@@ -12,12 +12,14 @@ from tkinter import ttk, messagebox, filedialog
 import json
 import webbrowser
 
-from optimizer import load_data, optimize, BAND_TRAITS
+from optimizer import load_data, BAND_TRAITS
 from visuals import Artwork, COST_COLORS
 from pool_picker import PoolPicker
 from champion_grid import ChampionGrid
 from trait_rows import TraitRow, badge_style, STYLE_ORDER
 from champion_info import unlock_text
+from buildup import recommend_with_buildups, format_buildup
+from buildup_view import BuildupWindow
 
 
 class App(tk.Tk):
@@ -40,7 +42,7 @@ class App(tk.Tk):
         self.results = []
         self.messages = queue.Queue()
         self.busy = False
-        self.size = tk.StringVar(value='8')
+        self.size = tk.StringVar(value='10')
         self.minimum = tk.StringVar(value='3')
         self.mode = tk.StringVar(value='High value')
         self.band = tk.StringVar(value='None')
@@ -82,7 +84,7 @@ class App(tk.Tk):
         controls = ttk.Frame(root)
         controls.pack(fill='x', pady=12)
         for col, (label, variable, values, width) in enumerate([
-            ('Team slots', self.size, list(map(str, range(3, 12))), 8),
+            ('Final level', self.size, list(map(str, range(3, 12))), 8),
             ('Minimum Collab', self.minimum, ['0', '3', '5'], 14),
             ('Ranking', self.mode, ['High value', 'Balanced', 'Most active traits'], 20),
             ('Sona featured band', self.band, ['None'] + sorted(BAND_TRAITS), 19),
@@ -154,6 +156,8 @@ class App(tk.Tk):
         self.detail.bind('<Configure>', self.resize_cards)
         actions = ttk.Frame(right)
         actions.pack(fill='x', pady=8)
+        self.buildup_button = ttk.Button(actions, text='Level buildup', command=self.show_buildup, state='disabled')
+        self.buildup_button.pack(side='left', padx=(0, 6))
         ttk.Button(actions, text='Copy team', command=self.copy_team).pack(side='left')
         ttk.Button(actions, text='Export results', command=self.export).pack(side='left', padx=6)
         ttk.Button(actions, text='Data sources', command=self.sources).pack(side='right')
@@ -172,6 +176,7 @@ class App(tk.Tk):
     def invalidate(self):
         self.results = []
         self.result_list.delete(*self.result_list.get_children())
+        self.buildup_button.state(['disabled'])
         self.set_detail('Load your current pool: five champions with no shared native traits, plus Sona automatically.\n\nThe pool picker narrows available champions after each choice. Remove a pick to restore eligible candidates.\n\nThen lock existing team units or exclude unavailable units in the unrestricted main roster, and choose Find teams.')
         ready = len(self.collab) == 5
         self.run_button.state(['!disabled'] if ready and not self.busy else ['disabled'])
@@ -268,6 +273,8 @@ class App(tk.Tk):
                 visit(child)
         visit(self)
         self.champion_grid.set_enabled(not busy)
+        if not busy and not self.results:
+            self.buildup_button.state(['disabled'])
 
 
     def run(self):
@@ -281,11 +288,11 @@ class App(tk.Tk):
         self.busy = True
         self.freeze_inputs(True)
         self.progress.start(12)
-        self.status.set('Searching teams…')
+        self.status.set('Searching end boards and planning level-by-level buildups…')
         # Snapshot inputs; the worker never reads Tk state.
         def work():
             try:
-                self.messages.put(('ok', optimize(**args)))
+                self.messages.put(('ok', recommend_with_buildups(**args)))
             except Exception as exc:
                 self.messages.put(('error', str(exc)))
         threading.Thread(target=work, daemon=True).start()
@@ -303,6 +310,7 @@ class App(tk.Tk):
                 messagebox.showerror('Cannot find teams', payload, parent=self)
             else:
                 self.results = payload
+                self.buildup_button.state(['!disabled'] if payload else ['disabled'])
                 self.result_list.delete(*self.result_list.get_children())
                 for i, result in enumerate(payload):
                     self.result_list.insert('', 'end', iid=str(i), values=(i + 1, result['active'], result['tiers'], result['frontline'], result['cost']))
@@ -311,12 +319,17 @@ class App(tk.Tk):
                     self.show_result()
                 else:
                     self.set_detail('No team satisfies these constraints. Reduce minimum Collab, remove exclusions, or increase team slots.')
-                self.status.set(f'{len(payload)} teams found. Approximate synergy ranking; no measured win rates.')
+                self.status.set(f'{len(payload)} teams with level-by-level buildups. Unlock units remain conditional on completing their quests.')
         self.after(100, self.drain)
 
     def selected_result(self):
         selection = self.result_list.selection()
         return self.results[int(selection[0])] if selection and self.results else None
+
+    def show_buildup(self):
+        result = self.selected_result()
+        if result:
+            BuildupWindow(self, result, self.data, self.artwork, self.show_unlock)
 
     def result_text(self, result):
         lines = ['TEAM', '']
@@ -337,6 +350,7 @@ class App(tk.Tk):
         for trait in sorted(result['traits'], key=lambda t: t['name']):
             if trait['next'] is not None:
                 lines.append(f"{trait['name']}: {trait['count']} / {trait['next']}  (+{trait['next'] - trait['count']})")
+        lines.extend(['', format_buildup(result, self.champions)])
         return '\n'.join(lines)
 
     def show_result(self, _event=None):
@@ -404,7 +418,7 @@ class App(tk.Tk):
         if result:
             self.clipboard_clear()
             self.clipboard_append(self.result_text(result))
-            self.status.set('Team and trait breakpoints copied.')
+            self.status.set('Team, unlock requirements, and level-by-level buildup copied.')
 
     def export(self):
         if not self.results:
@@ -412,9 +426,12 @@ class App(tk.Tk):
         path = filedialog.asksaveasfilename(parent=self, defaultextension='.json', filetypes=[('JSON', '*.json')], initialfile='collab-teams.json')
         if path:
             try:
+                names = {name for result in self.results for name in result['champions']}
+                names.update(name for result in self.results for step in result['buildup']
+                             for board in (step['board'], step['fallback']) if board
+                             for name in board['champions'])
                 unlocks = {name: {key: value for key, value in self.champions[name].items() if key.startswith('unlock_')}
-                           for name in sorted({name for result in self.results for name in result['champions']})
-                           if self.champions[name]['unlockable']}
+                           for name in sorted(names) if self.champions[name]['unlockable']}
                 Path(path).write_text(json.dumps({'version': self.data['version'], 'results': self.results, 'unlocks': unlocks}, indent=2), encoding='utf-8')
                 self.status.set('Results exported to ' + path)
             except OSError as exc:
