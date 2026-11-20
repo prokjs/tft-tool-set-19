@@ -20,7 +20,7 @@ from pool_picker import PoolPicker
 class App(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title('Collab Lab | TFT Set 19')
+        self.title("prokjs's Set 19 TFT tool")
         self.geometry('1280x850')
         self.minsize(1060, 720)
         if sys.platform == 'win32':
@@ -73,7 +73,7 @@ class App(tk.Tk):
     def _layout(self):
         root = ttk.Frame(self, padding=20)
         root.pack(fill='both', expand=True)
-        ttk.Label(root, text='COLLAB LAB', style='Title.TLabel').pack(anchor='w')
+        ttk.Label(root, text="prokjs's Set 19 TFT tool", style='Title.TLabel').pack(anchor='w')
         ttk.Label(root, text='TFT SET 19  /  OFFLINE TEAM EXPLORER  ·  Developed by prokjs', style='Muted.TLabel').pack(anchor='w', pady=(0, 8))
         ttk.Label(root, text=str(self.data['version']), style='Muted.TLabel').pack(anchor='w')
         controls = ttk.Frame(root)
@@ -395,7 +395,7 @@ class App(tk.Tk):
         popup = tk.Toplevel(self)
         popup.title('Data sources and limitations')
         popup.geometry('650x350')
-        ttk.Label(popup, text='Collab Lab · Developed by prokjs\n' + str(self.data['version']), wraplength=610).pack(anchor='w', padx=16, pady=12)
+        ttk.Label(popup, text="prokjs's Set 19 TFT tool · Developed by prokjs\n" + str(self.data['version']), wraplength=610).pack(anchor='w', padx=16, pady=12)
         for source in self.data['sources']:
             ttk.Button(popup, text=source['name'], command=lambda url=source['url']: webbrowser.open(url)).pack(anchor='w', padx=16, pady=4)
         ttk.Label(popup, text='Champion and trait artwork © Riot Games. Set 19 images sourced from TFT Ninja; bundled for offline use.', wraplength=610, style='Muted.TLabel').pack(anchor='w', padx=16, pady=6)

@@ -1,4 +1,4 @@
-# Collab Lab
+# prokjs's Set 19 TFT tool
 
 **Developed by prokjs.**
 
@@ -10,7 +10,7 @@ Pick five Collab champions; candidates sharing native traits are filtered automa
 
 - Run from source: `python app.py`
 - Build the Windows executable: `python -m pip install -r requirements-build.txt`, then `./build.ps1` in PowerShell.
-- The executable is written to `dist/CollabLab.exe`; it includes the data and artwork for offline use.
+- The executable is written to `dist/prokjs's Set 19 TFT tool.exe`; it includes the data and artwork for offline use.
 
 Rankings use approximate synergy heuristics, not measured win rates. Bundled data is a pre-release snapshot.
 
