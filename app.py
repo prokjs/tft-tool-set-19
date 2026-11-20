@@ -15,6 +15,7 @@ import webbrowser
 from optimizer import load_data, optimize, BAND_TRAITS
 from visuals import Artwork, COST_COLORS
 from pool_picker import PoolPicker
+from champion_grid import ChampionGrid
 
 
 class App(tk.Tk):
@@ -111,17 +112,8 @@ class App(tk.Tk):
         self.search.trace_add('write', lambda *_: self.render_roster())
         roster_frame = ttk.Frame(left)
         roster_frame.pack(fill='both', expand=True)
-        self.roster = ttk.Treeview(roster_frame, columns=('name', 'cost', 'flags', 'stars'), show='tree headings', selectmode='extended', height=4, style='Roster.Treeview')
-        self.roster.heading('#0', text='')
-        self.roster.column('#0', width=56, minwidth=56, stretch=False)
-        for key, title, width in [('name', 'Champion', 160), ('cost', 'Gold', 45), ('flags', 'C / L / X', 85), ('stars', 'Stars', 45)]:
-            self.roster.heading(key, text=title)
-            self.roster.column(key, width=width, minwidth=40, stretch=(key == 'name'))
-        scroll = ttk.Scrollbar(roster_frame, orient='vertical', command=self.roster.yview)
-        self.roster.configure(yscrollcommand=scroll.set)
-        self.roster.pack(side='left', fill='both', expand=True)
-        scroll.pack(side='right', fill='y')
-        self.roster.bind('<<TreeviewSelect>>', self.show_champion)
+        self.champion_grid = ChampionGrid(roster_frame, self.artwork, self.show_champion)
+        self.champion_grid.pack(fill='both', expand=True)
         buttons = ttk.Frame(left)
         buttons.pack(fill='x', pady=7)
         for text, action in [('Lock', 'locked'), ('Exclude', 'excluded')]:
@@ -134,7 +126,7 @@ class App(tk.Tk):
         ttk.Button(star_row, text='Reset', command=self.reset).pack(side='right')
         self.champion_label = ttk.Label(left, wraplength=440, style='Muted.TLabel')
         self.champion_label.pack(fill='x', pady=8)
-        ttk.Label(left, text='C = Collab   L = locked   X = excluded\nMulti-select with Ctrl / Shift. Buttons toggle selection.\nUnlockable champions are candidates: exclude any unavailable.\nSona requires her unlock + level 10; exclude her if unavailable.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450).pack(anchor='w')
+        ttk.Label(left, text='C = Collab   L = locked   X = excluded\nClick portraits; Ctrl / Shift for multi-select. Hover for details.\nUnlockable champions are candidates: exclude any unavailable.\nSona requires her unlock + level 10; exclude her if unavailable.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450).pack(anchor='w')
         ttk.Label(right, text='SUGGESTED TEAMS', font=('Segoe UI', 12, 'bold')).pack(anchor='w')
         result_frame = ttk.Frame(right)
         result_frame.pack(fill='x', pady=6)
@@ -184,17 +176,15 @@ class App(tk.Tk):
         self.status.set('Pool loaded. Find teams to refresh recommendations.' if ready else 'Load five Collab champions to enable team search.')
 
     def render_roster(self):
-        selected = set(self.roster.selection())
-        self.roster.delete(*self.roster.get_children())
-        query = self.search.get().casefold()
+        query = self.search.get().casefold().strip()
+        entries = []
         for c in sorted(self.champions.values(), key=lambda c: (c['cost'], c['name'])):
             name = c['name']
             if query not in (' '.join([name] + c['traits'])).casefold():
                 continue
             flags = ('C ' if name in self.collab or name == 'Sona' else '') + ('L ' if name in self.locked else '') + ('X' if name in self.excluded else '')
-            self.roster.insert('', 'end', iid=name, image=self.artwork.champions[name], values=(name, c['cost'], flags, self.stars.get(name, 1)))
-            if name in selected:
-                self.roster.selection_add(name)
+            entries.append({**c, 'flags': flags.strip(), 'stars': self.stars.get(name, 1)})
+        self.champion_grid.set_entries(entries)
         self.pool_button.configure(text=f"Edit current Collab pool · {len(self.collab)}/5 + Sona")
         self.pool_label.configure(text='Collab: ' + ', '.join(sorted(self.collab)) + '  + Sona')
         self.pool_strip.configure(state='normal')
@@ -207,7 +197,7 @@ class App(tk.Tk):
         if self.busy:
             return
         collection = getattr(self, target)
-        for name in self.roster.selection():
+        for name in self.champion_grid.selected_names():
             if name in collection:
                 collection.remove(name)
             else:
@@ -221,7 +211,7 @@ class App(tk.Tk):
 
     def set_stars(self, value):
         if not self.busy:
-            for name in self.roster.selection():
+            for name in self.champion_grid.selected_names():
                 self.stars[name] = value
             self.render_roster()
             self.invalidate()
@@ -235,11 +225,12 @@ class App(tk.Tk):
             self.render_roster()
             self.invalidate()
 
-    def show_champion(self, _event=None):
-        names = self.roster.selection()
-        if names:
-            c = self.champions[names[0]]
-            self.champion_label.configure(image=self.artwork.portraits[c['name']], compound='left', padding=(0, 0, 6, 0), text=f"  {c['name']} — {', '.join(c['traits'])}" + (' | Unlock required' if c['unlockable'] else ''))
+    def show_champion(self, name):
+        if name is None:
+            self.champion_label.configure(image='', text='Click a portrait to select; hover for champion details.')
+        else:
+            c = self.champions[name]
+            self.champion_label.configure(image=self.artwork.portraits[name], compound='left', padding=(0, 0, 6, 0), text=f"  {name} — {', '.join(c['traits'])}" + (' | Unlock required' if c['unlockable'] else ''))
     def freeze_inputs(self, busy):
         def visit(widget):
             for child in widget.winfo_children():
@@ -247,6 +238,7 @@ class App(tk.Tk):
                     child.configure(state='disabled' if busy else ('readonly' if isinstance(child, ttk.Combobox) else 'normal'))
                 visit(child)
         visit(self)
+        self.champion_grid.set_enabled(not busy)
 
 
     def run(self):

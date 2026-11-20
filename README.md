@@ -6,6 +6,8 @@ Offline Windows TFT Set 19 Collab pool picker and trait-synergy team optimizer.
 
 Pick five Collab champions; candidates sharing native traits are filtered automatically. Sona is included separately. Compare suggested teams, active traits, and breakpoints.
 
+The main roster uses a responsive portrait grid. Click a portrait to select, Ctrl-click to toggle multiple selections, or Shift-click for a range. Hover for names, traits, costs, and unlock details. Cost-colored portraits and C/L/X/star badges show state; search, Lock/Exclude, star controls, scrolling, and arrow-key navigation remain available.
+
 ## Rankings
 
 - **High value** (default): rewards higher-cost units alongside active traits, trait tiers, and frontline balance. Scores add 30 points per gold of base champion cost, 100 per active non-unique trait, and 10 per trait tier. This can trade a little synergy for more expensive units; it does not blindly maximize gold.
