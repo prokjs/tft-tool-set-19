@@ -74,7 +74,7 @@ class App(tk.Tk):
         root = ttk.Frame(self, padding=20)
         root.pack(fill='both', expand=True)
         ttk.Label(root, text='COLLAB LAB', style='Title.TLabel').pack(anchor='w')
-        ttk.Label(root, text='TFT SET 19  /  OFFLINE TEAM EXPLORER', style='Muted.TLabel').pack(anchor='w', pady=(0, 8))
+        ttk.Label(root, text='TFT SET 19  /  OFFLINE TEAM EXPLORER  ·  Developed by prokjs', style='Muted.TLabel').pack(anchor='w', pady=(0, 8))
         ttk.Label(root, text=str(self.data['version']), style='Muted.TLabel').pack(anchor='w')
         controls = ttk.Frame(root)
         controls.pack(fill='x', pady=12)
@@ -395,7 +395,7 @@ class App(tk.Tk):
         popup = tk.Toplevel(self)
         popup.title('Data sources and limitations')
         popup.geometry('650x350')
-        ttk.Label(popup, text=str(self.data['version']), wraplength=610).pack(anchor='w', padx=16, pady=12)
+        ttk.Label(popup, text='Collab Lab · Developed by prokjs\n' + str(self.data['version']), wraplength=610).pack(anchor='w', padx=16, pady=12)
         for source in self.data['sources']:
             ttk.Button(popup, text=source['name'], command=lambda url=source['url']: webbrowser.open(url)).pack(anchor='w', padx=16, pady=4)
         ttk.Label(popup, text='Champion and trait artwork © Riot Games. Set 19 images sourced from TFT Ninja; bundled for offline use.', wraplength=610, style='Muted.TLabel').pack(anchor='w', padx=16, pady=6)
