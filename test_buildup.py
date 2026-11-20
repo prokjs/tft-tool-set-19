@@ -103,6 +103,19 @@ class BuildupTests(unittest.TestCase):
         for candidate in self.search(size=9, limit=3):
             self.assertNotIn("Sona", candidate["champions"])
 
+    def test_six_pool_champions_plus_sona_are_all_counted(self):
+        pool = ["A", "B", "C", "D", "E", "F"]
+        result = self.search(collab=pool, locked=pool + ["Sona"], min_collab=5)[0]
+        collab = next(trait for trait in result["traits"] if trait["name"] == "Collab")
+        self.assertEqual(collab["count"], 7)
+        self.assertEqual(collab["tier"], 5)
+        for step in result["buildup"]:
+            board = step["board"]
+            expected = sum(name in set(pool) | {"Sona"} for name in board["champions"])
+            actual = next((trait["count"] for trait in board["traits"] if trait["name"] == "Collab"), 0)
+            self.assertEqual(actual, expected)
+        self.assertEqual(result["buildup"][-1]["board"]["champions"], result["champions"])
+
     def test_final_gating_and_exact_optimizer_stats(self):
         result = self.search(size=3, min_collab=0, limit=4, stars={"B": 3})
         # At level 3 only the ordinary one/two-cost champions are shop-eligible.

@@ -4,7 +4,7 @@
 
 Offline Windows TFT Set 19 Collab pool picker and trait-synergy team optimizer.
 
-Pick five Collab champions; candidates sharing native traits are filtered automatically. Sona is included separately. Compare suggested teams, active traits, and breakpoints.
+Pick the five or six Collab champions shown in your game; candidates sharing native traits are filtered automatically. You can load the pool at either size. Sona is included separately and does not count toward these picks. Compare suggested teams, active traits, and breakpoints.
 
 The main roster uses a responsive portrait grid. Click a portrait to select, Ctrl-click to toggle multiple selections, or Shift-click for a range. Hover for names, traits, costs, and unlock details. Cost-colored portraits and C/L/X/star badges show state; search, Lock/Exclude, star controls, scrolling, and arrow-key navigation remain available.
 

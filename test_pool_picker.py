@@ -31,12 +31,16 @@ class PoolFilterTests(unittest.TestCase):
         self.assertNotIn('Both', remaining)
         self.assertIn('Both', eligible_champions(data, []))
 
-    def test_fifth_pick_stops_additions_but_removal_reopens(self):
+    def test_fifth_pick_allows_sixth_and_sixth_stops_additions(self):
         data = champions()
-        picks = ['A', 'B', 'C', 'D', 'E']
-        self.assertEqual(eligible_champions(data, picks), [])
-        self.assertIn('F', eligible_champions(data, picks[:-1]))
-        self.assertNotIn('Sona', eligible_champions(data, picks[:-1]))
+        five = ['A', 'B', 'C', 'D', 'E']
+        self.assertIn('F', eligible_champions(data, five))
+        self.assertNotIn('Both', eligible_champions(data, five))
+        self.assertNotIn('OtherTank', eligible_champions(data, five))
+        six = five + ['F']
+        self.assertEqual(eligible_champions(data, six), [])
+        self.assertIn('F', eligible_champions(data, six[:-1]))
+        self.assertNotIn('Sona', eligible_champions(data, five))
 
     def test_mutually_exclusive_forms_remain_unavailable(self):
         data = champions()

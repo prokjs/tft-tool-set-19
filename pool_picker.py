@@ -1,4 +1,4 @@
-"""Pick the five current Collab champions; Sona is automatic.
+"""Pick the five or six current Collab champions; Sona is automatic.
 
 Each pick removes every candidate sharing a native trait with any selected unit.
 The main team-building roster is deliberately not filtered by these pool rules.
@@ -7,10 +7,12 @@ import tkinter as tk
 from tkinter import ttk
 from champion_info import unlock_text
 
+POOL_SIZES = (5, 6)
+
 
 def eligible_champions(champions, selected):
-    """Return unselected, nonconflicting names in cost/name order; cap at five."""
-    if len(selected) >= 5:
+    """Return unselected, nonconflicting names in cost/name order; cap at six."""
+    if len(selected) >= max(POOL_SIZES):
         return []
     traits = {trait for name in selected for trait in champions[name]['traits'] if trait != 'Collab'}
     exclusive = {champions[name]['exclusive_group'] for name in selected if champions[name].get('exclusive_group')}
@@ -36,7 +38,7 @@ class PoolPicker(tk.Toplevel):
         self.summary = tk.StringVar()
         root = ttk.Frame(self, padding=16)
         root.pack(fill='both', expand=True)
-        ttk.Label(root, text='Pick the five Collab champions shown in your game', font=('Segoe UI', 14, 'bold')).pack(anchor='w')
+        ttk.Label(root, text='Pick the 5 or 6 Collab champions shown in your game', font=('Segoe UI', 14, 'bold')).pack(anchor='w')
         ttk.Label(root, text='Shared native traits are filtered after every pick. Sona is always included separately.', style='Muted.TLabel').pack(anchor='w', pady=(6, 12))
         ttk.Label(root, text='Search available champions or traits').pack(anchor='w')
         search_entry = ttk.Entry(root, textvariable=self.search)
@@ -124,8 +126,8 @@ class PoolPicker(tk.Toplevel):
                 tree.insert('', 'end', iid=name, image=self.artwork.champions[name], values=(name, ', '.join(champion['traits'])))
                 if tree == self.available:
                     shown += 1
-        self.summary.set(f'{len(self.selected)}/5 picked + Sona  ·  {len(eligible)} eligible  ·  {shown} matching search' + ('  ·  Pool complete' if len(self.selected) == 5 else ''))
-        self.save_button.state(['!disabled'] if len(self.selected) == 5 else ['disabled'])
+        self.summary.set(f'{len(self.selected)}/{max(POOL_SIZES)} picked + Sona  ·  {len(eligible)} eligible  ·  {shown} matching search' + ('  ·  Ready to load' if len(self.selected) in POOL_SIZES else ''))
+        self.save_button.state(['!disabled'] if len(self.selected) in POOL_SIZES else ['disabled'])
         self.show_details('Sona')
 
     def add(self):
@@ -145,6 +147,6 @@ class PoolPicker(tk.Toplevel):
         self.refresh()
 
     def save(self):
-        if len(self.selected) == 5:
+        if len(self.selected) in POOL_SIZES:
             self.on_save(set(self.selected))
             self.destroy()

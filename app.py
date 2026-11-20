@@ -1,7 +1,7 @@
-"""Offline Collab optimizer: manually load five disjoint-trait champions + Sona.
+"""Offline Collab optimizer: load five or six disjoint-trait champions + Sona.
 
 The pool picker filters shared native traits after each pick; support champions
-remain unrestricted in the main roster. Only complete five-unit pools can search.
+remain unrestricted in the main roster. Five- and six-champion pools can search.
 """
 from pathlib import Path
 import queue
@@ -14,7 +14,7 @@ import webbrowser
 
 from optimizer import load_data, BAND_TRAITS
 from visuals import Artwork, COST_COLORS
-from pool_picker import PoolPicker
+from pool_picker import PoolPicker, POOL_SIZES
 from champion_grid import ChampionGrid
 from trait_rows import TraitRow, badge_style, STYLE_ORDER
 from champion_info import unlock_text
@@ -47,7 +47,7 @@ class App(tk.Tk):
         self.mode = tk.StringVar(value='High value')
         self.band = tk.StringVar(value='None')
         self.search = tk.StringVar()
-        self.status = tk.StringVar(value='Load the five Collab champions from your current game.')
+        self.status = tk.StringVar(value='Load the 5 or 6 Collab champions from your current game.')
         self._style()
         self._layout()
         self.render_roster()
@@ -177,10 +177,10 @@ class App(tk.Tk):
         self.results = []
         self.result_list.delete(*self.result_list.get_children())
         self.buildup_button.state(['disabled'])
-        self.set_detail('Load your current pool: five champions with no shared native traits, plus Sona automatically.\n\nThe pool picker narrows available champions after each choice. Remove a pick to restore eligible candidates.\n\nThen lock existing team units or exclude unavailable units in the unrestricted main roster, and choose Find teams.')
-        ready = len(self.collab) == 5
+        self.set_detail('Load your current pool: five or six champions with no shared native traits, plus Sona automatically.\n\nThe pool picker narrows available champions after each choice. Remove a pick to restore eligible candidates.\n\nThen lock existing team units or exclude unavailable units in the unrestricted main roster, and choose Find teams.')
+        ready = len(self.collab) in POOL_SIZES
         self.run_button.state(['!disabled'] if ready and not self.busy else ['disabled'])
-        self.status.set('Pool loaded. Find teams to refresh recommendations.' if ready else 'Load five Collab champions to enable team search.')
+        self.status.set('Pool loaded. Find teams to refresh recommendations.' if ready else 'Load 5 or 6 Collab champions to enable team search.')
 
     def render_roster(self):
         query = self.search.get().casefold().strip()
@@ -192,7 +192,7 @@ class App(tk.Tk):
             flags = ('C ' if name in self.collab or name == 'Sona' else '') + ('L ' if name in self.locked else '') + ('X' if name in self.excluded else '')
             entries.append({**c, 'flags': flags.strip(), 'stars': self.stars.get(name, 1)})
         self.champion_grid.set_entries(entries)
-        self.pool_button.configure(text=f"Edit current Collab pool · {len(self.collab)}/5 + Sona")
+        self.pool_button.configure(text=f"Edit current Collab pool · {len(self.collab)} picked + Sona (5 or 6)")
         self.pool_label.configure(text='Collab: ' + ', '.join(sorted(self.collab)) + '  + Sona')
         self.pool_strip.configure(state='normal')
         self.pool_strip.delete('1.0', 'end')
@@ -280,8 +280,8 @@ class App(tk.Tk):
     def run(self):
         if self.busy:
             return
-        if len(self.collab) != 5:
-            self.status.set('Load exactly five Collab champions before searching.')
+        if len(self.collab) not in POOL_SIZES:
+            self.status.set('Load exactly 5 or 6 Collab champions before searching.')
             return
         ranking = {'High value': 'high_value', 'Balanced': 'balanced', 'Most active traits': 'synergies'}
         args = dict(data=self.data, collab=sorted(self.collab), size=int(self.size.get()), locked=sorted(self.locked), excluded=sorted(self.excluded), min_collab=int(self.minimum.get()), mode=ranking[self.mode.get()], sona_band='' if self.band.get() == 'None' else self.band.get(), stars=dict(self.stars))
