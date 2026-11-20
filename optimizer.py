@@ -4,9 +4,10 @@ Teams fill an exact slot budget (not necessarily that many champions). Beam
 search is not exhaustive and does not promise a global optimum. Nonunique
 active traits and their tiers drive scoring; unique traits are shown separately.
 Balanced mode adds a composition proxy: reward the first two units carrying
-Bodyguard, Juggernaut, or Frontman and at least one other unit. This deliberately
-uses only explicit defensive-role traits, not costs or claims of combat strength.
-Costs break otherwise equal rankings in favor of cheaper teams.
+Bodyguard, Juggernaut, or Frontman and at least one other unit. High-value mode
+adds the same balance proxy plus 30 points per gold of base champion cost, versus
+100 per active trait and 10 per trait tier. Cost is a rarity/value proxy, not a
+combat simulation. Other modes break equal rankings toward cheaper teams.
 """
 
 from __future__ import annotations
@@ -147,8 +148,8 @@ def optimize(
     if min_collab not in (0, 3, 5):
         raise ValueError("min_collab must be 0, 3, or 5.")
     _integer(limit, "limit", 1)
-    if mode not in ("synergies", "balanced"):
-        raise ValueError("mode must be 'synergies' or 'balanced'.")
+    if mode not in ("synergies", "balanced", "high_value"):
+        raise ValueError("mode must be 'synergies', 'balanced', or 'high_value'.")
     collab = _names(collab, "collab")
     locked = _names(locked, "locked")
     excluded = _names(excluded, "excluded")
@@ -284,10 +285,12 @@ def optimize(
 
     def score(state: _State) -> float:
         value = state.active * 100.0 + state.tiers * 10.0 + state.unique
-        if mode == "balanced":
+        if mode in ("balanced", "high_value"):
             unit_count = len(locked_names) + len(state.picks)
             value += 30.0 * min(state.frontline, 2)
             value += 20.0 * int(unit_count > state.frontline)
+        if mode == "high_value":
+            value += 30.0 * state.cost
         return value
 
     beam_width = max(256, min(1024, limit * 24))
@@ -298,7 +301,8 @@ def optimize(
         nonlocal serial
         serial += 1
         rank = score(state) + (6.0 * state.progress if slots < size else 0.0)
-        entry = (rank, state.active, state.tiers, -state.cost, -serial, state)
+        cost_rank = state.cost if mode == "high_value" else -state.cost
+        entry = (rank, state.active, state.tiers, cost_rank, -serial, state)
         capacity = max(beam_width, limit) if slots == size else beam_width
         heap = heaps[slots]
         if len(heap) < capacity:
@@ -329,7 +333,7 @@ def optimize(
         return tuple(sorted(locked_names + [available[index] for index in state.picks]))
 
     candidates.sort(key=lambda state: (-score(state), -state.active, -state.tiers,
-                                       state.cost, team_names(state)))
+                                       -state.cost if mode == "high_value" else state.cost, team_names(state)))
     # Greedy overlap penalty keeps near-tied alternatives meaningfully different.
     # Locked units are omitted from overlap because they cannot diversify.
     chosen: list[_State] = []
@@ -346,7 +350,7 @@ def optimize(
             overlap = (selected.mask & other.mask).bit_count() / denominator
             penalties[index] = max(penalties[index], 30.0 * overlap)
     chosen.sort(key=lambda state: (-score(state), -state.active, -state.tiers,
-                                   state.cost, team_names(state)))
+                                   -state.cost if mode == "high_value" else state.cost, team_names(state)))
     results = []
     for state in chosen:
         rows = []

@@ -187,6 +187,53 @@ class OptimizerTests(unittest.TestCase):
         self.assertIn("Z", balanced["champions"])
         self.assertEqual(balanced["score"], 80.0)
 
+    def test_high_value_prefers_premium_unit_for_identical_synergies(self):
+        self.data["traits"] = []
+        self.data["champions"] = [
+            {"name": name, "cost": cost, "traits": [], "unlockable": False}
+            for name, cost in [("Anchor1", 1), ("Anchor2", 1), ("Cheap", 1), ("Premium", 5)]
+        ]
+        options = dict(collab=[], locked=["Anchor1", "Anchor2"], limit=1)
+        balanced = self.search(mode="balanced", **options)[0]
+        high_value = self.search(mode="high_value", **options)[0]
+        self.assertIn("Cheap", balanced["champions"])
+        self.assertIn("Premium", high_value["champions"])
+        self.assertGreater(high_value["cost"], balanced["cost"])
+        self.assertEqual(high_value["active"], balanced["active"])
+
+    def test_high_value_can_trade_one_trait_but_not_ignore_synergies(self):
+        self.data["traits"] = [{"name": "Link", "breakpoints": [2], "unique": False}]
+        self.data["champions"] = [
+            {"name": name, "cost": cost, "traits": traits, "unlockable": False}
+            for name, cost, traits in [
+                ("Anchor1", 1, ["Link"]), ("Anchor2", 1, []),
+                ("Cheap", 1, ["Link"]), ("Premium", 5, []),
+            ]
+        ]
+        options = dict(collab=[], locked=["Anchor1", "Anchor2"], limit=1)
+        balanced = self.search(mode="balanced", **options)[0]
+        premium = self.search(mode="high_value", **options)[0]
+        self.assertIn("Cheap", balanced["champions"])
+        self.assertIn("Premium", premium["champions"])
+        self.assertLess(premium["active"], balanced["active"])
+        self.data["champions"].append(
+            {"name": "Synergistic", "cost": 4, "traits": ["Link"], "unlockable": False}
+        )
+        synergistic = self.search(mode="high_value", **options)[0]
+        self.assertIn("Synergistic", synergistic["champions"])
+        self.assertLess(synergistic["cost"], premium["cost"])
+        self.assertGreater(synergistic["active"], premium["active"])
+
+    def test_high_value_preserves_locked_excluded_and_collab_constraints(self):
+        results = self.search(mode="high_value", size=4, min_collab=3,
+                              locked=["A"], excluded=["Sona", "Baron Nashor"])
+        self.assertTrue(results)
+        for result in results:
+            self.assertTrue({"A", "B", "C"} <= set(result["champions"]))
+            self.assertFalse({"Sona", "Baron Nashor"} & set(result["champions"]))
+            self.assertEqual(len(result["champions"]), 4)
+            self.assertGreaterEqual(row(result, "Collab")["count"], 3)
+
     def test_tied_results_diversify_and_limit(self):
         self.data["traits"] = []
         self.data["champions"] = [

@@ -39,7 +39,7 @@ class App(tk.Tk):
         self.busy = False
         self.size = tk.StringVar(value='8')
         self.minimum = tk.StringVar(value='3')
-        self.mode = tk.StringVar(value='Balanced')
+        self.mode = tk.StringVar(value='High value')
         self.band = tk.StringVar(value='None')
         self.search = tk.StringVar()
         self.status = tk.StringVar(value='Load the five Collab champions from your current game.')
@@ -81,7 +81,7 @@ class App(tk.Tk):
         for col, (label, variable, values, width) in enumerate([
             ('Team slots', self.size, list(map(str, range(3, 12))), 8),
             ('Minimum Collab', self.minimum, ['0', '3', '5'], 14),
-            ('Ranking', self.mode, ['Balanced', 'Most active traits'], 20),
+            ('Ranking', self.mode, ['High value', 'Balanced', 'Most active traits'], 20),
             ('Sona featured band', self.band, ['None'] + sorted(BAND_TRAITS), 19),
         ]):
             box = ttk.Frame(controls)
@@ -163,7 +163,7 @@ class App(tk.Tk):
         ttk.Button(actions, text='Copy team', command=self.copy_team).pack(side='left')
         ttk.Button(actions, text='Export results', command=self.export).pack(side='left', padx=6)
         ttk.Button(actions, text='Data sources', command=self.sources).pack(side='right')
-        ttk.Label(right, text='Approximate beam search, not a guaranteed global optimum. Balanced is a frontline / non-frontline proxy, not win-rate data. Items, augments, positioning, and combat strength are not simulated. Active totals exclude unique traits.', style='Muted.TLabel', wraplength=610).pack(fill='x')
+        ttk.Label(right, text='Approximate search, not a guaranteed optimum. High value rewards base champion cost, synergies, and frontline balance; cost is not measured strength. Items, augments, and combat are not simulated. Active totals exclude unique traits.', style='Muted.TLabel', wraplength=610).pack(fill='x')
         ttk.Label(root, textvariable=self.status, wraplength=1150).pack(anchor='w', pady=(10, 0))
 
     def edit_pool(self):
@@ -255,7 +255,8 @@ class App(tk.Tk):
         if len(self.collab) != 5:
             self.status.set('Load exactly five Collab champions before searching.')
             return
-        args = dict(data=self.data, collab=sorted(self.collab), size=int(self.size.get()), locked=sorted(self.locked), excluded=sorted(self.excluded), min_collab=int(self.minimum.get()), mode='balanced' if self.mode.get() == 'Balanced' else 'synergies', sona_band='' if self.band.get() == 'None' else self.band.get(), stars=dict(self.stars))
+        ranking = {'High value': 'high_value', 'Balanced': 'balanced', 'Most active traits': 'synergies'}
+        args = dict(data=self.data, collab=sorted(self.collab), size=int(self.size.get()), locked=sorted(self.locked), excluded=sorted(self.excluded), min_collab=int(self.minimum.get()), mode=ranking[self.mode.get()], sona_band='' if self.band.get() == 'None' else self.band.get(), stars=dict(self.stars))
         self.busy = True
         self.freeze_inputs(True)
         self.progress.start(12)
