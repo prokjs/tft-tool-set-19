@@ -1,0 +1,666 @@
+{
+  "source": "https://tft.ninja/sets/19/traits",
+  "attribution": "Champion and trait artwork © Riot Games. Images sourced from TFT Ninja Set 19.",
+  "champions": {
+    "Ahri": {
+      "url": "https://tft.ninja/img/sets/19/champions/ahri.webp",
+      "small": "champion-0-small.png",
+      "large": "champion-0-large.png"
+    },
+    "Akali (K/DA)": {
+      "url": "https://tft.ninja/img/sets/19/champions/akali-k-da.webp",
+      "small": "champion-1-small.png",
+      "large": "champion-1-large.png"
+    },
+    "Akali (True Damage)": {
+      "url": "https://tft.ninja/img/sets/19/champions/akali-true-damage.webp",
+      "small": "champion-2-small.png",
+      "large": "champion-2-large.png"
+    },
+    "Alistar": {
+      "url": "https://tft.ninja/img/sets/19/champions/alistar.webp",
+      "small": "champion-3-small.png",
+      "large": "champion-3-large.png"
+    },
+    "Alune": {
+      "url": "https://tft.ninja/img/sets/19/champions/alune.webp",
+      "small": "champion-4-small.png",
+      "large": "champion-4-large.png"
+    },
+    "Amumu": {
+      "url": "https://tft.ninja/img/sets/19/champions/amumu.webp",
+      "small": "champion-5-small.png",
+      "large": "champion-5-large.png"
+    },
+    "Annie": {
+      "url": "https://tft.ninja/img/sets/19/champions/annie.webp",
+      "small": "champion-6-small.png",
+      "large": "champion-6-large.png"
+    },
+    "Aphelios": {
+      "url": "https://tft.ninja/img/sets/19/champions/aphelios.webp",
+      "small": "champion-7-small.png",
+      "large": "champion-7-large.png"
+    },
+    "Ashe": {
+      "url": "https://tft.ninja/img/sets/19/champions/ashe.webp",
+      "small": "champion-8-small.png",
+      "large": "champion-8-large.png"
+    },
+    "Aurora": {
+      "url": "https://tft.ninja/img/sets/19/champions/aurora.webp",
+      "small": "champion-9-small.png",
+      "large": "champion-9-large.png"
+    },
+    "Bard": {
+      "url": "https://tft.ninja/img/sets/19/champions/bard.webp",
+      "small": "champion-10-small.png",
+      "large": "champion-10-large.png"
+    },
+    "Baron Nashor": {
+      "url": "https://tft.ninja/img/sets/19/champions/baron-nashor.webp",
+      "small": "champion-11-small.png",
+      "large": "champion-11-large.png"
+    },
+    "Braum": {
+      "url": "https://tft.ninja/img/sets/19/champions/braum.webp",
+      "small": "champion-12-small.png",
+      "large": "champion-12-large.png"
+    },
+    "Briar": {
+      "url": "https://tft.ninja/img/sets/19/champions/briar.webp",
+      "small": "champion-13-small.png",
+      "large": "champion-13-large.png"
+    },
+    "Camille": {
+      "url": "https://tft.ninja/img/sets/19/champions/camille.webp",
+      "small": "champion-14-small.png",
+      "large": "champion-14-large.png"
+    },
+    "Dr. Mundo": {
+      "url": "https://tft.ninja/img/sets/19/champions/dr-mundo.webp",
+      "small": "champion-15-small.png",
+      "large": "champion-15-large.png"
+    },
+    "Draven": {
+      "url": "https://tft.ninja/img/sets/19/champions/draven.webp",
+      "small": "champion-16-small.png",
+      "large": "champion-16-large.png"
+    },
+    "Ekko": {
+      "url": "https://tft.ninja/img/sets/19/champions/ekko.webp",
+      "small": "champion-17-small.png",
+      "large": "champion-17-large.png"
+    },
+    "Elise": {
+      "url": "https://tft.ninja/img/sets/19/champions/elise.webp",
+      "small": "champion-18-small.png",
+      "large": "champion-18-large.png"
+    },
+    "Evelynn": {
+      "url": "https://tft.ninja/img/sets/19/champions/evelynn.webp",
+      "small": "champion-19-small.png",
+      "large": "champion-19-large.png"
+    },
+    "Ezreal": {
+      "url": "https://tft.ninja/img/sets/19/champions/ezreal.webp",
+      "small": "champion-20-small.png",
+      "large": "champion-20-large.png"
+    },
+    "Galio": {
+      "url": "https://tft.ninja/img/sets/19/champions/galio.webp",
+      "small": "champion-21-small.png",
+      "large": "champion-21-large.png"
+    },
+    "Garen": {
+      "url": "https://tft.ninja/img/sets/19/champions/garen.webp",
+      "small": "champion-22-small.png",
+      "large": "champion-22-large.png"
+    },
+    "Gnar": {
+      "url": "https://tft.ninja/img/sets/19/champions/gnar.webp",
+      "small": "champion-23-small.png",
+      "large": "champion-23-large.png"
+    },
+    "Gragas": {
+      "url": "https://tft.ninja/img/sets/19/champions/gragas.webp",
+      "small": "champion-24-small.png",
+      "large": "champion-24-large.png"
+    },
+    "Graves": {
+      "url": "https://tft.ninja/img/sets/19/champions/graves.webp",
+      "small": "champion-25-small.png",
+      "large": "champion-25-large.png"
+    },
+    "Gwen": {
+      "url": "https://tft.ninja/img/sets/19/champions/gwen.webp",
+      "small": "champion-26-small.png",
+      "large": "champion-26-large.png"
+    },
+    "Illaoi": {
+      "url": "https://tft.ninja/img/sets/19/champions/illaoi.webp",
+      "small": "champion-27-small.png",
+      "large": "champion-27-large.png"
+    },
+    "Janna": {
+      "url": "https://tft.ninja/img/sets/19/champions/janna.webp",
+      "small": "champion-28-small.png",
+      "large": "champion-28-large.png"
+    },
+    "Jax": {
+      "url": "https://tft.ninja/img/sets/19/champions/jax.webp",
+      "small": "champion-29-small.png",
+      "large": "champion-29-large.png"
+    },
+    "Jhin": {
+      "url": "https://tft.ninja/img/sets/19/champions/jhin.webp",
+      "small": "champion-30-small.png",
+      "large": "champion-30-large.png"
+    },
+    "Jinx": {
+      "url": "https://tft.ninja/img/sets/19/champions/jinx.webp",
+      "small": "champion-31-small.png",
+      "large": "champion-31-large.png"
+    },
+    "K'Sante": {
+      "url": "https://tft.ninja/img/sets/19/champions/k-sante.webp",
+      "small": "champion-32-small.png",
+      "large": "champion-32-large.png"
+    },
+    "Kai'Sa": {
+      "url": "https://tft.ninja/img/sets/19/champions/kai-sa.webp",
+      "small": "champion-33-small.png",
+      "large": "champion-33-large.png"
+    },
+    "Karthus": {
+      "url": "https://tft.ninja/img/sets/19/champions/karthus.webp",
+      "small": "champion-34-small.png",
+      "large": "champion-34-large.png"
+    },
+    "Katarina": {
+      "url": "https://tft.ninja/img/sets/19/champions/katarina.webp",
+      "small": "champion-35-small.png",
+      "large": "champion-35-large.png"
+    },
+    "Kayle": {
+      "url": "https://tft.ninja/img/sets/19/champions/kayle.webp",
+      "small": "champion-36-small.png",
+      "large": "champion-36-large.png"
+    },
+    "Kayn": {
+      "url": "https://tft.ninja/img/sets/19/champions/kayn.webp",
+      "small": "champion-37-small.png",
+      "large": "champion-37-large.png"
+    },
+    "Kennen": {
+      "url": "https://tft.ninja/img/sets/19/champions/kennen.webp",
+      "small": "champion-38-small.png",
+      "large": "champion-38-large.png"
+    },
+    "Kobuko": {
+      "url": "https://tft.ninja/img/sets/19/champions/kobuko.webp",
+      "small": "champion-39-small.png",
+      "large": "champion-39-large.png"
+    },
+    "Lee Sin": {
+      "url": "https://tft.ninja/img/sets/19/champions/lee-sin.webp",
+      "small": "champion-40-small.png",
+      "large": "champion-40-large.png"
+    },
+    "Leona": {
+      "url": "https://tft.ninja/img/sets/19/champions/leona.webp",
+      "small": "champion-41-small.png",
+      "large": "champion-41-large.png"
+    },
+    "Lillia": {
+      "url": "https://tft.ninja/img/sets/19/champions/lillia.webp",
+      "small": "champion-42-small.png",
+      "large": "champion-42-large.png"
+    },
+    "Locke": {
+      "url": "https://tft.ninja/img/sets/19/champions/locke.webp",
+      "small": "champion-43-small.png",
+      "large": "champion-43-large.png"
+    },
+    "Lucian": {
+      "url": "https://tft.ninja/img/sets/19/champions/lucian.webp",
+      "small": "champion-44-small.png",
+      "large": "champion-44-large.png"
+    },
+    "Lulu": {
+      "url": "https://tft.ninja/img/sets/19/champions/lulu.webp",
+      "small": "champion-45-small.png",
+      "large": "champion-45-large.png"
+    },
+    "Lux": {
+      "url": "https://tft.ninja/img/sets/19/champions/lux.webp",
+      "small": "champion-46-small.png",
+      "large": "champion-46-large.png"
+    },
+    "Malzahar": {
+      "url": "https://tft.ninja/img/sets/19/champions/malzahar.webp",
+      "small": "champion-47-small.png",
+      "large": "champion-47-large.png"
+    },
+    "Mel": {
+      "url": "https://tft.ninja/img/sets/19/champions/mel.webp",
+      "small": "champion-48-small.png",
+      "large": "champion-48-large.png"
+    },
+    "Miss Fortune": {
+      "url": "https://tft.ninja/img/sets/19/champions/miss-fortune.webp",
+      "small": "champion-49-small.png",
+      "large": "champion-49-large.png"
+    },
+    "Mordekaiser": {
+      "url": "https://tft.ninja/img/sets/19/champions/mordekaiser.webp",
+      "small": "champion-50-small.png",
+      "large": "champion-50-large.png"
+    },
+    "Nasus": {
+      "url": "https://tft.ninja/img/sets/19/champions/nasus.webp",
+      "small": "champion-51-small.png",
+      "large": "champion-51-large.png"
+    },
+    "Neeko": {
+      "url": "https://tft.ninja/img/sets/19/champions/neeko.webp",
+      "small": "champion-52-small.png",
+      "large": "champion-52-large.png"
+    },
+    "Nidalee": {
+      "url": "https://tft.ninja/img/sets/19/champions/nidalee.webp",
+      "small": "champion-53-small.png",
+      "large": "champion-53-large.png"
+    },
+    "Nunu & Willump": {
+      "url": "https://tft.ninja/img/sets/19/champions/nunu-and-willump.webp",
+      "small": "champion-54-small.png",
+      "large": "champion-54-large.png"
+    },
+    "Olaf": {
+      "url": "https://tft.ninja/img/sets/19/champions/olaf.webp",
+      "small": "champion-55-small.png",
+      "large": "champion-55-large.png"
+    },
+    "Pyke": {
+      "url": "https://tft.ninja/img/sets/19/champions/pyke.webp",
+      "small": "champion-56-small.png",
+      "large": "champion-56-large.png"
+    },
+    "Qiyana": {
+      "url": "https://tft.ninja/img/sets/19/champions/qiyana.webp",
+      "small": "champion-57-small.png",
+      "large": "champion-57-large.png"
+    },
+    "Rakan": {
+      "url": "https://tft.ninja/img/sets/19/champions/rakan.webp",
+      "small": "champion-58-small.png",
+      "large": "champion-58-large.png"
+    },
+    "Rell": {
+      "url": "https://tft.ninja/img/sets/19/champions/rell.webp",
+      "small": "champion-59-small.png",
+      "large": "champion-59-large.png"
+    },
+    "Renata Glasc": {
+      "url": "https://tft.ninja/img/sets/19/champions/renata-glasc.webp",
+      "small": "champion-60-small.png",
+      "large": "champion-60-large.png"
+    },
+    "Renekton": {
+      "url": "https://tft.ninja/img/sets/19/champions/renekton.webp",
+      "small": "champion-61-small.png",
+      "large": "champion-61-large.png"
+    },
+    "Samira": {
+      "url": "https://tft.ninja/img/sets/19/champions/samira.webp",
+      "small": "champion-62-small.png",
+      "large": "champion-62-large.png"
+    },
+    "Senna": {
+      "url": "https://tft.ninja/img/sets/19/champions/senna.webp",
+      "small": "champion-63-small.png",
+      "large": "champion-63-large.png"
+    },
+    "Seraphine": {
+      "url": "https://tft.ninja/img/sets/19/champions/seraphine.webp",
+      "small": "champion-64-small.png",
+      "large": "champion-64-large.png"
+    },
+    "Sett": {
+      "url": "https://tft.ninja/img/sets/19/champions/sett.webp",
+      "small": "champion-65-small.png",
+      "large": "champion-65-large.png"
+    },
+    "Shyvana": {
+      "url": "https://tft.ninja/img/sets/19/champions/shyvana.webp",
+      "small": "champion-66-small.png",
+      "large": "champion-66-large.png"
+    },
+    "Smeech": {
+      "url": "https://tft.ninja/img/sets/19/champions/smeech.webp",
+      "small": "champion-67-small.png",
+      "large": "champion-67-large.png"
+    },
+    "Sona": {
+      "url": "https://tft.ninja/img/sets/19/champions/sona.webp",
+      "small": "champion-68-small.png",
+      "large": "champion-68-large.png"
+    },
+    "Swain": {
+      "url": "https://tft.ninja/img/sets/19/champions/swain.webp",
+      "small": "champion-69-small.png",
+      "large": "champion-69-large.png"
+    },
+    "Syndra": {
+      "url": "https://tft.ninja/img/sets/19/champions/syndra.webp",
+      "small": "champion-70-small.png",
+      "large": "champion-70-large.png"
+    },
+    "Taliyah": {
+      "url": "https://tft.ninja/img/sets/19/champions/taliyah.webp",
+      "small": "champion-71-small.png",
+      "large": "champion-71-large.png"
+    },
+    "Taric": {
+      "url": "https://tft.ninja/img/sets/19/champions/taric.webp",
+      "small": "champion-72-small.png",
+      "large": "champion-72-large.png"
+    },
+    "Teemo": {
+      "url": "https://tft.ninja/img/sets/19/champions/teemo.webp",
+      "small": "champion-73-small.png",
+      "large": "champion-73-large.png"
+    },
+    "Thresh": {
+      "url": "https://tft.ninja/img/sets/19/champions/thresh.webp",
+      "small": "champion-74-small.png",
+      "large": "champion-74-large.png"
+    },
+    "Tibbers": {
+      "url": "https://tft.ninja/img/sets/19/champions/tibbers.webp",
+      "small": "champion-75-small.png",
+      "large": "champion-75-large.png"
+    },
+    "Tristana": {
+      "url": "https://tft.ninja/img/sets/19/champions/tristana.webp",
+      "small": "champion-76-small.png",
+      "large": "champion-76-large.png"
+    },
+    "Twisted Fate": {
+      "url": "https://tft.ninja/img/sets/19/champions/twisted-fate.webp",
+      "small": "champion-77-small.png",
+      "large": "champion-77-large.png"
+    },
+    "Varus": {
+      "url": "https://tft.ninja/img/sets/19/champions/varus.webp",
+      "small": "champion-78-small.png",
+      "large": "champion-78-large.png"
+    },
+    "Vayne": {
+      "url": "https://tft.ninja/img/sets/19/champions/vayne.webp",
+      "small": "champion-79-small.png",
+      "large": "champion-79-large.png"
+    },
+    "Vi": {
+      "url": "https://tft.ninja/img/sets/19/champions/vi.webp",
+      "small": "champion-80-small.png",
+      "large": "champion-80-large.png"
+    },
+    "Viego": {
+      "url": "https://tft.ninja/img/sets/19/champions/viego.webp",
+      "small": "champion-81-small.png",
+      "large": "champion-81-large.png"
+    },
+    "Vladimir": {
+      "url": "https://tft.ninja/img/sets/19/champions/vladimir.webp",
+      "small": "champion-82-small.png",
+      "large": "champion-82-large.png"
+    },
+    "Wukong": {
+      "url": "https://tft.ninja/img/sets/19/champions/wukong.webp",
+      "small": "champion-83-small.png",
+      "large": "champion-83-large.png"
+    },
+    "Xayah": {
+      "url": "https://tft.ninja/img/sets/19/champions/xayah.webp",
+      "small": "champion-84-small.png",
+      "large": "champion-84-large.png"
+    },
+    "Yasuo": {
+      "url": "https://tft.ninja/img/sets/19/champions/yasuo.webp",
+      "small": "champion-85-small.png",
+      "large": "champion-85-large.png"
+    },
+    "Yone": {
+      "url": "https://tft.ninja/img/sets/19/champions/yone.webp",
+      "small": "champion-86-small.png",
+      "large": "champion-86-large.png"
+    },
+    "Yorick": {
+      "url": "https://tft.ninja/img/sets/19/champions/yorick.webp",
+      "small": "champion-87-small.png",
+      "large": "champion-87-large.png"
+    },
+    "Yunara": {
+      "url": "https://tft.ninja/img/sets/19/champions/yunara.webp",
+      "small": "champion-88-small.png",
+      "large": "champion-88-large.png"
+    },
+    "Yuumi": {
+      "url": "https://tft.ninja/img/sets/19/champions/yuumi.webp",
+      "small": "champion-89-small.png",
+      "large": "champion-89-large.png"
+    },
+    "Zac": {
+      "url": "https://tft.ninja/img/sets/19/champions/zac.webp",
+      "small": "champion-90-small.png",
+      "large": "champion-90-large.png"
+    },
+    "Zeri": {
+      "url": "https://tft.ninja/img/sets/19/champions/zeri.webp",
+      "small": "champion-91-small.png",
+      "large": "champion-91-large.png"
+    },
+    "Ziggs": {
+      "url": "https://tft.ninja/img/sets/19/champions/ziggs.webp",
+      "small": "champion-92-small.png",
+      "large": "champion-92-large.png"
+    },
+    "Zoe": {
+      "url": "https://tft.ninja/img/sets/19/champions/zoe.webp",
+      "small": "champion-93-small.png",
+      "large": "champion-93-large.png"
+    }
+  },
+  "traits": {
+    "8-Bit": {
+      "file": "trait-0.png",
+      "url": "https://tft.ninja/img/sets/19/traits/8-bit.svg"
+    },
+    "Arcanist": {
+      "file": "trait-1.png",
+      "url": "https://tft.ninja/img/sets/19/traits/arcanist.svg"
+    },
+    "Beach Pop": {
+      "file": "trait-2.png",
+      "url": "https://tft.ninja/img/sets/19/traits/beach-pop.svg"
+    },
+    "Beat Master": {
+      "file": "trait-3.png",
+      "url": "https://tft.ninja/img/sets/19/traits/beat-master.svg"
+    },
+    "Bodyguard": {
+      "file": "trait-4.png",
+      "url": "https://tft.ninja/img/sets/19/traits/bodyguard.svg"
+    },
+    "Boy Band": {
+      "file": "trait-5.png",
+      "url": "https://tft.ninja/img/sets/19/traits/boy-band.svg"
+    },
+    "Choreographer": {
+      "file": "trait-6.png",
+      "url": "https://tft.ninja/img/sets/19/traits/choreographer.svg"
+    },
+    "Classical": {
+      "file": "trait-7.png",
+      "url": "https://tft.ninja/img/sets/19/traits/classical.svg"
+    },
+    "Collab": {
+      "file": "trait-8.png",
+      "url": "https://tft.ninja/img/sets/19/traits/collab.svg"
+    },
+    "Composer": {
+      "file": "trait-9.png",
+      "url": "https://tft.ninja/img/sets/19/traits/composer.svg"
+    },
+    "Country": {
+      "file": "trait-10.png",
+      "url": "https://tft.ninja/img/sets/19/traits/country.svg"
+    },
+    "Disco": {
+      "file": "trait-11.png",
+      "url": "https://tft.ninja/img/sets/19/traits/disco.svg"
+    },
+    "EDM": {
+      "file": "trait-12.png",
+      "url": "https://tft.ninja/img/sets/19/traits/edm.svg"
+    },
+    "Emo": {
+      "file": "trait-13.png",
+      "url": "https://tft.ninja/img/sets/19/traits/emo.svg"
+    },
+    "Encore": {
+      "file": "trait-14.png",
+      "url": "https://tft.ninja/img/sets/19/traits/encore.svg"
+    },
+    "Freestyle": {
+      "file": "trait-15.png",
+      "url": "https://tft.ninja/img/sets/19/traits/freestyle.svg"
+    },
+    "Frontman": {
+      "file": "trait-16.png",
+      "url": "https://tft.ninja/img/sets/19/traits/frontman.svg"
+    },
+    "Goth": {
+      "file": "trait-17.png",
+      "url": "https://tft.ninja/img/sets/19/traits/goth.svg"
+    },
+    "Gu Feng": {
+      "file": "trait-18.png",
+      "url": "https://tft.ninja/img/sets/19/traits/gu-feng.svg"
+    },
+    "Heartsteel": {
+      "file": "trait-19.png",
+      "url": "https://tft.ninja/img/sets/19/traits/heartsteel.svg"
+    },
+    "Hitmaker": {
+      "file": "trait-20.png",
+      "url": "https://tft.ninja/img/sets/19/traits/hitmaker.svg"
+    },
+    "Hype Man": {
+      "file": "trait-21.png",
+      "url": "https://tft.ninja/img/sets/19/traits/hype-man.svg"
+    },
+    "Hyperpop": {
+      "file": "trait-22.png",
+      "url": "https://tft.ninja/img/sets/19/traits/hyperpop.svg"
+    },
+    "Illbeats": {
+      "file": "trait-23.png",
+      "url": "https://tft.ninja/img/sets/19/traits/illbeats.svg"
+    },
+    "Indie": {
+      "file": "trait-24.png",
+      "url": "https://tft.ninja/img/sets/19/traits/indie.svg"
+    },
+    "Ionic Spark": {
+      "file": "trait-25.png",
+      "url": "https://tft.ninja/img/sets/19/traits/ionic-spark.svg"
+    },
+    "Jazz": {
+      "file": "trait-26.png",
+      "url": "https://tft.ninja/img/sets/19/traits/jazz.svg"
+    },
+    "Juggernaut": {
+      "file": "trait-27.png",
+      "url": "https://tft.ninja/img/sets/19/traits/juggernaut.svg"
+    },
+    "K/DA": {
+      "file": "trait-28.png",
+      "url": "https://tft.ninja/img/sets/19/traits/k-da.svg"
+    },
+    "Manager": {
+      "file": "trait-29.png",
+      "url": "https://tft.ninja/img/sets/19/traits/manager.svg"
+    },
+    "Mariachi": {
+      "file": "trait-30.png",
+      "url": "https://tft.ninja/img/sets/19/traits/mariachi.svg"
+    },
+    "Melodic Heart": {
+      "file": "trait-31.png",
+      "url": "https://tft.ninja/img/sets/19/traits/melodic-heart.svg"
+    },
+    "One Monster Band": {
+      "file": "trait-32.png",
+      "url": "https://tft.ninja/img/sets/19/traits/one-monster-band.svg"
+    },
+    "Pentakill": {
+      "file": "trait-33.png",
+      "url": "https://tft.ninja/img/sets/19/traits/pentakill.svg"
+    },
+    "Prodigy": {
+      "file": "trait-34.png",
+      "url": "https://tft.ninja/img/sets/19/traits/prodigy.svg"
+    },
+    "Producer": {
+      "file": "trait-35.png",
+      "url": "https://tft.ninja/img/sets/19/traits/producer.svg"
+    },
+    "R&B": {
+      "file": "trait-36.png",
+      "url": "https://tft.ninja/img/sets/19/traits/r-and-b.svg"
+    },
+    "Record Mogul": {
+      "file": "trait-37.png",
+      "url": "https://tft.ninja/img/sets/19/traits/record-mogul.svg"
+    },
+    "Renegade": {
+      "file": "trait-38.png",
+      "url": "https://tft.ninja/img/sets/19/traits/renegade.svg"
+    },
+    "Rock": {
+      "file": "trait-39.png",
+      "url": "https://tft.ninja/img/sets/19/traits/rock.svg"
+    },
+    "Slayer": {
+      "file": "trait-40.png",
+      "url": "https://tft.ninja/img/sets/19/traits/slayer.svg"
+    },
+    "Swiftstriker": {
+      "file": "trait-41.png",
+      "url": "https://tft.ninja/img/sets/19/traits/swiftstriker.svg"
+    },
+    "Synthwave": {
+      "file": "trait-42.png",
+      "url": "https://tft.ninja/img/sets/19/traits/synthwave.svg"
+    },
+    "Tango": {
+      "file": "trait-43.png",
+      "url": "https://tft.ninja/img/sets/19/traits/tango.svg"
+    },
+    "Trickshot": {
+      "file": "trait-44.png",
+      "url": "https://tft.ninja/img/sets/19/traits/trickshot.svg"
+    },
+    "True Damage": {
+      "file": "trait-45.png",
+      "url": "https://tft.ninja/img/sets/19/traits/true-damage.svg"
+    },
+    "Windblessed": {
+      "file": "trait-46.png",
+      "url": "https://tft.ninja/img/sets/19/traits/windblessed.svg"
+    }
+  }
+}
