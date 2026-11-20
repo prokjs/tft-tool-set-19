@@ -40,8 +40,12 @@ except ImportError as exc:
 
 if __package__:
     from .update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
+    from .update_trait_descriptions import description_fields
+    from .update_champion_roles import role_fields
 else:
     from update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
+    from update_trait_descriptions import description_fields
+    from update_champion_roles import role_fields
 
 
 SOURCES = {
@@ -103,6 +107,7 @@ def parse_pages(pages: dict[str, str], snapshot_date: str) -> dict:
                 "breakpoints": breakpoints,
                 "unique": section_name == "unique-traits" and name != "Collab",
             }
+            trait.update(description_fields(card))
             if name == "K/DA":
                 trait["count_mode"] = "stars"
             traits.append(trait)
@@ -132,6 +137,7 @@ def parse_pages(pages: dict[str, str], snapshot_date: str) -> dict:
                 "traits": [text(link, f"{name} trait") for link in row.select(".set-roster-traits a")],
                 "unlockable": unlockable,
             }
+            champion.update(role_fields(row))
             if name == "Baron Nashor":
                 champion["slots"] = 2
             if name in {"Akali (K/DA)", "Akali (True Damage)"}:
@@ -181,11 +187,18 @@ def validate_data(data: dict, source_members: dict[str, set[str]], champion_slug
     require(len(champions) == EXPECTED["champions"], "Duplicate champion names")
     require(sum(champion["unlockable"] for champion in champions.values()) == 32, "Current unlockable roster changed")
     require(sum(trait["unique"] for trait in traits.values()) == 19, "Unique trait classification changed")
+    for trait in traits.values():
+        for field in ("description", "description_source"):
+            require(isinstance(trait.get(field), str) and bool(trait[field].strip()),
+                    f"Missing {field} for {trait['name']}")
     for champion in champions.values():
         require(champion["cost"] in {1, 2, 3, 4, 5, 7}, f"Unexpected cost for {champion['name']}")
         names = champion["traits"]
         require(bool(names) and len(names) == len(set(names)), f"Missing/duplicate traits for {champion['name']}")
         require(set(names) <= traits.keys(), f"Unknown traits for {champion['name']}")
+        for field in ("role", "role_source"):
+            require(isinstance(champion.get(field), str) and bool(champion[field].strip()),
+                    f"Missing {field} for {champion['name']}")
         if champion["unlockable"]:
             for field in ("unlock_condition", "unlock_level", "unlock_source"):
                 require(isinstance(champion.get(field), str) and bool(champion[field].strip()),

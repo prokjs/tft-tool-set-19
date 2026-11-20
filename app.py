@@ -12,14 +12,15 @@ from tkinter import ttk, messagebox, filedialog
 import json
 import webbrowser
 
-from optimizer import load_data, BAND_TRAITS
-from visuals import Artwork, COST_COLORS
+from optimizer import load_data, BAND_TRAITS, planned_stars
+from visuals import Artwork
 from pool_picker import POOL_SIZES, eligible_champions, visible_champions
 from champion_grid import ChampionGrid
-from trait_rows import TraitRow, badge_style, STYLE_ORDER
-from champion_info import unlock_text
+from comp_overview import CompOverview
+from champion_info import unlock_text, star_text
 from buildup import recommend_with_buildups, format_buildup
 from buildup_view import BuildupWindow
+from team_code import encode_team
 
 
 class App(tk.Tk):
@@ -34,8 +35,6 @@ class App(tk.Tk):
         self.bundle = Path(getattr(sys, '_MEIPASS', Path(__file__).parent))
         self.data = load_data(self.bundle / 'data' / 'set19.json')
         self.artwork = Artwork(self, self.bundle / 'assets')
-        self.detail_widgets = []
-        self.card_columns = 1
         self.champions = {c['name']: c for c in self.data['champions']}
         self.collab, self.locked, self.excluded = set(), set(), set()
         self.pool_locked = False
@@ -54,7 +53,8 @@ class App(tk.Tk):
         self.render_roster()
         self.invalidate()
         self.after(100, self.drain)
-        for variable in (self.size, self.minimum, self.mode, self.band):
+        self.size.trace_add('write', self.change_level)
+        for variable in (self.minimum, self.mode, self.band):
             variable.trace_add('write', lambda *_: self.invalidate())
 
     def _style(self):
@@ -64,7 +64,7 @@ class App(tk.Tk):
         style.configure('TFrame', background='#111827')
         style.configure('TLabel', background='#111827')
         style.configure('Muted.TLabel', foreground='#9ca3af')
-        style.configure('Title.TLabel', font=('Segoe UI', 23, 'bold'), foreground='#c4b5fd')
+        style.configure('Title.TLabel', font=('Segoe UI', 17, 'bold'), foreground='#c4b5fd')
         style.configure('TButton', padding=(10, 7), background='#303d56')
         style.map('TButton', background=[('active', '#4c3b78')])
         style.configure('Accent.TButton', background='#6d28d9', font=('Segoe UI', 10, 'bold'))
@@ -75,15 +75,20 @@ class App(tk.Tk):
         style.configure('TCombobox', fieldbackground='#253047', foreground='#ffffff', arrowcolor='#ffffff')
         style.map('TCombobox', fieldbackground=[('readonly', '#253047')], foreground=[('readonly', '#ffffff')])
         style.configure('TEntry', fieldbackground='#253047', foreground='#ffffff')
+        style.configure('Slim.Horizontal.TProgressbar', thickness=3)
 
     def _layout(self):
-        root = ttk.Frame(self, padding=20)
+        root = ttk.Frame(self, padding=(20, 14))
         root.pack(fill='both', expand=True)
-        ttk.Label(root, text="prokjs's Set 19 TFT tool", style='Title.TLabel').pack(anchor='w')
-        ttk.Label(root, text='TFT SET 19  /  OFFLINE TEAM EXPLORER  ·  Developed by prokjs', style='Muted.TLabel').pack(anchor='w', pady=(0, 8))
-        ttk.Label(root, text=str(self.data['version']), style='Muted.TLabel').pack(anchor='w')
-        controls = ttk.Frame(root)
-        controls.pack(fill='x', pady=12)
+        header = ttk.Frame(root)
+        header.pack(fill='x', pady=(0, 8))
+        header.columnconfigure(1, weight=1)
+        brand = ttk.Frame(header)
+        brand.grid(row=0, column=0, sticky='w')
+        ttk.Label(brand, text="prokjs's Set 19 TFT tool", style='Title.TLabel').pack(anchor='w')
+        ttk.Label(brand, text='Developed by prokjs · Offline team explorer', style='Muted.TLabel').pack(anchor='w')
+        controls = ttk.Frame(header)
+        controls.grid(row=0, column=1, sticky='e', padx=(14, 0))
         for col, (label, variable, values, width) in enumerate([
             ('Final level', self.size, list(map(str, range(3, 12))), 8),
             ('Minimum Collab', self.minimum, ['0', '3', '5'], 14),
@@ -96,14 +101,30 @@ class App(tk.Tk):
             ttk.Combobox(box, textvariable=variable, values=values, state='readonly', width=width).pack()
         self.run_button = ttk.Button(controls, text='Find teams', style='Accent.TButton', command=self.run)
         self.run_button.grid(row=0, column=4, sticky='s', padx=8)
-        self.progress = ttk.Progressbar(root, mode='indeterminate')
-        self.progress.pack(fill='x', pady=(0, 8))
+        def arrange_header(event):
+            wrapped = event.width < brand.winfo_reqwidth() + controls.winfo_reqwidth() + 14
+            row = 1 if wrapped else 0
+            if int(controls.grid_info()['row']) != row:
+                controls.grid(row=row, column=0 if wrapped else 1,
+                              columnspan=2 if wrapped else 1, sticky='w' if wrapped else 'e',
+                              padx=0 if wrapped else (14, 0), pady=(8, 0) if wrapped else 0)
+        header.bind('<Configure>', arrange_header)
+        self.progress = ttk.Progressbar(root, mode='indeterminate', style='Slim.Horizontal.TProgressbar')
+        ttk.Label(root, textvariable=self.status, wraplength=1150).pack(side='bottom', anchor='w', pady=(10, 0))
         panes = ttk.Panedwindow(root, orient='horizontal')
+        self._panes = panes
         panes.pack(fill='both', expand=True)
         left = ttk.Frame(panes, padding=(0, 0, 14, 0))
         right = ttk.Frame(panes)
         panes.add(left, weight=2)
         panes.add(right, weight=3)
+        pane_width = 0
+        def arrange_panes(event):
+            nonlocal pane_width
+            if event.width != pane_width:
+                pane_width = event.width
+                panes.sashpos(0, min(440, max(320, int(event.width * 0.33))))
+        panes.bind('<Configure>', arrange_panes)
         ttk.Label(left, text='YOUR GAME', font=('Segoe UI', 12, 'bold')).pack(anchor='w')
         self.pool_button = ttk.Button(left, text='Lock Collab pool', command=self.toggle_pool_lock)
         self.pool_button.pack(fill='x', pady=6)
@@ -111,7 +132,7 @@ class App(tk.Tk):
         self.pool_hint.pack(fill='x', pady=(0, 4))
         self.pool_label = ttk.Label(left, wraplength=440, style='Muted.TLabel')
         self.pool_label.pack(fill='x', pady=(0, 8))
-        self.pool_strip = tk.Text(left, height=2, bg='#111827', relief='flat', state='disabled', cursor='arrow')
+        self.pool_strip = tk.Text(left, height=2, width=1, bg='#111827', relief='flat', state='disabled', cursor='arrow')
         self.pool_strip.pack(fill='x', pady=(0, 6))
         ttk.Label(left, text='Search champions or traits', style='Muted.TLabel').pack(anchor='w')
         entry = ttk.Entry(left, textvariable=self.search)
@@ -130,19 +151,26 @@ class App(tk.Tk):
             self.team_controls.append(button)
         star_row = ttk.Frame(left)
         star_row.pack(fill='x')
-        ttk.Label(star_row, text='Set selected stars:').pack(side='left')
+        ttk.Label(star_row, text='Planned stars:').pack(side='left')
         for star in range(1, 5):
-            button = ttk.Button(star_row, text=str(star), width=2, command=lambda s=star: self.set_stars(s))
+            button = ttk.Button(star_row, text=star_text(star), width=0, padding=(3, 5), command=lambda s=star: self.set_stars(s))
             button.pack(side='left', padx=2)
             self.team_controls.append(button)
         ttk.Button(star_row, text='Reset', command=self.reset).pack(side='right')
         self.champion_label = ttk.Label(left, wraplength=440, style='Muted.TLabel')
         self.champion_label.pack(fill='x', pady=8)
-        ttk.Label(left, text='C = Collab   L = team locked   X = excluded\nPool unlocked: click to add/remove picks. Sona is automatic.\nPool locked: Ctrl / Shift multi-select for team controls.\nUnlock tasks still apply; hover/select to see requirements.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450).pack(anchor='w')
+        roster_help = ttk.Label(left, text='C = Collab   L = team locked   X = excluded\nPool unlocked: click to add/remove picks. Sona is automatic.\nPool locked: Ctrl / Shift multi-select for team controls.\nUnlock tasks still apply; hover/select to see requirements.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450)
+        roster_help.pack(anchor='w')
+        def wrap_roster_details(event):
+            self.pool_hint.configure(wraplength=max(180, event.width - 28))
+            self.pool_label.configure(wraplength=max(180, event.width - 28))
+            self.champion_label.configure(wraplength=max(160, event.width - 84))
+            roster_help.configure(wraplength=max(180, event.width - 28))
+        left.bind('<Configure>', wrap_roster_details)
         ttk.Label(right, text='SUGGESTED TEAMS', font=('Segoe UI', 12, 'bold')).pack(anchor='w')
         result_frame = ttk.Frame(right)
         result_frame.pack(fill='x', pady=6)
-        self.result_list = ttk.Treeview(result_frame, columns=('rank', 'active', 'tiers', 'front', 'cost'), show='headings', selectmode='browse', height=4)
+        self.result_list = ttk.Treeview(result_frame, columns=('rank', 'active', 'tiers', 'front', 'cost'), show='headings', selectmode='browse', height=3)
         for key, title, width in [('rank', 'Rank', 50), ('active', 'Active traits', 100), ('tiers', 'Trait tiers', 90), ('front', 'Frontline', 85), ('cost', 'Gold', 65)]:
             self.result_list.heading(key, text=title)
             self.result_list.column(key, width=width, stretch=True)
@@ -151,26 +179,19 @@ class App(tk.Tk):
         self.result_list.pack(side='left', fill='x', expand=True)
         result_scroll.pack(side='right', fill='y')
         self.result_list.bind('<<TreeviewSelect>>', self.show_result)
-        detail_frame = ttk.Frame(right)
-        detail_frame.pack(fill='both', expand=True)
-        self.detail = tk.Text(detail_frame, wrap='word', bg='#192337', fg='#e5e7eb', relief='flat', padx=16, pady=12, font=('Segoe UI', 11), state='disabled', height=6)
-        detail_scroll = ttk.Scrollbar(detail_frame, orient='vertical', command=self.detail.yview)
-        self.detail.configure(yscrollcommand=detail_scroll.set)
-        self.detail.pack(side='left', fill='both', expand=True)
-        detail_scroll.pack(side='right', fill='y')
-        self.detail.tag_configure('heading', foreground='#c4b5fd', font=('Segoe UI', 12, 'bold'), spacing1=10, spacing3=8)
-        self.detail.tag_configure('unlock', foreground='#f1d69b', spacing3=6)
-        self.detail.tag_configure('unlock_name', foreground='#f1d69b', font=('Segoe UI', 10, 'bold'), spacing1=8)
-        self.detail.bind('<Configure>', self.resize_cards)
+        self.overview = CompOverview(right, self.data, self.artwork, self.show_unlock)
+        disclaimer = ttk.Label(right, text='Approximate search, not a guaranteed optimum. High value rewards base champion cost, synergies, and frontline balance; cost is not measured strength. Items, augments, and combat are not simulated. Active totals exclude unique traits.', style='Muted.TLabel', wraplength=610)
+        disclaimer.pack(side='bottom', fill='x')
+        right.bind('<Configure>', lambda event: disclaimer.configure(wraplength=max(240, event.width - 8)))
         actions = ttk.Frame(right)
-        actions.pack(fill='x', pady=8)
+        actions.pack(side='bottom', fill='x', pady=8)
         self.buildup_button = ttk.Button(actions, text='Level buildup', command=self.show_buildup, state='disabled')
         self.buildup_button.pack(side='left', padx=(0, 6))
-        ttk.Button(actions, text='Copy team', command=self.copy_team).pack(side='left')
-        ttk.Button(actions, text='Export results', command=self.export).pack(side='left', padx=6)
+        ttk.Button(actions, text='Copy TFT code', command=self.copy_tft_code).pack(side='left')
+        ttk.Button(actions, text='Copy plan', command=self.copy_team).pack(side='left', padx=6)
+        ttk.Button(actions, text='Save JSON', command=self.export).pack(side='left')
         ttk.Button(actions, text='Data sources', command=self.sources).pack(side='right')
-        ttk.Label(right, text='Approximate search, not a guaranteed optimum. High value rewards base champion cost, synergies, and frontline balance; cost is not measured strength. Items, augments, and combat are not simulated. Active totals exclude unique traits.', style='Muted.TLabel', wraplength=610).pack(fill='x')
-        ttk.Label(root, textvariable=self.status, wraplength=1150).pack(anchor='w', pady=(10, 0))
+        self.overview.pack(fill='both', expand=True)
 
     def activate_champion(self, name):
         """Consume portrait activation only while editing the Collab pool."""
@@ -219,14 +240,19 @@ class App(tk.Tk):
         self.results = []
         self.result_list.delete(*self.result_list.get_children())
         self.buildup_button.state(['disabled'])
-        self.set_detail('Use the main portrait grid to pick your Collab pool.\n\nWhile unlocked, click to add/remove champions. Conflicting candidates disappear; selected picks remain removable. Sona is automatic.\n\nLock a 5- or 6-champion pool to restore the full roster and enable team locks, exclusions, star controls, and recommendations. Unlock the pool to edit it again.')
+        self.overview.show_message('Use the main portrait grid to pick your Collab pool.\n\nWhile unlocked, click to add/remove champions. Conflicting candidates disappear; selected picks remain removable. Sona is automatic.\n\nLock a 5- or 6-champion pool to restore the full roster and enable team locks, exclusions, star controls, and recommendations. Unlock the pool to edit it again.')
         self.sync_controls()
         self.status.set('Pool locked. Select team units or find recommendations.' if self.pool_locked else f'Pool unlocked: {len(self.collab)} picked. Choose 5 or 6, then lock the pool.')
+
+    def change_level(self, *_):
+        self.render_roster()
+        self.invalidate()
 
     def render_roster(self):
         query = self.search.get().casefold().strip()
         entries = []
         visible = visible_champions(self.champions, self.collab, self.pool_locked)
+        effective_stars = planned_stars(self.champions, int(self.size.get()), self.stars)
         for c in sorted(self.champions.values(), key=lambda c: (c['cost'], c['name'])):
             name = c['name']
             if name not in visible:
@@ -236,7 +262,7 @@ class App(tk.Tk):
             flags = 'C ' if name in self.collab or name == 'Sona' else ''
             if self.pool_locked:
                 flags += ('L ' if name in self.locked else '') + ('X' if name in self.excluded else '')
-            entries.append({**c, 'flags': flags.strip(), 'stars': self.stars.get(name, 1),
+            entries.append({**c, 'flags': flags.strip(), 'stars': effective_stars[name],
                             'pool_member': not self.pool_locked and name in self.collab,
                             'fixed': not self.pool_locked and name == 'Sona'})
         self.champion_grid.set_entries(entries)
@@ -339,6 +365,7 @@ class App(tk.Tk):
         args = dict(data=self.data, collab=sorted(self.collab), size=int(self.size.get()), locked=sorted(self.locked), excluded=sorted(self.excluded), min_collab=int(self.minimum.get()), mode=ranking[self.mode.get()], sona_band='' if self.band.get() == 'None' else self.band.get(), stars=dict(self.stars))
         self.busy = True
         self.freeze_inputs(True)
+        self.progress.pack(fill='x', pady=(0, 6), before=self._panes)
         self.progress.start(12)
         self.status.set('Searching end boards and planning level-by-level buildups…')
         # Snapshot inputs; the worker never reads Tk state.
@@ -357,6 +384,7 @@ class App(tk.Tk):
             self.busy = False
             self.freeze_inputs(False)
             self.progress.stop()
+            self.progress.pack_forget()
             if kind == 'error':
                 self.status.set(payload)
                 messagebox.showerror('Cannot find teams', payload, parent=self)
@@ -370,7 +398,7 @@ class App(tk.Tk):
                     self.result_list.selection_set('0')
                     self.show_result()
                 else:
-                    self.set_detail('No team satisfies these constraints. Reduce minimum Collab, remove exclusions, or increase team slots.')
+                    self.overview.show_message('No team satisfies these constraints. Reduce minimum Collab, remove exclusions, or increase team slots.')
                 self.status.set(f'{len(payload)} teams with level-by-level buildups. Unlock units remain conditional on completing their quests.')
         self.after(100, self.drain)
 
@@ -391,7 +419,7 @@ class App(tk.Tk):
             if name in self.collab or name == 'Sona': flags.append('Collab')
             if name in self.locked: flags.append('locked')
             if c['unlockable']: flags.append('unlock required')
-            lines.append(f"{name}  ·  {self.stars.get(name, 1)}★  ·  {c['cost']}g" + ('  [' + ', '.join(flags) + ']' if flags else ''))
+            lines.append(f"{name}  ·  {star_text(result['planned_stars'][name])} planned  ·  {c['cost']}g" + ('  [' + ', '.join(flags) + ']' if flags else ''))
             if c['unlockable']:
                 lines.append('  ' + unlock_text(c).replace('\n', '\n  '))
         lines.extend(['', f"ACTIVE TRAITS  ({result['active']} non-unique)", ''])
@@ -402,68 +430,15 @@ class App(tk.Tk):
         for trait in sorted(result['traits'], key=lambda t: t['name']):
             if trait['next'] is not None:
                 lines.append(f"{trait['name']}: {trait['count']} / {trait['next']}  (+{trait['next'] - trait['count']})")
+        if result['strategy_notes']:
+            lines.extend(['', 'PLANNED ASSUMPTIONS', *result['strategy_notes']])
         lines.extend(['', format_buildup(result, self.champions)])
         return '\n'.join(lines)
 
     def show_result(self, _event=None):
         result = self.selected_result()
         if result:
-            self.set_detail('')
-            self.detail.configure(state='normal')
-            self.detail.insert('end', 'TEAM\n', 'heading')
-            self.card_columns = max(1, (self.detail.winfo_width() - 36) // 112)
-            for index, name in enumerate(result['champions']):
-                champion = self.champions[name]
-                color = COST_COLORS[champion['cost']]
-                card = tk.Frame(self.detail, bg='#192337', highlightbackground=color, highlightthickness=1, padx=3, pady=4, width=100)
-                tk.Label(card, image=self.artwork.portraits[name], bg='#192337').pack()
-                tk.Label(card, text=name, width=13, wraplength=94, fg='#e5e7eb', bg='#192337', font=('Segoe UI', 9, 'bold')).pack()
-                badges = f"{self.stars.get(name, 1)}★  {champion['cost']}g"
-                if name in self.collab or name == 'Sona':
-                    badges += ' · C'
-                if name in self.locked:
-                    badges += ' · L'
-                tk.Label(card, text=badges, fg=color, bg='#192337', font=('Segoe UI', 9)).pack()
-                if champion['unlockable']:
-                    tk.Button(card, text='Unlock details', command=lambda name=name: self.show_unlock(name), fg='#f1d69b', bg='#192337', activebackground='#253047', activeforeground='#ffffff', font=('Segoe UI', 8, 'underline'), borderwidth=0, cursor='hand2').pack()
-                self.detail_widgets.append(card)
-                self.detail.window_create('end', window=card, padx=3, pady=4, align='top')
-                if (index + 1) % self.card_columns == 0:
-                    self.detail.insert('end', '\n')
-            definitions = {trait['name']: trait for trait in self.data['traits']}
-            unique_active = sum(bool(trait['tier']) and trait['unique'] for trait in result['traits'])
-            self.detail.insert('end', f"\nTRAITS  ·  {result['active']} active + {unique_active} unique\n", 'heading')
-            rows = sorted(result['traits'], key=lambda trait: (
-                STYLE_ORDER[badge_style(trait, definitions[trait['name']])],
-                -trait['count'], trait['name'],
-            ))
-            for trait in rows:
-                row = TraitRow(self.detail, trait, definitions[trait['name']], self.artwork)
-                self.detail_widgets.append(row)
-                self.detail.window_create('end', window=row, padx=2, pady=1, align='top')
-                self.detail.insert('end', '\n')
-            unlockable_names = [name for name in result['champions'] if self.champions[name]['unlockable']]
-            if unlockable_names:
-                self.detail.insert('end', '\nUNLOCK REQUIREMENTS\n', 'heading')
-                for name in unlockable_names:
-                    self.detail.insert('end', name + '\n', 'unlock_name')
-                    self.detail.insert('end', unlock_text(self.champions[name]) + '\n', 'unlock')
-            self.detail.configure(state='disabled')
-            self.detail.yview_moveto(0)
-
-
-    def resize_cards(self, event):
-        if max(1, (event.width - 36) // 112) != self.card_columns and self.results:
-            self.show_result()
-
-    def set_detail(self, text):
-        for widget in self.detail_widgets:
-            widget.destroy()
-        self.detail_widgets.clear()
-        self.detail.configure(state='normal')
-        self.detail.delete('1.0', 'end')
-        self.detail.insert('1.0', text)
-        self.detail.configure(state='disabled')
+            self.overview.show_comp(result, self.collab, self.locked, result['planned_stars'])
 
     def copy_team(self):
         result = self.selected_result()
@@ -471,6 +446,21 @@ class App(tk.Tk):
             self.clipboard_clear()
             self.clipboard_append(self.result_text(result))
             self.status.set('Team, unlock requirements, and level-by-level buildup copied.')
+
+    def copy_tft_code(self):
+        result = self.selected_result()
+        if result is None:
+            self.status.set('Select a suggested team before copying a TFT code.')
+            return
+        try:
+            code = encode_team(result['champions'])
+        except ValueError as exc:
+            self.status.set('TFT code not copied: ' + str(exc))
+            messagebox.showerror('Cannot copy TFT code', str(exc), parent=self)
+            return
+        self.clipboard_clear()
+        self.clipboard_append(code)
+        self.status.set('TFT team-planner code copied. Planned stars and quest completion are not encoded.')
 
     def export(self):
         if not self.results:
@@ -497,7 +487,7 @@ class App(tk.Tk):
         for source in self.data['sources']:
             ttk.Button(popup, text=source['name'], command=lambda url=source['url']: webbrowser.open(url)).pack(anchor='w', padx=16, pady=4)
         ttk.Label(popup, text='Champion and trait artwork © Riot Games. Set 19 images sourced from TFT Ninja; bundled for offline use.', wraplength=610, style='Muted.TLabel').pack(anchor='w', padx=16, pady=6)
-        ttk.Label(popup, text='Pre-release community data can change. No game client access, automatic scouting, or network connection is required. Star levels are manual inputs; emblems and conditional/prismatic unlocks are not simulated.', wraplength=610).pack(anchor='w', padx=16, pady=12)
+        ttk.Label(popup, text='Pre-release community data can change. No game client access, automatic scouting, or network connection is required. Stars are planned upgrade targets, including automatic late-game tank targets unless overridden; emblems and conditional/prismatic unlocks are not simulated.', wraplength=610).pack(anchor='w', padx=16, pady=12)
 
 
 if __name__ == '__main__':

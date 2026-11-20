@@ -37,7 +37,9 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "Your team gains Ability Power, Arcanists gain more.\n2 Bonus Ability Power, more for Arcanists\n4 Bonus Ability Power, more for Arcanists\n6 Bonus Ability Power, more for Arcanists",
+      "description_source": "https://tft.ninja/sets/19/traits/arcanist"
     },
     {
       "name": "Beach Pop",
@@ -46,7 +48,9 @@
         5,
         7
       ],
-      "unique": false
+      "unique": false,
+      "description": "Gain placeable instruments that empower adjacent allies. Empowered allies regenerate a portion of their Health periodically.\nEmpowered Beach Pop champions gain Attack Speed and also regenerate Mana periodically.\n3 1 Instrument; bonus Attack Speed, Mana regeneration\n5 2 Instruments; bonus Attack Speed, Mana regeneration\n7 AND periodically, an ocean breeze heals Beach Pop champions and grants them Mana.",
+      "description_source": "https://tft.ninja/sets/19/traits/beach-pop"
     },
     {
       "name": "Bodyguard",
@@ -55,7 +59,9 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "While at least one Bodyguard is alive, your team gains bonus Armor and Magic Resist. Bodyguards gain more.\n2 Bonus Armor and Magic Resist for Bodyguards\n4 Bonus Armor and Magic Resist for Bodyguards\n6 Bonus Armor and Magic Resist for Bodyguards",
+      "description_source": "https://tft.ninja/sets/19/traits/bodyguard"
     },
     {
       "name": "Choreographer",
@@ -65,7 +71,9 @@
         4,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Allies who start in the front 2 rows gain Shield. All other allies gain Damage Amp. Choreographers gain double.\n2 Shield; Damage Amp\n3 Shield; Damage Amp\n4 Shield; Damage Amp\n5 Shield; Damage Amp",
+      "description_source": "https://tft.ninja/sets/19/traits/choreographer"
     },
     {
       "name": "Classical",
@@ -74,14 +82,18 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "Classical champions Captivate enemies in unique ways. They gain Damage Amp, increased periodically while an enemy is Captivated.\n2 Bonus Damage Amp; the Captivated deal reduced damage.\n4 Bonus Damage Amp; the Captivated throw roses on death, healing a Classical champion.\n6 Bonus Damage Amp; the Captivated have a chance to join your bench on death.",
+      "description_source": "https://tft.ninja/sets/19/traits/classical"
     },
     {
       "name": "EDM",
       "breakpoints": [
         2
       ],
-      "unique": false
+      "unique": false,
+      "description": "2 EDM Abilities become harder, better, faster, and stronger.",
+      "description_source": "https://tft.ninja/sets/19/traits/edm"
     },
     {
       "name": "Encore",
@@ -89,7 +101,9 @@
         2,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "When Encore champions fire projectiles with their abilities, they fire an extra one with reduced effectiveness.\n2 Reduced projectile effectiveness\n4 Reduced projectile effectiveness",
+      "description_source": "https://tft.ninja/sets/19/traits/encore"
     },
     {
       "name": "Frontman",
@@ -98,7 +112,9 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "Your team gains bonus Health. Frontmen gain more, which increases after the first time they cast.\n2 Bonus Health, increased after the first cast\n4 Bonus Health, increased after the first cast\n6 Bonus Health, increased after the first cast",
+      "description_source": "https://tft.ninja/sets/19/traits/frontman"
     },
     {
       "name": "Gu Feng",
@@ -107,7 +123,9 @@
         3,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "Gu Feng champions gain stats, scaling with your player level.\n2 Bonus Attack Damage and Ability Power, plus Armor and Magic Resist per level.\n3 and bonus Health per level.\n4 Choose between two Scrolls that can be equipped by Gu Feng champions. One of the Scrolls opens a dangerous path to Level 11.",
+      "description_source": "https://tft.ninja/sets/19/traits/gu-feng"
     },
     {
       "name": "Heartsteel",
@@ -117,7 +135,9 @@
         5,
         7
       ],
-      "unique": false
+      "unique": false,
+      "description": "1 Heartsteel members grant your team bonuses.\n3 Choose a Bias, empowering their Ability.\n5 Choose a 2nd Bias.\n7 Heartsteel champions gain an additional portion of active Heartsteel bonuses.\nPrismatic: Buckle up—HEARTSTEEL IS BACK!\nSett: Health\nKayn: Attack Damage\nEzreal: Critical Strike Chance\nK'Sante: Armor and Magic Resist\nAlune: Ability Power\nYone: Omnivamp\nAphelios: Attack Speed\nEmblem: Durability\nSona: Increased Healing and Shielding",
+      "description_source": "https://tft.ninja/sets/19/traits/heartsteel"
     },
     {
       "name": "Hitmaker",
@@ -125,7 +145,9 @@
         2,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "Hitmakers gain bonus Attack Damage. The Hitmakers with the most items become Big Shots, gaining even more Attack Damage.\n2 Big Shot, bonus Attack Damage\n4 Big Shots, bonus Attack Damage",
+      "description_source": "https://tft.ninja/sets/19/traits/hitmaker"
     },
     {
       "name": "Hyperpop",
@@ -135,7 +157,9 @@
         4,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Hyperpop champions gain Health and Attack Speed. After player combat, they generate 4/6/12/40 Hype based on their star level + 1 Hype per takedown.\nEach time you hit a new Hype Level, gain special rewards! At higher trait tiers, gain more Hype!\n2 Bonus Health, bonus Attack Speed\n3 Bonus Health, bonus Attack Speed, Hype multiplier\n4 Bonus Health, bonus Attack Speed, Hype multiplier\n5 Bonus Health, bonus Attack Speed, Hype multiplier",
+      "description_source": "https://tft.ninja/sets/19/traits/hyperpop"
     },
     {
       "name": "Illbeats",
@@ -144,7 +168,9 @@
         3,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "Open the Illbeats Mixer to allocate Decibels. Illbeats champions receive different stats based on your mix. Your team gains a portion of the mix.\n2 Decibels\n3 Decibels\n4 Decibels. The mix is stronger.\nHealth\nAttack Damage\nAbility Power\nGold Chance on Takedown",
+      "description_source": "https://tft.ninja/sets/19/traits/illbeats"
     },
     {
       "name": "Ionic Spark",
@@ -154,7 +180,9 @@
         7,
         10
       ],
-      "unique": false
+      "unique": false,
+      "description": "Fans cheer on Ionic Spark members with gifts periodically. Ionic Spark members gain Health.\n3 Bonus Health; Letters that restore Health and grant Attack Speed\n5 Bonus Health; Personalized gifts that grant Attack Damage or Ability Power\n7 Bonus Health; Periodically after player combat, gain gold and a consumable!\n10 Fans rush the stage!",
+      "description_source": "https://tft.ninja/sets/19/traits/ionic-spark"
     },
     {
       "name": "Jazz",
@@ -163,7 +191,9 @@
         3,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "For each active trait (except uniques), your team gains bonus Health and Damage Amp.\n2 Bonus Health, bonus Damage Amp\n3 Bonus Health, bonus Damage Amp\n4 Bonus Health, bonus Damage Amp",
+      "description_source": "https://tft.ninja/sets/19/traits/jazz"
     },
     {
       "name": "Juggernaut",
@@ -172,7 +202,9 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "Juggernauts gain Durability, increasing based on their missing Health.\n2 Base to maximum Durability\n4 Base to maximum Durability\n6 Base to maximum Durability",
+      "description_source": "https://tft.ninja/sets/19/traits/juggernaut"
     },
     {
       "name": "K/DA",
@@ -186,7 +218,9 @@
         21
       ],
       "unique": false,
-      "count_mode": "stars"
+      "count_mode": "stars",
+      "description": "K/DA champions release new songs based on their total star level. At Combat Start and after a delay, they gain power for each of their songs.\n3 POP/STARS: Reduced max Mana.\n5 DRUM GO DUM: Shield based on max Health.\n7 VILLAIN: Attack Speed that decays over time.\n10 I'LL SHOW YOU: Boost all previous effects.\n13 WATCH ME: Stun all enemies temporarily.\n15 FIRESTARTER: Enemies take magic damage based on their max Health over time.\n21 GIRLS: K/DA members ascend to 4-star.",
+      "description_source": "https://tft.ninja/sets/19/traits/k-da"
     },
     {
       "name": "Manager",
@@ -195,7 +229,9 @@
         3,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "Gain a Spotlight Hex. The ally who starts combat in it gains bonuses at Combat Start and periodically thereafter.\n2 Bonus Attack Damage and Ability Power\n3 AND Mana\n4 AND they drop Gold!",
+      "description_source": "https://tft.ninja/sets/19/traits/manager"
     },
     {
       "name": "Pentakill",
@@ -204,7 +240,9 @@
         5,
         7
       ],
-      "unique": false
+      "unique": false,
+      "description": "Pentakill members gain Attack Damage and Ability Power.\nThe first few enemies to drop below a Health threshold are executed and summon an allied ghoul in their place.\n3 Bonus Attack Damage and Ability Power, a set number of enemies executed\n5 Bonus Attack Damage and Ability Power, a set number of enemies executed\n7 Bonus Attack Damage and Ability Power, a set number of enemies executed. The first enemy to die summons the Iron Maiden instead.\n7 Bonus Attack Damage and Ability Power. MOSH PIT!!!!!!!",
+      "description_source": "https://tft.ninja/sets/19/traits/pentakill"
     },
     {
       "name": "Prodigy",
@@ -214,7 +252,9 @@
         4,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Your team gains bonus Mana Regen. Prodigies gain more.\n2 Bonus Mana Regen\n3 Bonus Mana Regen\n4 Bonus Mana Regen\n5 Bonus Mana Regen; The lowest Health ally heals for a portion of damage dealt by Prodigies' abilities.",
+      "description_source": "https://tft.ninja/sets/19/traits/prodigy"
     },
     {
       "name": "R&B",
@@ -222,7 +262,9 @@
         1,
         2
       ],
-      "unique": false
+      "unique": false,
+      "description": "1 Your team takes less damage from abilities.\n2 Your strongest Mel and Rell are soul-linked. A portion of damage Mel takes is redirected to Rell. Rell heals for a portion of damage dealt by Mel.",
+      "description_source": "https://tft.ninja/sets/19/traits/r-and-b"
     },
     {
       "name": "Renegade",
@@ -232,7 +274,9 @@
         4,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Renegades gain Precision, Critical Strike Chance, and Critical Strike Damage.\n2 Bonus Critical Strike Chance, bonus Critical Strike Damage\n3 Bonus Critical Strike Chance, bonus Critical Strike Damage\n4 Bonus Critical Strike Chance, bonus Critical Strike Damage\n5 Bonus Critical Strike Chance, bonus Critical Strike Damage. Additionally, Renegades gain Durability.",
+      "description_source": "https://tft.ninja/sets/19/traits/renegade"
     },
     {
       "name": "Rock",
@@ -242,7 +286,9 @@
         5,
         7
       ],
-      "unique": false
+      "unique": false,
+      "description": "3 Summon the Infernal Idol.\n4 He heals for a portion of damage dealt by Rock champions.\n5 On cast, he fires a massive blast through the most enemies!\n7 Periodically while he lives, bolts blast nearby enemies, repeating a portion of damage dealt by Rock champions as magic damage.\nThe Infernal Idol grows stronger based on the star level of your Rock champions.",
+      "description_source": "https://tft.ninja/sets/19/traits/rock"
     },
     {
       "name": "Slayer",
@@ -251,7 +297,9 @@
         4,
         6
       ],
-      "unique": false
+      "unique": false,
+      "description": "Slayers gain Attack Speed and Omnivamp, which increases up to a cap, based on their missing Health.\n2 Bonus Attack Speed, bonus Omnivamp\n4 Bonus Attack Speed, bonus Omnivamp\n6 Bonus Attack Speed, bonus Omnivamp",
+      "description_source": "https://tft.ninja/sets/19/traits/slayer"
     },
     {
       "name": "Swiftstriker",
@@ -261,7 +309,9 @@
         4,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Your team gains Attack Speed.\nSwiftstrikers gain more periodically, up to a stack limit.\n2 Bonus Attack Speed per stack\n3 Bonus Attack Speed per stack\n4 Bonus Attack Speed per stack\n5 Bonus Attack Speed per stack",
+      "description_source": "https://tft.ninja/sets/19/traits/swiftstriker"
     },
     {
       "name": "Trickshot",
@@ -270,7 +320,9 @@
         3,
         4
       ],
-      "unique": false
+      "unique": false,
+      "description": "Trickshots' Attacks and Abilities ricochet. Each ricochet deals a percentage of the previous bounce's damage.\n2 Ricochets; a portion of previous damage\n3 Ricochets; a portion of previous damage\n4 Ricochets; a portion of previous damage",
+      "description_source": "https://tft.ninja/sets/19/traits/trickshot"
     },
     {
       "name": "True Damage",
@@ -278,28 +330,36 @@
         3,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "While on the A-Side, earn Bling for winning player combat. On the B-Side, earn Bling for losing.\nPeriodically, choose to convert Bling into rewards or Keep Rising.\nA-Side: Win\n3 True Damage members deal bonus true damage. Gain Bling on kill + additional Bling if you win combat.\n5 Bonus true damage. Bling on kill + additional Bling if you win combat.\nPrismatic: KNOW MY NAME blasts from the record player!\nTrue Damage members deal 99% bonus true damage and earn double the bling.\nB-Side: Lose\n3 After losing, gain Bling + additional Bling per consecutive loss on the B-Side. If you win, lose a portion of your Bling.\n5 Each round after combat, heal some player Health and gain XP.\nPrismatic: GIANTS blasts from the record player!\nTrue Damage members deal 99% bonus true damage and drop gold on kill.",
+      "description_source": "https://tft.ninja/sets/19/traits/true-damage"
     },
     {
       "name": "8-Bit",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Keep score of your team's damage dealt, with Miss Fortune’s damage contributing triple. When you beat a high score, get a prize.",
+      "description_source": "https://tft.ninja/sets/19/traits/8-bit"
     },
     {
       "name": "Beat Master",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 At a threshold of her max Health, Rell mounts up and fully heals over time.\nWhile mounted, her max Mana is reduced and every 3rd attack deals a portion of her total Armor and Magic Resist as magic damage in a line.",
+      "description_source": "https://tft.ninja/sets/19/traits/beat-master"
     },
     {
       "name": "Boy Band",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Rakan is accompanied by placeable clones that have a portion of his max Health, deal damage, and copy his Completed and Radiant items.",
+      "description_source": "https://tft.ninja/sets/19/traits/boy-band"
     },
     {
       "name": "Collab",
@@ -307,119 +367,153 @@
         3,
         5
       ],
-      "unique": false
+      "unique": false,
+      "description": "Collab champions become inspired after taking or dealing damage a set number of times, gaining Attack Damage and Ability Power.\nEvery time you reach the required number of inspirations during player combat, gain copies of Collab champions.\n3 Bonus Attack Damage and Ability Power\n5 Bonus Attack Damage and Ability Power\nEach game a different set of champions gain the Collab trait!",
+      "description_source": "https://tft.ninja/sets/19/traits/collab"
     },
     {
       "name": "Composer",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Mystical Instruments can appear in your shop. There is one of each rarity.\nFor each one you have, your team gains bonus Ability Power. Malzahar gains double.\nIf he has dealt enough damage and you have all 5 instruments, Malzahar writes his masterpiece, unlocking Baron Nashor.",
+      "description_source": "https://tft.ninja/sets/19/traits/composer"
     },
     {
       "name": "Country",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Combat Start: If your strongest Alistar has enough bonus Health, he gains Durability.",
+      "description_source": "https://tft.ninja/sets/19/traits/country"
     },
     {
       "name": "Disco",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Your team heals for a portion of max Health per second.\nEnter Disco Fever after casting enough times, granting your team Attack Speed.",
+      "description_source": "https://tft.ninja/sets/19/traits/disco"
     },
     {
       "name": "Emo",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Amumu gains bonus Armor and Magic Resist if he starts combat with no adjacent allies.",
+      "description_source": "https://tft.ninja/sets/19/traits/emo"
     },
     {
       "name": "Freestyle",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Akali gains a different passive on each side of the True Damage record. A-Side prints gold. B-Side restores Player Health.",
+      "description_source": "https://tft.ninja/sets/19/traits/freestyle"
     },
     {
       "name": "Goth",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 The first time your strongest Zeri damages an enemy each combat, vampiric bats steal some Attack Damage from them, bringing it back to her.",
+      "description_source": "https://tft.ninja/sets/19/traits/goth"
     },
     {
       "name": "Hype Man",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Whenever a Hyperpop champion deals enough damage or takes enough damage, store an extra Hyperpop Hype.",
+      "description_source": "https://tft.ninja/sets/19/traits/hype-man"
     },
     {
       "name": "Indie",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 After combat, Seraphine attracts new followers, granting you a random champion.\nWhen you 3-star a champion, she becomes a Rising Star, upgrading her Ability and granting you a special subscriber reward.\nAfter 3-starring enough champions, she becomes a Superstar!",
+      "description_source": "https://tft.ninja/sets/19/traits/indie"
     },
     {
       "name": "Mariachi",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 When Nidalee casts her Ability while above a Health threshold, she transforms into Cougar Form and casts Pounce Party. Otherwise, she casts Dance of Life.\nWhenever she drops below a Health threshold, she leaps away and transforms back to Human form.",
+      "description_source": "https://tft.ninja/sets/19/traits/mariachi"
     },
     {
       "name": "Melodic Heart",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 For the opening moments of combat, your strongest Gwen is surrounded by Mist and cannot be targeted by attacks. Allies gain Durability while within the Mist.",
+      "description_source": "https://tft.ninja/sets/19/traits/melodic-heart"
     },
     {
       "name": "One Monster Band",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Baron Nashor takes up 2 team slots and is unstoppable.\nAfter the first time Baron Nashor casts, he envelops the board in song, stealing a portion of the Attack Damage, Ability Power, Attack Speed, and Critical Strike Chance from all enemies.",
+      "description_source": "https://tft.ninja/sets/19/traits/one-monster-band"
     },
     {
       "name": "Producer",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 When Sona is fielded, choose a band to feature, gaining their trait.\nSona converts all bonus Attack Damage and Attack Speed into Ability Power.",
+      "description_source": "https://tft.ninja/sets/19/traits/producer"
     },
     {
       "name": "Record Mogul",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Gain a Record Contract now and periodically thereafter. Contracted champions gain Damage Amp and their kills grant Dr. Mundo permanent Health.\nThe Record Contract is returned when the Recording Artist is sold or benched.",
+      "description_source": "https://tft.ninja/sets/19/traits/record-mogul"
     },
     {
       "name": "Synthwave",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 At a Health threshold, gain a temporary Shield equal to a portion of Healing and Shielding received this combat.",
+      "description_source": "https://tft.ninja/sets/19/traits/synthwave"
     },
     {
       "name": "Tango",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Twisted Fate marks the nearest ally as his Tango Partner. They ignite with passion, gaining Attack Speed. Their damage Burns and Wounds enemies for a time.\nBurn: Deals a percent of the target’s max Health as true damage every second.\nWound: Reduces healing received.",
+      "description_source": "https://tft.ninja/sets/19/traits/tango"
     },
     {
       "name": "Windblessed",
       "breakpoints": [
         1
       ],
-      "unique": true
+      "unique": true,
+      "description": "1 Combat Start: Your strongest Janna releases a tornado that travels forward, knocking up enemies in its path.",
+      "description_source": "https://tft.ninja/sets/19/traits/windblessed"
     }
   ],
   "champions": [
@@ -430,7 +524,9 @@
         "Ionic Spark",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/elise"
     },
     {
       "name": "Gnar",
@@ -439,7 +535,9 @@
         "Pentakill",
         "Trickshot"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Specialist",
+      "role_source": "https://tft.ninja/sets/19/units/gnar"
     },
     {
       "name": "Katarina",
@@ -448,7 +546,9 @@
         "Classical",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/katarina"
     },
     {
       "name": "Kayn",
@@ -457,7 +557,9 @@
         "Heartsteel",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/kayn"
     },
     {
       "name": "Kennen",
@@ -466,7 +568,9 @@
         "True Damage",
         "Bodyguard"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/kennen"
     },
     {
       "name": "Kobuko",
@@ -478,7 +582,9 @@
       "unlockable": true,
       "unlock_condition": "2-star Ziggs with 1 Item",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/kobuko"
     },
     {
       "name": "Lillia",
@@ -487,7 +593,9 @@
         "K/DA",
         "Bodyguard"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/lillia"
     },
     {
       "name": "Neeko",
@@ -497,7 +605,9 @@
         "Encore",
         "Prodigy"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/neeko"
     },
     {
       "name": "Olaf",
@@ -507,7 +617,9 @@
         "Rock",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/olaf"
     },
     {
       "name": "Sett",
@@ -516,7 +628,9 @@
         "Heartsteel",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/sett"
     },
     {
       "name": "Taric",
@@ -525,7 +639,9 @@
         "Beach Pop",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/taric"
     },
     {
       "name": "Varus",
@@ -534,7 +650,9 @@
         "Rock",
         "Encore"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/varus"
     },
     {
       "name": "Yunara",
@@ -543,7 +661,9 @@
         "Ionic Spark",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/yunara"
     },
     {
       "name": "Ziggs",
@@ -553,7 +673,9 @@
         "Arcanist",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/ziggs"
     },
     {
       "name": "Zoe",
@@ -562,7 +684,9 @@
         "Beach Pop",
         "Arcanist"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/zoe"
     },
     {
       "name": "Annie",
@@ -572,7 +696,9 @@
         "Arcanist",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/annie"
     },
     {
       "name": "Ashe",
@@ -584,7 +710,9 @@
       "unlockable": true,
       "unlock_condition": "Have a Beach Pop champion holding 2 items.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/ashe"
     },
     {
       "name": "Camille",
@@ -593,7 +721,9 @@
         "Rock",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/camille"
     },
     {
       "name": "Ezreal",
@@ -602,7 +732,9 @@
         "Heartsteel",
         "Encore"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/ezreal"
     },
     {
       "name": "Gragas",
@@ -611,7 +743,9 @@
         "K/DA",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/gragas"
     },
     {
       "name": "Illaoi",
@@ -620,7 +754,9 @@
         "Illbeats",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/illaoi"
     },
     {
       "name": "Jax",
@@ -630,7 +766,9 @@
         "Bodyguard",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/jax"
     },
     {
       "name": "Karthus",
@@ -639,7 +777,9 @@
         "Pentakill",
         "Arcanist"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/karthus"
     },
     {
       "name": "Lucian",
@@ -649,7 +789,9 @@
         "Hitmaker",
         "Encore"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/lucian"
     },
     {
       "name": "Lulu",
@@ -661,7 +803,9 @@
       "unlockable": true,
       "unlock_condition": "Have your Hyperpop champions cast 10 times with the trait active.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/lulu"
     },
     {
       "name": "Lux",
@@ -670,7 +814,9 @@
         "Ionic Spark",
         "Prodigy"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/lux"
     },
     {
       "name": "Nasus",
@@ -681,7 +827,9 @@
       ],
       "unlockable": false,
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
-      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/nasus"
     },
     {
       "name": "Qiyana",
@@ -690,7 +838,9 @@
         "True Damage",
         "Renegade"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/qiyana"
     },
     {
       "name": "Renata Glasc",
@@ -701,7 +851,9 @@
       ],
       "unlockable": false,
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
-      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/renata-glasc"
     },
     {
       "name": "Renekton",
@@ -710,7 +862,9 @@
         "Beach Pop",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/renekton"
     },
     {
       "name": "Samira",
@@ -723,7 +877,9 @@
       "unlockable": true,
       "unlock_condition": "Have a Classical, Renegade, or Trickshot champion holding 2 items.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/samira"
     },
     {
       "name": "Seraphine",
@@ -734,7 +890,9 @@
       "unlockable": true,
       "unlock_condition": "Reroll 4 times before the Stage 2 carousel.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/seraphine"
     },
     {
       "name": "Tristana",
@@ -746,7 +904,9 @@
       "unlockable": true,
       "unlock_condition": "Get 5 kills with Hyperpop active.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/tristana"
     },
     {
       "name": "Amumu",
@@ -754,7 +914,9 @@
       "traits": [
         "Emo"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/amumu"
     },
     {
       "name": "Bard",
@@ -763,7 +925,9 @@
         "Jazz",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/bard"
     },
     {
       "name": "Braum",
@@ -772,7 +936,9 @@
         "Illbeats",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/braum"
     },
     {
       "name": "Briar",
@@ -781,7 +947,9 @@
         "Ionic Spark",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Assassin",
+      "role_source": "https://tft.ninja/sets/19/units/briar"
     },
     {
       "name": "Draven",
@@ -790,7 +958,9 @@
         "Illbeats",
         "Trickshot"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/draven"
     },
     {
       "name": "Ekko",
@@ -800,7 +970,9 @@
         "Juggernaut",
         "Prodigy"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/ekko"
     },
     {
       "name": "Evelynn",
@@ -812,7 +984,9 @@
       "unlockable": true,
       "unlock_condition": "Have 3 K/DA or Renegade champions.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/evelynn"
     },
     {
       "name": "Galio",
@@ -823,7 +997,9 @@
       ],
       "unlockable": false,
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
-      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/galio"
     },
     {
       "name": "K'Sante",
@@ -832,7 +1008,9 @@
         "Heartsteel",
         "Bodyguard"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/k-sante"
     },
     {
       "name": "Kai'Sa",
@@ -841,7 +1019,9 @@
         "K/DA",
         "Trickshot"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/kai-sa"
     },
     {
       "name": "Malzahar",
@@ -850,7 +1030,9 @@
         "Composer",
         "Prodigy"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/malzahar"
     },
     {
       "name": "Senna",
@@ -859,7 +1041,9 @@
         "True Damage",
         "Hitmaker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/senna"
     },
     {
       "name": "Swain",
@@ -869,7 +1053,9 @@
         "Arcanist",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/swain"
     },
     {
       "name": "Syndra",
@@ -880,7 +1066,9 @@
       ],
       "unlockable": false,
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
-      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge."
+      "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/syndra"
     },
     {
       "name": "Tibbers",
@@ -892,7 +1080,9 @@
       "unlockable": true,
       "unlock_condition": "Have a 2-star Annie holding 1 item.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/tibbers"
     },
     {
       "name": "Viego",
@@ -902,7 +1092,9 @@
         "Choreographer",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/viego"
     },
     {
       "name": "Ahri",
@@ -911,7 +1103,9 @@
         "K/DA",
         "Choreographer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/ahri"
     },
     {
       "name": "Alistar",
@@ -922,7 +1116,9 @@
       "unlockable": true,
       "unlock_condition": "Equip a Chain Vest to a Caster or Marksman.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/alistar"
     },
     {
       "name": "Alune",
@@ -935,7 +1131,9 @@
       "unlockable": true,
       "unlock_condition": "Have 4 unique Heartsteel or Prodigy champions.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/alune"
     },
     {
       "name": "Aurora",
@@ -944,7 +1142,9 @@
         "Ionic Spark",
         "Renegade"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/aurora"
     },
     {
       "name": "Garen",
@@ -953,7 +1153,9 @@
         "Synthwave",
         "Choreographer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/garen"
     },
     {
       "name": "Graves",
@@ -962,7 +1164,9 @@
         "Beach Pop",
         "Renegade"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/graves"
     },
     {
       "name": "Jhin",
@@ -971,7 +1175,9 @@
         "Classical",
         "Encore"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Specialist",
+      "role_source": "https://tft.ninja/sets/19/units/jhin"
     },
     {
       "name": "Jinx",
@@ -983,7 +1189,9 @@
       "unlockable": true,
       "unlock_condition": "Have an Ionic Spark or Hitmaker champion holding 3 items.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/jinx"
     },
     {
       "name": "Kayle",
@@ -995,7 +1203,9 @@
       "unlockable": true,
       "unlock_condition": "Have 4 unique Pentakill or Swiftstriker champions.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/kayle"
     },
     {
       "name": "Leona",
@@ -1005,7 +1215,9 @@
         "Bodyguard",
         "Manager"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/leona"
     },
     {
       "name": "Locke",
@@ -1014,7 +1226,9 @@
         "Rock",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Assassin",
+      "role_source": "https://tft.ninja/sets/19/units/locke"
     },
     {
       "name": "Mel",
@@ -1023,7 +1237,9 @@
         "R&B",
         "Arcanist"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/mel"
     },
     {
       "name": "Shyvana",
@@ -1032,7 +1248,9 @@
         "Ionic Spark",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/shyvana"
     },
     {
       "name": "Thresh",
@@ -1045,7 +1263,9 @@
       "unlock_condition": "Have enemies spend 300 seconds Captivated by Classical.",
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
-      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Enemies spend 275 seconds Captivated by Classical. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Enemies spend 275 seconds Captivated by Classical. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/thresh"
     },
     {
       "name": "Vayne",
@@ -1057,7 +1277,9 @@
       "unlockable": true,
       "unlock_condition": "Field Rock for 3 combats.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/vayne"
     },
     {
       "name": "Wukong",
@@ -1068,7 +1290,9 @@
       "unlockable": true,
       "unlock_condition": "Have allies deal 25,000 damage while fielding Xayah.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Tank",
+      "role_source": "https://tft.ninja/sets/19/units/wukong"
     },
     {
       "name": "Xayah",
@@ -1077,7 +1301,9 @@
         "Gu Feng",
         "Hitmaker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/xayah"
     },
     {
       "name": "Yasuo",
@@ -1090,7 +1316,9 @@
       "unlock_condition": "Have 7 star levels of True Damage and Slayer champions.",
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
-      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Level 7, 6 unique star levels of True Damage or Slayer champions. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Level 7, 6 unique star levels of True Damage or Slayer champions. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/yasuo"
     },
     {
       "name": "Yone",
@@ -1099,7 +1327,9 @@
         "Heartsteel",
         "Slayer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/yone"
     },
     {
       "name": "Yorick",
@@ -1108,7 +1338,9 @@
         "Pentakill",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/yorick"
     },
     {
       "name": "Yuumi",
@@ -1117,7 +1349,9 @@
         "Illbeats",
         "Encore"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/yuumi"
     },
     {
       "name": "Zac",
@@ -1129,7 +1363,9 @@
       "unlockable": true,
       "unlock_condition": "Have 5 unique Beach Pop or Juggernaut champions.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/zac"
     },
     {
       "name": "Akali (K/DA)",
@@ -1141,7 +1377,9 @@
       "exclusive_group": "akali",
       "unlock_condition": "Have 12 unique star levels of K/DA without True Damage Akali unlocked.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Assassin",
+      "role_source": "https://tft.ninja/sets/19/units/akali-k-da"
     },
     {
       "name": "Akali (True Damage)",
@@ -1155,7 +1393,9 @@
       "unlock_condition": "Earn 375 True Damage Bling without K/DA Akali unlocked.",
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
-      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 350 True Damage Bling, without the other Akali unlocked. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 350 True Damage Bling, without the other Akali unlocked. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/akali-true-damage"
     },
     {
       "name": "Aphelios",
@@ -1166,7 +1406,9 @@
       "unlockable": true,
       "unlock_condition": "Have a 2-star Alune or Yone.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/aphelios"
     },
     {
       "name": "Dr. Mundo",
@@ -1175,7 +1417,9 @@
         "Record Mogul",
         "Manager"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/dr-mundo"
     },
     {
       "name": "Gwen",
@@ -1187,7 +1431,9 @@
       "unlockable": true,
       "unlock_condition": "Have Ionic Spark fans cheer 250 times.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/gwen"
     },
     {
       "name": "Janna",
@@ -1201,7 +1447,9 @@
       "unlock_condition": "Earn 20 interest while fielding Xayah.",
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
-      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 25 gold of interest while fielding Xayah. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks"
+      "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 25 gold of interest while fielding Xayah. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/janna"
     },
     {
       "name": "Lee Sin",
@@ -1212,7 +1460,9 @@
       "unlockable": true,
       "unlock_condition": "Deal 40 player damage while fielding Xayah.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/lee-sin"
     },
     {
       "name": "Miss Fortune",
@@ -1221,7 +1471,9 @@
         "8-Bit",
         "Hitmaker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/miss-fortune"
     },
     {
       "name": "Mordekaiser",
@@ -1232,7 +1484,9 @@
       "unlockable": true,
       "unlock_condition": "Have 10 unique star levels of Pentakill.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/mordekaiser"
     },
     {
       "name": "Nidalee",
@@ -1241,7 +1495,9 @@
         "Mariachi",
         "Choreographer"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/nidalee"
     },
     {
       "name": "Nunu & Willump",
@@ -1250,7 +1506,9 @@
         "Disco",
         "Frontman"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Specialist",
+      "role_source": "https://tft.ninja/sets/19/units/nunu-and-willump"
     },
     {
       "name": "Pyke",
@@ -1262,7 +1520,9 @@
       "unlockable": true,
       "unlock_condition": "Have 85 or more gold at the end of combat.",
       "unlock_level": "Level 7",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/pyke"
     },
     {
       "name": "Rell",
@@ -1271,7 +1531,9 @@
         "R&B",
         "Beat Master"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Tank",
+      "role_source": "https://tft.ninja/sets/19/units/rell"
     },
     {
       "name": "Taliyah",
@@ -1283,7 +1545,9 @@
       "unlockable": true,
       "unlock_condition": "Have a champion of each cost start in a Beach Pop hex.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/taliyah"
     },
     {
       "name": "Teemo",
@@ -1295,7 +1559,9 @@
       "unlockable": true,
       "unlock_condition": "Collect 900 Hyperpop Hype.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Caster",
+      "role_source": "https://tft.ninja/sets/19/units/teemo"
     },
     {
       "name": "Twisted Fate",
@@ -1304,7 +1570,9 @@
         "Tango",
         "Trickshot"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Magic Marksman",
+      "role_source": "https://tft.ninja/sets/19/units/twisted-fate"
     },
     {
       "name": "Vi",
@@ -1313,7 +1581,9 @@
         "EDM",
         "Juggernaut"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/vi"
     },
     {
       "name": "Vladimir",
@@ -1325,7 +1595,9 @@
       "unlockable": true,
       "unlock_condition": "Have only 1 champions in the front two rows of the battlefield.",
       "unlock_level": "Level 8",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/vladimir"
     },
     {
       "name": "Zeri",
@@ -1334,7 +1606,9 @@
         "Goth",
         "Swiftstriker"
       ],
-      "unlockable": false
+      "unlockable": false,
+      "role": "Attack Caster",
+      "role_source": "https://tft.ninja/sets/19/units/zeri"
     },
     {
       "name": "Baron Nashor",
@@ -1346,7 +1620,9 @@
       "slots": 2,
       "unlock_condition": "Collect all 5 members of Baron’s ensemble and deal 60,000 damage with your strongest Malzahar.",
       "unlock_level": "Any",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Fighter",
+      "role_source": "https://tft.ninja/sets/19/units/baron-nashor"
     },
     {
       "name": "Rakan",
@@ -1357,7 +1633,9 @@
       "unlockable": true,
       "unlock_condition": "Win 4 combats in a row at level 8 or above, and lose 3 combats in a row at level 8 or above.",
       "unlock_level": "Level 8",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Assassin",
+      "role_source": "https://tft.ninja/sets/19/units/rakan"
     },
     {
       "name": "Smeech",
@@ -1369,7 +1647,9 @@
       "unlockable": true,
       "unlock_condition": "Have 8 or more non-unique traits active.",
       "unlock_level": "Level 9",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Attack Specialist",
+      "role_source": "https://tft.ninja/sets/19/units/smeech"
     },
     {
       "name": "Sona",
@@ -1381,7 +1661,9 @@
       "unlockable": true,
       "unlock_condition": "Have Collab champions become inspired 15 times.",
       "unlock_level": "Level 10",
-      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions"
+      "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
+      "role": "Magic Specialist",
+      "role_source": "https://tft.ninja/sets/19/units/sona"
     }
   ],
   "collab_groups": [

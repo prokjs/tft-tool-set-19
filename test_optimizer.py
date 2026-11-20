@@ -4,9 +4,10 @@ import copy
 import json
 import tempfile
 import unittest
+from itertools import combinations
 from pathlib import Path
 
-from optimizer import BAND_TRAITS, load_data, optimize
+from optimizer import BAND_TRAITS, _evaluate_team, load_data, optimize, planned_stars
 
 
 def fixture():
@@ -40,6 +41,77 @@ def fixture():
         ],
     }
 
+
+def jazz_fixture():
+    return {
+        "traits": [
+            {"name": name, "breakpoints": points, "unique": unique}
+            for name, points, unique in [
+                ("Collab", [3, 5], False), ("Jazz", [2, 3], False),
+                ("Link", [2], False), ("Other", [2], False),
+                ("Solo", [1, 2], True),
+            ]
+        ],
+        "champions": [
+            {"name": name, "cost": 1, "traits": traits, "unlockable": False}
+            for name, traits in [
+                ("BaseJazz", ["Jazz"]), ("Pool", ["Link"]), ("Support", ["Other"]),
+                ("AMismatch", ["Jazz", "Other"]), ("ZMatch", ["Jazz", "Link"]),
+            ]
+        ],
+    }
+
+
+def frontline_fixture():
+    return {
+        "traits": [
+            {"name": name, "breakpoints": [2, 4], "unique": False}
+            for name in ("Bodyguard", "Juggernaut")
+        ],
+        "champions": [
+            {"name": f"{prefix}{index}", "cost": 1, "traits": [trait], "unlockable": False}
+            for prefix, trait in (("Body", "Bodyguard"), ("Jug", "Juggernaut"))
+            for index in range(1, 5)
+        ],
+    }
+
+
+
+def late_game_fixture():
+    return {
+        "traits": [],
+        "champions": [
+            {"name": f"F{index}", "cost": 1, "traits": [], "unlockable": False}
+            for index in range(9)
+        ] + [
+            {"name": name, "cost": cost, "traits": [], "role": role, "unlockable": False}
+            for name, cost, role in [
+                ("FourTank", 4, "Magic Tank"), ("SecondTank", 4, "Attack Tank"),
+                ("ThreeTank", 3, "Attack Tank"), ("Premium", 5, "Magic Caster"),
+                ("Unknown", 4, ""), ("Senna", 5, "Magic Caster"),
+            ]
+        ],
+    }
+
+
+def strategy_fixture(trait_name):
+    return {
+        "traits": [{"name": trait_name, "breakpoints": [2, 4, 5], "unique": False}],
+        "champions": [
+            {"name": f"F{index}", "cost": 1, "traits": [], "unlockable": False}
+            for index in range(10)
+        ] + [
+            {"name": f"Low{index}", "cost": 1, "traits": [trait_name], "unlockable": False}
+            for index in range(1, 6)
+        ] + [
+            {"name": name, "cost": cost, "traits": traits, "unlockable": False}
+            for name, cost, traits in [
+                ("Qiyana", 2, [trait_name]), ("Ekko", 3, [trait_name]),
+                ("Carry", 4, [trait_name]), ("Senna", 5, [trait_name]),
+                ("Impostor", 5, []),
+            ]
+        ],
+    }
 
 def row(result, name):
     return next(item for item in result["traits"] if item["name"] == name)
@@ -223,6 +295,419 @@ class OptimizerTests(unittest.TestCase):
         self.assertIn("Synergistic", synergistic["champions"])
         self.assertLess(synergistic["cost"], premium["cost"])
         self.assertGreater(synergistic["active"], premium["active"])
+
+    def test_connected_jazz_beats_equivalent_unmatched_choices(self):
+        self.data = jazz_fixture()
+        fixed = ["BaseJazz", "Pool", "Support"]
+        for mode in ("balanced", "high_value"):
+            with self.subTest(mode=mode):
+                connected = self.search(
+                    collab=["Pool"], size=4, locked=fixed, mode=mode, limit=1,
+                )[0]
+                unmatched = self.search(
+                    collab=["Pool"], size=4, locked=fixed + ["AMismatch"], mode=mode,
+                )[0]
+                self.assertIn("ZMatch", connected["champions"])
+                for field in ("active", "tiers", "cost", "frontline"):
+                    self.assertEqual(connected[field], unmatched[field])
+                self.assertEqual(connected["score"] - unmatched["score"], 40.0)
+        breadth = self.search(
+            collab=["Pool"], size=4, locked=fixed, mode="synergies", limit=1,
+        )[0]
+        self.assertIn("AMismatch", breadth["champions"])
+
+    def test_unfielded_pool_and_catalog_jazz_matches_do_not_add_bonus(self):
+        self.data = jazz_fixture()
+        self.data["champions"].append({
+            "name": "Catalog", "cost": 1, "traits": ["Collab", "Other"],
+            "unlockable": False,
+        })
+        boards = [
+            ["BaseJazz", "Pool", "Support", "AMismatch"],
+            ["BaseJazz", "ZMatch", "Support", "AMismatch"],
+            ["BaseJazz", "AMismatch", "Catalog"],
+        ]
+        for mode in ("balanced", "high_value"):
+            for names in boards:
+                with self.subTest(mode=mode, names=names):
+                    with_pool = self.search(
+                        collab=["Pool"], size=len(names), locked=names, mode=mode,
+                    )[0]
+                    without_pool = self.search(
+                        collab=[], size=len(names), locked=names, mode=mode,
+                    )[0]
+                    self.assertEqual(with_pool["score"], without_pool["score"])
+                    self.assertEqual(with_pool["active"], without_pool["active"])
+                    self.assertGreater(row(with_pool, "Jazz")["tier"], 0)
+
+    def test_jazz_bonus_requires_activation_even_with_a_connection(self):
+        self.data = jazz_fixture()
+        for collab, names in [
+            (["Pool"], ["Pool", "ZMatch"]),
+            (["ZMatch"], ["ZMatch", "Support"]),
+        ]:
+            for mode in ("balanced", "high_value"):
+                with self.subTest(mode=mode, collab=collab):
+                    result = self.search(
+                        collab=collab, size=2, locked=names, mode=mode,
+                    )[0]
+                    self.assertEqual(row(result, "Jazz")["tier"], 0)
+                    expected = 110.0 * result["active"] + 20.0
+                    if mode == "high_value":
+                        expected += 30.0 * result["cost"]
+                    self.assertEqual(result["score"], expected)
+
+    def test_fielded_collab_jazz_qualifies_directly(self):
+        self.data = jazz_fixture()
+        for mode in ("balanced", "high_value"):
+            with self.subTest(mode=mode):
+                names = ["BaseJazz", "AMismatch", "Support"]
+                direct = self.search(
+                    collab=["AMismatch"], size=3, locked=names, mode=mode,
+                )[0]
+                ordinary = self.search(collab=[], size=3, locked=names, mode=mode)[0]
+                self.assertEqual(direct["score"] - ordinary["score"], 40.0)
+                self.assertEqual(row(direct, "Collab")["count"], 1)
+                names = ["BaseJazz", "ZMatch", "Support"]
+                unfielded = self.search(
+                    collab=["AMismatch"], size=3, locked=names, mode=mode,
+                )[0]
+                ordinary = self.search(collab=[], size=3, locked=names, mode=mode)[0]
+                self.assertEqual(unfielded["score"], ordinary["score"])
+
+    def test_featured_sona_jazz_qualifies_only_when_fielded(self):
+        self.data = jazz_fixture()
+        self.data["champions"].append({
+            "name": "Sona", "cost": 1, "traits": ["Collab"], "unlockable": False,
+        })
+        for mode in ("balanced", "high_value"):
+            with self.subTest(mode=mode):
+                featured = self.search(
+                    collab=[], size=3, locked=["BaseJazz", "Sona", "Support"],
+                    mode=mode, sona_band="Jazz",
+                )[0]
+                self.assertEqual(row(featured, "Jazz")["count"], 2)
+                self.assertEqual(row(featured, "Collab")["count"], 1)
+                self.assertEqual(featured["active"], 1)
+                self.assertEqual(featured["tiers"], 1)
+                self.assertEqual(featured["score"], 150.0 + (90.0 if mode == "high_value" else 0.0))
+                names = ["BaseJazz", "ZMatch", "Support"]
+                unfielded = self.search(
+                    collab=[], size=3, locked=names, mode=mode, sona_band="Jazz",
+                )[0]
+                ordinary = self.search(collab=[], size=3, locked=names, mode=mode)[0]
+                self.assertEqual(unfielded, ordinary)
+
+    def test_unique_native_matches_neither_bridge_nor_gain_tier_weight(self):
+        self.data = jazz_fixture()
+        self.data["champions"] += [
+            {"name": name, "cost": 1, "traits": traits, "unlockable": False}
+            for name, traits in [
+                ("UniqueJazz", ["Jazz", "Solo"]), ("UniquePool", ["Solo"]),
+            ]
+        ]
+        for mode in ("balanced", "high_value"):
+            with self.subTest(mode=mode):
+                result = self.search(
+                    collab=["UniquePool"], size=3,
+                    locked=["BaseJazz", "UniqueJazz", "UniquePool"], mode=mode,
+                )[0]
+                self.assertEqual(row(result, "Solo")["tier"], 2)
+                self.assertEqual(result["active"], 1)
+                self.assertEqual(result["tiers"], 1)
+                self.assertEqual(result["score"], 131.0 + (90.0 if mode == "high_value" else 0.0))
+
+    def test_silver_frontline_outvalues_two_bronze_traits(self):
+        self.data = frontline_fixture()
+        for mode in ("balanced", "high_value"):
+            mixed = self.search(
+                collab=[], size=4, locked=["Body1", "Body2", "Jug1", "Jug2"], mode=mode,
+            )[0]
+            for prefix in ("Body", "Jug"):
+                with self.subTest(mode=mode, trait=prefix):
+                    silver = self.search(
+                        collab=[], size=4, locked=[f"{prefix}{index}" for index in range(1, 5)],
+                        mode=mode,
+                    )[0]
+                    self.assertEqual(silver["cost"], mixed["cost"])
+                    self.assertEqual(silver["frontline"], mixed["frontline"])
+                    self.assertEqual(silver["active"], 1)
+                    self.assertEqual(silver["tiers"], 2)
+                    self.assertEqual(silver["score"] - mixed["score"], 80.0)
+            best = self.search(collab=[], size=4, mode=mode, limit=1)[0]
+            self.assertEqual(best["active"], 1)
+            self.assertEqual(best["tiers"], 2)
+            self.assertGreater(best["score"], mixed["score"])
+
+    def test_synergies_mode_keeps_breadth_over_silver_frontline(self):
+        self.data = frontline_fixture()
+        best = self.search(collab=[], size=4, mode="synergies", limit=1)[0]
+        self.assertEqual(best["active"], 2)
+        self.assertEqual(best["tiers"], 2)
+        self.assertEqual(row(best, "Bodyguard")["count"], 2)
+        self.assertEqual(row(best, "Juggernaut")["count"], 2)
+        self.assertEqual(best["score"], 220.0)
+        silver = self.search(
+            collab=[], size=4, locked=["Jug1", "Jug2", "Jug3", "Jug4"], mode="synergies",
+        )[0]
+        self.assertEqual(silver["score"], 120.0)
+
+    def test_jazz_beam_matches_final_scoring_with_locks_and_exclusions(self):
+        for reverse_order in (False, True):
+            self.data = jazz_fixture()
+            aliases = {"Pool": "ZPool", "ZMatch": "AJazz"} if reverse_order else {}
+            for champion in self.data["champions"]:
+                champion["name"] = aliases.get(champion["name"], champion["name"])
+            pool, jazz = aliases.get("Pool", "Pool"), aliases.get("ZMatch", "ZMatch")
+            trait_map = {trait["name"]: trait for trait in self.data["traits"]}
+            champion_map = {champion["name"]: champion for champion in self.data["champions"]}
+            boards = list(combinations(sorted(set(champion_map) - {"AMismatch"}), 3))
+            for locked in ([], [pool], [jazz], [pool, jazz]):
+                for mode in ("balanced", "high_value", "synergies"):
+                    with self.subTest(reverse_order=reverse_order, locked=locked, mode=mode):
+                        evaluated = [
+                            _evaluate_team(list(board), trait_map, champion_map, [pool], mode, "", {})
+                            for board in boards if set(locked).issubset(board)
+                        ]
+                        expected = min(evaluated, key=lambda result: (
+                            -result["score"], -result["active"], -result["tiers"],
+                            -result["cost"] if mode == "high_value" else result["cost"],
+                            result["champions"],
+                        ))
+                        actual = self.search(
+                            collab=[pool], size=3, locked=locked, excluded=["AMismatch"],
+                            mode=mode, limit=1,
+                        )[0]
+                        self.assertEqual(actual, expected)
+
+    def test_planned_stars_use_only_sourced_four_cost_tanks_and_preserve_overrides(self):
+        self.data = late_game_fixture()
+        champions = {champion["name"]: champion for champion in self.data["champions"]}
+        original = copy.deepcopy(champions)
+        self.assertTrue(all(rank == 1 for rank in planned_stars(champions, 9).values()))
+        ranks = planned_stars(champions, 10)
+        self.assertEqual(ranks["FourTank"], 2)
+        self.assertEqual(ranks["SecondTank"], 2)
+        self.assertEqual(ranks["ThreeTank"], 1)
+        self.assertEqual(ranks["Unknown"], 1)
+        self.assertEqual(ranks["Premium"], 1)
+        requested = {"FourTank": 1, "ThreeTank": 3, "Premium": 2}
+        overrides = planned_stars(champions, 11, requested)
+        for name, rank in requested.items():
+            self.assertEqual(overrides[name], rank)
+        self.assertEqual(requested, {"FourTank": 1, "ThreeTank": 3, "Premium": 2})
+        self.assertEqual(champions, original)
+
+    def test_late_game_search_prefers_an_upgraded_sourced_tank_anchor(self):
+        self.data = late_game_fixture()
+        fixed = [f"F{index}" for index in range(9)]
+        for mode in ("balanced", "high_value"):
+            with self.subTest(mode=mode):
+                result = self.search(collab=[], size=10, locked=fixed, mode=mode, limit=1)[0]
+                self.assertIn(result["frontline_anchor"], ("FourTank", "SecondTank"))
+                self.assertEqual(result["planned_stars"][result["frontline_anchor"]], 2)
+                self.assertEqual(result["frontline"], 1)
+                self.assertTrue(any("Automatic tank upgrade target" in note for note in result["strategy_notes"]))
+                self.assertTrue(any("★★" in note for note in result["strategy_notes"]))
+                self.assertNotIn("ThreeTank", result["champions"])
+
+    def test_anchor_bonus_is_best_only_and_explicit_three_star_tank_can_anchor(self):
+        self.data = late_game_fixture()
+        one = [f"F{index}" for index in range(9)] + ["FourTank"]
+        two = [f"F{index}" for index in range(8)] + ["FourTank", "SecondTank"]
+        for mode in ("balanced", "high_value"):
+            first = self.search(collab=[], size=10, locked=one, mode=mode)[0]
+            second = self.search(collab=[], size=10, locked=two, mode=mode)[0]
+            self.assertEqual(second["score"] - first["score"], 30.0 + (90.0 if mode == "high_value" else 0.0))
+            self.assertEqual(second["frontline_anchor"], "FourTank")
+            names = [f"F{index}" for index in range(8)] + ["FourTank", "ThreeTank"]
+            explicit = self.search(
+                collab=[], size=10, locked=names, mode=mode, stars={"ThreeTank": 3},
+            )[0]
+            self.assertEqual(explicit["frontline_anchor"], "ThreeTank")
+            self.assertEqual(explicit["planned_stars"]["ThreeTank"], 3)
+            self.assertTrue(any("reroll-path penalty" in note for note in explicit["strategy_notes"]))
+
+    def test_tank_anchor_defaults_do_not_leak_before_ten_or_override_manual_one_star(self):
+        self.data = late_game_fixture()
+        names = [f"F{index}" for index in range(8)] + ["FourTank"]
+        early = self.search(collab=[], size=9, locked=names, mode="balanced")[0]
+        self.assertEqual(early["planned_stars"]["FourTank"], 1)
+        self.assertIsNone(early["frontline_anchor"])
+        self.assertEqual(early["frontline"], 1)
+        self.assertEqual(early["score"], 50.0)
+        late = self.search(
+            collab=[], size=10, locked=names + ["F8"], mode="balanced", stars={"FourTank": 1},
+        )[0]
+        self.assertEqual(late["planned_stars"]["FourTank"], 1)
+        self.assertIsNone(late["frontline_anchor"])
+        self.assertEqual(late["score"], 50.0)
+        self.assertFalse(any("Automatic tank upgrade" in note for note in late["strategy_notes"]))
+
+    def test_gu_feng_splash_is_discounted_until_four_actual_members(self):
+        self.data = strategy_fixture("Gu Feng")
+        for level in (9, 10):
+            for count, expected in ((2, 38.5), (4, 300.0)):
+                names = [f"Low{index}" for index in range(1, count + 1)]
+                names += [f"F{index}" for index in range(level - count)]
+                result = self.search(collab=[], size=level, locked=names, mode="balanced")[0]
+                self.assertEqual(row(result, "Gu Feng")["count"], count)
+                self.assertEqual(result["active"], 1)
+                self.assertEqual(result["tiers"], 1 if count == 2 else 2)
+                self.assertEqual(result["score"], expected + 20.0)
+                self.assertEqual(any("Gu Feng" in note for note in result["strategy_notes"]), count < 4)
+        names = ["Low1", "Carry"] + [f"F{index}" for index in range(8)]
+        upgraded = self.search(
+            collab=[], size=10, locked=names, mode="balanced", stars={"Carry": 2},
+        )[0]
+        self.assertEqual(upgraded["score"], 58.5)
+
+    def test_true_damage_requires_a_fielded_eligible_upgraded_carry_or_five_members(self):
+        self.data = strategy_fixture("True Damage")
+        for carry, rank, unit_penalty in (("Qiyana", 2, 60.0), ("Ekko", 3, 100.0), ("Carry", 2, 0.0)):
+            names = ["Low1", carry] + [f"F{index}" for index in range(8)]
+            with self.subTest(carry=carry):
+                result = self.search(
+                    collab=[], size=10, locked=names, mode="balanced", stars={carry: rank},
+                )[0]
+                self.assertEqual(result["score"], 130.0 - unit_penalty)
+                self.assertEqual(result["active"], 1)
+                self.assertEqual(result["tiers"], 1)
+                self.assertFalse(any("splash value" in note for note in result["strategy_notes"]))
+        names = ["Low1", "Low2"] + [f"F{index}" for index in range(8)]
+        for overrides in ({}, {"Carry": 2}, {"Qiyana": 2}, {"Ekko": 3}):
+            result = self.search(
+                collab=[], size=10, locked=names, mode="balanced", stars=overrides,
+            )[0]
+            self.assertEqual(result["score"], 58.5)
+        names = ["Low1", "Low2", "Impostor"] + [f"F{index}" for index in range(7)]
+        impostor = self.search(
+            collab=[], size=10, locked=names, mode="balanced", stars={"Impostor": 2},
+        )[0]
+        self.assertEqual(impostor["score"], 58.5)
+        names = [f"Low{index}" for index in range(1, 6)] + [f"F{index}" for index in range(5)]
+        deep = self.search(collab=[], size=10, locked=names, mode="balanced")[0]
+        self.assertEqual(deep["score"], 590.0)
+        self.assertEqual(deep["tiers"], 3)
+
+    def test_hyperpop_needs_a_fielded_upgrade_only_at_late_levels(self):
+        self.data = strategy_fixture("Hyperpop")
+        for level, expected in ((9, 130.0), (10, 58.5)):
+            names = ["Low1", "Low2"] + [f"F{index}" for index in range(level - 2)]
+            ordinary = self.search(collab=[], size=level, locked=names, mode="balanced")[0]
+            self.assertEqual(ordinary["score"], expected)
+            upgraded = self.search(
+                collab=[], size=level, locked=names, mode="balanced", stars={"Low2": 2},
+            )[0]
+            self.assertEqual(upgraded["score"], 130.0)
+            bench_upgrade = self.search(
+                collab=[], size=level, locked=names, mode="balanced", stars={"Carry": 2},
+            )[0]
+            self.assertEqual(bench_upgrade["score"], expected)
+        names = [f"Low{index}" for index in range(1, 5)] + [f"F{index}" for index in range(6)]
+        deep = self.search(collab=[], size=10, locked=names, mode="balanced")[0]
+        self.assertEqual(deep["score"], 320.0)
+
+    def test_featured_sona_membership_can_supply_a_real_upgraded_carry(self):
+        for trait_name in ("True Damage", "Hyperpop"):
+            self.data = strategy_fixture(trait_name)
+            self.data["traits"].append({"name": "Collab", "breakpoints": [3, 5], "unique": False})
+            self.data["champions"].append({
+                "name": "Sona", "cost": 5, "traits": ["Collab"], "unlockable": False,
+            })
+            names = ["Low1", "Sona"] + [f"F{index}" for index in range(8)]
+            featured = self.search(
+                collab=[], size=10, locked=names, mode="balanced",
+                sona_band=trait_name, stars={"Sona": 2},
+            )[0]
+            self.assertEqual(featured["score"], 130.0)
+            self.assertEqual(row(featured, trait_name)["count"], 2)
+            self.assertFalse(any("splash value" in note for note in featured["strategy_notes"]))
+            names = ["Low1", "Low2"] + [f"F{index}" for index in range(8)]
+            bench = self.search(
+                collab=[], size=10, locked=names, mode="balanced",
+                sona_band=trait_name, stars={"Sona": 2},
+            )[0]
+            self.assertEqual(bench["score"], 58.5)
+
+    def test_senna_is_penalized_not_banned_and_cannot_unlock_true_damage(self):
+        self.data = strategy_fixture("True Damage")
+        for level in (9, 10):
+            names = ["Low1", "Senna"] + [f"F{index}" for index in range(level - 2)]
+            result = self.search(
+                collab=[], size=level, locked=names, mode="balanced", stars={"Senna": 2},
+            )[0]
+            self.assertIn("Senna", result["champions"])
+            self.assertEqual(result["score"], 58.5 - 350.0)
+            self.assertTrue(any("Senna" in note for note in result["strategy_notes"]))
+        names = ["Low1"] + [f"F{index}" for index in range(8)]
+        result = self.search(collab=[], size=10, locked=names, mode="high_value", limit=1)[0]
+        self.assertNotIn("Senna", result["champions"])
+
+    def test_fast_ten_reroll_tax_applies_to_targets_without_double_taxing_qiyana(self):
+        self.data = late_game_fixture()
+        self.data["champions"].append({
+            "name": "Qiyana", "cost": 2, "traits": [], "unlockable": False,
+        })
+        for name, rank, tax in (("ThreeTank", 3, 100.0), ("Qiyana", 2, 60.0), ("Qiyana", 3, 100.0)):
+            names = [f"F{index}" for index in range(9)] + [name]
+            result = self.search(
+                collab=[], size=10, locked=names, mode="balanced", stars={name: rank},
+            )[0]
+            anchor = 450.0 if name == "ThreeTank" else 0.0
+            balance = 50.0 if name == "ThreeTank" else 20.0
+            self.assertEqual(result["score"], anchor + balance - tax)
+            self.assertEqual(result["planned_stars"][name], rank)
+            early = self.search(
+                collab=[], size=9, locked=names[1:], mode="balanced", stars={name: rank},
+            )[0]
+            self.assertEqual(early["score"], balance)
+
+    def test_synergies_mode_ignores_all_late_game_valuation_preferences(self):
+        self.data = strategy_fixture("True Damage")
+        names = ["Low1", "Senna"] + [f"F{index}" for index in range(8)]
+        result = self.search(
+            collab=[], size=10, locked=names, mode="synergies", stars={"Senna": 2, "Low1": 3},
+        )[0]
+        self.assertEqual(result["score"], 110.0)
+        self.data = late_game_fixture()
+        names = [f"F{index}" for index in range(8)] + ["FourTank", "ThreeTank"]
+        result = self.search(
+            collab=[], size=10, locked=names, mode="synergies", stars={"ThreeTank": 3},
+        )[0]
+        self.assertEqual(result["score"], 0.0)
+        self.assertIsNone(result["frontline_anchor"])
+
+    def test_strategy_beam_matches_final_values_with_fixed_and_optional_readiness(self):
+        for trait_name in ("Gu Feng", "True Damage", "Hyperpop"):
+            self.data = strategy_fixture(trait_name)
+            fixed = [f"F{index}" for index in range(8)]
+            allowed = set(fixed) | {"Low1", "Low2", "Carry", "Qiyana", "Ekko", "Impostor", "Senna"}
+            self.data["champions"] = [
+                champion for champion in self.data["champions"] if champion["name"] in allowed
+            ]
+            trait_map = {trait["name"]: trait for trait in self.data["traits"]}
+            champion_map = {champion["name"]: champion for champion in self.data["champions"]}
+            optional = sorted(set(champion_map) - set(fixed) - {"Senna"})
+            boards = [sorted(fixed + list(pair)) for pair in combinations(optional, 2)]
+            stars = {"Carry": 2, "Qiyana": 2, "Ekko": 3, "Low2": 2, "Impostor": 2}
+            for locked in (fixed, fixed + ["Carry"]):
+                for mode in ("balanced", "high_value", "synergies"):
+                    with self.subTest(trait=trait_name, locked_carry="Carry" in locked, mode=mode):
+                        evaluated = [
+                            _evaluate_team(board, trait_map, champion_map, [], mode, "", stars, 10)
+                            for board in boards if set(locked).issubset(board)
+                        ]
+                        expected = min(evaluated, key=lambda result: (
+                            -result["score"], -result["active"], -result["tiers"],
+                            -result["cost"] if mode == "high_value" else result["cost"],
+                            result["champions"],
+                        ))
+                        actual = self.search(
+                            collab=[], size=10, locked=locked, excluded=["Senna"],
+                            mode=mode, stars=stars, limit=1,
+                        )[0]
+                        self.assertEqual(actual, expected)
 
     def test_high_value_preserves_locked_excluded_and_collab_constraints(self):
         results = self.search(mode="high_value", size=4, min_collab=3,

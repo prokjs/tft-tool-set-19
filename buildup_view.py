@@ -5,6 +5,7 @@ from tkinter import ttk
 from buildup import format_buildup
 from trait_rows import TraitRow, STYLE_ORDER, badge_style
 from visuals import COST_COLORS
+from champion_info import star_text, trait_members
 
 
 BG = '#111827'
@@ -25,6 +26,9 @@ class BuildupWindow(tk.Toplevel):
     def __init__(self, parent, result, data, artwork, on_unlock):
         super().__init__(parent)
         self.result = result
+        self.data = data
+        self.collab_pool = result['collab_pool']
+        self.sona_band = result['sona_band']
         self.artwork = artwork
         self.on_unlock = on_unlock
         self.champions = {champion['name']: champion for champion in data['champions']}
@@ -128,9 +132,14 @@ class BuildupWindow(tk.Toplevel):
         return 'break'
 
     def _bind_wheel(self, widget):
-        widget.bind('<MouseWheel>', self._wheel)
-        widget.bind('<Button-4>', self._wheel)
-        widget.bind('<Button-5>', self._wheel)
+        if isinstance(widget, TraitRow):
+            widget.on_wheel = self._wheel
+            handler = widget.wheel
+        else:
+            handler = self._wheel
+        widget.bind('<MouseWheel>', handler)
+        widget.bind('<Button-4>', handler)
+        widget.bind('<Button-5>', handler)
         for child in widget.winfo_children():
             self._bind_wheel(child)
 
@@ -190,8 +199,8 @@ class BuildupWindow(tk.Toplevel):
             child.destroy()
         self.wrap_labels.clear()
         self._text(self.content,
-                   'Conditional plan: no quest completion is assumed. Intermediate boards use 1★; '
-                   'the final board uses your requested stars. Shop eligibility is not a guaranteed hit.',
+                   'Conditional plan: no quest completion is assumed. Early boards use ★; '
+                   'later upgrades are planning targets, not confirmed purchases or guaranteed hits.',
                    WARNING, pady=(6, 10))
         self._board('Main board — if listed unlocks complete', step['board'], step, fallback=False)
         transition = self._section('Changes from the previous primary board')
@@ -246,7 +255,7 @@ class BuildupWindow(tk.Toplevel):
             tk.Label(card, text=name, bg=PANEL, fg=TEXT, width=14, wraplength=104,
                      font=('Segoe UI', 9, 'bold')).pack()
             stars = step['stars'].get(name, 1)
-            badges = f"{champion['cost']}g · {stars}★"
+            badges = f"{champion['cost']}g · {star_text(stars)}"
             if champion.get('slots', 1) > 1:
                 badges += f" · {champion['slots']} slots"
             tk.Label(card, text=badges, bg=PANEL, fg=color, font=('Segoe UI', 9)).pack()
@@ -268,7 +277,10 @@ class BuildupWindow(tk.Toplevel):
             traits_frame.pack(fill='x')
             active.sort(key=lambda trait: (STYLE_ORDER[badge_style(trait, self.definitions[trait['name']])],
                                            -trait['count'], trait['name']))
-            rows = [TraitRow(traits_frame, trait, self.definitions[trait['name']], self.artwork) for trait in active]
+            rows = [TraitRow(traits_frame, trait, self.definitions[trait['name']], self.artwork,
+                             on_wheel=self._wheel,
+                             members=trait_members(self.data, trait['name'], self.collab_pool, self.sona_band))
+                    for trait in active]
             self._reflow_grid(traits_frame, rows, 318)
 
     def _unlocks(self, step):

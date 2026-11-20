@@ -2,7 +2,7 @@
 import tkinter as tk
 from tkinter import ttk
 from visuals import COST_COLORS
-from champion_info import unlock_text
+from champion_info import unlock_text, star_text
 
 
 class ChampionGrid(tk.Frame):
@@ -67,7 +67,7 @@ class ChampionGrid(tk.Frame):
             tile.pack_propagate(False)
             portrait = tk.Label(tile, image=self.artwork.portraits[name], bg='#192337', borderwidth=0)
             portrait.pack(pady=(3, 0))
-            badge_text = 'AUTO' if entry.get('fixed') else (entry['flags'] + '  ' if entry['flags'] else '') + f"{entry['stars']}★"
+            badge_text = 'AUTO' if entry.get('fixed') else (entry['flags'] + '  ' if entry['flags'] else '') + star_text(entry['stars'])
             badges = tk.Label(tile, text=badge_text, bg='#192337', fg='#fca5a5' if 'X' in entry['flags'] else '#e5e7eb', font=('Segoe UI', 9))
             badges.pack()
             gold = tk.Label(tile, text=f"{entry['cost']}g", bg='#111827', fg=COST_COLORS[entry['cost']], font=('Segoe UI', 8, 'bold'), borderwidth=0)
@@ -180,7 +180,9 @@ class ChampionGrid(tk.Frame):
         self.tip = tk.Toplevel(self)
         self.tip.overrideredirect(True)
         self.tip.attributes('-topmost', True)
-        text = f"{name}  ·  {entry['cost']}g  ·  {entry['stars']}★\n" + ', '.join(entry['traits'])
+        text = f"{name}  ·  {entry['cost']}g  ·  {star_text(entry['stars'])}\n" + ', '.join(entry['traits'])
+        if entry.get('role'):
+            text += '\nRole: ' + entry['role']
         if entry['unlockable'] or entry.get('unlock_note'):
             text += '\n' + unlock_text(entry)
         tk.Label(self.tip, text=text, justify='left', wraplength=440, bg='#253047', fg='#ffffff', padx=10, pady=7, font=('Segoe UI', 10)).pack()
