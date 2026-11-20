@@ -9,10 +9,11 @@ class ChampionGrid(tk.Frame):
     TILE_WIDTH = 84
     TILE_HEIGHT = 96
 
-    def __init__(self, parent, artwork, on_select):
+    def __init__(self, parent, artwork, on_select, on_activate):
         super().__init__(parent, bg='#192337')
         self.artwork = artwork
         self.on_select = on_select
+        self.on_activate = on_activate
         self.entries = {}
         self.names = []
         self.tiles = {}
@@ -34,16 +35,23 @@ class ChampionGrid(tk.Frame):
         self.content.bind('<Configure>', lambda _: self.canvas.configure(scrollregion=self.canvas.bbox('all')))
         self.canvas.bind('<MouseWheel>', self.wheel)
         self.content.bind('<MouseWheel>', self.wheel)
-        for key in ('Left', 'Right', 'Up', 'Down', 'Home', 'End', 'space'):
+        for key in ('Left', 'Right', 'Up', 'Down', 'Home', 'End', 'space', 'Return'):
             self.canvas.bind('<' + key + '>', lambda event, key=key: self.key(event, key))
         self.bind('<Destroy>', self.cleanup, add='+')
 
     def selected_names(self):
         return tuple(name for name in self.names if name in self.selected)
 
+    def clear_selection(self):
+        self.selected.clear()
+        self.anchor = self.focused = None
+        self.paint_selection()
+        self.notify()
+
     def set_entries(self, entries):
         """Refresh visible icons; hidden selections cannot affect roster actions."""
         self.hide_tip()
+        previous_names = self.names
         self.entries = {entry['name']: entry for entry in entries}
         self.names = list(self.entries)
         self.selected.intersection_update(self.names)
@@ -59,7 +67,8 @@ class ChampionGrid(tk.Frame):
             tile.pack_propagate(False)
             portrait = tk.Label(tile, image=self.artwork.portraits[name], bg='#192337', borderwidth=0)
             portrait.pack(pady=(3, 0))
-            badges = tk.Label(tile, text=(entry['flags'] + '  ' if entry['flags'] else '') + f"{entry['stars']}★", bg='#192337', fg='#fca5a5' if 'X' in entry['flags'] else '#e5e7eb', font=('Segoe UI', 9))
+            badge_text = 'AUTO' if entry.get('fixed') else (entry['flags'] + '  ' if entry['flags'] else '') + f"{entry['stars']}★"
+            badges = tk.Label(tile, text=badge_text, bg='#192337', fg='#fca5a5' if 'X' in entry['flags'] else '#e5e7eb', font=('Segoe UI', 9))
             badges.pack()
             gold = tk.Label(tile, text=f"{entry['cost']}g", bg='#111827', fg=COST_COLORS[entry['cost']], font=('Segoe UI', 8, 'bold'), borderwidth=0)
             gold.place(relx=1, x=-3, y=2, anchor='ne')
@@ -70,6 +79,8 @@ class ChampionGrid(tk.Frame):
                 widget.bind('<MouseWheel>', self.wheel)
             self.tiles[name] = tile
         self.reflow(max(self.canvas.winfo_width(), self.TILE_WIDTH))
+        if self.names != previous_names:
+            self.canvas.yview_moveto(0)
         self.paint_selection()
         self.notify()
 
@@ -94,6 +105,10 @@ class ChampionGrid(tk.Frame):
             return 'break'
         self.canvas.focus_set()
         self.hide_tip()
+        if self.on_activate(name):
+            if name in self.entries:
+                self.choose(name)
+            return 'break'
         self.choose(name, control=bool(event.state & 0x4), shift=bool(event.state & 0x1))
         return 'break'
 
@@ -114,7 +129,7 @@ class ChampionGrid(tk.Frame):
 
     def paint_selection(self):
         for name, tile in self.tiles.items():
-            tile.configure(highlightbackground='#c4b5fd' if name in self.selected else '#344155', highlightcolor='#c4b5fd')
+            tile.configure(highlightbackground='#c4b5fd' if name in self.selected or self.entries[name].get('pool_member') else '#344155', highlightcolor='#c4b5fd')
 
     def notify(self):
         chosen = self.focused if self.focused in self.selected else next(iter(self.selected_names()), None)
@@ -124,9 +139,12 @@ class ChampionGrid(tk.Frame):
         if not self.enabled or not self.names:
             return 'break'
         index = self.names.index(self.focused) if self.focused in self.entries else 0
-        if key == 'space':
+        if key in ('space', 'Return'):
             name = self.names[index]
-            self.choose(name, control=True, shift=bool(event.state & 0x1))
+            if not self.on_activate(name):
+                self.choose(name, control=(key == 'space'), shift=bool(event.state & 0x1))
+            elif name in self.entries:
+                self.choose(name)
         else:
             delta = {'Left': -1, 'Right': 1, 'Up': -self.columns, 'Down': self.columns}
             target = 0 if key == 'Home' else len(self.names) - 1 if key == 'End' else max(0, min(len(self.names) - 1, index + delta[key]))

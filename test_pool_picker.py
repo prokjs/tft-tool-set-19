@@ -1,6 +1,6 @@
 """Regression coverage for player-visible Collab candidate filtering."""
 import unittest
-from pool_picker import eligible_champions
+from pool_picker import eligible_champions, visible_champions
 
 
 def champions():
@@ -41,6 +41,25 @@ class PoolFilterTests(unittest.TestCase):
         self.assertEqual(eligible_champions(data, six), [])
         self.assertIn('F', eligible_champions(data, six[:-1]))
         self.assertNotIn('Sona', eligible_champions(data, five))
+
+    def test_inline_pool_picks_remain_removable_and_lock_restores_conflicts(self):
+        data = champions()
+        editing = visible_champions(data, {'A'}, pool_locked=False)
+        self.assertIn('A', editing)
+        self.assertIn('Sona', editing)
+        self.assertNotIn('OtherTank', editing)
+        self.assertNotIn('Both', editing)
+        five = {'A', 'B', 'C', 'D', 'E'}
+        self.assertEqual(visible_champions(data, five, pool_locked=True), set(data))
+        self.assertNotIn('OtherTank', visible_champions(data, five, pool_locked=False))
+
+    def test_full_inline_pool_only_shows_picks_and_sona_until_unlocked_for_teams(self):
+        data = champions()
+        data['Extra'] = {'name': 'Extra', 'traits': ['Unique'], 'cost': 1}
+        six = {'A', 'B', 'C', 'D', 'E', 'F'}
+        self.assertEqual(visible_champions(data, six, pool_locked=False), six | {'Sona'})
+        self.assertIn('Extra', visible_champions(data, six, pool_locked=True))
+        self.assertIn('Extra', visible_champions(data, six - {'F'}, pool_locked=False))
 
     def test_mutually_exclusive_forms_remain_unavailable(self):
         data = champions()

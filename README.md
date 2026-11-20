@@ -4,13 +4,13 @@
 
 Offline Windows TFT Set 19 Collab pool picker and trait-synergy team optimizer.
 
-Pick the five or six Collab champions shown in your game; candidates sharing native traits are filtered automatically. You can load the pool at either size. Sona is included separately and does not count toward these picks. Compare suggested teams, active traits, and breakpoints.
+Pick the five or six Collab champions shown in your game directly in the main portrait grid. While the pool is **unlocked**, click a portrait to add/remove it; conflicting candidates disappear, selected picks stay removable, and Sona is automatic. Click **Lock Collab pool** to restore the full roster and enable team-building. **Unlock Collab pool** returns to filtered picking without losing your picks or team settings.
 
-The main roster uses a responsive portrait grid. Click a portrait to select, Ctrl-click to toggle multiple selections, or Shift-click for a range. Hover for names, traits, costs, and unlock details. Cost-colored portraits and C/L/X/star badges show state; search, Lock/Exclude, star controls, scrolling, and arrow-key navigation remain available.
+Once the pool is locked, click portraits to select, Ctrl-click for multiple selections, or Shift-click for a range. **Team lock**, Exclude, and star controls then affect the selected team units—not the Collab pool. Hover or select for names, traits, costs, and unlock details. The grid wraps and scrolls; there is no separate pool-selection window.
 
 Results use TFT-inspired trait bars: hexagonal icons, current counts, and full breakpoint tracks with the active breakpoint highlighted. Active traits sort above dimmed inactive traits; K/DA counts show stars, and unique traits appear once. Bronze/silver/gold badges indicate breakpoint progress, not official patch-specific rarity colors.
 
-Unlockable champions show sourced unlock tasks and player-level requirements in portrait tooltips, selected-champion details, the Collab pool picker, and team results. Click **Unlock details** on a team card for the full requirement and its source. Copied teams and JSON exports include the requirements. These are offline reference conditions—not automatic tracking of in-game progress; pre-release source uncertainties are shown explicitly.
+Unlockable champions show sourced unlock tasks and player-level requirements in portrait tooltips, selected-champion details, and team results. Click **Unlock details** on a team card for the full requirement and its source. Copied teams and JSON exports include the requirements. These are offline reference conditions—not automatic tracking of in-game progress; pre-release source uncertainties are shown explicitly.
 
 ## Level-by-level buildups
 

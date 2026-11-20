@@ -1,7 +1,7 @@
 """Offline Collab optimizer: load five or six disjoint-trait champions + Sona.
 
-The pool picker filters shared native traits after each pick; support champions
-remain unrestricted in the main roster. Five- and six-champion pools can search.
+The same grid filters Collab candidates while the pool is unlocked, then restores
+the full roster for team-building once the pool is locked.
 """
 from pathlib import Path
 import queue
@@ -14,7 +14,7 @@ import webbrowser
 
 from optimizer import load_data, BAND_TRAITS
 from visuals import Artwork, COST_COLORS
-from pool_picker import PoolPicker, POOL_SIZES
+from pool_picker import POOL_SIZES, eligible_champions, visible_champions
 from champion_grid import ChampionGrid
 from trait_rows import TraitRow, badge_style, STYLE_ORDER
 from champion_info import unlock_text
@@ -38,6 +38,7 @@ class App(tk.Tk):
         self.card_columns = 1
         self.champions = {c['name']: c for c in self.data['champions']}
         self.collab, self.locked, self.excluded = set(), set(), set()
+        self.pool_locked = False
         self.stars = {}
         self.results = []
         self.messages = queue.Queue()
@@ -47,7 +48,7 @@ class App(tk.Tk):
         self.mode = tk.StringVar(value='High value')
         self.band = tk.StringVar(value='None')
         self.search = tk.StringVar()
-        self.status = tk.StringVar(value='Load the 5 or 6 Collab champions from your current game.')
+        self.status = tk.StringVar(value='Pick your Collab champions in the portrait grid, then lock the pool.')
         self._style()
         self._layout()
         self.render_roster()
@@ -104,8 +105,10 @@ class App(tk.Tk):
         panes.add(left, weight=2)
         panes.add(right, weight=3)
         ttk.Label(left, text='YOUR GAME', font=('Segoe UI', 12, 'bold')).pack(anchor='w')
-        self.pool_button = ttk.Button(left, text='Load current Collab pool', command=self.edit_pool)
+        self.pool_button = ttk.Button(left, text='Lock Collab pool', command=self.toggle_pool_lock)
         self.pool_button.pack(fill='x', pady=6)
+        self.pool_hint = ttk.Label(left, wraplength=440, foreground='#f1d69b')
+        self.pool_hint.pack(fill='x', pady=(0, 4))
         self.pool_label = ttk.Label(left, wraplength=440, style='Muted.TLabel')
         self.pool_label.pack(fill='x', pady=(0, 8))
         self.pool_strip = tk.Text(left, height=2, bg='#111827', relief='flat', state='disabled', cursor='arrow')
@@ -116,21 +119,26 @@ class App(tk.Tk):
         self.search.trace_add('write', lambda *_: self.render_roster())
         roster_frame = ttk.Frame(left)
         roster_frame.pack(fill='both', expand=True)
-        self.champion_grid = ChampionGrid(roster_frame, self.artwork, self.show_champion)
+        self.champion_grid = ChampionGrid(roster_frame, self.artwork, self.show_champion, self.activate_champion)
         self.champion_grid.pack(fill='both', expand=True)
         buttons = ttk.Frame(left)
         buttons.pack(fill='x', pady=7)
-        for text, action in [('Lock', 'locked'), ('Exclude', 'excluded')]:
-            ttk.Button(buttons, text=text, command=lambda a=action: self.toggle(a)).pack(side='left', padx=(0, 5))
+        self.team_controls = []
+        for text, action in [('Team lock', 'locked'), ('Exclude', 'excluded')]:
+            button = ttk.Button(buttons, text=text, command=lambda a=action: self.toggle(a))
+            button.pack(side='left', padx=(0, 5))
+            self.team_controls.append(button)
         star_row = ttk.Frame(left)
         star_row.pack(fill='x')
         ttk.Label(star_row, text='Set selected stars:').pack(side='left')
         for star in range(1, 5):
-            ttk.Button(star_row, text=str(star), width=2, command=lambda s=star: self.set_stars(s)).pack(side='left', padx=2)
+            button = ttk.Button(star_row, text=str(star), width=2, command=lambda s=star: self.set_stars(s))
+            button.pack(side='left', padx=2)
+            self.team_controls.append(button)
         ttk.Button(star_row, text='Reset', command=self.reset).pack(side='right')
         self.champion_label = ttk.Label(left, wraplength=440, style='Muted.TLabel')
         self.champion_label.pack(fill='x', pady=8)
-        ttk.Label(left, text='C = Collab   L = locked   X = excluded\nClick portraits; Ctrl / Shift for multi-select. Hover for details.\nUnlockable champions are candidates: exclude any unavailable.\nSona requires her unlock + level 10; exclude her if unavailable.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450).pack(anchor='w')
+        ttk.Label(left, text='C = Collab   L = team locked   X = excluded\nPool unlocked: click to add/remove picks. Sona is automatic.\nPool locked: Ctrl / Shift multi-select for team controls.\nUnlock tasks still apply; hover/select to see requirements.\nK/DA uses stars; Baron Nashor occupies two slots.', style='Muted.TLabel', wraplength=450).pack(anchor='w')
         ttk.Label(right, text='SUGGESTED TEAMS', font=('Segoe UI', 12, 'bold')).pack(anchor='w')
         result_frame = ttk.Frame(right)
         result_frame.pack(fill='x', pady=6)
@@ -164,44 +172,85 @@ class App(tk.Tk):
         ttk.Label(right, text='Approximate search, not a guaranteed optimum. High value rewards base champion cost, synergies, and frontline balance; cost is not measured strength. Items, augments, and combat are not simulated. Active totals exclude unique traits.', style='Muted.TLabel', wraplength=610).pack(fill='x')
         ttk.Label(root, textvariable=self.status, wraplength=1150).pack(anchor='w', pady=(10, 0))
 
-    def edit_pool(self):
-        if not self.busy:
-            PoolPicker(self, self.champions, self.artwork, self.collab, self.apply_pool)
-
-    def apply_pool(self, selected):
-        self.collab = selected
+    def activate_champion(self, name):
+        """Consume portrait activation only while editing the Collab pool."""
+        if self.pool_locked:
+            return False
+        if self.busy:
+            return True
+        if name == 'Sona':
+            self.status.set('Sona is automatic and does not count toward your 5 or 6 pool picks.')
+            return True
+        if name in self.collab:
+            self.collab.remove(name)
+        elif name in eligible_champions(self.champions, self.collab):
+            self.collab.add(name)
+        else:
+            self.status.set('That champion conflicts with the current pool or the six-pick limit.')
+            return True
         self.render_roster()
         self.invalidate()
+        return True
+
+    def toggle_pool_lock(self):
+        if self.busy:
+            return
+        if not self.pool_locked and len(self.collab) not in POOL_SIZES:
+            self.status.set('Pick 5 or 6 Collab champions before locking the pool.')
+            return
+        self.pool_locked = not self.pool_locked
+        self.champion_grid.clear_selection()
+        if self.search.get():
+            self.search.set('')
+        else:
+            self.render_roster()
+        self.invalidate()
+
+    def sync_controls(self):
+        valid_pool = len(self.collab) in POOL_SIZES
+        self.pool_button.configure(text='Unlock Collab pool' if self.pool_locked else 'Lock Collab pool')
+        self.pool_button.state(['disabled'] if self.busy or (not self.pool_locked and not valid_pool) else ['!disabled'])
+        for button in self.team_controls:
+            button.state(['disabled'] if self.busy or not self.pool_locked else ['!disabled'])
+        self.run_button.state(['!disabled'] if self.pool_locked and valid_pool and not self.busy else ['disabled'])
+        self.buildup_button.state(['!disabled'] if self.results and not self.busy else ['disabled'])
 
     def invalidate(self):
         self.results = []
         self.result_list.delete(*self.result_list.get_children())
         self.buildup_button.state(['disabled'])
-        self.set_detail('Load your current pool: five or six champions with no shared native traits, plus Sona automatically.\n\nThe pool picker narrows available champions after each choice. Remove a pick to restore eligible candidates.\n\nThen lock existing team units or exclude unavailable units in the unrestricted main roster, and choose Find teams.')
-        ready = len(self.collab) in POOL_SIZES
-        self.run_button.state(['!disabled'] if ready and not self.busy else ['disabled'])
-        self.status.set('Pool loaded. Find teams to refresh recommendations.' if ready else 'Load 5 or 6 Collab champions to enable team search.')
+        self.set_detail('Use the main portrait grid to pick your Collab pool.\n\nWhile unlocked, click to add/remove champions. Conflicting candidates disappear; selected picks remain removable. Sona is automatic.\n\nLock a 5- or 6-champion pool to restore the full roster and enable team locks, exclusions, star controls, and recommendations. Unlock the pool to edit it again.')
+        self.sync_controls()
+        self.status.set('Pool locked. Select team units or find recommendations.' if self.pool_locked else f'Pool unlocked: {len(self.collab)} picked. Choose 5 or 6, then lock the pool.')
 
     def render_roster(self):
         query = self.search.get().casefold().strip()
         entries = []
+        visible = visible_champions(self.champions, self.collab, self.pool_locked)
         for c in sorted(self.champions.values(), key=lambda c: (c['cost'], c['name'])):
             name = c['name']
+            if name not in visible:
+                continue
             if query not in (' '.join([name] + c['traits'])).casefold():
                 continue
-            flags = ('C ' if name in self.collab or name == 'Sona' else '') + ('L ' if name in self.locked else '') + ('X' if name in self.excluded else '')
-            entries.append({**c, 'flags': flags.strip(), 'stars': self.stars.get(name, 1)})
+            flags = 'C ' if name in self.collab or name == 'Sona' else ''
+            if self.pool_locked:
+                flags += ('L ' if name in self.locked else '') + ('X' if name in self.excluded else '')
+            entries.append({**c, 'flags': flags.strip(), 'stars': self.stars.get(name, 1),
+                            'pool_member': not self.pool_locked and name in self.collab,
+                            'fixed': not self.pool_locked and name == 'Sona'})
         self.champion_grid.set_entries(entries)
-        self.pool_button.configure(text=f"Edit current Collab pool · {len(self.collab)} picked + Sona (5 or 6)")
+        self.pool_hint.configure(text=(f'LOCKED · {len(self.collab)} picks + Sona. Full team-building roster.' if self.pool_locked else f'UNLOCKED · {len(self.collab)}/{max(POOL_SIZES)} picks + Sona. Click portraits to add/remove.'))
         self.pool_label.configure(text='Collab: ' + ', '.join(sorted(self.collab)) + '  + Sona')
         self.pool_strip.configure(state='normal')
         self.pool_strip.delete('1.0', 'end')
         for name in sorted(self.collab) + ['Sona']:
             self.pool_strip.image_create('end', image=self.artwork.champions[name], padx=3, pady=3)
         self.pool_strip.configure(state='disabled')
+        self.sync_controls()
 
     def toggle(self, target):
-        if self.busy:
+        if self.busy or not self.pool_locked:
             return
         collection = getattr(self, target)
         for name in self.champion_grid.selected_names():
@@ -217,7 +266,7 @@ class App(tk.Tk):
         self.invalidate()
 
     def set_stars(self, value):
-        if not self.busy:
+        if not self.busy and self.pool_locked:
             for name in self.champion_grid.selected_names():
                 self.stars[name] = value
             self.render_roster()
@@ -229,12 +278,16 @@ class App(tk.Tk):
             self.excluded.clear()
             self.stars.clear()
             self.collab.clear()
+            self.pool_locked = False
+            self.champion_grid.clear_selection()
+            if self.search.get():
+                self.search.set('')
             self.render_roster()
             self.invalidate()
 
     def show_champion(self, name):
         if name is None:
-            self.champion_label.configure(image='', text='Click a portrait to select; hover for champion details.')
+            self.champion_label.configure(image='', text='Click portraits to pick your Collab pool.' if not self.pool_locked else 'Select portraits for team controls; hover for champion details.')
         else:
             c = self.champions[name]
             self.champion_label.configure(image=self.artwork.portraits[name], compound='left', padding=(0, 0, 6, 0), text=f"  {name} — {', '.join(c['traits'])}\n" + unlock_text(c))
@@ -273,15 +326,14 @@ class App(tk.Tk):
                 visit(child)
         visit(self)
         self.champion_grid.set_enabled(not busy)
-        if not busy and not self.results:
-            self.buildup_button.state(['disabled'])
+        self.sync_controls()
 
 
     def run(self):
         if self.busy:
             return
-        if len(self.collab) not in POOL_SIZES:
-            self.status.set('Load exactly 5 or 6 Collab champions before searching.')
+        if not self.pool_locked or len(self.collab) not in POOL_SIZES:
+            self.status.set('Pick 5 or 6 Collab champions and lock the pool before searching.')
             return
         ranking = {'High value': 'high_value', 'Balanced': 'balanced', 'Most active traits': 'synergies'}
         args = dict(data=self.data, collab=sorted(self.collab), size=int(self.size.get()), locked=sorted(self.locked), excluded=sorted(self.excluded), min_collab=int(self.minimum.get()), mode=ranking[self.mode.get()], sona_band='' if self.band.get() == 'None' else self.band.get(), stars=dict(self.stars))
