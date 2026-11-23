@@ -1,0 +1,22 @@
+[package]
+name = "tft-desktop"
+version = "0.7.5"
+edition = "2021"
+description = "prokjs's Set 19 TFT tool"
+authors = ["prokjs"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+tauri = { version = "2", features = [] }
+tft-core = { path = "../crates/tft-core" }
+tauri-plugin-clipboard-manager = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]

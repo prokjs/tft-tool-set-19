@@ -2,6 +2,11 @@
   "version": "Set 19 Prismatic Tour / pre-release snapshot 2026-11-20 / TFT Flow Patch 19.1",
   "sources": [
     {
+      "name": "Set 19 base attack ranges (IES champion data)",
+      "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units",
+      "note": "stats.offense.range in hexes; base roster only, excluding seven hero-augment overrides. Individual fields use HTTPS JSON-pointer provenance."
+    },
+    {
       "name": "TFT Ninja Set 19 traits",
       "url": "https://tft.ninja/sets/19/traits"
     },
@@ -526,6 +531,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Elise19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/elise"
     },
     {
@@ -537,6 +544,8 @@
       ],
       "unlockable": false,
       "role": "Attack Specialist",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Gnar19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/gnar"
     },
     {
@@ -548,6 +557,8 @@
       ],
       "unlockable": false,
       "role": "Magic Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Katarina19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/katarina"
     },
     {
@@ -559,6 +570,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Kayn19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/kayn"
     },
     {
@@ -570,6 +583,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Kennen19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/kennen"
     },
     {
@@ -584,6 +599,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Kobuko19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/kobuko"
     },
     {
@@ -595,6 +612,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Lillia19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/lillia"
     },
     {
@@ -607,6 +626,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Neeko19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/neeko"
     },
     {
@@ -619,6 +640,8 @@
       ],
       "unlockable": false,
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Olaf19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/olaf"
     },
     {
@@ -630,6 +653,8 @@
       ],
       "unlockable": false,
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Sett19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/sett"
     },
     {
@@ -641,6 +666,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Taric19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/taric"
     },
     {
@@ -652,6 +679,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Varus19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/varus"
     },
     {
@@ -663,6 +692,8 @@
       ],
       "unlockable": false,
       "role": "Attack Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Yunara19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/yunara"
     },
     {
@@ -675,6 +706,8 @@
       ],
       "unlockable": false,
       "role": "Magic Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Ziggs19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/ziggs"
     },
     {
@@ -686,6 +719,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Zoe19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/zoe"
     },
     {
@@ -698,6 +733,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Annie19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/annie"
     },
     {
@@ -712,6 +749,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Marksman",
+      "attack_range": 5,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Ashe19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/ashe"
     },
     {
@@ -723,6 +762,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Camille19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/camille"
     },
     {
@@ -734,6 +775,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Ezreal19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/ezreal"
     },
     {
@@ -745,6 +788,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Gragas19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/gragas"
     },
     {
@@ -756,6 +801,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Illaoi19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/illaoi"
     },
     {
@@ -768,6 +815,8 @@
       ],
       "unlockable": false,
       "role": "Magic Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Jax19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/jax"
     },
     {
@@ -779,6 +828,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Karthus19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/karthus"
     },
     {
@@ -791,6 +842,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Lucian19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/lucian"
     },
     {
@@ -805,6 +858,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Lulu19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/lulu"
     },
     {
@@ -816,6 +871,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Lux19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/lux"
     },
     {
@@ -829,6 +886,8 @@
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Nasus19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/nasus"
     },
     {
@@ -840,6 +899,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Qiyana19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/qiyana"
     },
     {
@@ -853,6 +914,8 @@
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_RenataGlasc19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/renata-glasc"
     },
     {
@@ -864,6 +927,8 @@
       ],
       "unlockable": false,
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Renekton19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/renekton"
     },
     {
@@ -879,6 +944,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Samira19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/samira"
     },
     {
@@ -892,6 +959,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_SeraphineIndie19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/seraphine"
     },
     {
@@ -906,6 +975,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Tristana19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/tristana"
     },
     {
@@ -916,6 +987,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Amumu19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/amumu"
     },
     {
@@ -927,6 +1000,8 @@
       ],
       "unlockable": false,
       "role": "Magic Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Bard19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/bard"
     },
     {
@@ -938,6 +1013,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Braum19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/braum"
     },
     {
@@ -949,6 +1026,8 @@
       ],
       "unlockable": false,
       "role": "Attack Assassin",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Briar19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/briar"
     },
     {
@@ -960,6 +1039,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Draven19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/draven"
     },
     {
@@ -972,6 +1053,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Ekko19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/ekko"
     },
     {
@@ -986,6 +1069,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Evelynn19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/evelynn"
     },
     {
@@ -999,6 +1084,8 @@
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Galio19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/galio"
     },
     {
@@ -1010,6 +1097,8 @@
       ],
       "unlockable": false,
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_KSante19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/k-sante"
     },
     {
@@ -1021,6 +1110,8 @@
       ],
       "unlockable": false,
       "role": "Attack Marksman",
+      "attack_range": 5,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Kaisa19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/kai-sa"
     },
     {
@@ -1032,6 +1123,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Malzahar19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/malzahar"
     },
     {
@@ -1043,6 +1136,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Senna19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/senna"
     },
     {
@@ -1055,6 +1150,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Swain19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/swain"
     },
     {
@@ -1068,6 +1165,8 @@
       "unlock_source": "https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "unlock_note": "No special unlock: the complete current unlock tables (Mobalytics 2026-11-19; Blitz 2026-11-19) supersede this champion's older TFT Ninja lock badge.",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Syndra19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/syndra"
     },
     {
@@ -1082,6 +1181,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Tibbers19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/tibbers"
     },
     {
@@ -1094,6 +1195,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Viego19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/viego"
     },
     {
@@ -1105,6 +1208,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Ahri19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/ahri"
     },
     {
@@ -1118,6 +1223,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Alistar19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/alistar"
     },
     {
@@ -1133,6 +1240,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Alune19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/alune"
     },
     {
@@ -1144,6 +1253,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Aurora19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/aurora"
     },
     {
@@ -1155,6 +1266,8 @@
       ],
       "unlockable": false,
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Garen19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/garen"
     },
     {
@@ -1166,6 +1279,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 2,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Graves19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/graves"
     },
     {
@@ -1177,6 +1292,8 @@
       ],
       "unlockable": false,
       "role": "Attack Specialist",
+      "attack_range": 5,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Jhin19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/jhin"
     },
     {
@@ -1191,6 +1308,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Jinx19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/jinx"
     },
     {
@@ -1205,6 +1324,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Kayle19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/kayle"
     },
     {
@@ -1217,6 +1338,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Leona19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/leona"
     },
     {
@@ -1228,6 +1351,8 @@
       ],
       "unlockable": false,
       "role": "Magic Assassin",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Locke19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/locke"
     },
     {
@@ -1239,6 +1364,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Mel19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/mel"
     },
     {
@@ -1250,6 +1377,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Shyvana19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/shyvana"
     },
     {
@@ -1265,6 +1394,8 @@
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Enemies spend 275 seconds Captivated by Classical. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Thresh19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/thresh"
     },
     {
@@ -1279,6 +1410,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Marksman",
+      "attack_range": 5,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Vayne19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/vayne"
     },
     {
@@ -1292,6 +1425,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Wukong19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/wukong"
     },
     {
@@ -1303,6 +1438,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Xayah19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/xayah"
     },
     {
@@ -1318,6 +1455,8 @@
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Level 7, 6 unique star levels of True Damage or Slayer champions. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Yasuo19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/yasuo"
     },
     {
@@ -1329,6 +1468,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Yone19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/yone"
     },
     {
@@ -1340,6 +1481,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Yorick19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/yorick"
     },
     {
@@ -1351,6 +1494,8 @@
       ],
       "unlockable": false,
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Yuumi19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/yuumi"
     },
     {
@@ -1365,6 +1510,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Zac19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/zac"
     },
     {
@@ -1379,6 +1526,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Assassin",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_AkaliKDA19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/akali-k-da"
     },
     {
@@ -1395,6 +1544,8 @@
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 350 True Damage Bling, without the other Akali unlocked. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "role": "Magic Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Akali_TrueDamage19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/akali-true-damage"
     },
     {
@@ -1408,6 +1559,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Marksman",
+      "attack_range": 5,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Aphelios19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/aphelios"
     },
     {
@@ -1419,6 +1572,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_DrMundo19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/dr-mundo"
     },
     {
@@ -1433,6 +1588,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Fighter",
+      "attack_range": 2,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Gwen19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/gwen"
     },
     {
@@ -1449,6 +1606,8 @@
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "unlock_note": "PBE sources disagree. Blitz (2026-11-19) lists: Earn 25 gold of interest while fielding Xayah. The displayed requirement follows Mobalytics (2026-11-19). https://blitz.gg/tft/articles/tft-set-19-champions-traits-unlocks",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Janna19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/janna"
     },
     {
@@ -1462,6 +1621,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_LeeSin19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/lee-sin"
     },
     {
@@ -1473,6 +1634,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_MissFortune19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/miss-fortune"
     },
     {
@@ -1486,6 +1649,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Mordekaiser19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/mordekaiser"
     },
     {
@@ -1497,6 +1662,8 @@
       ],
       "unlockable": false,
       "role": "Magic Fighter",
+      "attack_range": 6,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Nidalee19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/nidalee"
     },
     {
@@ -1508,6 +1675,8 @@
       ],
       "unlockable": false,
       "role": "Magic Specialist",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Nunu19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/nunu-and-willump"
     },
     {
@@ -1522,6 +1691,8 @@
       "unlock_level": "Level 7",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Pyke19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/pyke"
     },
     {
@@ -1533,6 +1704,8 @@
       ],
       "unlockable": false,
       "role": "Magic Tank",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Rell19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/rell"
     },
     {
@@ -1547,6 +1720,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Taliyah19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/taliyah"
     },
     {
@@ -1561,6 +1736,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Teemo19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/teemo"
     },
     {
@@ -1572,6 +1749,8 @@
       ],
       "unlockable": false,
       "role": "Magic Marksman",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_TwistedFate19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/twisted-fate"
     },
     {
@@ -1583,6 +1762,8 @@
       ],
       "unlockable": false,
       "role": "Attack Fighter",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Vi19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/vi"
     },
     {
@@ -1597,6 +1778,8 @@
       "unlock_level": "Level 8",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Fighter",
+      "attack_range": 2,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Vladimir19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/vladimir"
     },
     {
@@ -1608,6 +1791,8 @@
       ],
       "unlockable": false,
       "role": "Attack Caster",
+      "attack_range": 4,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Zeri19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/zeri"
     },
     {
@@ -1622,6 +1807,8 @@
       "unlock_level": "Any",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Fighter",
+      "attack_range": 2,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_BaronNashor19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/baron-nashor"
     },
     {
@@ -1635,6 +1822,8 @@
       "unlock_level": "Level 8",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Assassin",
+      "attack_range": 2,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Rakan19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/rakan"
     },
     {
@@ -1649,6 +1838,8 @@
       "unlock_level": "Level 9",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Attack Specialist",
+      "attack_range": 1,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Smeech19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/smeech"
     },
     {
@@ -1663,6 +1854,8 @@
       "unlock_level": "Level 10",
       "unlock_source": "https://mobalytics.gg/tft/guides/set-19-unlockable-champions",
       "role": "Magic Specialist",
+      "attack_range": 10,
+      "attack_range_source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units#/DA_Sona19/stats/offense/range",
       "role_source": "https://tft.ninja/sets/19/units/sona"
     }
   ],

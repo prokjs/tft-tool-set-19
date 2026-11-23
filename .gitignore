@@ -3,3 +3,7 @@ __pycache__/
 build/
 dist/
 *.spec
+target/
+frontend-dist/
+node_modules/
+web/pkg/

@@ -1,0 +1,227 @@
+{
+  "app": {
+    "name": "prokjs's Set 19 TFT tool",
+    "version": "0.7.5",
+    "title": "prokjs's Set 19 TFT tool · v0.7.5"
+  },
+  "languages": [
+    [
+      "ar_AE",
+      "العربية"
+    ],
+    [
+      "en_US",
+      "English (US)"
+    ],
+    [
+      "cs_CZ",
+      "Čeština"
+    ],
+    [
+      "de_DE",
+      "Deutsch"
+    ],
+    [
+      "el_GR",
+      "Ελληνικά"
+    ],
+    [
+      "en_AU",
+      "English (Australia)"
+    ],
+    [
+      "en_GB",
+      "English (UK)"
+    ],
+    [
+      "en_PH",
+      "English (Philippines)"
+    ],
+    [
+      "en_SG",
+      "English (Singapore)"
+    ],
+    [
+      "es_AR",
+      "Español (Argentina)"
+    ],
+    [
+      "es_ES",
+      "Español (España)"
+    ],
+    [
+      "es_MX",
+      "Español (México)"
+    ],
+    [
+      "fr_FR",
+      "Français"
+    ],
+    [
+      "hu_HU",
+      "Magyar"
+    ],
+    [
+      "id_ID",
+      "Bahasa Indonesia"
+    ],
+    [
+      "it_IT",
+      "Italiano"
+    ],
+    [
+      "ja_JP",
+      "日本語"
+    ],
+    [
+      "ko_KR",
+      "한국어"
+    ],
+    [
+      "pl_PL",
+      "Polski"
+    ],
+    [
+      "pt_BR",
+      "Português (Brasil)"
+    ],
+    [
+      "ro_RO",
+      "Română"
+    ],
+    [
+      "ru_RU",
+      "Русский"
+    ],
+    [
+      "th_TH",
+      "ไทย"
+    ],
+    [
+      "tr_TR",
+      "Türkçe"
+    ],
+    [
+      "vi_VN",
+      "Tiếng Việt"
+    ],
+    [
+      "zh_CN",
+      "简体中文"
+    ],
+    [
+      "zh_MY",
+      "简体中文 (马来西亚)"
+    ],
+    [
+      "zh_TW",
+      "繁體中文"
+    ]
+  ],
+  "tutorial": [
+    [
+      "Choose a language",
+      [
+        [
+          "Language settings",
+          "Use the button at the top right. Choose your language and press Apply language."
+        ],
+        [
+          "Saved preference",
+          "The chosen language is remembered for the next launch. You can change it later."
+        ]
+      ]
+    ],
+    [
+      "Select or reset the Collab pool",
+      [
+        [
+          "Select champions",
+          "While the pool is unlocked, click a portrait to add it. Click a selected portrait again to remove it."
+        ],
+        [
+          "Five or six picks",
+          "Choose 5 or 6 champions. Conflicting native traits are filtered automatically. Sona is included separately."
+        ],
+        [
+          "Lock Collab pool",
+          "Lock the pool when your selection is complete. Unlock it again to edit your picks."
+        ],
+        [
+          "Reset",
+          "The Reset button clears the Collab picks, team locks, exclusions and star overrides so you can start again."
+        ],
+        [
+          "Picker stars",
+          "The champion picker shows one star unless you explicitly override it. The leveling guide separately shows planned upgrades as levels increase."
+        ]
+      ]
+    ],
+    [
+      "Find teams",
+      [
+        [
+          "Choose settings",
+          "Set the final level, minimum Collab count and ranking. Sona featured band is optional."
+        ],
+        [
+          "Find teams",
+          "Press Find teams after locking the pool. Wait for the combinations to appear, then select a row to inspect that team."
+        ]
+      ]
+    ],
+    [
+      "Look at level buildups",
+      [
+        [
+          "Level buildup",
+          "Selecting a team opens its Final board. Use the level tabs for the actual preparation, upgrade and unlock-check sequence; ⓘ opens extra information."
+        ],
+        [
+          "Choose a level",
+          "Click a level, then choose a phase. Complete its setup and planned upgrades before the unlock check. Click an offered champion in the same slot card to pin it into later paths; clear the pin to restore ordinary planning."
+        ],
+        [
+          "Final-level upgrades",
+          "Same-level phases separate preparation, star upgrades, unlock checks and replacements. Buy incoming units before selling their replacements; targets and quests are not assumed owned or complete."
+        ],
+        [
+          "Unlocks",
+          "Set the match level and check only tasks you have completed. Confirmations change eligible paths but do not mean you own the champion, copies or items. Grey requirement portraits are missing from the displayed board."
+        ],
+        [
+          "Cap-out",
+          "After the Collab cashout, inspect Cap-out for a premium-board alternative and its buy-before-sell steps. This does not confirm a cashout or purchase, and higher cost is not guaranteed combat strength."
+        ]
+      ]
+    ]
+  ],
+  "legal": {
+    "riot": "prokjs's Set 19 TFT tool isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.",
+    "purpose": "This tool calculates champion combinations, trait relationships and heuristic board transitions, using manually reported unlocks, item inventory and starting-board snapshots when provided. Unlock confirmations do not establish owned units, items, gold or completed purchases. Inventory and rank entries are user assertions, not detected game state. It does not calculate, predict or guarantee match outcomes.",
+    "liability": "Provided as is, without warranties, to the extent permitted by applicable law. Use at your own risk. You are responsible for your game decisions. To the extent permitted by law, the developer is not liable for losses arising from use. Nothing in this notice excludes liability or legal rights that cannot lawfully be excluded.",
+    "prototype": "Unapproved experimental prototype with manual in-game unlock, item inventory and starting-board tracking. Current-game-state recommendations carry Riot TFT policy risk; public release and monetization require Riot registration and review.",
+    "content": "Champion and trait content belongs to Riot Games. Third-party source credits are provenance, not redistribution permission. This project does not claim rights to Riot assets, third-party material, or official Riot translations.",
+    "policy_links": [
+      [
+        "Riot TFT policy — registration, monetization and game integrity",
+        "https://developer.riotgames.com/docs/tft"
+      ],
+      [
+        "Riot general developer policies and required disclosure",
+        "https://developer.riotgames.com/policies/general"
+      ],
+      [
+        "Riot fan-content policy",
+        "https://www.riotgames.com/en/legal"
+      ]
+    ],
+    "public_release_requirements": [
+      "Register the product with Riot even if no official API is used; keep features and metadata current.",
+      "Obtain Approved or Acknowledged status before monetization, including website advertising.",
+      "Get Riot's explicit review of the custom Collab optimizer, replacement instructions and positioning use case: recommendations based on current in-game state can be prohibited even with manual input.",
+      "Resolve artwork/data redistribution permissions and prefer Riot-supported static asset/data services. A disclaimer or a public download URL is not a license.",
+      "Review branding, third-party licenses, advertising-provider terms, privacy disclosures and any legally required advertising/cookie consent before a public website launch."
+    ]
+  }
+}

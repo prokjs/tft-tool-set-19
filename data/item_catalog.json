@@ -1,0 +1,3580 @@
+{
+  "set": 19,
+  "source": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/items",
+  "snapshot_date": "2026-11-22",
+  "source_sha256": "bac25ac67e97563aa77c4d4e11bffdd67400cc2290be1e997e63f2ce5e04e9be",
+  "mechanics_note": "Source tags and explicit slot/unique rules only. Category fit is a heuristic, not a combat simulation; special effects and random generated items are not simulated.",
+  "items": {
+    "Ability Power Booster": {
+      "id": "DA_AbilityBooster",
+      "name": "Ability Power Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>8%</bright> Ability Power. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Adaptive Helm": {
+      "id": "DA_AdaptiveHelm",
+      "name": "Adaptive Helm",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain an additional <bright>15%</bright> Mana from all sources. The wearer gains an additional bonus based on their Role:<br><br>Tanks and Fighters: Gain <bright>30</bright> Armor and Magic Resistance.<br><br>Other Roles: Gain <bright>10%</bright> Attack Damage and Ability Power.",
+      "builds_from": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Aegis of Dawn": {
+      "id": "DA_Artifact_AegisOfDawn",
+      "name": "Aegis of Dawn",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Every <bright>2.5</bright> seconds, steal <bright>3</bright> Armor from enemies within 1-hex and heal ? of the holder's Armor.<br><br>If Aegis of Dusk is also equipped, trigger this item's effect every <bright>1.25</bright> seconds instead.<br><br><Rules>Healing increases based on Stage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Aegis of Dusk": {
+      "id": "DA_Artifact_AegisOfDusk",
+      "name": "Aegis of Dusk",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Every <bright>2.5</bright> seconds, steal <bright>3</bright> Magic Resist from enemies within 1-hex and deal <bright>18%</bright> of the holder's Magic Resist as magic damage.<br><br>If Aegis of Dawn is also equipped, trigger this item's effect every <bright>1.25</bright> seconds instead.<br><br><Rules>Damage increases based on Stage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Arcanist Emblem": {
+      "id": "DA_Arcanist19_Emblem",
+      "name": "Arcanist Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Arcanist trait.<br><br>Gain <bright>10</bright> Mana on kill.",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_NeedlesslyLargeRod"
+      ],
+      "builds_into": [],
+      "trait": "DA_Arcanist19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Archangel's Staff": {
+      "id": "DA_ArchangelsStaff",
+      "name": "Archangel's Staff",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain <bright>20</bright>% Ability Power every <bright>5</bright> seconds in combat.",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Armor and Magic Resist Booster": {
+      "id": "DA_ArmorMRBooster",
+      "name": "Armor and Magic Resist Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>10</bright> Armor and <bright>10</bright> Magic Resist. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Attack Damage Booster": {
+      "id": "DA_AttackBooster",
+      "name": "Attack Damage Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>8%</bright> Attack Damage. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Attack Speed Booster": {
+      "id": "DA_SpeedBooster",
+      "name": "Attack Speed Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>8%</bright> Attack Speed. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "B.F. Sword": {
+      "id": "DA_Component_BFSword",
+      "name": "B.F. Sword",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleAD% +<bright>10%</bright> Attack Damage",
+      "builds_from": [],
+      "builds_into": [
+        "DA_Bloodthirster",
+        "DA_Deathblade",
+        "DA_EdgeOfNight",
+        "DA_GiantSlayer",
+        "DA_HextechGunblade",
+        "DA_Hitmaker19_Emblem",
+        "DA_InfinityEdge",
+        "DA_Pentakill19_Emblem",
+        "DA_SpearOfShojin",
+        "DA_SteraksGage"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bard's Horn of the Traveler": {
+      "id": "DA_Bard19_UniqueItem",
+      "name": "Bard's Horn of the Traveler",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.BardUnique",
+        "Item.Equippable.CantReforge",
+        "Item.Equippable.SlamminExclude"
+      ],
+      "description": "Change Bard’s Ability to one that summons meeps which you can sell for XP. This Ability costs <bright>130</bright> more Mana to cast.<br><br><Rules>Only Bard can hold this item. Bench Bard to remove it! Temporarily breaks in rounds vs monsters and after casting in overtime.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": [
+        "Bard"
+      ]
+    },
+    "Beach Pop Emblem": {
+      "id": "DA_Oceansong19_Emblem",
+      "name": "Beach Pop Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Beach Pop trait.",
+      "builds_from": [
+        "DA_Component_Spatula",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": "DA_OceanSong19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bias Selector #1": {
+      "id": "DA_Heartsteel19_Selector1",
+      "name": "Bias Selector #1",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.CantBeCombined",
+        "Item.Equippable.CantReforge",
+        "Item.Equippable.Reusable"
+      ],
+      "description": "Use on a Heartsteel champion to make them your Bias and improve their Ability.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bias Selector #2": {
+      "id": "DA_Heartsteel19_Selector2",
+      "name": "Bias Selector #2",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.CantBeCombined",
+        "Item.Equippable.CantReforge",
+        "Item.Equippable.Reusable"
+      ],
+      "description": "Use on another Heartsteel member to improve their Ability.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Blighting Jewel": {
+      "id": "DA_Artifact_BlightingJewel",
+      "name": "Blighting Jewel",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Dealing magic damage reduces the target’s Magic Resist by <bright>3</bright>. If their Magic Resist is 0, grant the holder <bright>2</bright> Mana instead. <br><br><rules>Damage over time effects can only trigger on each enemy once every</rules> <rules>0.5</rules> <rules>seconds.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bloodthirster": {
+      "id": "DA_Bloodthirster",
+      "name": "Bloodthirster",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Once per combat at <bright>60%</bright> Health, gain a <bright>25%</bright> max Health Shield. After this effect triggers gain <bright>15%</bright> Omnivamp for the rest of combat.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Blue Buff": {
+      "id": "DA_BlueBuff",
+      "name": "Blue Buff",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Combat Start: Gain <bright>10</bright> Mana.",
+      "builds_from": [
+        "DA_Component_TearOfTheGoddess",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bodyguard Emblem": {
+      "id": "DA_Bodyguard19_Emblem",
+      "name": "Bodyguard Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Bodyguard trait.<br><br>Gain Attack Damage equal to <bright>20%</bright> of total Armor and Ability Power equal to <bright>20%</bright> of total Magic Resist.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_FryingPan"
+      ],
+      "builds_into": [],
+      "trait": "DA_Bodyguard19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Bramble Vest": {
+      "id": "DA_BrambleVest",
+      "name": "Bramble Vest",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <bright>6%</bright> max Health.<br><br>Take <bright>5%</bright> reduced damage from attacks. When struck by any attack, deal <magicdamage>100</magicdamage> <colorMagic>magic damage</colorMagic> to all adjacent enemies.<br><br><Rules>Cooldown: </Rules><rules>2</rules> <Rules>seconds</Rules>",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_ChainVest"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Cappa Juice": {
+      "id": "DA_Artifact_CappaJuice",
+      "name": "Cappa Juice",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.Stacking"
+      ],
+      "description": "The holder dons a Hat on each takedown. The holder gains <bright>1%</bright> Attack Damage and Ability Power per Hat. On death lose <bright>20%</bright> of all Hats.<br><br><rules>Current Hats:</rules> <rules>?</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Chain Vest": {
+      "id": "DA_Component_ChainVest",
+      "name": "Chain Vest",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleArmor% +<bright>20</bright> Armor",
+      "builds_from": [],
+      "builds_into": [
+        "DA_Bodyguard19_Emblem",
+        "DA_BrambleVest",
+        "DA_Crownguard",
+        "DA_EdgeOfNight",
+        "DA_GargoyleStoneplate",
+        "DA_Heartsteel19_Emblem",
+        "DA_ProtectorsVow",
+        "DA_SteadfastHeart",
+        "DA_SunfireCape",
+        "DA_TitansResolve"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Chalice of Power": {
+      "id": "DA_ChaliceOfPower",
+      "name": "Chalice of Power",
+      "kind": "support",
+      "tags": [
+        "Item.Equippable.Item.Support",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Grant <bright>25%</bright> Ability Power and <bright>1</bright> Mana Regen to the holder and allies within <bright>2</bright> hexes in the same row.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Champion Duplicator": {
+      "id": "DA_Consumable_ChampionDuplicator",
+      "name": "Champion Duplicator",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Duplicator"
+      ],
+      "description": "Use on a champion to create a 1-star copy on your bench.<br><br><Rules>Consumable - This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Choreographer Emblem": {
+      "id": "DA_Choreographer19_Emblem",
+      "name": "Choreographer Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive"
+      ],
+      "description": "The holder gains the Choreographer trait and an additional bonus based on if they're placed in the front 2 rows or back 2 rows.<br><br>Front: <bright>25%</bright> increased healing and shielding.<br><br>Back: <bright>20%</bright> Attack Speed and additional movement speed.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_Choreographer19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Classical Emblem": {
+      "id": "DA_Virtuosos19_Emblem",
+      "name": "Classical Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Classical trait. Enemies hit by their Ability are <keyword>Captivated</keyword> for <bright>3</bright> seconds.<br><br><Rules>Captivated enemies grant bonuses to Classical champions.</Rules>",
+      "builds_from": [
+        "DA_Component_RecurveBow",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_Virtuosos19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Crownguard": {
+      "id": "DA_Crownguard",
+      "name": "Crownguard",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Combat start: Gain a <bright>20</bright>% max Health Shield for <bright>8</bright> seconds.<br><br>All healing and shielding applied to the holder is increased by <bright>25%</bright>.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_NeedlesslyLargeRod"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Dawncore": {
+      "id": "DA_Artifact_Dawncore",
+      "name": "Dawncore",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "The holder's Abilities cost <bright>10</bright> less Mana to cast. Subsequent casts make the Ability cost <bright>5</bright>% less, to a minimum of <bright>15</bright>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Death's Defiance": {
+      "id": "DA_Artifact_DeathsDefiance",
+      "name": "Death's Defiance",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "<bright>50%</bright> of the damage the holder receives is instead dealt over <bright>4</bright> seconds as non-lethal damage.<br><br><Rules>Unique - only 1 per champion</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Deathblade": {
+      "id": "DA_Deathblade",
+      "name": "Deathblade",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <bright>15%</bright> additional Attack Damage from all sources.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_BFSword"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Dr. Mundo's Record Contract": {
+      "id": "DA_DrMundo19_UniqueTrait_ContractItem",
+      "name": "Dr. Mundo's Record Contract",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.CantBeCombined",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Use on a champion to sign them as a Recording Artist. They gain <bright>5%</bright> Damage Amp and their kills grant Dr. Mundo permanent Health.<br><br><Rules>Cannot be used on champions in combat.</Rules><br><Rules>Bench or sell the champion to remove the contract!</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Dragon's Claw": {
+      "id": "DA_DragonsClaw",
+      "name": "Dragon's Claw",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <bright>6%</bright> max Health. Every 2 seconds, heal <bright>2.5%</bright> max Health.",
+      "builds_from": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Edge of Night": {
+      "id": "DA_EdgeOfNight",
+      "name": "Edge of Night",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "At <bright>40%</bright> Health, briefly become untargetable, shed negative effects, and heal <bright>15%</bright> missing health.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_ChainVest"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Encore": {
+      "id": "DA_IonicSpark19_GreaterEncore",
+      "name": "Encore",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable"
+      ],
+      "description": "Use on an Ionic Spark champion to create a 1-star copy on your bench.<br><br><rules>Consumable: This item disappears when used.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Energetic Charm": {
+      "id": "DA_IonicSpark19_SmallASConsumable",
+      "name": "Energetic Charm",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Small"
+      ],
+      "description": "Use on an Ionic Spark champion to give them <bright>12%</bright> Attack Speed.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Eternal Pact": {
+      "id": "DA_Artifact_EternalPact",
+      "name": "Eternal Pact",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Once per combat, bind to the highest Max Health allied champion. If they die, gain <bright>10</bright> Mana regen and <bright>40%</bright> Ability Power. <br><br>When the ally uses their ability, gain <bright>10</bright> Mana. Every <bright>6</bright> seconds, shield the ally for <bright>200%</bright> of the holder's Ability Power.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Evenshroud": {
+      "id": "DA_Evenshroud",
+      "name": "Evenshroud",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "<bright>30</bright>% <Keyword>Sunder</Keyword> enemies within <bright>2</bright> hexes. Gain <bright>15</bright> Armor and Magic Resist for the first <bright>15</bright> seconds of combat.<br><br><Rules>Sunder: Reduce Armor</Rules>",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Fearless Charm": {
+      "id": "DA_IonicSpark19_SmallADConsumable",
+      "name": "Fearless Charm",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Small"
+      ],
+      "description": "Use on an Ionic Spark champion to give them <bright>15%</bright> Attack Damage.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Fishbones": {
+      "id": "DA_Artifact_Fishbones",
+      "name": "Fishbones",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "The holder's attacks target random enemies. Gain +2 Attack Range.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Flickerblades": {
+      "id": "DA_Artifact_NavoriFlickerblade",
+      "name": "Flickerblades",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.Stacking"
+      ],
+      "description": "Attacks grant <bright>4%</bright> stacking Attack Speed. Every <bright>3</bright> attacks also grant <bright>2%</bright> Attack Damage and <bright>2%</bright> Ability Power.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Forbidden Idol": {
+      "id": "DA_Artifact_ForbiddenIdol",
+      "name": "Forbidden Idol",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.Identifier.ForbiddenIdol"
+      ],
+      "description": "Shields have <bright>40%</bright> of their value converted to max Health instead.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Frontman Emblem": {
+      "id": "DA_Frontman19_Emblem",
+      "name": "Frontman Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Frontman trait. <br><br>Every <bright>5</bright> seconds, the next attack deals <bright>12%</bright> of the holder's max Health as magic damage.",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_GiantsBelt"
+      ],
+      "builds_into": [],
+      "trait": "DA_Frontman19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Frying Pan": {
+      "id": "DA_Component_FryingPan",
+      "name": "Frying Pan",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component.SpatOrPan",
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "<rules>...why else would it be here?</rules>",
+      "builds_from": [],
+      "builds_into": [
+        "DA_Arcanist19_Emblem",
+        "DA_Bodyguard19_Emblem",
+        "DA_Frontman19_Emblem",
+        "DA_Hitmaker19_Emblem",
+        "DA_Mosher19_Emblem",
+        "DA_Prodigy19_Emblem",
+        "DA_Renegade19_Emblem",
+        "DA_Swiftstriker19_Emblem",
+        "DA_TacticiansCape",
+        "DA_TacticiansShield"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Gambler's Blade": {
+      "id": "DA_Artifact_GamblersBlade",
+      "name": "Gambler's Blade",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.GoldGenerating"
+      ],
+      "description": "Grant <bright>1%</bright> bonus Attack Speed per gold in your bank (up to <bright>30</bright> gold).<br><br>Each attack has a <bright>6%</bright> chance to drop 1 gold.<br><br>Gold generated this game: ?<br><br><rules>Unique - only 1 per champion</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Gargoyle Stoneplate": {
+      "id": "DA_GargoyleStoneplate",
+      "name": "Gargoyle Stoneplate",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <bright>10</bright> Armor and <bright>10</bright> Magic Resist for each enemy targeting the holder.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Giant Slayer": {
+      "id": "DA_GiantSlayer",
+      "name": "Giant Slayer",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Gain <bright>15%</bright> additional Damage Amp against Tanks.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Giant's Belt": {
+      "id": "DA_Component_GiantsBelt",
+      "name": "Giant's Belt",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleHealth% +<bright>150</bright> Health",
+      "builds_from": [],
+      "builds_into": [
+        "DA_Evenshroud",
+        "DA_Frontman19_Emblem",
+        "DA_IllBeats19_Emblem",
+        "DA_Morellonomicon",
+        "DA_NashorsTooth",
+        "DA_SpiritVisage",
+        "DA_SteraksGage",
+        "DA_StrikersFlail",
+        "DA_SunfireCape",
+        "DA_WarmogsArmor"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Gold Collector": {
+      "id": "DA_Artifact_GoldCollector",
+      "name": "Gold Collector",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.GoldGenerating"
+      ],
+      "description": "Attacks and Abilities execute enemies below <bright>12%</bright> of their maximum Health. Executions on champions have a <bright>33%</bright> chance to drop 1 gold.<br><br>Gold collected: ?<br><br><rules>Unique - only 1 per champion</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Golden Item Remover": {
+      "id": "DA_Consumable_GoldenItemRemover",
+      "name": "Golden Item Remover",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Reusable",
+        "Item.Equippable.CantBeCombined",
+        "Item.Equippable.CantReforge",
+        "Item.Equippable.Item.Remover"
+      ],
+      "description": "Use on a champion to unequip all items as many times as you want. Converts all future Magnetic Removers to Reforgers. <br><br><Rules>Cannot be used on champions in combat. Does not disappear when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Guinsoo's Rageblade": {
+      "id": "DA_GuinsoosRageblade",
+      "name": "Guinsoo's Rageblade",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <bright>7</bright>% stacking Attack Speed every second.",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hand Of Justice": {
+      "id": "DA_HandOfJustice",
+      "name": "Hand Of Justice",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain 2 effects:<br>• <bright>18%</bright> Attack Damage and <bright>18%</bright> Ability Power.<br>• <bright>12%</bright> Omnivamp.<br><br>While above <bright>50%</bright> health, double the Attack Damage and Ability Power. While below <bright>50%</bright> Health, double the Omnivamp.",
+      "builds_from": [
+        "DA_Component_SparringGloves",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Health Booster": {
+      "id": "DA_HealthBooster",
+      "name": "Health Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>100</bright> max Health. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Heartsteel Emblem": {
+      "id": "DA_Heartsteel19_Emblem",
+      "name": "Heartsteel Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem",
+        "Item.Equippable.Item.Set19.HeartsteelEmblem"
+      ],
+      "description": "The holder gains the Heartsteel trait.<br><br>Bias Effect: Gain <bright>125%</bright> of every Heartsteel bonus.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_Heartsteel19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Heartsteel Prismatic Quest": {
+      "id": "DA_Heartsteel19_PrismaticQuestItem",
+      "name": "Heartsteel Prismatic Quest",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.PrismaticQuestItem",
+        "Item.Equippable.RemovedOnBench"
+      ],
+      "description": "Help the Heartsteel members prepare for their next comeback!",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hellfire Hatchet": {
+      "id": "DA_Artifact_HellfireHatchet",
+      "name": "Hellfire Hatchet",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Attacks deal <bright>3%</bright> of the holder's max Health as bonus physical damage. For every <bright>1%</bright> missing Health, gain <bright>1.5%</bright> Attack Speed.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hextech Gunblade": {
+      "id": "DA_HextechGunblade",
+      "name": "Hextech Gunblade",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Heal the lowest percent Health ally for <bright>20%</bright> of damage dealt.<br><br>Ally Healing: ?",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_NeedlesslyLargeRod"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hitmaker Emblem": {
+      "id": "DA_Hitmaker19_Emblem",
+      "name": "Hitmaker Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Hitmaker trait.<br><br>Become an additional Big Shot.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_FryingPan"
+      ],
+      "builds_into": [],
+      "trait": "DA_Hitmaker19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Horizon Focus": {
+      "id": "DA_Artifact_HorizonFocus",
+      "name": "Horizon Focus",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Stunning an enemy causes lightning to strike them, dealing <bright>30%</bright> of their max Health as magic damage.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hullcrusher": {
+      "id": "DA_Artifact_Hullcrusher",
+      "name": "Hullcrusher",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Combat Start: If there are no adjacent allies, gain <bright>400</bright> Health, <bright>10%</bright> Attack Damage, and <bright>10%</bright> Ability Power.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Hyperpop Emblem": {
+      "id": "DA_GlitterBomb19_Emblem",
+      "name": "Hyperpop Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive"
+      ],
+      "description": "The holder gains the Hyperpop trait.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_GlitterBomb19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "IllBeats Emblem": {
+      "id": "DA_IllBeats19_Emblem",
+      "name": "IllBeats Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the IllBeats trait.",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_Illbeats19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Infinity Edge": {
+      "id": "DA_InfinityEdge",
+      "name": "Infinity Edge",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <Keyword>Precision</Keyword>. <br><br><Rules>Precision: Ability damage can critically strike. Extra Precision grants 10% Critical Strike Damage.</Rules>",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Infinity Force": {
+      "id": "DA_Artifact_InfinityForce",
+      "name": "Infinity Force",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "<Rules>Tons of EVERYTHING!</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Ionic Spark": {
+      "id": "DA_IonicSpark",
+      "name": "Ionic Spark",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "<bright>30%</bright> <Keyword>Shred</Keyword> enemies within <bright>2</bright> hexes. When enemies cast an Ability, deal magic damage equal to <bright>150%</bright> of the Mana spent.<br><br><rules>Shred: Reduce Magic Resist</rules>",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Ionic Spark Emblem": {
+      "id": "DA_IonicSpark19_Emblem",
+      "name": "Ionic Spark Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem",
+        "Item.Equippable.Item.Set19.IonicSparkEmblem"
+      ],
+      "description": "The holder gains the Ionic Spark trait.",
+      "builds_from": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_IonicSpark19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Ionic Spark Prismatic Quest": {
+      "id": "DA_IonicSpark19_PrismaticQuestItem",
+      "name": "Ionic Spark Prismatic Quest",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.PrismaticQuestItem",
+        "Item.Equippable.RemovedOnBench"
+      ],
+      "description": "Become Ionic Spark's #1 fan!",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Item Remover": {
+      "id": "DA_Consumable_ItemRemover",
+      "name": "Item Remover",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Remover"
+      ],
+      "description": "Use on a champion to unequip all items. <br><br><Rules>Cannot be used on champions in combat.</Rules><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Jazz Emblem": {
+      "id": "DA_Jazz19_Emblem",
+      "name": "Jazz Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive"
+      ],
+      "description": "The holder gains the Jazz trait.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_Jazz19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Jeweled Gauntlet": {
+      "id": "DA_JeweledGauntlet",
+      "name": "Jeweled Gauntlet",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Gain <Keyword>Precision</Keyword>. <br><br><Rules>Precision: Ability damage can critically strike. Extra Precision grants 10% Critical Strike Damage.</Rules>",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Joyous Charm": {
+      "id": "DA_IonicSpark19_SmallHPConsumable",
+      "name": "Joyous Charm",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Small"
+      ],
+      "description": "Use on an Ionic Spark champion to give them <bright>15%</bright> max Health.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Juggernaut Emblem": {
+      "id": "DA_Juggernaut19_Emblem",
+      "name": "Juggernaut Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive"
+      ],
+      "description": "The holder gains the Juggernaut trait and becomes unstoppable. <br><br>They also gain <bright>5%</bright> Damage Amp per 1,000 max Health.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_Juggernaut19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "K/DA Emblem": {
+      "id": "DA_KDA19_Emblem",
+      "name": "K/DA Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem",
+        "Item.Equippable.Item.Set19.KDAEmblem"
+      ],
+      "description": "The holder gains the K/DA trait.",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_KDA19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "KDA Prismatic Quest": {
+      "id": "DA_KDA19_PrismaticQuestItem",
+      "name": "KDA Prismatic Quest",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.PrismaticQuestItem",
+        "Item.Equippable.RemovedOnBench"
+      ],
+      "description": "Reach <bright>21</bright> K/DA star levels!",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Kraken's Fury": {
+      "id": "DA_KrakensFury",
+      "name": "Kraken's Fury",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Attacks grant <bright>3.5</bright>% stacking Attack Damage, up to 15 attacks. After <bright>15</bright> attacks, gain <bright>15%</bright> Attack Speed.",
+      "builds_from": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Large Hex Mix": {
+      "id": "DA_IonicSpark19_LargeAPConsumable",
+      "name": "Large Hex Mix",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Large"
+      ],
+      "description": "Use on an Ionic Spark unit to give them <bright>50%</bright> Ability Power.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Large Purritos Bag": {
+      "id": "DA_IonicSpark19_LargeCritConsumable",
+      "name": "Large Purritos Bag",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Large"
+      ],
+      "description": "Use on an Ionic Spark unit to give them <bright>50%</bright> Critical Strike Chance.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Large SHREDDED Celery": {
+      "id": "DA_IonicSpark19_LargeHPConsumable",
+      "name": "Large SHREDDED Celery",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Large"
+      ],
+      "description": "Use on an Ionic Spark unit to give them <bright>50%</bright> max Health.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Large Shark Chips": {
+      "id": "DA_IonicSpark19_LargeASConsumable",
+      "name": "Large Shark Chips",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Large"
+      ],
+      "description": "Use on an Ionic Spark unit to give them <bright>50%</bright> Attack Speed.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Last Whisper": {
+      "id": "DA_LastWhisper",
+      "name": "Last Whisper",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Attacks and Ability damage <bright>30</bright>% <Keyword>Sunders</Keyword> the target for <bright>3</bright> seconds. This effect does not stack.<br><br><Rules>Sunder: Reduce Armor</Rules>",
+      "builds_from": [
+        "DA_Component_RecurveBow",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Lesser Champion Duplicator": {
+      "id": "DA_Consumable_LesserChampionDuplicator",
+      "name": "Lesser Champion Duplicator",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Duplicator"
+      ],
+      "description": "Use on a 3-cost champion or less to create a 1-star copy on your bench.<br><br><rules>Consumable: This item disappears when used.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Lich Bane": {
+      "id": "DA_Artifact_LichBane",
+      "name": "Lich Bane",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "The holder’s first attack after each Ability cast deals ? bonus magic damage.<br><br><Rules>Damage increases based on Stage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Lightshield Crest": {
+      "id": "DA_Artifact_LightshieldCrest",
+      "name": "Lightshield Crest",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Every <bright>3</bright> seconds, Shield the lowest percent Health ally for <bright>70%</bright> of the holder’s combined Armor and Magic Resist for <bright>5</bright> seconds.<br><br>On death, grant this Shield to all allies.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Lucky Charm": {
+      "id": "DA_IonicSpark19_SmallCritConsumable",
+      "name": "Lucky Charm",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Small"
+      ],
+      "description": "Use on an Ionic Spark champion to give them <bright>10%</bright> Critical Strike Chance.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Lucky Item Chest": {
+      "id": "DA_LuckyItemChest",
+      "name": "Lucky Item Chest",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable"
+      ],
+      "description": "Use on a champion to open an armory of items especially suited for them.<br><br><Rules>These items are based on the champion's recommended items.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Luden's Tempest": {
+      "id": "DA_Artifact_LudensTempest",
+      "name": "Luden's Tempest",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "<bright>100%</bright> of overkill damage plus <bright>130</bright> is dealt as magic damage to the two enemies nearest the target.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Mana Regen Booster": {
+      "id": "DA_ManaRegenBooster",
+      "name": "Mana Regen Booster",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.StatBoost"
+      ],
+      "description": "Permanently grant <bright>1</bright> Mana Regen. <br><br><Rules>[Consumable - This item disappears when used.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Manager Emblem": {
+      "id": "DA_Manager19_Emblem",
+      "name": "Manager Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive"
+      ],
+      "description": "The holder gains the Manager trait.<br><br>On cast, grant the ally in the Spotlight Hex <bright>20%</bright> of Mana spent.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_Manager19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Manazane": {
+      "id": "DA_Artifact_Manazane",
+      "name": "Manazane",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "After casting the first time in combat, gain <bright>110</bright> Mana over <bright>5</bright> seconds.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Masterwork Upgrade": {
+      "id": "DA_MasterworkUpgrade",
+      "name": "Masterwork Upgrade",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable"
+      ],
+      "description": "Use on a champion to choose a Radiant version of that champion's craftable completed items. Upgrade the item you choose to its Radiant equivalent and unequip it.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Mittens": {
+      "id": "DA_Artifact_Mittens",
+      "name": "Mittens",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Shrinks the holder, granting them increased movement speed and immunity to Slow, Burn, and Wound.<br><br><rules>Slow: Reduces Attack Speed.</rules><br><rules>Burn: Deals a percent of the target’s max Health as true damage every second.</rules><br><rules>Wound: Reduces healing received.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Mogul's Mail": {
+      "id": "DA_Artifact_MogulsMail",
+      "name": "Mogul's Mail",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Item.GoldGenerating"
+      ],
+      "description": "Grants <bright>1</bright> Armor, <bright>1</bright> Magic Resist, and <bright>5</bright> Health when taking damage, stacking up to <bright>35</bright> times.<br><br>At full stacks, grant 1 gold and continue gaining 1 gold every <bright>11</bright> seconds.<br><br>Gold generated this game: ?<br><br><rules>Unique - only 1 per champion</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Morellonomicon": {
+      "id": "DA_Morellonomicon",
+      "name": "Morellonomicon",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Attacks and Abilities deal <bright>1</bright>% <Keyword>Burn</Keyword> and <bright>33</bright>% <Keyword>Wound</Keyword> to enemies for <bright>10</bright> seconds.<br><br><rules>Burn: Deals a percent of the target’s max Health as true damage every second.</rules><br><rules>Wound: Reduces healing received.</rules>",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_NeedlesslyLargeRod"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Nashor's Tooth": {
+      "id": "DA_NashorsTooth",
+      "name": "Nashor's Tooth",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Attacks grant <bright>2</bright> bonus Mana, increased to 4 if they critically strike.",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Needlessly Large Rod": {
+      "id": "DA_Component_NeedlesslyLargeRod",
+      "name": "Needlessly Large Rod",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleAP% +<bright>10%</bright> Ability Power",
+      "builds_from": [],
+      "builds_into": [
+        "DA_Arcanist19_Emblem",
+        "DA_ArchangelsStaff",
+        "DA_Crownguard",
+        "DA_GuinsoosRageblade",
+        "DA_HextechGunblade",
+        "DA_IonicSpark",
+        "DA_JeweledGauntlet",
+        "DA_KDA19_Emblem",
+        "DA_Morellonomicon",
+        "DA_RabadonsDeathcap"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Negatron Cloak": {
+      "id": "DA_Component_NegatronCloak",
+      "name": "Negatron Cloak",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleMR% +<bright>20</bright> Magic Resist",
+      "builds_from": [],
+      "builds_into": [
+        "DA_AdaptiveHelm",
+        "DA_Bloodthirster",
+        "DA_DragonsClaw",
+        "DA_Evenshroud",
+        "DA_GargoyleStoneplate",
+        "DA_IonicSpark",
+        "DA_IonicSpark19_Emblem",
+        "DA_KrakensFury",
+        "DA_Mosher19_Emblem",
+        "DA_Quicksilver"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Passion Charm": {
+      "id": "DA_IonicSpark19_SmallAPConsumable",
+      "name": "Passion Charm",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost.Small"
+      ],
+      "description": "Use on an Ionic Spark champion to give them <bright>15%</bright> Ability Power.<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Pentakill Emblem": {
+      "id": "DA_Pentakill19_Emblem",
+      "name": "Pentakill Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem",
+        "Item.Equippable.Item.Set19.PentakillEmblem"
+      ],
+      "description": "The holder gains the Pentakill trait.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_Pentakill19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Pentakill Prismatic Quest": {
+      "id": "DA_Pentakill19_PrismaticQuestItem",
+      "name": "Pentakill Prismatic Quest",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.PrismaticQuestItem",
+        "Item.Equippable.RemovedOnBench"
+      ],
+      "description": "Score a Pentakill!",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Prismatic Crownguard": {
+      "id": "DA_CrownguardRadiant",
+      "name": "Prismatic Crownguard",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Combat start: Gain a <colorradiant>30</colorradiant><colorRadiant>%</colorRadiant> max Health Shield for <bright>8</bright> seconds.<br><br>All healing and shielding applied to the holder is increased by <colorradiant>50%</colorradiant>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Prodigy Emblem": {
+      "id": "DA_Prodigy19_Emblem",
+      "name": "Prodigy Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Prodigy trait.<br><br>On cast, gain <bright>1%</bright> max Health for every <bright>10</bright> Mana spent.",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": "DA_Prodigy19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Protector's Vow": {
+      "id": "DA_ProtectorsVow",
+      "name": "Protector's Vow",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Combat Start: Gain <bright>20</bright> Mana.<br><br>At <bright>40%</bright> Health, gain <bright>15</bright> Mana and a Shield equal to <bright>20%</bright> max Health.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Quicksilver": {
+      "id": "DA_Quicksilver",
+      "name": "Quicksilver",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Become Unstoppable for the first <bright>18</bright> seconds of combat. <br><br>Gain <bright>3%</bright> stacking Attack Speed every second.",
+      "builds_from": [
+        "DA_Component_NegatronCloak",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Rabadon's Deathcap": {
+      "id": "DA_RabadonsDeathcap",
+      "name": "Rabadon's Deathcap",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Gain <bright>15%</bright> additional Ability Power from all sources.",
+      "builds_from": [
+        "DA_Component_NeedlesslyLargeRod",
+        "DA_Component_NeedlesslyLargeRod"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Adaptive Helm": {
+      "id": "DA_AdaptiveHelm_Radiant",
+      "name": "Radiant Adaptive Helm",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain an additional <colorradiant>30%</colorradiant> Mana from all sources. The wearer gains an additional bonus based on their Role:<br><br>Tanks and Fighters: Gain <colorradiant>80</colorradiant> Armor and Magic Resistance.<br><br>Other Roles: Gain <colorradiant>35%</colorradiant> Attack Damage and Ability Power.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Archangel's Staff": {
+      "id": "DA_ArchangelsStaffRadiant",
+      "name": "Radiant Archangel's Staff",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain <colorradiant>40</colorradiant><colorRadiant>%</colorRadiant> Ability Power every <bright>5</bright> seconds in combat.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Bloodthirster": {
+      "id": "DA_BloodthirsterRadiant",
+      "name": "Radiant Bloodthirster",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Once per combat at <bright>60%</bright> Health, gain a <colorradiant>50%</colorradiant> max Health Shield. After this effect triggers gain <colorradiant>30%</colorradiant> Omnivamp for the rest of combat.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Blue Buff": {
+      "id": "DA_BlueBuffRadiant",
+      "name": "Radiant Blue Buff",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Combat Start: Gain <colorradiant>20</colorradiant> Mana.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Bramble Vest": {
+      "id": "DA_BrambleVestRadiant",
+      "name": "Radiant Bramble Vest",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <colorradiant>12%</colorradiant> max Health.<br><br>Take <colorradiant>10%</colorradiant> reduced damage from attacks. When struck by any attack, deal <colorradiant>200</colorradiant> magic damage to all adjacent enemies.<br><br><Rules>Cooldown: </Rules><rules>2</rules> <Rules>seconds</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Deathblade": {
+      "id": "DA_DeathbladeRadiant",
+      "name": "Radiant Deathblade",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <colorradiant>30%</colorradiant> additional Attack Damage from all sources.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Dragon's Claw": {
+      "id": "DA_DragonsClawRadiant",
+      "name": "Radiant Dragon's Claw",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <colorradiant>28%</colorradiant> max Health.<br><br>Every 2 seconds, heal <colorradiant>5%</colorradiant> max Health.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Edge of Night": {
+      "id": "DA_EdgeOfNightRadiant",
+      "name": "Radiant Edge of Night",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "At <bright>40%</bright> Health, briefly become untargetable, shed negative effects, and <colorRadiant>heal all missing health</colorRadiant>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Evenshroud": {
+      "id": "DA_EvenshroudRadiant",
+      "name": "Radiant Evenshroud",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "<bright>30</bright>% <Keyword>Sunder</Keyword> enemies within <bright>3</bright> hexes. Gain <colorradiant>50</colorradiant> <colorRadiant>Armor and Magic Resist</colorRadiant> for the first <colorradiant>20</colorradiant> <colorRadiant>seconds</colorRadiant> of combat.<br><br><Rules>Sunder: Reduce Armor</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Gargoyle Stoneplate": {
+      "id": "DA_GargoyleStoneplate_Radiant",
+      "name": "Radiant Gargoyle Stoneplate",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <colorradiant>20</colorradiant> Armor and <colorradiant>20</colorradiant> Magic Resist for each enemy targeting the holder.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Giant Slayer": {
+      "id": "DA_GiantSlayer_Radiant",
+      "name": "Radiant Giant Slayer",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <colorradiant>30%</colorradiant> additional Damage Amp against Tanks.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Guinsoo's Rageblade": {
+      "id": "DA_GuinsoosRagebladeRadiant",
+      "name": "Radiant Guinsoo's Rageblade",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <colorradiant>16</colorradiant><colorRadiant>%</colorRadiant> stacking Attack Speed every second.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Hand of Justice": {
+      "id": "DA_HandOfJusticeRadiant",
+      "name": "Radiant Hand of Justice",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Gain 2 effects:<br>• <colorradiant>35%</colorradiant> Attack Damage and <colorradiant>35%</colorradiant> Ability Power.<br>• <colorradiant>25%</colorradiant> Omnivamp.<br><br>While above <bright>50%</bright> health, double the Attack Damage and Ability Power. While below <bright>50%</bright> Health, double the Omnivamp.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Hextech Gunblade": {
+      "id": "DA_HextechGunbladeRadiant",
+      "name": "Radiant Hextech Gunblade",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Heal the lowest percent Health ally for <colorradiant>40%</colorradiant> of damage dealt.<br><br>Ally Healing: ?",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Infinity Edge": {
+      "id": "DA_InfinityEdgeRadiant",
+      "name": "Radiant Infinity Edge",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <Keyword>Precision</Keyword>. <br><br><Rules>Precision: Ability damage can critically strike. Extra Precision grants 10% Critical Strike Damage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Ionic Spark": {
+      "id": "DA_IonicSparkRadiant",
+      "name": "Radiant Ionic Spark",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "<bright>30%</bright> <Keyword>Shred</Keyword> enemies within <bright>2</bright> hexes. When enemies cast an Ability, deal magic damage equal to <colorradiant>300%</colorradiant> of the Mana spent.<br><br><rules>Shred: Reduce Magic Resist</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Jeweled Gauntlet": {
+      "id": "DA_JeweledGauntletRadiant",
+      "name": "Radiant Jeweled Gauntlet",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Gain <Keyword>Precision</Keyword>. <br><br><Rules>Precision: Ability damage can critically strike. Extra Precision grants 10% Critical Strike Damage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Kraken's Fury": {
+      "id": "DA_KrakensFury_Radiant",
+      "name": "Radiant Kraken's Fury",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Attacks grant <colorradiant>7</colorradiant><colorRadiant>%</colorRadiant> stacking Attack Damage, up to 15 attacks. After <bright>15</bright> attacks, gain <colorradiant>30%</colorradiant> Attack Speed.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Last Whisper": {
+      "id": "DA_LastWhisperRadiant",
+      "name": "Radiant Last Whisper",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Attacks and Ability damage <bright>30</bright>% <Keyword>Sunders</Keyword> the target for the <colorRadiant>rest of combat.</colorRadiant> This effect does not stack.<br><br><Rules>Sunder: Reduce Armor</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Lucky Item Chest": {
+      "id": "DA_RadiantLuckyItemChest",
+      "name": "Radiant Lucky Item Chest",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Consumable.Radiant"
+      ],
+      "description": "Use on a champion to open an armory of items especially suited for them.<br><br><Rules>These items are based on the champion's recommended items.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Morellonomicon": {
+      "id": "DA_MorellonomiconRadiant",
+      "name": "Radiant Morellonomicon",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Attacks and Abilities deal <colorradiant>2</colorradiant><colorRadiant>%</colorRadiant> Burn and <bright>33</bright>% Wound to enemies for <bright>10</bright> seconds.<br><br><rules>Burn: Deals a percent of the target’s max Health as true damage every second.</rules><br><rules>Wound: Reduces healing received.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Nashor's Tooth": {
+      "id": "DA_NashorsToothRadiant",
+      "name": "Radiant Nashor's Tooth",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Attacks grant <colorradiant>4</colorradiant> bonus Mana, increased to <colorradiant>6</colorradiant> if they critically strike.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Protector's Vow": {
+      "id": "DA_ProtectorsVowRadiant",
+      "name": "Radiant Protector's Vow",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Combat Start: Gain <colorradiant>40</colorradiant> Mana.<br><br>At <bright>40%</bright> Health, gain <colorradiant>30</colorradiant> <colorRadiant>Mana</colorRadiant> and a Shield equal to <colorradiant>50%</colorradiant> <colorRadiant>max Health</colorRadiant>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Quicksilver": {
+      "id": "DA_QuicksilverRadiant",
+      "name": "Radiant Quicksilver",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain Unstoppable for the first <colorradiant>45</colorradiant> seconds of combat. <br><br>Gain <colorradiant>6%</colorradiant> stacking Attack Speed every second.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Rabadon's Deathcap": {
+      "id": "DA_RabadonsDeathcap_Radiant",
+      "name": "Radiant Rabadon's Deathcap",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Gain <colorradiant>30%</colorradiant> additional Ability Power from all sources.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Red Buff": {
+      "id": "DA_RedBuffRadiant",
+      "name": "Radiant Red Buff",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Attacks and Abilities <colorradiant>2</colorradiant><colorRadiant>%</colorRadiant> <Keyword>Burn</Keyword> and <bright>33</bright>% <Keyword>Wound</Keyword> enemies for <bright>5</bright> seconds.<br><br><rules>Burn: Deals a percent of the target’s max Health as true damage every second.</rules><br><rules>Wound: Reduces healing received.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Spear of Shojin": {
+      "id": "DA_SpearOfShojinRadiant",
+      "name": "Radiant Spear of Shojin",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Attacks grant <colorradiant>10</colorradiant> <colorRadiant>bonus Mana</colorRadiant>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Spirit Visage": {
+      "id": "DA_SpiritVisage_Radiant",
+      "name": "Radiant Spirit Visage",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.SpiritVisage",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Regenerate <colorradiant>4</colorradiant><colorRadiant>%</colorRadiant> of missing Health each second.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Steadfast Heart": {
+      "id": "DA_SteadfastHeartRadiant",
+      "name": "Radiant Steadfast Heart",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.SteadfastHeart",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <colorradiant>10</colorradiant>% Durability. While above <bright>50%</bright> Health, instead gain <colorradiant>30</colorradiant>% Durability.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Sterak's Gage": {
+      "id": "DA_SteraksGageRadiant",
+      "name": "Radiant Sterak's Gage",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "At <bright>40%</bright> Health, gain a Shield equal to <colorradiant>80%</colorradiant> of the wearer's maximum Health that rapidly decays over <colorradiant>6</colorradiant> seconds.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Striker's Flail": {
+      "id": "DA_StrikersFlailRadiant",
+      "name": "Radiant Striker's Flail",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Critical Strikes grant <colorradiant>10%</colorradiant> Damage Amp for <bright>5</bright> seconds, stacking up to <bright>4</bright> times.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Sunfire Cape": {
+      "id": "DA_SunfireCape_Radiant",
+      "name": "Radiant Sunfire Cape",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Gain <colorradiant>16%</colorradiant> max Health.<br><br>Every <bright>2</bright> seconds, deal <colorradiant>2</colorradiant><colorRadiant>%</colorRadiant> <Keyword>Burn</Keyword> and <bright>33</bright>% <Keyword>Wound</Keyword> to an enemy within 2 hexes for <bright>10</bright> seconds.<br><br><Rules>Burn: Deals a percent of the target’s max Health as true damage every second.</Rules><br><Rules>Wound: Reduces healing received.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Thief's Gloves": {
+      "id": "DA_ThiefsGlovesRadiant",
+      "name": "Radiant Thief's Gloves",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.ThiefsGloves"
+      ],
+      "description": "Each round: Equip 2 random <colorRadiant>Radiant</colorRadiant> items<br><br><Rules>[Consumes 3 item slots.]</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 3,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Titan's Resolve": {
+      "id": "DA_TitansResolve_Radiant",
+      "name": "Radiant Titan's Resolve",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <bright>4%</bright> Attack Damage and Ability Power when attacking or taking damage, stacking up to <bright>25</bright> times.<br><br>At full stacks, gain <bright>30%</bright> max Health and become Unstoppable.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Void Staff": {
+      "id": "DA_VoidStaffRadiant",
+      "name": "Radiant Void Staff",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Attacks and Ability damage <bright>30</bright>% <Keyword>Shred</Keyword> the target for the <colorRadiant>rest of combat.</colorRadiant> This effect does not stack.<br><br><rules>Shred: Reduce Magic Resist</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Radiant Warmog's Armor": {
+      "id": "DA_WarmogsArmorRadiant",
+      "name": "Radiant Warmog's Armor",
+      "kind": "radiant",
+      "tags": [
+        "Item.Equippable.Item.Radiant",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <colorradiant>36%</colorradiant> max Health.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Randuin's Omen": {
+      "id": "DA_RanduinsOmen",
+      "name": "Randuin's Omen",
+      "kind": "support",
+      "tags": [
+        "Item.Equippable.Item.Support",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Grant <bright>33</bright> Armor and Magic Resist to the holder and allies within <bright>1</bright> hex.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Rapid Firecannon": {
+      "id": "DA_Artifact_RapidFireCannon",
+      "name": "Rapid Firecannon",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Gain +1 Attack Range, increased by 1 whenever the holder kills an enemy.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Recurve Bow": {
+      "id": "DA_Component_RecurveBow",
+      "name": "Recurve Bow",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleAS% +<bright>10%</bright> Attack Speed",
+      "builds_from": [],
+      "builds_into": [
+        "DA_GiantSlayer",
+        "DA_GuinsoosRageblade",
+        "DA_KrakensFury",
+        "DA_LastWhisper",
+        "DA_NashorsTooth",
+        "DA_RedBuff",
+        "DA_Swiftstriker19_Emblem",
+        "DA_TitansResolve",
+        "DA_Virtuosos19_Emblem",
+        "DA_VoidStaff"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Red Buff": {
+      "id": "DA_RedBuff",
+      "name": "Red Buff",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Attacks and Abilities <bright>1</bright>% <Keyword>Burn</Keyword> and <bright>33</bright>% <Keyword>Wound</Keyword> enemies for <bright>5</bright> seconds.<br><br><rules>Burn: Deals a percent of the target’s max Health as true damage every second.</rules><br><rules>Wound: Reduces healing received.</rules>",
+      "builds_from": [
+        "DA_Component_RecurveBow",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Reforger": {
+      "id": "DA_Reforger",
+      "name": "Reforger",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Reforger"
+      ],
+      "description": "Unequip all items and randomly transform them into new ones of a similar type and quality.<br><br><Rules>Cannot be used on champions in combat.</Rules><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Renegade Emblem": {
+      "id": "DA_Renegade19_Emblem",
+      "name": "Renegade Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Renegade trait.<br><br>Critical Strikes have a <bright>50%</bright> chance to deal <bright>40%</bright> bonus Critical Strike Damage.",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": "DA_Renegade19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Rock Emblem": {
+      "id": "DA_DemonVision19_Emblem",
+      "name": "Rock Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Rock trait.",
+      "builds_from": [
+        "DA_Component_SparringGloves",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": "DA_DemonVision19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Salvager": {
+      "id": "DA_ScissorSalvager",
+      "name": "Salvager",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Salvager"
+      ],
+      "description": "Use on a champion to remove all their items and break them down into components.<br> <br><Rules>Tactician's items and Emblems cannot be broken apart.</Rules><br><Rules>Cannot be used on champions in combat.</Rules><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Scroll of Heavenly Prayer": {
+      "id": "DA_Heavenscale19_HeavenlyPrayer",
+      "name": "Scroll of Heavenly Prayer",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.Heavenscale.SafeItem",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Each round: equip 1 random recommended item. <br><br><Rules>Only Gu Feng champions can hold this item.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": [
+        "Gu Feng champions"
+      ]
+    },
+    "Scroll of The Beast": {
+      "id": "DA_Heavenscale19_DangerousItem",
+      "name": "Scroll of The Beast",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.Heavenscale.DangerousItem",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Immediately gain XP equal to <bright>20%</bright> of your Player Health (0.2 XP). <Keyword>The Beast Who Devours All Song</Keyword> looms over you for the rest of the game. If you lose <bright>2</bright> player combats in a row, <Keyword>The Beast</Keyword> consumes <colorStatReduced>YOU!</colorStatReduced><br><br>When you win player combat, gain <bright>6</bright> XP, increased to <bright>250</bright> at Level 10. Reach Level 11 by gaining <bright>?</bright> XP to enlighten <Keyword>The Beast</Keyword> and obtain <colorRadiant>Heavenly</colorRadiant> power.<br><br><Rules>Only Gu Feng champions can hold this item.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": [
+        "Gu Feng champions"
+      ]
+    },
+    "Seeker's Armguard": {
+      "id": "DA_Artifact_SeekersArmguard",
+      "name": "Seeker's Armguard",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact",
+        "Item.Equippable.Item.Stacking"
+      ],
+      "description": "Takedowns increase the holder’s Armor, Magic Resist, and Ability Power by <bright>20</bright>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Silvermere Dawn": {
+      "id": "DA_Artifact_SilvermereDawn",
+      "name": "Silvermere Dawn",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Grants immunity to Stuns and the holder's attacks Stun the target for <bright>0.8</bright> seconds.<br><br>The holder’s Attack Speed is locked at <bright>0.5</bright>.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Slayer Emblem": {
+      "id": "DA_Mosher19_Emblem",
+      "name": "Slayer Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Slayer trait.<br><br>Deal up to <bright>40%</bright> more damage to enemies based on their missing Health.",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_NegatronCloak"
+      ],
+      "builds_into": [],
+      "trait": "DA_Mosher19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Small Encore": {
+      "id": "DA_IonicSpark19_LesserEncore",
+      "name": "Small Encore",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable"
+      ],
+      "description": "Use on a 3-cost or less Ionic Spark champion to create a 1-star copy on your bench.<br><br><rules>Consumable: This item disappears when used.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Sniper's Focus": {
+      "id": "DA_Artifact_SnipersFocus",
+      "name": "Sniper's Focus",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Gain <bright>40%</bright> Damage Amp against targets <bright>4</bright> or more hexes away.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Sona's Homemade Cookies": {
+      "id": "DA_IonicSpark19_SonaConsumable",
+      "name": "Sona's Homemade Cookies",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable.IonicSparkBoost"
+      ],
+      "description": "Use on an Ionic Spark unit to give them <bright>15%</bright> Attack Damage and Ability Power. Also makes them 100% more cute %i:scaleHealth%!<br><br><Rules>Consumable: This item disappears when used.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Sparring Gloves": {
+      "id": "DA_Component_SparringGloves",
+      "name": "Sparring Gloves",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "%i:scaleCrit% +<bright>20%</bright> Critical Strike Chance",
+      "builds_from": [],
+      "builds_into": [
+        "DA_DemonVision19_Emblem",
+        "DA_HandOfJustice",
+        "DA_InfinityEdge",
+        "DA_JeweledGauntlet",
+        "DA_LastWhisper",
+        "DA_Quicksilver",
+        "DA_Renegade19_Emblem",
+        "DA_SteadfastHeart",
+        "DA_StrikersFlail",
+        "DA_ThiefsGloves"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Spatula": {
+      "id": "DA_Component_Spatula",
+      "name": "Spatula",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component.SpatOrPan",
+        "Item.Equippable.Item.Component"
+      ],
+      "description": "<rules>It must do something...</rules>",
+      "builds_from": [],
+      "builds_into": [
+        "DA_DemonVision19_Emblem",
+        "DA_Heartsteel19_Emblem",
+        "DA_IllBeats19_Emblem",
+        "DA_IonicSpark19_Emblem",
+        "DA_KDA19_Emblem",
+        "DA_Oceansong19_Emblem",
+        "DA_Pentakill19_Emblem",
+        "DA_TacticiansCape",
+        "DA_TacticiansCrown",
+        "DA_Virtuosos19_Emblem"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Spear of Shojin": {
+      "id": "DA_SpearOfShojin",
+      "name": "Spear of Shojin",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Attacks grant <bright>5</bright> bonus Mana.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Spirit Visage": {
+      "id": "DA_SpiritVisage",
+      "name": "Spirit Visage",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.SpiritVisage",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Regenerate <bright>2</bright>% of missing Health each second.",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Statikk Shiv": {
+      "id": "DA_Artifact_StatikkShiv",
+      "name": "Statikk Shiv",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Every 3rd attack deals <bright>15</bright> + <bright>35%</bright> of the holder's Ability Power as additional magic damage to <bright>6</bright> enemies.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Steadfast Heart": {
+      "id": "DA_SteadfastHeart",
+      "name": "Steadfast Heart",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.SteadfastHeart",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <bright>5</bright>% Durability. While above <bright>50%</bright> Health, instead gain <bright>15</bright>% Durability.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Sterak's Gage": {
+      "id": "DA_SteraksGage",
+      "name": "Sterak's Gage",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "At <bright>40%</bright> Health, gain a Shield equal to <bright>40%</bright> of the wearer's maximum Health that rapidly decays over <bright>4</bright> seconds.",
+      "builds_from": [
+        "DA_Component_BFSword",
+        "DA_Component_GiantsBelt"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Striker's Flail": {
+      "id": "DA_StrikersFlail",
+      "name": "Striker's Flail",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Attack",
+        "Item.Equippable.Category.Magic"
+      ],
+      "description": "Critical Strikes grant <bright>5%</bright> Damage Amp for <bright>5</bright> seconds, stacking up to <bright>4</bright> times.",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Sunfire Cape": {
+      "id": "DA_SunfireCape",
+      "name": "Sunfire Cape",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank",
+        "Item.Equippable.Item.Burn"
+      ],
+      "description": "Gain <bright>8%</bright> max Health.<br><br>Every <bright>2</bright> seconds, deal <bright>1</bright>% <Keyword>Burn</Keyword> and <bright>33</bright>% <Keyword>Wound</Keyword> to an enemy within 2 hexes for <bright>10</bright> seconds.<br><br><Rules>Burn: Deals a percent of the target’s max Health as true damage every second.</Rules><br><Rules>Wound: Reduces healing received.</Rules>",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_GiantsBelt"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Swiftstriker Emblem": {
+      "id": "DA_Swiftstriker19_Emblem",
+      "name": "Swiftstriker Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Emblem"
+      ],
+      "description": "The holder gains the Swiftstriker trait.<br><br>Attacks deal ? bonus true damage.<br><br><Rules>Damage increases based on Stage.</Rules>",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": "DA_Swiftstriker19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Tactician's Cape": {
+      "id": "DA_TacticiansCape",
+      "name": "Tactician's Cape",
+      "kind": "spatula",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Tacticians"
+      ],
+      "description": "Your team gains +1 maximum team size.<br><br><bright>10%</bright> chance to drop 1 gold after <bright>10</bright> seconds of combat.<br><br><Rules>...and a bit of Luck.</Rules>",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Tacticians Crown": {
+      "id": "DA_TacticiansCrown",
+      "name": "Tacticians Crown",
+      "kind": "spatula",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Tacticians"
+      ],
+      "description": "Your team gains +<bright>1</bright> maximum team size.<br><br><bright>10%</bright> chance to drop 1 gold when you win combat.<br><br><rules>...the Heart of a hero...</rules>",
+      "builds_from": [
+        "DA_Component_Spatula",
+        "DA_Component_Spatula"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Tacticians Shield": {
+      "id": "DA_TacticiansShield",
+      "name": "Tacticians Shield",
+      "kind": "spatula",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Tacticians"
+      ],
+      "description": "Your team gains +<bright>1</bright> maximum team size.<br><br><bright>10%</bright> chance to drop 1 gold when the holder dies.<br><br><rules>Imbued with a Philosopher's wisdom...</rules>",
+      "builds_from": [
+        "DA_Component_FryingPan",
+        "DA_Component_FryingPan"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Talisman of Ascension": {
+      "id": "DA_Item_Artifact_TalismanOfAscension",
+      "name": "Talisman of Ascension",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "After <bright>22</bright> seconds gain <bright>100%</bright> max Health, <bright>12</bright> Mana Regen, and <bright>120%</bright> Damage Amp for the rest of combat.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Tear Of The Goddess": {
+      "id": "DA_Component_TearOfTheGoddess",
+      "name": "Tear Of The Goddess",
+      "kind": "basic",
+      "tags": [
+        "Item.Equippable.Item.Component",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "%i:TFTManaRegen% +<bright>1</bright> Mana Regeneration",
+      "builds_from": [],
+      "builds_into": [
+        "DA_AdaptiveHelm",
+        "DA_ArchangelsStaff",
+        "DA_BlueBuff",
+        "DA_HandOfJustice",
+        "DA_Oceansong19_Emblem",
+        "DA_Prodigy19_Emblem",
+        "DA_ProtectorsVow",
+        "DA_SpearOfShojin",
+        "DA_SpiritVisage",
+        "DA_VoidStaff"
+      ],
+      "trait": null,
+      "equippable": true,
+      "component": true,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "The Indomitable": {
+      "id": "DA_Artifact_TheIndomitable",
+      "name": "The Indomitable",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "The holder's Move Speed is drastically reduced.<br><br>Gain <bright>15%</bright> max Health, become unstoppable, and pull the current target into melee range.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Thief's Gloves": {
+      "id": "DA_ThiefsGloves",
+      "name": "Thief's Gloves",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.ThiefsGloves"
+      ],
+      "description": "Each round: Equip 2 random items<br><br><Rules>[Consumes 3 item slots.]</Rules>",
+      "builds_from": [
+        "DA_Component_SparringGloves",
+        "DA_Component_SparringGloves"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 3,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Tiny Champion Duplicator": {
+      "id": "DA_Consumable_TinyChampionDuplicator",
+      "name": "Tiny Champion Duplicator",
+      "kind": "consumable",
+      "tags": [
+        "Item.Equippable.Consumable",
+        "Item.Equippable.Item.Duplicator"
+      ],
+      "description": "Use on a 1-cost champion to create a 1-star copy on your bench.<br><br><rules>Consumable: This item disappears when used.</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": false,
+      "component": false,
+      "slot_cost": 0,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Titan's Resolve": {
+      "id": "DA_TitansResolve",
+      "name": "Titan's Resolve",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Item.Stacking",
+        "Item.Equippable.Category.Attack"
+      ],
+      "description": "Gain <bright>2%</bright> Attack Damage and Ability Power when attacking or taking damage, stacking up to <bright>25</bright> times.<br><br>At full stacks, gain <bright>15%</bright> max Health and become Unstoppable.",
+      "builds_from": [
+        "DA_Component_ChainVest",
+        "DA_Component_RecurveBow"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Titanic Hydra": {
+      "id": "DA_Artifact_TitanicHydra",
+      "name": "Titanic Hydra",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Attacks deal <bright>2%</bright> of the holder's max Health plus <bright>4%</bright> of their Attack Damage as bonus physical damage to the target and adjacent enemies.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "True Damage Emblem": {
+      "id": "DA_TrueDamage19_Emblem",
+      "name": "True Damage Emblem",
+      "kind": "emblem",
+      "tags": [
+        "Item.Equippable.Item.Emblem.Elusive",
+        "Item.Equippable.Item.Set19.TrueDamageEmblem"
+      ],
+      "description": "The holder gains the True Damage trait.<br><br><Rules>Elusive - Cannot be crafted.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": "DA_TrueDamage19",
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "True Damage Prismatic Quest": {
+      "id": "DA_TrueDamage19_PrismaticQuestItem",
+      "name": "True Damage Prismatic Quest",
+      "kind": "misc",
+      "tags": [
+        "Item.Equippable.Item.Set19.PrismaticQuestItem",
+        "Item.Equippable.RemovedOnBench"
+      ],
+      "description": "Write a True Damage remix!",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Void Gauntlet": {
+      "id": "DA_Artifact_VoidGauntlet",
+      "name": "Void Gauntlet",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Store <bright>30%</bright> max Health plus <bright>2.5%</bright> more every second. On death, unleash the stored Health as magic damage split between enemies within 4 hexes.<br><br><rules>Unique - only 1 per champion</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Void Staff": {
+      "id": "DA_VoidStaff",
+      "name": "Void Staff",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Magic",
+        "Item.Equippable.Provides.Resource.Mana"
+      ],
+      "description": "Attacks and Ability damage <bright>30</bright>% <Keyword>Shred</Keyword> the target for <bright>5</bright> seconds. This effect does not stack.<br><br><rules>Shred: Reduce Magic Resist</rules>",
+      "builds_from": [
+        "DA_Component_RecurveBow",
+        "DA_Component_TearOfTheGoddess"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Warmog's Armor": {
+      "id": "DA_WarmogsArmor",
+      "name": "Warmog's Armor",
+      "kind": "normal",
+      "tags": [
+        "Item.Equippable.Item.Craftable",
+        "Item.Equippable.Category.Tank"
+      ],
+      "description": "Gain <bright>18%</bright> max Health.",
+      "builds_from": [
+        "DA_Component_GiantsBelt",
+        "DA_Component_GiantsBelt"
+      ],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Wit's End": {
+      "id": "DA_Artifact_WitsEnd",
+      "name": "Wit's End",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Attacks deal ? bonus magic damage.<br>Heals the holder for <bright>25</bright>% of all magic damage dealt.<br><br><Rules>Damage increases based on Stage.</Rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Zeke's Herald": {
+      "id": "DA_ZekesHerald",
+      "name": "Zeke's Herald",
+      "kind": "support",
+      "tags": [
+        "Item.Equippable.Item.Support",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Grant <bright>33%</bright> Attack Speed to the holder and allies within <bright>2</bright> hexes in the same row.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    },
+    "Zhonya's Paradox": {
+      "id": "DA_Artifact_ZhonyasParadox",
+      "name": "Zhonya's Paradox",
+      "kind": "artifact",
+      "tags": [
+        "Item.Equippable.Item.Artifact"
+      ],
+      "description": "Once per combat at <bright>40%</bright> Health, become invulnerable, unstoppable, and untargetable for <bright>3</bright> seconds.<br><br><rules>Unique - only 1 per champion</rules>",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": true,
+      "allowed_holders": []
+    },
+    "Zz'Rot Portal": {
+      "id": "DA_ZZRotPortal",
+      "name": "Zz'Rot Portal",
+      "kind": "support",
+      "tags": [
+        "Item.Equippable.Item.Support",
+        "Item.Equippable.CantReforge"
+      ],
+      "description": "Summon a large Voidspawn. Its strength increases with each Stage.",
+      "builds_from": [],
+      "builds_into": [],
+      "trait": null,
+      "equippable": true,
+      "component": false,
+      "slot_cost": 1,
+      "unique_per_champion": false,
+      "allowed_holders": []
+    }
+  }
+}

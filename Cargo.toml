@@ -1,0 +1,12 @@
+[workspace]
+members = ["crates/tft-core", "src-tauri"]
+resolver = "2"
+
+[workspace.package]
+version = "0.7.5"
+edition = "2021"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "debuginfo"

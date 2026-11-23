@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="color-scheme" content="dark">
+  <title>prokjs's Set 19 TFT tool · Rust engine</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./guide.css">
+  <link rel="stylesheet" href="./item-icons.css">
+  <link rel="stylesheet" href="./team-drawer.css">
+  <link rel="stylesheet" href="./item-workspace.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="app-header compact-toolbar">
+    <div class="brand"><h1 id="app-title">prokjs's Set 19 TFT tool <small id="version"></small></h1><p data-i18n="Developed by prokjs · Rust team explorer">Developed by prokjs · Rust team explorer</p></div>
+    <section class="settings" aria-label="Team settings">
+      <label><span data-i18n="Final level">Final level</span><select id="level" disabled></select></label>
+      <label><span data-i18n="Minimum Collab">Minimum Collab</span><select id="minimum" disabled><option value="0">0</option><option value="3" selected>3</option><option value="5">5</option></select></label>
+      <label><span data-i18n="Ranking">Ranking</span><select id="ranking" disabled><option value="high_value" data-i18n="High value">High value</option><option value="balanced" data-i18n="Balanced">Balanced</option><option value="synergies" data-i18n="Most active traits">Most active traits</option></select></label>
+      <label><span data-i18n="Sona featured band">Sona featured band</span><select id="band" disabled></select></label>
+      <button id="find" class="primary" disabled data-i18n="Find teams">Find teams</button>
+    </section>
+    <div class="language-controls"><label for="language" data-i18n="Interface language">Interface language</label><select id="language" disabled><option>English</option></select><button id="apply-language" disabled data-i18n="Apply language">Apply language</button><button id="tutorial" disabled data-i18n="How to use">How to use</button><button id="legal" disabled data-i18n="Legal & sources">Legal &amp; sources</button></div>
+      <div class="result-actions"><button id="copy-code" disabled data-i18n="Copy TFT code">Copy TFT code</button><button id="copy-plan" disabled data-i18n="Copy readable plan">Copy readable plan</button><button id="save-json" disabled data-i18n="Save JSON">Save JSON</button></div>
+  </header>
+  <div class="runtime-status"><progress id="progress" aria-label="Local computation" hidden></progress><p id="status" role="status" aria-live="polite">Loading local Rust engine…</p></div>
+  <div id="locale-notice-banner" class="locale-notice-banner" hidden><button type="button" class="info-button" data-info-target="locale-notice" aria-label="Interface language"><span aria-hidden="true">ⓘ</span><span class="visually-hidden" data-i18n="Interface language">Interface language</span></button><p id="locale-notice" class="notice" hidden></p><button id="dismiss-locale-notice" type="button" title="Dismiss language notice" aria-label="Dismiss language notice">×</button></div>
+  <main>
+    <aside class="pool-panel panel">
+      <div class="section-heading"><h2 data-i18n="THEORYCRAFT POOL">THEORYCRAFT POOL</h2><button type="button" class="info-button pool-help" data-info-target="pool-help-content" aria-label="Pool help"><span aria-hidden="true">ⓘ</span><span class="visually-hidden" data-i18n="Pool help">Pool help</span></button><button id="reset" disabled data-i18n="Reset">Reset</button></div>
+      <button id="pool-lock" disabled data-i18n="Lock Collab pool">Lock Collab pool</button>
+      <div id="pool-strip" class="pool-strip"></div>
+      <label class="search-label visually-hidden" for="search" data-i18n="Search champions or traits">Search champions or traits</label><input id="search" type="search" autocomplete="off" disabled>
+      <div id="roster" class="roster" aria-label="Champion roster"></div>
+      <p id="roster-count" class="muted"></p>
+      <div class="team-controls"><button id="team-lock" disabled data-i18n="Team lock">Team lock</button><button id="exclude" disabled data-i18n="Exclude">Exclude</button><button id="unit-details" disabled data-i18n="Champion details">Champion details</button></div>
+      <div class="star-controls"><span data-i18n="Planned stars:">Planned stars:</span><button data-stars="1" disabled>★</button><button data-stars="2" disabled>★★</button><button data-stars="3" disabled>★★★</button><button data-stars="4" disabled>★★★★</button><button id="auto-stars" disabled data-i18n="Automatic stars">Automatic stars</button></div>
+      <p id="selection" class="muted"></p>
+      <aside id="champion-bis" class="champion-bis compact" aria-live="polite" hidden></aside>
+      <div id="pool-help-content" hidden><p id="pool-hint" class="warning"></p>
+      <p class="muted compact" data-i18n="C = Collab   L = team locked   X = excluded\nPool unlocked: click to add/remove picks. Sona is automatic.\nPool locked: Ctrl / Shift multi-select for team controls.\nUnlock tasks still apply; hover/select to see requirements.\nK/DA uses stars; Baron Nashor occupies two slots.">C = Collab   L = team locked   X = excluded
+Pool unlocked: click to add/remove picks. Sona is automatic.
+Pool locked: Ctrl / Shift multi-select for team controls.
+Unlock tasks still apply; hover/select to see requirements.
+K/DA uses stars; Baron Nashor occupies two slots.</p>
+      </div>
+    </aside>
+    <section class="results-panel">
+      <section id="buildup-guide" class="panel buildup-guide" aria-labelledby="buildup-title">
+        <div class="guide-heading"><h2 id="buildup-title" data-i18n="Level buildup">Level buildup</h2><button id="early-scenario" type="button" disabled aria-label="Pre-game early availability" title="Pre-game early availability">◇</button></div>
+        <div class="guide-display-controls"><label><input id="show-all-options" type="checkbox" checked><span data-i18n="Show All">Show All</span></label><label class="item-switch"><input id="no-ad-items" type="checkbox" disabled><span data-i18n="NO AD items">NO AD items</span></label><label class="item-switch"><input id="no-ap-items" type="checkbox" disabled><span data-i18n="NO AP items">NO AP items</span></label><button id="cap-inventory" type="button" disabled data-i18n="Collected items / starting board">Collected items / starting board</button><button id="reset-comp" type="button" disabled data-i18n="Reset comp">Reset comp</button><span id="damage-item-notice" class="muted" role="status" hidden></span></div>
+        <p id="buildup-placeholder" class="muted" data-i18n="Select a suggested team to see its level-by-level guide here.">Select a suggested team to see its level-by-level guide here.</p>
+        <div id="buildup-scroll" class="buildup-scroll" tabindex="0" hidden>
+          <div class="buildup-fixed">
+            <div class="section-heading"><span data-i18n="Choose a level, then inspect its preparation and lineup.">Choose a level, then inspect its preparation and lineup.</span></div>
+            <div id="guide-actions" class="guide-actions"></div>
+            <nav id="buildup-navigation" class="buildup-navigation" aria-label="Level buildup"></nav>
+            <div id="phase-navigation" class="phase-navigation"></div>
+          </div>
+          <div id="buildup-summary" class="buildup-summary"></div>
+          <div id="buildup-content"></div>
+          <section id="overview" class="overview" tabindex="-1" aria-label="Final team overview" hidden></section>
+        </div>
+      </section>
+    </section>
+  </main>
+  <aside id="team-drawer" class="team-drawer" aria-labelledby="team-drawer-title" inert>
+    <div class="section-heading"><h2 id="team-drawer-title" data-i18n="SUGGESTED TEAMS">SUGGESTED TEAMS</h2><button id="team-drawer-expand" type="button" aria-label="Expand suggested teams" aria-expanded="false">↔</button><button id="team-drawer-close" type="button" aria-label="Close suggested teams">×</button></div>
+    <div id="result-list" class="result-list panel"></div>
+  </aside>
+  <button id="team-drawer-toggle" class="team-drawer-toggle" type="button" aria-expanded="false" aria-controls="team-drawer" aria-label="Open suggested teams"><span data-i18n="Teams">Teams</span><span id="team-drawer-count">0</span></button>
+  <footer>
+    <button type="button" class="info-button" data-info-target="app-notices" aria-label="Legal &amp; sources"><span aria-hidden="true">ⓘ</span><span class="visually-hidden" data-i18n="Legal & sources">Legal &amp; sources</span></button>
+    <div id="app-notices" hidden>
+    <p class="warning compact" data-i18n="Heuristic combinations and positions — not combat strength or winning odds.">Heuristic combinations and positions — not combat strength or winning odds.</p>
+    <p class="warning" data-i18n="Experimental manual match tracking and planning · No outcomes guaranteed · Use at own risk · Unapproved prototype · Live-use and public-release policy compliance is not established.">Experimental manual match tracking and planning · No outcomes guaranteed · Use at own risk · Unapproved prototype · Live-use and public-release policy compliance is not established.</p>
+    <p id="riot-notice" lang="en" dir="ltr">prokjs's Set 19 TFT tool isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.</p>
+    <p class="muted" data-i18n="Calculations and manual inputs stay on this device. The desktop app includes the Rust engine; the browser runs the same engine as bundled WebAssembly. No account, API key, ads or tracking.">Calculations and manual inputs stay on this device. The desktop app includes the Rust engine; the browser runs the same engine as bundled WebAssembly. No account, API key, ads or tracking.</p>
+    </div>
+  </footer>
+  <dialog id="details-dialog"><header class="dialog-header"><h2 id="details-title"></h2><button data-close="details-dialog" data-i18n="Close">Close</button></header><div id="details-content"></div></dialog>
+  <dialog id="tutorial-dialog"><header class="dialog-header"><h2 data-i18n="How to use">How to use</h2><button data-close="tutorial-dialog" data-i18n="Close">Close</button></header><div id="tutorial-content"></div><div class="tutorial-navigation"><button id="tutorial-previous" data-i18n="Previous">Previous</button><span id="tutorial-step"></span><button id="tutorial-next" data-i18n="Next">Next</button></div></dialog>
+  <dialog id="legal-dialog"><header class="dialog-header"><h2 data-i18n="Legal & sources">Legal &amp; sources</h2><button data-close="legal-dialog" data-i18n="Close">Close</button></header><div id="legal-content"></div></dialog>
+  <dialog id="workspace-info-dialog" class="workspace-info-dialog" aria-labelledby="workspace-info-title"><header class="dialog-header"><h2 id="workspace-info-title"></h2><button data-close="workspace-info-dialog" data-i18n="Close">Close</button></header><div id="workspace-info-content"></div></dialog>
+  <aside id="unlock-drawer" class="team-drawer" aria-labelledby="unlock-title" inert>
+    <header class="section-heading"><h2 id="unlock-title" data-i18n="Completed unlocks">Completed unlocks</h2><button id="unlock-drawer-close" type="button" aria-label="Close">×</button></header>
+    <div class="unlock-drawer-content">
+    <p class="warning compact" data-i18n="Manual match tracking changes board eligibility and the leveling path. Unlocked does not mean owned: purchases, copies, stars, items and cashout are never confirmed here.">Manual match tracking changes board eligibility and the leveling path. Unlocked does not mean owned: purchases, copies, stars, items and cashout are never confirmed here.</p>
+    <p class="muted compact" data-i18n="Unapproved integrated-live prototype. Public distribution or live-use policy compliance is not established; this is not Riot approval.">Unapproved integrated-live prototype. Public distribution or live-use policy compliance is not established; this is not Riot approval.</p>
+    <div class="unlock-toolbar"><label for="match-level" data-i18n="Match level">Match level</label><select id="match-level"></select><button id="unlock-reset" type="button" data-i18n="Reset completed unlocks">Reset completed unlocks</button></div>
+    <p class="muted compact" data-i18n="Check only tasks you have actually completed. Each check records the selected match level, never an owned champion. Viewing earlier tabs does not move this timestamp. Legal slot pins are preserved; incompatible pins require an explicit change.">Check only tasks you have actually completed. Each check records the selected match level, never an owned champion. Viewing earlier tabs does not move this timestamp. Legal slot pins are preserved; incompatible pins require an explicit change.</p>
+    <p id="unlock-status" class="warning compact" role="status"></p>
+    <div id="unlock-checklist" class="unlock-checklist"></div>
+    </div>
+  </aside>
+  <button id="unlock-tracker" class="team-drawer-toggle" type="button" disabled aria-expanded="false" aria-controls="unlock-drawer" data-i18n="Completed unlocks">Completed unlocks</button>
+  <dialog id="scenario-dialog" aria-labelledby="scenario-title">
+    <header class="dialog-header"><h2 id="scenario-title" data-i18n="Pre-game early availability">Pre-game early availability</h2><button type="button" data-close="scenario-dialog" data-i18n="Close">Close</button></header>
+    <p class="muted compact" data-i18n="Pre-game what-if only. Assume a champion is available from a chosen level at the planned star rank. This does not record a live game or complete unlock tasks. Applying or clearing assumptions resets temporary-unit choices; the final champion roster stays fixed.">Pre-game what-if only. Assume a champion is available from a chosen level at the planned star rank. This does not record a live game or complete unlock tasks. Applying or clearing assumptions resets temporary-unit choices; the final champion roster stays fixed.</p>
+    <form id="scenario-form">
+      <div class="scenario-controls">
+        <label><span data-i18n="Champion">Champion</span><select id="scenario-champion" required></select></label>
+        <label><span data-i18n="Availability level">Availability level</span><select id="scenario-level" required></select></label>
+        <label><span data-i18n="Planned stars:">Planned stars:</span><select id="scenario-stars" required><option value="1">★</option><option value="2">★★</option><option value="3">★★★</option><option value="4">★★★★</option></select></label>
+      </div>
+      <div class="scenario-actions"><button id="scenario-apply" type="submit" data-i18n="Apply scenario">Apply scenario</button><button id="scenario-clear" type="button" data-i18n="Clear scenarios">Clear scenarios</button></div>
+    </form>
+    <p id="scenario-status" role="status" class="warning compact"></p>
+    <div id="scenario-saved" class="scenario-saved"></div>
+  </dialog>
+  <dialog id="inventory-dialog" aria-labelledby="inventory-title">
+    <header class="dialog-header"><h2 id="inventory-title" data-i18n="Collected items and confirmed starting board">Collected items and confirmed starting board</h2><button data-close="inventory-dialog" data-i18n="Cancel">Cancel</button></header>
+    <p class="warning compact" data-i18n="Manually confirm what you had at level 10. Nothing is read from your game. Editing this snapshot does not change your normal Final goal or unlock confirmations.">Manually confirm what you had at level 10. Nothing is read from your game. Editing this snapshot does not change your normal Final goal or unlock confirmations.</p>
+    <h3 data-i18n="Starting roster and known ranks">Starting roster and known ranks</h3>
+    <p id="inventory-snapshot-note" class="warning compact"></p>
+    <div id="inventory-starting-board"></div>
+    <div class="inventory-add-roster"><label for="inventory-starting-champion" data-i18n="Starting champion">Starting champion</label><select id="inventory-starting-champion"></select><button id="inventory-add-starting" type="button" data-i18n="Add starting champion">Add starting champion</button></div>
+    <h3 data-i18n="Actual collected items">Actual collected items</h3>
+    <form id="inventory-item-form" class="inventory-entry">
+      <label><span data-i18n="Item">Item</span><input id="inventory-item" list="inventory-item-options" autocomplete="off" required><datalist id="inventory-item-options"></datalist></label>
+      <label><span data-i18n="Quantity">Quantity</span><input id="inventory-count" type="number" min="1" step="1" value="1" required></label>
+      <label><span data-i18n="Current holder">Current holder</span><select id="inventory-holder"></select></label>
+      <button id="inventory-add" type="button" data-i18n="Add collected copies">Add collected copies</button>
+    </form>
+    <div id="inventory-rows"></div>
+    <p id="inventory-status" class="warning compact" role="status"></p>
+    <div class="scenario-actions"><button id="inventory-apply" type="button" class="primary" data-i18n="Confirm collected items and starting board">Confirm collected items and starting board</button><button id="inventory-planned" type="button" data-i18n="Use original planned items as what-if">Use original planned items as what-if</button></div>
+  </dialog>
+  <dialog id="path-change-dialog" aria-labelledby="path-change-title">
+    <header class="dialog-header"><h2 id="path-change-title" data-i18n="Rebuild later manual choices?">Rebuild later manual choices?</h2></header>
+    <p data-i18n="This earlier change resets the following later manual choices. Earlier choices, Final goal, collected items, known ranks and unlock confirmations are preserved.">This earlier change resets the following later manual choices. Earlier choices, Final goal, collected items, known ranks and unlock confirmations are preserved.</p>
+    <ul id="path-change-choices"></ul>
+    <div class="scenario-actions"><button id="path-change-confirm" class="primary" type="button" data-i18n="Change and rebuild later levels">Change and rebuild later levels</button><button id="path-change-cancel" type="button" data-i18n="Cancel">Cancel</button></div>
+  </dialog>
+  <div id="trait-tooltip" class="trait-tooltip" role="tooltip" hidden></div>
+  <noscript>This browser-local application requires JavaScript and WebAssembly. No server calculation fallback is provided.</noscript>
+</body>
+</html>

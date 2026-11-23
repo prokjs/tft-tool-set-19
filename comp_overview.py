@@ -3,9 +3,12 @@ import math
 import tkinter as tk
 from tkinter import ttk
 
-from champion_info import star_text, trait_members, unlock_text
+from champion_info import trait_members, unlock_text
+from board_view import BoardView, ChampionTip, champion_details, trait_support_label
 from trait_rows import TraitRow, STYLE_ORDER, badge_style
-from visuals import COST_COLORS
+from team_guidance import item_profile
+from localization import tr, display_text, localize_tree
+from visuals import COST_COLORS, Portrait
 
 
 PANEL = '#192337'
@@ -66,6 +69,7 @@ class CompOverview(tk.Frame):
     def show_comp(self, result, collab, locked, stars):
         self._clear()
         self._result = result
+        stars = result.get('planned_stars', stars)
         self.show_inactive.set(False)
         self.tabs = ttk.Notebook(self)
         self.tabs.pack(fill='both', expand=True)
@@ -91,17 +95,30 @@ class CompOverview(tk.Frame):
         team_header = tk.Frame(self.overview, bg=PANEL)
         self.team_header = team_header
         team_header.grid(row=0, column=1, sticky='ew', padx=(4, 6), pady=(4, 2))
-        tk.Label(team_header, text=f"TEAM · {len(result['champions'])} champions", bg=PANEL,
+        tk.Label(team_header, text=f"TEAM · {len(result['champions'])} champions · frontline → backline", bg=PANEL,
                  fg=ACCENT, font=('Segoe UI', 9, 'bold'), anchor='w').pack(anchor='w')
-        tk.Label(team_header, text='C = Collab · L = locked · click for details', bg=PANEL,
-                 fg=MUTED, font=('Segoe UI', 8), anchor='w').pack(anchor='w')
+        holders = result.get('item_holders', {})
+        holder_summary = tk.Label(
+            team_header, text='Item options (not inventory) · ' + ' · '.join(
+                f"{kind.upper()}: " + (holders.get(kind) or (
+                    'no dedicated holder' if kind in ('ad', 'ap') and holders.get('flex')
+                    else 'no suitable holder'))
+                for kind in ('tank', 'ad', 'ap', 'flex')),
+            bg=PANEL, fg=ACCENT, font=('Segoe UI', 8), anchor='w', justify='left',
+            wraplength=400)
+        holder_summary.pack(fill='x')
+        team_header.bind('<Configure>', lambda event:
+                         holder_summary.configure(wraplength=max(100, event.width)))
         self.trait_panel, self.trait_canvas, self.trait_content, self.trait_scroll, self._trait_window = self._scroller(self.overview)
         self.trait_panel.grid(row=1, column=0, sticky='nsew', padx=(6, 8), pady=(0, 4))
-        self.team_panel, self.team_canvas, self.team_content, self.team_scroll, self._team_window = self._scroller(self.overview)
+        self.team_panel = tk.Frame(self.overview, bg=PANEL, width=1, height=1)
         self.team_panel.grid(row=1, column=1, sticky='nsew', padx=(4, 6), pady=(0, 4))
-        self.layout_note = tk.Label(self.overview, bg=PANEL, fg=WARNING, font=('Segoe UI', 8), anchor='w')
-        self.layout_note.grid(row=2, column=0, columnspan=2, sticky='ew', padx=6)
-        self.layout_note.grid_remove()
+        self.team_content = tk.Frame(self.team_panel, bg=PANEL, width=1, height=108)
+        self.team_content.place(x=0, y=0, relwidth=1, height=108)
+        self.board = BoardView(self.team_panel, self.champions, self.artwork, self.on_unlock)
+        self.board.place(x=0, y=112, relwidth=1, relheight=1, height=-112)
+        self.board.show_comp(result, collab, locked, stars)
+        self.card_tip = ChampionTip(self.team_content)
         ordered = sorted(result['traits'], key=lambda trait: (
             STYLE_ORDER[badge_style(trait, self.definitions[trait['name']])],
             -trait['count'], trait['name']))
@@ -110,38 +127,57 @@ class CompOverview(tk.Frame):
                            height=32, on_wheel=lambda event: self._wheel(self.trait_canvas, event),
                            members=trait_members(self.data, trait['name'], collab, result.get('sona_band', '')))
             self.trait_rows[trait['name']] = row
-        for name in result['champions']:
+        # Model order is presentation-only: preserve native/export champion order.
+        selected = set(result['champions'])
+        self._lineup_order = list(dict.fromkeys(
+            name for name in result.get('lineup_order', result['champions']) if name in selected))
+        self._lineup_order.extend(name for name in result['champions'] if name not in self._lineup_order)
+        reasons = {marker['champion']: marker.get('reason', '')
+                   for marker in result.get('positioning', [])}
+        for name in self._lineup_order:
             champion = self.champions[name]
             color = COST_COLORS[champion['cost']]
             card = tk.Frame(self.team_content, bg=PANEL, highlightbackground=color,
-                            highlightthickness=1, cursor='hand2', width=126, height=134)
-            image = tk.Label(card, image=self.artwork.portraits[name], bg=PANEL, borderwidth=0)
-            label = tk.Label(card, text=name, bg=PANEL, fg=TEXT, font=('Segoe UI', 9, 'bold'),
+                            highlightthickness=1, cursor='hand2', width=56, height=108)
+            image = Portrait(card, self.artwork.champions[name], champion['cost'], stars.get(name, 1))
+            label = tk.Label(card, text=name, bg=PANEL, fg=TEXT, font=('Segoe UI', 8, 'bold'),
                              anchor='center', justify='center', borderwidth=0)
-            badges = f"{champion['cost']}g · {star_text(stars.get(name, 1))}"
+            status = []
             if name in collab or name == 'Sona':
-                badges += ' · C'
+                status.append('C')
             if name in locked:
-                badges += ' · L'
+                status.append('L')
             if champion.get('slots', 1) > 1:
-                badges += f" · {champion['slots']}s"
-            badge = tk.Label(card, text=badges, bg=PANEL, fg=color, font=('Segoe UI', 8), borderwidth=0)
-            action = tk.Button(card, text='Unlock details' if champion['unlockable'] else 'Unit details',
+                status.append(f"{champion['slots']}s")
+            badge = tk.Label(card, text=' · '.join(status), bg=PANEL, fg=color,
+                             font=('Segoe UI', 7), borderwidth=0)
+            holder_kinds = [kind.upper() for kind, holder in holders.items() if holder == name]
+            action_text = 'Unlock details' if champion['unlockable'] else 'Unit details'
+            if holder_kinds:
+                action_text = ('AD/AP FLEX' if item_profile(champion) == 'flex'
+                               else '/'.join(holder_kinds) + ' items')
+            action = tk.Button(card, text=action_text,
                                command=lambda name=name: self.on_unlock(name), bg=PANEL,
-                               fg=WARNING if champion['unlockable'] else MUTED,
+                               fg=ACCENT if holder_kinds else WARNING if champion['unlockable'] else MUTED,
                                activebackground='#253047', activeforeground=TEXT, cursor='hand2',
                                font=('Segoe UI', 8, 'underline'), borderwidth=0, highlightthickness=0, pady=0, padx=0)
-            for widget in (card, image, label, badge):
+            support = result.get('champion_trait_support', {}).get(name)
+            support_label = tk.Label(card, text=trait_support_label(support), bg=PANEL,
+                                     fg=MUTED, font=('Segoe UI', 7), borderwidth=0)
+            detail = champion_details(champion, stars.get(name, 1), ' · '.join(status),
+                                      reasons.get(name, ''), holder_kinds, support)
+            for widget in (card, image, label, badge, support_label):
                 widget.bind('<Button-1>', lambda event, name=name: self.on_unlock(name))
-                widget.bind('<MouseWheel>', lambda event: self._wheel(self.team_canvas, event))
-            action.bind('<MouseWheel>', lambda event: self._wheel(self.team_canvas, event))
+                self.card_tip.bind(widget, detail)
+            self.card_tip.bind(action, detail)
             self.champion_cards[name] = card
-            self._card_parts[name] = (image, label, badge, action)
+            self._card_parts[name] = (image, label, badge, action, support_label)
         self._build_unlocks(conditional)
         self.overview.bind('<Configure>', self._queue_layout)
         self.trait_canvas.bind('<Configure>', self._queue_layout)
-        self.team_canvas.bind('<Configure>', self._queue_layout)
+        self.team_panel.bind('<Configure>', self._queue_layout)
         self._toggle_inactive()
+        localize_tree(self)
 
     def _scroller(self, parent):
         panel = tk.Frame(parent, bg=PANEL, width=1, height=1)
@@ -171,20 +207,20 @@ class CompOverview(tk.Frame):
         scroll.pack(side='right', fill='y')
         text.pack(fill='both', expand=True)
         text.tag_configure('heading', foreground=WARNING, font=('Segoe UI', 10, 'bold'), spacing1=10)
-        text.insert('end', 'Requirements are conditions, not confirmed quest completion. Click a champion card for its sourced detail popup.\n')
+        text.insert('end', display_text(tr('Requirements are conditions, not confirmed quest completion. Click a champion card for its sourced detail popup.\n')))
         if not names:
-            text.insert('end', '\nNo selected champion has a special unlock requirement.')
+            text.insert('end', display_text(tr('\nNo selected champion has a special unlock requirement.')))
         for name in names:
             champion = self.champions[name]
-            text.insert('end', name + '\n', 'heading')
-            text.insert('end', unlock_text(champion) + '\n')
+            text.insert('end', display_text(tr(name)) + '\n', 'heading')
+            text.insert('end', display_text(tr(unlock_text(champion))) + '\n')
             if champion.get('unlock_source'):
-                text.insert('end', 'Source: ' + champion['unlock_source'] + '\n')
+                text.insert('end', display_text(tr('Source')) + ': ' + champion['unlock_source'] + '\n')
         notes = self._result.get('strategy_notes', [])
         if notes:
-            text.insert('end', '\nPLANNED TEAM ASSUMPTIONS\n', 'heading')
+            text.insert('end', display_text(tr('\nPLANNED TEAM ASSUMPTIONS\n')), 'heading')
             for note in notes:
-                text.insert('end', '• ' + note + '\n')
+                text.insert('end', '• ' + display_text(tr(note)) + '\n')
         text.configure(state='disabled')
 
     def _inactive_changed(self, *_args):
@@ -209,90 +245,77 @@ class CompOverview(tk.Frame):
         if self._result is None:
             return
         width = max(1, self.overview.winfo_width() - 24)
-        header_height = max(self.trait_header.winfo_reqheight(), self.team_header.winfo_reqheight())
-        note_height = self.layout_note.winfo_reqheight() if self.layout_note.winfo_manager() else 0
-        height = max(1, self.overview.winfo_height() - header_height - note_height - 10)
-        key = (width, height, tuple(self._visible_traits))
+        height = max(1, self.team_panel.winfo_height())
+        key = (width, height, self.team_panel.winfo_width(), tuple(self._visible_traits))
         if key == self._layout_key:
             return
         self._layout_key = key
         rows = [self.trait_rows[name] for name in self._visible_traits]
-        count = len(self.champion_cards)
-        candidates = []
-        # Prefer readable large cards, then smaller cards/trait rows, then columns.
-        # A candidate must fit BOTH panels; the lineup never flows below traits.
-        for row_height in (44, 36, 32):
-            widths = [row.natural_width(row_height) for row in rows]
-            for trait_columns in range(1, min(3, len(rows)) + 1):
-                per_column = max(1, math.ceil(len(rows) / trait_columns))
-                column_widths = [max(widths[column * per_column:(column + 1) * per_column], default=0)
-                                 for column in range(trait_columns)]
-                trait_width = max(190, sum(column_widths) + 4 * max(0, trait_columns - 1))
-                trait_height = per_column * (row_height + 2)
-                for card_width, card_height, large in ((126, 134, True), (126, 84, False), (120, 68, False), (112, 68, False)):
-                    team_width = width - trait_width
-                    team_columns = max(1, team_width // (card_width + 4))
-                    team_height = math.ceil(count / team_columns) * (card_height + 4)
-                    overflow = max(0, trait_height - height) + max(0, team_height - height) + max(0, card_width + 4 - team_width) * 4
-                    quality = (int(large) * 100 + row_height - trait_columns * 4 + card_height / 10 + card_width / 100)
-                    candidates.append((overflow, -quality, trait_width, trait_columns, per_column,
-                                       column_widths, row_height, card_width, card_height, team_columns, large))
-        if not candidates:
-            # Legal results can contain no counted traits.
-            candidates.append((0, 0, 190, 1, 1, [190], 32, 112, 68,
-                               max(1, (width - 190) // 116), False))
-        choice = min(candidates, key=lambda candidate: candidate[:2])
-        _, _, trait_width, trait_columns, per_column, column_widths, row_height, card_width, card_height, team_columns, large = choice
-        self.overview.grid_columnconfigure(0, minsize=trait_width + 14)
-        for column in range(3):
-            self.trait_content.grid_columnconfigure(column, minsize=column_widths[column] + 4 if column < len(column_widths) else 0)
+        row_height = 36 if len(rows) * 38 <= height else 32
+        row_height = max((row.fitted_height(row_height) for row in rows), default=row_height)
+        trait_width = max(190, max((row.natural_width(row_height) for row in rows), default=0))
+        trait_height = len(rows) * (row_height + 2)
+        scrolling = trait_height > height
+        self.overview.grid_columnconfigure(0, minsize=trait_width + (18 if scrolling else 0) + 14)
+        self.trait_content.grid_columnconfigure(0, minsize=trait_width)
         for index, row in enumerate(rows):
             row.set_height(row_height)
-            row.grid(row=index % per_column, column=index // per_column, sticky='nw', pady=(0, 2))
-        for index, (name, card) in enumerate(self.champion_cards.items()):
-            self._size_card(name, card_width, card_height, large)
-            card.grid(row=index // team_columns, column=index % team_columns, sticky='nw', padx=(0, 4), pady=(0, 4))
-        trait_height = per_column * (row_height + 2) if rows else 0
-        team_height = math.ceil(count / team_columns) * (card_height + 4)
-        warnings = []
-        for canvas, scroll, window, content_width, content_height, label in (
-                (self.trait_canvas, self.trait_scroll, self._trait_window, trait_width, trait_height, 'traits'),
-                (self.team_canvas, self.team_scroll, self._team_window,
-                 team_columns * (card_width + 4), team_height, 'lineup')):
-            canvas.itemconfigure(window, width=content_width, height=content_height)
-            canvas.configure(scrollregion=(0, 0, content_width, content_height))
-            if content_height > height:
-                scroll.grid(row=0, column=1, sticky='ns')
-                warnings.append(label)
-            else:
-                scroll.grid_remove()
-                canvas.yview_moveto(0)
-        if warnings:
-            self.layout_note.configure(text='Independent scroll: ' + ' / '.join(warnings) + '. Enlarge the result area to show all rows.')
-            self.layout_note.grid()
+            row.grid(row=index, column=0, sticky='nw', pady=(0, 2))
+        self.trait_canvas.itemconfigure(self._trait_window, width=trait_width, height=trait_height)
+        self.trait_canvas.configure(scrollregion=(0, 0, trait_width, trait_height))
+        if scrolling:
+            self.trait_scroll.grid(row=0, column=1, sticky='ns')
         else:
-            self.layout_note.configure(text='')
-            self.layout_note.grid_remove()
+            self.trait_scroll.grid_remove()
+            self.trait_canvas.yview_moveto(0)
+        # Place every card in the same physical row. No shared scroll or wrapping
+        # can hide a carry below the frontline, even for eleven distinct units.
+        team_width = max(1, self.team_panel.winfo_width())
+        count = len(self.champion_cards)
+        gap = 3 if team_width >= count * 48 else 2
+        sizes = []
+        heights = (0, 0, 0, 0)
+        for index, name in enumerate(self._lineup_order):
+            left = math.floor(index * team_width / max(1, count))
+            right = math.floor((index + 1) * team_width / max(1, count))
+            card_width = max(1, right - left - gap)
+            image, label, badge, action, support_label = self._card_parts[name]
+            label.configure(font=('Segoe UI', 7 if card_width < 64 else 8, 'bold'),
+                            wraplength=max(1, card_width - 6), anchor='center', justify='center', padx=0, pady=0)
+            action.configure(font=('Segoe UI', 7, 'underline'),
+                             wraplength=max(1, card_width - 10), justify='center')
+            for widget in (badge, support_label):
+                widget.configure(wraplength=max(1, card_width - 6), padx=0, pady=0)
+            measured = tuple(widget.winfo_reqheight() if widget.cget('text') else 0
+                             for widget in (label, badge, support_label, action))
+            heights = tuple(max(old, new) for old, new in zip(heights, measured))
+            sizes.append((name, left, card_width))
+        card_height = max(108, 50 + sum(heights))
+        heights = (heights[0] + card_height - 50 - sum(heights), *heights[1:])
+        self.team_content.place_configure(height=card_height)
+        if self.team_panel.winfo_height() - card_height < 100:
+            self.board.place_forget()
+        else:
+            self.board.place(x=0, y=card_height + 4, relwidth=1, relheight=1,
+                             height=-(card_height + 4))
+        for name, left, card_width in sizes:
+            self._size_card(name, card_width, card_height, heights)
+            self.champion_cards[name].place(x=left, y=0, width=card_width, height=card_height)
 
-    def _size_card(self, name, width, height, large):
+    def _size_card(self, name, width, height, heights):
         card = self.champion_cards[name]
         card.configure(width=width, height=height)
-        image, label, badge, action = self._card_parts[name]
-        label.configure(font=('Segoe UI', 8 if height == 68 else 9, 'bold'))
-        if large:
-            image.configure(image=self.artwork.portraits[name])
-            image.place(x=(width - 56) // 2, y=4, width=56, height=56)
-            label.configure(wraplength=width - 8, anchor='center', justify='center')
-            label.place(x=4, y=62, width=width - 8, height=34)
-            badge.place(x=2, y=98, width=width - 4, height=16)
-            action.place(x=2, y=115, width=width - 4, height=16)
-        else:
-            image.configure(image=self.artwork.champions[name])
-            image.place(x=4, y=3 if height == 68 else 6, width=32, height=32)
-            label.configure(wraplength=width - 44, anchor='w', justify='left')
-            label.place(x=40, y=3, width=width - 44, height=30 if height == 68 else 42)
-            badge.place(x=2, y=35 if height == 68 else 46, width=width - 4, height=15)
-            action.place(x=2, y=height - 19, width=width - 4, height=16)
+        image, label, badge, action, support_label = self._card_parts[name]
+        image.place(x=(width - image.image.width()) // 2, y=3,
+                    width=image.image.width(), height=image.image.height(), bordermode='outside')
+        y = 38
+        for widget, row_height in zip((label, badge, support_label, action), heights):
+            if not row_height:
+                widget.place_forget()
+                continue
+            widget.place(x=3, y=y, width=max(1, width - 6), height=row_height,
+                         bordermode='outside')
+            y += row_height + 3
 
     def _destroyed(self, event):
         if event.widget is self and self._layout_job is not None:

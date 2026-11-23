@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Any
 
 from champion_info import is_tank, star_text
+from team_guidance import carry_flags, has_late_carry
 
 
 BAND_TRAITS = (
@@ -163,8 +164,9 @@ def _jazz_links(
 
 def planned_stars(
     champion_map: dict[str, dict], level: int, requested: dict[str, int] | None = None,
+    sona_band: str = "",
 ) -> dict[str, int]:
-    """Plan upgrades, never ownership; explicit ranks override sourced tank defaults."""
+    """Plan upgrades, never ownership; explicit ranks override late-game defaults."""
     _integer(level, "level", 1)
     if requested is None:
         requested = {}
@@ -176,9 +178,16 @@ def planned_stars(
         _integer(rank, f"{name} stars", 1)
         if rank > 4:
             raise ValueError("Star levels must be between 1 and 4.")
+    reroll_frontline = any(
+        rank >= 3 and 1 <= champion_map[name]["cost"] <= 3 and is_tank(champion_map[name])
+        for name, rank in requested.items()
+    )
     return {
-        name: requested.get(name, 2 if level >= 10 and champion["cost"] == 4
-                            and is_tank(champion) else 1)
+        name: requested.get(name, 2 if level >= 10 and (
+            "K/DA" in champion.get("traits", ())
+            or (name == "Sona" and sona_band == "K/DA")
+            or (not reroll_frontline and champion["cost"] == 4 and is_tank(champion))
+        ) else 1)
         for name, champion in champion_map.items()
     }
 
@@ -188,7 +197,7 @@ def _frontline_anchor_value(champion: dict, stars: int, level: int) -> float:
     if level < 10 or not is_tank(champion):
         return 0.0
     cost = champion["cost"]
-    if cost == 3 and stars >= 3:
+    if 1 <= cost <= 3 and stars >= 3:
         return 450.0 + 150.0 * (stars - 3)
     if cost >= 4 and stars >= 2:
         return 350.0 + 25.0 * (cost - 4) + 150.0 * (stars - 2)
@@ -233,6 +242,10 @@ def _strategy_masks(
     return td_ready, hype_ready
 
 
+def _late_carry_value(flags: int, level: int, mode: str) -> float:
+    return 300.0 if level >= 10 and mode in ("balanced", "high_value") and has_late_carry(flags) else 0.0
+
+
 def _unit_strategy_value(champion: dict, stars: int, level: int, mode: str) -> float:
     """Current-patch preferences and fast-10 path costs, not gold or winrates."""
     if mode == "synergies":
@@ -267,6 +280,7 @@ class _State:
     unit_value: float
     carry_ready: bool
     hype_ready: bool
+    carry_flags: int
 
 
 def _evaluate_team(
@@ -278,7 +292,7 @@ def _evaluate_team(
     if level is None:
         level = sum(champion_map[name].get("slots", 1) for name in names)
     requested = stars if stars is not None else {}
-    stars = planned_stars(champion_map, level, requested)
+    stars = planned_stars(champion_map, level, requested, sona_band)
     board_map = {name: champion_map[name] for name in names}
     bits, partners, direct = _jazz_links(trait_map, board_map, collab, sona_band)
     td_mask, hype_mask = _strategy_masks(trait_map, board_map, sona_band, stars, bits)
@@ -295,6 +309,7 @@ def _evaluate_team(
     dynamic_collab = set(collab) | {"Sona"}
     frontline = 0
     cost = 0
+    board_carry_flags = 0
     for name in names:
         champion = champion_map[name]
         traits = set(champion["traits"]) - {"Collab"}
@@ -305,7 +320,8 @@ def _evaluate_team(
         frontline += int(is_tank(champion) or bool(traits & FRONTLINE_TRAITS))
         cost += champion["cost"]
         rank = stars[name]
-        if level >= 10 and champion["cost"] == 4 and is_tank(champion) and name not in requested:
+        board_carry_flags |= carry_flags(champion, rank)
+        if level >= 10 and rank == 2 and champion["cost"] == 4 and is_tank(champion) and name not in requested:
             notes.append(f"Automatic tank upgrade target: {name} {star_text(rank)} (planned, not owned).")
         if mode in ("balanced", "high_value"):
             merit = _frontline_anchor_value(champion, rank, level)
@@ -356,6 +372,7 @@ def _evaluate_team(
         })
     score = trait_value + unique + unit_value + anchor_value
     score += _jazz_bonus(active, jazz_tier, bridge, mode)
+    score += _late_carry_value(board_carry_flags, level, mode)
     if mode in ("balanced", "high_value"):
         score += 30.0 * min(frontline, 2)
         score += 20.0 * int(len(names) > frontline)
@@ -418,7 +435,7 @@ def optimize(
     ):
         raise ValueError("sona_band must be empty or a valid band trait.")
     requested_stars = stars if stars is not None else {}
-    stars = planned_stars(champion_map, size, requested_stars)
+    stars = planned_stars(champion_map, size, requested_stars, sona_band)
 
     trait_names = sorted(trait_map)
     trait_index = {name: index for index, name in enumerate(trait_names)}
@@ -443,7 +460,7 @@ def optimize(
     group_bits = {name: 1 << index for index, name in enumerate(groups)}
 
     def unit(name: str) -> tuple[
-        tuple[tuple[int, int], ...], int, int, int, int, int, int, int, bool, float, float,
+        tuple[tuple[int, int], ...], int, int, int, int, int, int, int, bool, float, float, int,
     ]:
         champion = champion_map[name]
         names = set(champion["traits"]) - {"Collab"}
@@ -464,6 +481,7 @@ def optimize(
             jazz_bits[name], jazz_partners[name], name in jazz_direct,
             _frontline_anchor_value(champion, stars[name], size),
             _unit_strategy_value(champion, stars[name], size, mode),
+            carry_flags(champion, stars[name]),
         )
 
     optional = [unit(name) for name in available]
@@ -524,12 +542,12 @@ def optimize(
         picks=(), counts=(0,) * len(trait_names), active=0, tiers=0, unique=0,
         trait_value=0.0, progress=0.0, frontline=0, cost=0, collab=0, mask=0,
         exclusive=0, fielded=0, bridge=False, jazz_tier=0,
-        anchor=0.0, unit_value=0.0, carry_ready=False, hype_ready=False,
+        anchor=0.0, unit_value=0.0, carry_ready=False, hype_ready=False, carry_flags=0,
     )
 
     def extend(state: _State, item: tuple, index: int | None) -> _State:
         (contributions, _, frontline, cost, collab_count, exclusive, bit, partners, direct,
-         anchor, unit_value) = item
+         anchor, unit_value, flags) = item
         counts = list(state.counts)
         active, tiers, unique, progress = state.active, state.tiers, state.unique, state.progress
         trait_value, jazz_tier = state.trait_value, state.jazz_tier
@@ -566,6 +584,7 @@ def optimize(
             fielded,
             state.bridge or direct or bool(state.fielded & partners), jazz_tier,
             max(state.anchor, anchor), state.unit_value + unit_value, carry_ready, hype_ready,
+            state.carry_flags | flags,
         )
 
     initial = empty
@@ -575,6 +594,7 @@ def optimize(
     def score(state: _State) -> float:
         value = state.trait_value + state.unique + state.unit_value
         value += _jazz_bonus(state.active, state.jazz_tier, state.bridge, mode)
+        value += _late_carry_value(state.carry_flags, size, mode)
         if mode in ("balanced", "high_value"):
             value += state.anchor
             unit_count = len(locked_names) + len(state.picks)

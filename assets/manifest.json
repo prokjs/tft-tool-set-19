@@ -1,666 +1,4085 @@
 {
-  "source": "https://tft.ninja/sets/19/traits",
-  "attribution": "Champion and trait artwork © Riot Games. Images sourced from TFT Ninja Set 19.",
+  "source": "https://explore.communitydragon.org/tft/19.1.0/",
+  "pin": "tft-pbe-windows-rls-19.1.0-5986652-B6A307EE125EC1A0",
+  "attribution": "Champion and trait artwork © Riot Games. Images sourced from CommunityDragon Set 19.",
+  "export": {
+    "url": "https://explore.communitydragon.org/tft/19.1.0/cdragon/export.json",
+    "sha256": "d44f29a36cae92b85d34c8cd5eaede091d7c906c12a18787204dbe17e0254b0f"
+  },
+  "index": {
+    "url": "https://explore.communitydragon.org/tft/19.1.0/cdragon/files.exported.txt",
+    "sha256": "ba59540ddc2f11a30266d09499c9ca0490178f293b6a70f3a2a6fcd410ecf37b"
+  },
+  "mapping_catalogs": {
+    "traits": {
+      "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+      "sha256": "7931b4902b0b7e0471647609a9caec2131f5242434e5672eddf90f841306aa00"
+    },
+    "units": {
+      "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units",
+      "sha256": "38b774f369ea0ba3f0bbd314da6d9eb7648f1ad6241ef2db996f40eff32817d9"
+    }
+  },
   "champions": {
     "Ahri": {
-      "url": "https://tft.ninja/img/sets/19/champions/ahri.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ahri/ui/t_19_ahri_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ahri/ui/t_19_ahri_teamplanner_portrait.png",
+      "source_sha256": "a46d603de6a6ac96d300d1d52b13ffa77b336428c2a57b0e6309c69a0280342e",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-0-small.png": {
+          "sha256": "bba21210edf4b679e5decd9e236797919c6c85ca69b8fdaa26a21a4f9deb2bae",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-0-large.png": {
+          "sha256": "1ade795aab94b2695884f391b50f4f535681e8e53d09c60e91fb41fe73d9090a",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-0-small.png",
       "large": "champion-0-large.png"
     },
     "Akali (K/DA)": {
-      "url": "https://tft.ninja/img/sets/19/champions/akali-k-da.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/akali_kda/ui/t_set19_akali_teamplanner_256x256.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/akali_kda/ui/t_set19_akali_teamplanner_256x256.png",
+      "source_sha256": "e63ef03da66aee2069eea4621aa9f381becfded1d5b83d6e6106ea9878ddd733",
+      "source_dimensions": [
+        256,
+        256
+      ],
+      "outputs": {
+        "champion-1-small.png": {
+          "sha256": "b5487c1f5ad9ae2e87aa8fe1cd333137eb8bbccf81f43402e2960814e82dca75",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-1-large.png": {
+          "sha256": "e896bf2bb92ed4327304b0e10d226d08702da1a08649e0f050c6690cce3f3dfc",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-1-small.png",
       "large": "champion-1-large.png"
     },
     "Akali (True Damage)": {
-      "url": "https://tft.ninja/img/sets/19/champions/akali-true-damage.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/akali_truedamage/ui/t_set19_akali_teamplanner_256x256.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/akali_truedamage/ui/t_set19_akali_teamplanner_256x256.png",
+      "source_sha256": "b6246658f7f97a2fc74d2a0f217380b8510d261ff8997c3bc077d6c677921b49",
+      "source_dimensions": [
+        256,
+        256
+      ],
+      "outputs": {
+        "champion-2-small.png": {
+          "sha256": "b9be6b295313264bd0054a254e40b4e1d2abd11b068e3c104bdcaa784e1a9faf",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-2-large.png": {
+          "sha256": "3adb032838532ba75d2a153c2a80cb65eb211cfe9d2127cd8fcb2f63e22e4e50",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-2-small.png",
       "large": "champion-2-large.png"
     },
     "Alistar": {
-      "url": "https://tft.ninja/img/sets/19/champions/alistar.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/alistar/ui/t_19_alistar_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/alistar/ui/t_19_alistar_teamplanner_portrait.png",
+      "source_sha256": "25a0a5bd797e17369016621e5ecf280083770d2ffb426303d65cb28ae9d243f0",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-3-small.png": {
+          "sha256": "f4a5c17c82d691d701dbb5dc2cfb0f07fad069e4a58487b7d87c11a940136412",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-3-large.png": {
+          "sha256": "00e406ab428f20841baf4128bcc70610c853d6b3f7cb4bf682b7c9575fce044f",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-3-small.png",
       "large": "champion-3-large.png"
     },
     "Alune": {
-      "url": "https://tft.ninja/img/sets/19/champions/alune.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/alune/ui/t_19_alune_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/alune/ui/t_19_alune_teamplanner_portrait.png",
+      "source_sha256": "f135966cf3fe9592ae77dca54ef4de720320a9aeed2dc023aab2874d4dc05c69",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-4-small.png": {
+          "sha256": "35af728fb59c32f6ab4e0c886934e1f530fff77c9ac0aba2aa90416756b0b75d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-4-large.png": {
+          "sha256": "6a809ff8e3b393c5134c401b6cc13030a4f72877ed0787a2512824e1d041d125",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-4-small.png",
       "large": "champion-4-large.png"
     },
     "Amumu": {
-      "url": "https://tft.ninja/img/sets/19/champions/amumu.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/amumu/ui/t_19_amumu_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/amumu/ui/t_19_amumu_teamplanner_portrait.png",
+      "source_sha256": "9f940b81e23f6349591259da4e2a611aaefbb7edfbe346e1ed9848e6203365ad",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-5-small.png": {
+          "sha256": "02250cb050c59b373cb833062f3900504d8b4dfff199a7bad4c2df57edae22e5",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-5-large.png": {
+          "sha256": "c923c1819653e24713ecdebfb0f73bceabc31a7c5f6cc08c205428ea04bad870",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-5-small.png",
       "large": "champion-5-large.png"
     },
     "Annie": {
-      "url": "https://tft.ninja/img/sets/19/champions/annie.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/annie/ui/t_19_annie_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/annie/ui/t_19_annie_teamplanner_portrait.png",
+      "source_sha256": "4fcf71434c2d8635bf04076511caa6bd12f3e9858cd7961f9374348b12f28139",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-6-small.png": {
+          "sha256": "a23f6a090cd5699f7c7a985ea49ff51d808e7a56f366ce9a16bf830e5cd76579",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-6-large.png": {
+          "sha256": "43e4bd3aaad79c42a4f3f44a113964e023492e0b1a5b103ae67fe35f2a81ebae",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-6-small.png",
       "large": "champion-6-large.png"
     },
     "Aphelios": {
-      "url": "https://tft.ninja/img/sets/19/champions/aphelios.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/aphelios/ui/t_19_aphelios_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/aphelios/ui/t_19_aphelios_teamplanner_portrait.png",
+      "source_sha256": "7b7944f80524f18b8e431f9622d2962c136e778b8b6c9d7165d15a25eace2740",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-7-small.png": {
+          "sha256": "aace2c883bfde580f76c4317e86b7c02b1610d3db25f86ed31c3be20c89af320",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-7-large.png": {
+          "sha256": "4095f8c56cced90044d356c2174dd95aa458c0f37f932a397980792d8203653b",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-7-small.png",
       "large": "champion-7-large.png"
     },
     "Ashe": {
-      "url": "https://tft.ninja/img/sets/19/champions/ashe.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ashe/ui/t_19_ashe_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ashe/ui/t_19_ashe_teamplanner_portrait.png",
+      "source_sha256": "b2bde88e85d51a5177c90655d2db26f49c9c86e43646eff233b51da04cfb099e",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-8-small.png": {
+          "sha256": "d25319378f279ffc8e8f86dec1ef20e0694a016378ce24033a70e1d86239633a",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-8-large.png": {
+          "sha256": "c7bd1fa1ef03a0a076fc19c62db606b849e50fddb61940e5472b0569bf29db66",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-8-small.png",
       "large": "champion-8-large.png"
     },
     "Aurora": {
-      "url": "https://tft.ninja/img/sets/19/champions/aurora.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/aurora/ui/t_19_aurora_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/aurora/ui/t_19_aurora_teamplanner_portrait.png",
+      "source_sha256": "4be19199af2f18124861e7286f0db5c877cf07381dc1dd02d7796f9fce521d94",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-9-small.png": {
+          "sha256": "3b9409e76ba073c47f5f59b29dcdbc000cd02d9cd05d80342135d1101cf8ad26",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-9-large.png": {
+          "sha256": "f55a98da6c743f875e1180bd78ac32f4281558e31da20a5486687a9238dbf77d",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-9-small.png",
       "large": "champion-9-large.png"
     },
     "Bard": {
-      "url": "https://tft.ninja/img/sets/19/champions/bard.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/bard/ui/t_19_bard_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/bard/ui/t_19_bard_teamplanner_portrait.png",
+      "source_sha256": "ab2e9cd1ce3169b397e5dd0fcdd247a42b3947c5f9858c37aff378007ebd009b",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-10-small.png": {
+          "sha256": "e7141ccd7e908135d4dc82ce6bafb999f345e1c104d2178bf1ff28a9803364b9",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-10-large.png": {
+          "sha256": "44577c9f7b94ff9515a7104c0a648423b71fb067e4aa8876812958bb69aa3aaa",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-10-small.png",
       "large": "champion-10-large.png"
     },
     "Baron Nashor": {
-      "url": "https://tft.ninja/img/sets/19/champions/baron-nashor.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/baronnashor/ui/t_19_baronnashor_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/baronnashor/ui/t_19_baronnashor_teamplanner_portrait.png",
+      "source_sha256": "96c1780971c9df7d276008b8a97652fa7417fb1a503b1763af170b05269f18d2",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-11-small.png": {
+          "sha256": "0df3067818e636e207099b2184e10cf8b7942eb1367014813e245dddc9430537",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-11-large.png": {
+          "sha256": "5e92405cdcad3d8e00765f86a451c526a3671041c42f14554003012aab5370e4",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-11-small.png",
       "large": "champion-11-large.png"
     },
     "Braum": {
-      "url": "https://tft.ninja/img/sets/19/champions/braum.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/braum/ui/t_19_braum_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/braum/ui/t_19_braum_teamplanner_portrait.png",
+      "source_sha256": "33789e2a4ca0692df56c0c706c321ef07d0dce4595f2091fb0cbad076fcbd064",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-12-small.png": {
+          "sha256": "d5038c8abd771740602d606b6d6d97d199d65e4571a5838b9096c99b25d250be",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-12-large.png": {
+          "sha256": "abc20d6e757cc7c4223f889e148009a7903a73f8a9c32677110182e44f4f93e7",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-12-small.png",
       "large": "champion-12-large.png"
     },
     "Briar": {
-      "url": "https://tft.ninja/img/sets/19/champions/briar.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/briar/ui/t_19_briar_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/briar/ui/t_19_briar_teamplanner_portrait.png",
+      "source_sha256": "2382509f7a274e8d170e75dd1ef6e108ff993412fa9c17f7a4cedb2b0ebfe2d3",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-13-small.png": {
+          "sha256": "6c66ebfaa9b3af0e63c59d7b4e07d5a29808a0b7eca7e77f29b2dd95a02a945b",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-13-large.png": {
+          "sha256": "90fd0fb1026ed78887db04ff37f1cb52073119036c83e4a1cdc2af03a59d7c9c",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-13-small.png",
       "large": "champion-13-large.png"
     },
     "Camille": {
-      "url": "https://tft.ninja/img/sets/19/champions/camille.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/camille_/ui/t_19_camille_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/camille_/ui/t_19_camille_teamplanner_portrait.png",
+      "source_sha256": "085031bc219c1981ec848700c1bd45557e8143273044df095b6864f761e38ff2",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-14-small.png": {
+          "sha256": "5724af3be253565d85aabd0b1b91fc12de8317fcd943460eea677a1bb5799e38",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-14-large.png": {
+          "sha256": "03dbc21bf52aca3a1badf3f5905b1f59a208b8fe3d66e9fddee38ea79b37cb50",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-14-small.png",
       "large": "champion-14-large.png"
     },
     "Dr. Mundo": {
-      "url": "https://tft.ninja/img/sets/19/champions/dr-mundo.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/drmundo/ui/t_19_drmundo_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/drmundo/ui/t_19_drmundo_teamplanner_portrait.png",
+      "source_sha256": "0c122999551aaded3cc9f768070f5598aec17b92ae288e75cc4d9dfdead4e6c2",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-15-small.png": {
+          "sha256": "d09ce04b4a83d846eb431d1be39d0ad844323e847d2c133b2d8c11682283e431",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-15-large.png": {
+          "sha256": "b07a0f66620d57178dd45ea10999e5ea3c0b47171c41c99be4e0d50898c21ec6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-15-small.png",
       "large": "champion-15-large.png"
     },
     "Draven": {
-      "url": "https://tft.ninja/img/sets/19/champions/draven.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/draven/ui/t_19_draven_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/draven/ui/t_19_draven_teamplanner_portrait.png",
+      "source_sha256": "ac02dcaa96312ae3ff2da08775eeaad7247dde9e9da7fe84a1d331d6f8d2a473",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-16-small.png": {
+          "sha256": "07662f6b626695ac08eb47b488512b326c36ff9790502d9c3127f3a66f369841",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-16-large.png": {
+          "sha256": "199f5753e64e4aa903aa83f152276ef833eeed7cad5bbbd94e49d83bcc730210",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-16-small.png",
       "large": "champion-16-large.png"
     },
     "Ekko": {
-      "url": "https://tft.ninja/img/sets/19/champions/ekko.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ekko/ui/t_19_ekko_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ekko/ui/t_19_ekko_teamplanner_portrait.png",
+      "source_sha256": "0da4cf9215a932a42b644af4621afcfdf7f345e78a3f861a256637672a1490ec",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-17-small.png": {
+          "sha256": "4b7aeb64382e13f9f1c831f1fd21b1d11ec578de3ef5643461acb67c222cfb3c",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-17-large.png": {
+          "sha256": "102a82741ca6d0e9f02d478de38393de8c689ab5df109dce5385a5dca6a976c0",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-17-small.png",
       "large": "champion-17-large.png"
     },
     "Elise": {
-      "url": "https://tft.ninja/img/sets/19/champions/elise.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/elise/ui/t_19_elise_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/elise/ui/t_19_elise_teamplanner_portrait.png",
+      "source_sha256": "b4ef6e29dbf706b8683beb5f3650d409ea2f6be0351800a9e8808af3f9717706",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-18-small.png": {
+          "sha256": "892e788320803ff19dc39b1bdfe1a8ffcf003b8b829f5e473b42052d3e8bc258",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-18-large.png": {
+          "sha256": "14b2182d985ca6d24e2dba2950a0663f7a5e60cf3979bc35a3f7a0221807880d",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-18-small.png",
       "large": "champion-18-large.png"
     },
     "Evelynn": {
-      "url": "https://tft.ninja/img/sets/19/champions/evelynn.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/evelynn/ui/t_19_evelynn_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/evelynn/ui/t_19_evelynn_teamplanner_portrait.png",
+      "source_sha256": "17f7756204ae9986214ff781cea185d0cf5732eefb778caea469497cee879dd7",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-19-small.png": {
+          "sha256": "04ef79e8865d014cf424a10524ea2ab05302519b3717d5d10b4971e448cb1927",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-19-large.png": {
+          "sha256": "f68d63681f7d98c89902c8a51e3487a09ac3a6599f72999ec5179674be1d5fb6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-19-small.png",
       "large": "champion-19-large.png"
     },
     "Ezreal": {
-      "url": "https://tft.ninja/img/sets/19/champions/ezreal.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ezreal/ui/t_19_ezreal_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ezreal/ui/t_19_ezreal_teamplanner_portrait.png",
+      "source_sha256": "0f7b03bf3640ceb81604941bc93207b570beadb685c94a33eca698dc8fc5a735",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-20-small.png": {
+          "sha256": "3888264756816713dad418ba6202fd1fb162c5e7073b23e26efe6f00c16f2981",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-20-large.png": {
+          "sha256": "a67a32c2bb484681a31e245f24ca712251f9426e1a61e310b4282e8a18f161ef",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-20-small.png",
       "large": "champion-20-large.png"
     },
     "Galio": {
-      "url": "https://tft.ninja/img/sets/19/champions/galio.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/galio/ui/t_19_galio_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/galio/ui/t_19_galio_teamplanner_portrait.png",
+      "source_sha256": "bd4c4b8d1418111f3e0040b88cf98033d28c7cf946d6a9b55cbe99d3ae6d0766",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-21-small.png": {
+          "sha256": "e7f1df0f3936493a8c17d425bddd8f828e87e839deff0b2c80bec0bd96bf35b2",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-21-large.png": {
+          "sha256": "6a8d70512f806ddb7cec66e497224196c4e2d72527e55edb4a94edc9b176eecb",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-21-small.png",
       "large": "champion-21-large.png"
     },
     "Garen": {
-      "url": "https://tft.ninja/img/sets/19/champions/garen.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/garen/ui/t_19_garen_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/garen/ui/t_19_garen_teamplanner_portrait.png",
+      "source_sha256": "b0c10ab98a19ccbdd6a196889247293eec5be7f5c0cba40fdd06f4c17dc80765",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-22-small.png": {
+          "sha256": "baa03e3974d5b54d11bd196e2872dbc4a3f5eb32d80bed2d3f3e5f734d51981e",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-22-large.png": {
+          "sha256": "c8b4d51111f58281588b8871830b4163f8739005f81ea0445954a555f6f6d625",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-22-small.png",
       "large": "champion-22-large.png"
     },
     "Gnar": {
-      "url": "https://tft.ninja/img/sets/19/champions/gnar.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/gnar/ui/t_19_gnar_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/gnar/ui/t_19_gnar_teamplanner_portrait.png",
+      "source_sha256": "4e8c71217a7f82e0f154a808188407b80f6e4573b9875868b30f77aaa5241427",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-23-small.png": {
+          "sha256": "233874956152c595abf93f2be56f8608808a87a5de984f7f255dcddfe3758068",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-23-large.png": {
+          "sha256": "1cc3dfbd69d035fa0f5f9cf3d7a2033578a000cd62b64a0d7dc01bba78a327b9",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-23-small.png",
       "large": "champion-23-large.png"
     },
     "Gragas": {
-      "url": "https://tft.ninja/img/sets/19/champions/gragas.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/gragas/ui/t_19_gragas_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/gragas/ui/t_19_gragas_teamplanner_portrait.png",
+      "source_sha256": "f0a99720b7071a6375c01b8f7c73490110206d89d2028128b1eccd69875769c1",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-24-small.png": {
+          "sha256": "075d0e6abcd35d59fc8eb55654e3cdd77dd07bf6f62cc0f6e4c051fa64144ec9",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-24-large.png": {
+          "sha256": "4fc53bd9103c187718bd3ca208c8f4cfb57789f73c6b63c0fa88b8b3de1bd87e",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-24-small.png",
       "large": "champion-24-large.png"
     },
     "Graves": {
-      "url": "https://tft.ninja/img/sets/19/champions/graves.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/graves/ui/t_19_graves_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/graves/ui/t_19_graves_teamplanner_portrait.png",
+      "source_sha256": "c127c905552561d12b73e050c183758289d5d0e148fc223fa38c4cda59e90108",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-25-small.png": {
+          "sha256": "adb90269b9e1ec4faa3cd945398e24e3469175183f9f70300919f8c41c30c90d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-25-large.png": {
+          "sha256": "07da62390c1b7c4f0527e2c5a0caafece11fb817dc972c437ff8538f2c15ddfb",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-25-small.png",
       "large": "champion-25-large.png"
     },
     "Gwen": {
-      "url": "https://tft.ninja/img/sets/19/champions/gwen.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/gwen/ui/t_19_gwen_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/gwen/ui/t_19_gwen_teamplanner_portrait.png",
+      "source_sha256": "38d531a68e5038c989f929d3ac5955034fe65fa9c3a06deab645998d79fc1649",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-26-small.png": {
+          "sha256": "fbe864278db35e7645b96de95f8696345912ba121b620ba3e43fb68d75789328",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-26-large.png": {
+          "sha256": "be7a7aac71b6c3e92622d0342ab0b6fddfe7bb697c99452b21c0299ba7310825",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-26-small.png",
       "large": "champion-26-large.png"
     },
     "Illaoi": {
-      "url": "https://tft.ninja/img/sets/19/champions/illaoi.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/illaoi/ui/t_19_illaoi_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/illaoi/ui/t_19_illaoi_teamplanner_portrait.png",
+      "source_sha256": "51a8086aefbc7e685d130f99767c24146cc6bb55ca1d6dcb120a3a07c82d7661",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-27-small.png": {
+          "sha256": "d142fb46dae1c36b1b841341ee69381b76ae775c913f23c3a7c6fe4e7d7b3d3f",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-27-large.png": {
+          "sha256": "8839d67f7c2b4cf5b0762d6d99f1d60dd8ff1d59f5b80a8b1e055f82d3759162",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-27-small.png",
       "large": "champion-27-large.png"
     },
     "Janna": {
-      "url": "https://tft.ninja/img/sets/19/champions/janna.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/janna/ui/t_19_janna_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/janna/ui/t_19_janna_teamplanner_portrait.png",
+      "source_sha256": "ce6ac468a8db448d7b48c83b16412040ad3ea657332d898980f5e96cfa8c9810",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-28-small.png": {
+          "sha256": "fe3eb892b704ecf2e04bfb8aca3484120bb2d42a1b06eb6a026a54ada9f1843a",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-28-large.png": {
+          "sha256": "a8e6a04045feb346490f7380ffb295d3d8e79b72a796cabac24fce8de7ba91b5",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-28-small.png",
       "large": "champion-28-large.png"
     },
     "Jax": {
-      "url": "https://tft.ninja/img/sets/19/champions/jax.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/jax/ui/t_19_jax_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/jax/ui/t_19_jax_teamplanner_portrait.png",
+      "source_sha256": "db894550016726a77d31ef9baa8459c749369321411d4e7e54f78cf5327d1791",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-29-small.png": {
+          "sha256": "10793df7dc0bc8a1cab7216330fa895f9167455610c47df637c4d28801f42923",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-29-large.png": {
+          "sha256": "55dcc620febf39d6fbbdb6657967af30f32bbe80aad24beb6154883d75248c0f",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-29-small.png",
       "large": "champion-29-large.png"
     },
     "Jhin": {
-      "url": "https://tft.ninja/img/sets/19/champions/jhin.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/jhin/ui/t_19_jhin_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/jhin/ui/t_19_jhin_teamplanner_portrait.png",
+      "source_sha256": "179c1204b6ae4534e28c7bbffe01449c3f55a7add602366721b30a2aeac42b37",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-30-small.png": {
+          "sha256": "13d89935ca1ea96bb02a48ac45de50dd2d0310c1c0a029bb0cb0e6717bcc9f14",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-30-large.png": {
+          "sha256": "6b7fc7784d814c02ff9e9a3fce2ad4f58bd88a92f6a0c4ee38f1ed66db6a105d",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-30-small.png",
       "large": "champion-30-large.png"
     },
     "Jinx": {
-      "url": "https://tft.ninja/img/sets/19/champions/jinx.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/jinx/ui/t_19_jinx_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/jinx/ui/t_19_jinx_teamplanner_portrait.png",
+      "source_sha256": "403c18f3062febb1c7c2e9c48a6c553d7d4db4a8f6e99ea99706340d2eeac592",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-31-small.png": {
+          "sha256": "d7777252ce065cef106a451533d7b8e81c058e635bbb896df66fb2ad0f6c566b",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-31-large.png": {
+          "sha256": "bef978cde7f90a6088d061cad95472f4dca6913038a9db9da36a6cba0065ffbe",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-31-small.png",
       "large": "champion-31-large.png"
     },
     "K'Sante": {
-      "url": "https://tft.ninja/img/sets/19/champions/k-sante.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ksante/ui/t_19_ksante_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ksante/ui/t_19_ksante_teamplanner_portrait.png",
+      "source_sha256": "6a9f93807791dbf2d30275a26b281fa7ee267b773dea44755989ee3377f4febd",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-32-small.png": {
+          "sha256": "add9fa4b929ecb26086e951d9d1da0922b40070cea018e2cc73d7d230685be95",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-32-large.png": {
+          "sha256": "ccc9f7c5114726e17c9484da5a686f20c9f16d28bf3d9c7cc69c1486aa143fd5",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-32-small.png",
       "large": "champion-32-large.png"
     },
     "Kai'Sa": {
-      "url": "https://tft.ninja/img/sets/19/champions/kai-sa.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/kaisa/ui/t_19_kaisa_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/kaisa/ui/t_19_kaisa_teamplanner_portrait.png",
+      "source_sha256": "ffcea327f139f00ad3676faa969a051dc73cad5ee2f8b8c445120955c59b64d0",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-33-small.png": {
+          "sha256": "5d3022dccb726df9c5d874f828614ccc74beb32d478aa8e1f6be72015e0089f4",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-33-large.png": {
+          "sha256": "3e71e0800f750f22270da4ede0a55a30360f9698d668ece27c73fb77d5d1eef7",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-33-small.png",
       "large": "champion-33-large.png"
     },
     "Karthus": {
-      "url": "https://tft.ninja/img/sets/19/champions/karthus.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/karthus/ui/t_19_karthus_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/karthus/ui/t_19_karthus_teamplanner_portrait.png",
+      "source_sha256": "6eced0e6996a39fc909aed65f0c6040ba67a16f5b397251fb817448548f3049d",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-34-small.png": {
+          "sha256": "f22a8df2e8dc8ab8b3c91d7fbb6e2efe6ede5ab1556e6fa4a0af865799f6d7c1",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-34-large.png": {
+          "sha256": "8bded37364fcb9212101f7d668315b90be5c1d5c7eb865fa35a4fb2b9411048b",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-34-small.png",
       "large": "champion-34-large.png"
     },
     "Katarina": {
-      "url": "https://tft.ninja/img/sets/19/champions/katarina.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/katarina/ui/t_19_katarina_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/katarina/ui/t_19_katarina_teamplanner_portrait.png",
+      "source_sha256": "67926c82f155ae8bd75d1811546a2d59aeb7b1db24ebf0d57bf646f7e946e00f",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-35-small.png": {
+          "sha256": "85964b7bdb500ebe67bee1f2ddf84dd287db6807ea50b21c8fcd06139f497658",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-35-large.png": {
+          "sha256": "7e0009ad1d7cfe3205147605765d934529df14785aea3fa6a96bf18a81d36a21",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-35-small.png",
       "large": "champion-35-large.png"
     },
     "Kayle": {
-      "url": "https://tft.ninja/img/sets/19/champions/kayle.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/kayle/ui/t_19_kayle_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/kayle/ui/t_19_kayle_teamplanner_portrait.png",
+      "source_sha256": "53704bb646f94a3a639fc36da9660617c3058d10f90ca4f07f3c610d7ec814a8",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-36-small.png": {
+          "sha256": "0b931279b4f2c1376f896d16572a38a8df22cbc3e0a103bfa4b3ffd16055d175",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-36-large.png": {
+          "sha256": "740eb49e97b986cd526f2e19bc486aa657f880d68dcb5ab5d5766f14614083ee",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-36-small.png",
       "large": "champion-36-large.png"
     },
     "Kayn": {
-      "url": "https://tft.ninja/img/sets/19/champions/kayn.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/kayn/ui/t_19_kayn_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/kayn/ui/t_19_kayn_teamplanner_portrait.png",
+      "source_sha256": "b710396f7739a67521dce2a1972f444a34ed81cb2f5ac8584d77d5718a9ed446",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-37-small.png": {
+          "sha256": "73a96d5c931274641c1961d8a857a531e522372d3d2056fd728d7ca8ccf22eb5",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-37-large.png": {
+          "sha256": "fd3392456d8178c733a8c70193c6e063b9507005b790125a97ca3c6667990b6f",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-37-small.png",
       "large": "champion-37-large.png"
     },
     "Kennen": {
-      "url": "https://tft.ninja/img/sets/19/champions/kennen.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/kennen/ui/t_19_kennen_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/kennen/ui/t_19_kennen_teamplanner_portrait.png",
+      "source_sha256": "bbbd059abfcee4b9f831cf7c68f5a25822203cb306b27c18916abdfd38bed1c2",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-38-small.png": {
+          "sha256": "49970ac950812ea47b7e50a255ebc2ef5a7eda40add1e624a65b5a8425bf14bb",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-38-large.png": {
+          "sha256": "462e9260bec321a1c5985f537c2e9ef033075469cd29c0e45fa432be27d653a6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-38-small.png",
       "large": "champion-38-large.png"
     },
     "Kobuko": {
-      "url": "https://tft.ninja/img/sets/19/champions/kobuko.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/kobuko/ui/t_19_kobuko_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/kobuko/ui/t_19_kobuko_teamplanner_portrait.png",
+      "source_sha256": "800fb8567562a98534c68d5b49c7a60e131b2581af1e6f840bbfe35271f62313",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-39-small.png": {
+          "sha256": "1488cf3c258600f90adbd827ea9440b17a8aad97f1d07a80bd829c16837b10bd",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-39-large.png": {
+          "sha256": "821165575fd257c29df2ce40768a3438bbfaaf89f9957ff1e680e5aabe49a52a",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-39-small.png",
       "large": "champion-39-large.png"
     },
     "Lee Sin": {
-      "url": "https://tft.ninja/img/sets/19/champions/lee-sin.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/leesin/ui/t_19_leesin_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/leesin/ui/t_19_leesin_teamplanner_portrait.png",
+      "source_sha256": "b82eef25340fcea4f2d9add18b29ecf452d952b69e5ce8a01989739b5c481cce",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-40-small.png": {
+          "sha256": "7c6f99a04ddba814f9c867149b984e3422e024c53fdd2a1604eec46116f3dd07",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-40-large.png": {
+          "sha256": "a6d062d260c4c007d4c26ffca56f1c66180208719d682fdf06ebed40433bc9f1",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-40-small.png",
       "large": "champion-40-large.png"
     },
     "Leona": {
-      "url": "https://tft.ninja/img/sets/19/champions/leona.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/leona/ui/t_19_leona_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/leona/ui/t_19_leona_teamplanner_portrait.png",
+      "source_sha256": "49c00f65a5148344d8cd956949e68a9385ed5e4c32a1f059e755b01b1b3e7b54",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-41-small.png": {
+          "sha256": "a5cca826c719a77d2958133140b9c91702c290c6c8da6b68759e0e54e863eebd",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-41-large.png": {
+          "sha256": "8d0e16a583d527d1cbb931682d0aa973f7c7fa12835f311848f393ac5d03b22b",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-41-small.png",
       "large": "champion-41-large.png"
     },
     "Lillia": {
-      "url": "https://tft.ninja/img/sets/19/champions/lillia.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/lillia/ui/t_19_lillia_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/lillia/ui/t_19_lillia_teamplanner_portrait.png",
+      "source_sha256": "c745fe1fa02910471261f92300ff3422043787a8df9bf834047ebde59d7c9943",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-42-small.png": {
+          "sha256": "4e57988a518990200fb1c2946b48eb2a56211ec9102d33d93996853a0da3281d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-42-large.png": {
+          "sha256": "944c857f3bfe6776a5dc748ae87df49c09f6976ae4ea46deffaf006ed49ef27d",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-42-small.png",
       "large": "champion-42-large.png"
     },
     "Locke": {
-      "url": "https://tft.ninja/img/sets/19/champions/locke.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/locke/ui/t_19_locke_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/locke/ui/t_19_locke_teamplanner_portrait.png",
+      "source_sha256": "b7f4827e6a4ba588044fe753801e2db449e7d6515806fb6760f3c89750acef61",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-43-small.png": {
+          "sha256": "849c56e5494365fd79cf7ddd9e20dedab99601b96ce532d68a40ba442c6b8a3d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-43-large.png": {
+          "sha256": "1f36096506f5e59fcc0f59df44160e38e04f0112fb2c8b6b88d9b4c59dc23cac",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-43-small.png",
       "large": "champion-43-large.png"
     },
     "Lucian": {
-      "url": "https://tft.ninja/img/sets/19/champions/lucian.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/lucian/ui/t_19_lucian_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/lucian/ui/t_19_lucian_teamplanner_portrait.png",
+      "source_sha256": "c3828545e18802d407974bb6799c88c98c5bee60797c5539e382e16a50351219",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-44-small.png": {
+          "sha256": "7cad11ef7d85e74e21afe0634a6ab7d0c9777ae8cd8b3facb6eb5db60c106187",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-44-large.png": {
+          "sha256": "15868478e4eb33595c506004d0adcd0b533cca32781979891363d5eb3db4ca64",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-44-small.png",
       "large": "champion-44-large.png"
     },
     "Lulu": {
-      "url": "https://tft.ninja/img/sets/19/champions/lulu.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/lulu/ui/t_19_lulu_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/lulu/ui/t_19_lulu_teamplanner_portrait.png",
+      "source_sha256": "ed4017b4517a76bc81dd9b0f0c681bb2b84a774137fb2b0edc9ea51d5c6698a9",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-45-small.png": {
+          "sha256": "9a0d0e452dd4c5e3ac9e4ae198dec9a6adbbec5992e6621a11ddef7b264b753b",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-45-large.png": {
+          "sha256": "28e2678dfc8492095af606614547977a1b0738cb1ae398b6295b932fd006023f",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-45-small.png",
       "large": "champion-45-large.png"
     },
     "Lux": {
-      "url": "https://tft.ninja/img/sets/19/champions/lux.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/lux/ui/t_19_lux_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/lux/ui/t_19_lux_teamplanner_portrait.png",
+      "source_sha256": "2617ceaca15a4bda97036066f2b3dbbf3fcd1b1f1e459be6c3337f9d76bd0bc0",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-46-small.png": {
+          "sha256": "5f33c80816156c28964343deb4cd1f7e2817c7181cebecb648c19f0e6703fbcb",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-46-large.png": {
+          "sha256": "a401882dc6d40522d63becc8c24fe2bf9b5491e64a472c5f6e2b8bef5f65e323",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-46-small.png",
       "large": "champion-46-large.png"
     },
     "Malzahar": {
-      "url": "https://tft.ninja/img/sets/19/champions/malzahar.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/malzahar/ui/t_19_malzahar_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/malzahar/ui/t_19_malzahar_teamplanner_portrait.png",
+      "source_sha256": "5378c5a415e3cb65e5257480d696a02bb7625234b4e9f4bf03a9776717a9472f",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-47-small.png": {
+          "sha256": "55b0e91888fb11ac6c0692115b723364fd8e8fbe703f9de57ee1716bb0895678",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-47-large.png": {
+          "sha256": "0d9d2e9afe617f9d68bff6e44de95c41cd708de02a3f194a8e4fa748fa2d2726",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-47-small.png",
       "large": "champion-47-large.png"
     },
     "Mel": {
-      "url": "https://tft.ninja/img/sets/19/champions/mel.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/mel/ui/t_19_mel_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/mel/ui/t_19_mel_teamplanner_portrait.png",
+      "source_sha256": "cd48e44dbb5cb12dcb96bbcd1638eec667189d4fc8617c1a809aa46d316c9313",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-48-small.png": {
+          "sha256": "59de3bf947c654bbb0f6347fbce6e34f1eb46dec999edb5362c3646c0e2fa826",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-48-large.png": {
+          "sha256": "a7f59aa59098ba7bacb6ea8bdc1cda25b1fe11c1298f252c2a0740dbbb39e557",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-48-small.png",
       "large": "champion-48-large.png"
     },
     "Miss Fortune": {
-      "url": "https://tft.ninja/img/sets/19/champions/miss-fortune.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/missfortune/ui/t_19_missfortune_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/missfortune/ui/t_19_missfortune_teamplanner_portrait.png",
+      "source_sha256": "61ddc4067f15e715566fb31a9b535fac9946dc1224fff323400ae07c17e16ada",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-49-small.png": {
+          "sha256": "947d12dcc6926bb75a9fd9d241296c90fab680de3d551ce163059ec83fb24fe3",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-49-large.png": {
+          "sha256": "b7e9d8d69e2904eb078e5bc9d79782aa1774c4f16e3946040000ca340377c437",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-49-small.png",
       "large": "champion-49-large.png"
     },
     "Mordekaiser": {
-      "url": "https://tft.ninja/img/sets/19/champions/mordekaiser.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/mordekaiser/ui/t_19_mordekaiser_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/mordekaiser/ui/t_19_mordekaiser_teamplanner_portrait.png",
+      "source_sha256": "514ee9ba2ce03e8a57e91a0a0f273c624ffec5ee20efb2ce3cf0b0b49e5c6d59",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-50-small.png": {
+          "sha256": "87e3598d6457d07899831a0f24c1361324638a382c2d60000060784a55e62f53",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-50-large.png": {
+          "sha256": "d4cc450f5f83e388006556b23b96aff6941aea9af94e7f16f31407df4856b493",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-50-small.png",
       "large": "champion-50-large.png"
     },
     "Nasus": {
-      "url": "https://tft.ninja/img/sets/19/champions/nasus.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/nasus/ui/t_19_nasus_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/nasus/ui/t_19_nasus_teamplanner_portrait.png",
+      "source_sha256": "769b51ee359259ada7c3a8afa70292e7823984d9abc0215f42d2750da300d527",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-51-small.png": {
+          "sha256": "e98b1b8fbc8eb617a578faf2b661007c48d37868b8dd5fa8ad60b658e2ea4da9",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-51-large.png": {
+          "sha256": "e03a365b0fd826a55a1ac4ca9f41332f5962b9551c3d519974d178b99b7431fe",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-51-small.png",
       "large": "champion-51-large.png"
     },
     "Neeko": {
-      "url": "https://tft.ninja/img/sets/19/champions/neeko.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/neeko/ui/t_19_neeko_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/neeko/ui/t_19_neeko_teamplanner_portrait.png",
+      "source_sha256": "e158a160374cb797f0a62d43b9eeeeb0632c301d1e267eae2cef4fcc69ee1b6a",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-52-small.png": {
+          "sha256": "569421db89b267ac5eecb9b2e5d9ceef0a4aac4f6dd86b4a0f8499fa6e8f3c2a",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-52-large.png": {
+          "sha256": "d3654d937a2772f4fa62a6f4e6738aed6399546943d0b09c9d0ab8e1d447d0ea",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-52-small.png",
       "large": "champion-52-large.png"
     },
     "Nidalee": {
-      "url": "https://tft.ninja/img/sets/19/champions/nidalee.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/nidalee/ui/t_19_nidalee_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/nidalee/ui/t_19_nidalee_teamplanner_portrait.png",
+      "source_sha256": "cc74b19b77c206bc20ebd14fd9e6c44fb1db39916563cef1b42a13c36edea129",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-53-small.png": {
+          "sha256": "b67472d3b5518e008a188135eb8a0493b2efd8848d67c17c22a6a70bec47ad9f",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-53-large.png": {
+          "sha256": "032a46f4a63c4ca1c84c94f7f879114e8e176fb240e35dd47555c9cdc4a1b0ee",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-53-small.png",
       "large": "champion-53-large.png"
     },
     "Nunu & Willump": {
-      "url": "https://tft.ninja/img/sets/19/champions/nunu-and-willump.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/nunu/ui/t_19_nunu_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/nunu/ui/t_19_nunu_teamplanner_portrait.png",
+      "source_sha256": "6b46f9a08cfdb3567829b4f592de490dc813c7e9f1af35f4a9188c22d13d2de9",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-54-small.png": {
+          "sha256": "44c29b3ad03a384514425671d9e5a109fa65aa101013caab7886b45b4538753c",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-54-large.png": {
+          "sha256": "110924aeb0b69cff8ab6eba4d2c511fa2f75fb02c12d49b1b6a33c072df68308",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-54-small.png",
-      "large": "champion-54-large.png"
+      "large": "champion-54-large.png",
+      "source_alias": "nunu"
     },
     "Olaf": {
-      "url": "https://tft.ninja/img/sets/19/champions/olaf.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/olaf/ui/t_19_olaf_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/olaf/ui/t_19_olaf_teamplanner_portrait.png",
+      "source_sha256": "a32a0741fce67a7a9bcd21f9611aa90743ca76bcb98dbdfdc54a9f00f7304c71",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-55-small.png": {
+          "sha256": "4b5b9765ddad89a04490fc98dfda5c6fbe04e354cfd3c458bc00d7d94eb98044",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-55-large.png": {
+          "sha256": "254bfe9945672a9c6b532900254cf7398869ac7b3a5a9cf38dbad9d60108f132",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-55-small.png",
       "large": "champion-55-large.png"
     },
     "Pyke": {
-      "url": "https://tft.ninja/img/sets/19/champions/pyke.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/pyke/ui/t_19_pyke_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/pyke/ui/t_19_pyke_teamplanner_portrait.png",
+      "source_sha256": "134b518f9fc302d8d9c5744684eeb066a1970da35dd166f67f9bd8b06f36fbcd",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-56-small.png": {
+          "sha256": "8f1433e5e2ec7ef1fd851687c99f160927f34395d72c7ac3a160e5db88b47408",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-56-large.png": {
+          "sha256": "556c3e2fb2b4d0c8d458124c6f20b77c2c1d9a99b705caf82d550630f3fe5b51",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-56-small.png",
       "large": "champion-56-large.png"
     },
     "Qiyana": {
-      "url": "https://tft.ninja/img/sets/19/champions/qiyana.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/qiyana/ui/t_19_qiyana_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/qiyana/ui/t_19_qiyana_teamplanner_portrait.png",
+      "source_sha256": "cb2c67af91543fea593c6768ed56da4d74110393f4d930a473976e6a524d3c9c",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-57-small.png": {
+          "sha256": "0ed0ec913f87e33deac5def456de8f27f33fdbb1a29574b5613504958fd697c1",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-57-large.png": {
+          "sha256": "709cf7ce0aa7d9b9b79ad76d88b28f0e32c4b0f24e22d63fb146c0ae39acb0ae",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-57-small.png",
       "large": "champion-57-large.png"
     },
     "Rakan": {
-      "url": "https://tft.ninja/img/sets/19/champions/rakan.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/rakan/ui/t_19_rakan_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/rakan/ui/t_19_rakan_teamplanner_portrait.png",
+      "source_sha256": "954620e1b096dfe32e704d6c3eb14eceac4ef1c99d799c587388990989a530f0",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-58-small.png": {
+          "sha256": "85a7878ec5cd629acae158148bcf528742cbc80bfe88bc736e48cc69fa018b6c",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-58-large.png": {
+          "sha256": "cbe3d0f80a0ebc9784b441345c9330b9c6483f8e7356504554c6ab14e6cef330",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-58-small.png",
       "large": "champion-58-large.png"
     },
     "Rell": {
-      "url": "https://tft.ninja/img/sets/19/champions/rell.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/rell/ui/t_19_rell_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/rell/ui/t_19_rell_teamplanner_portrait.png",
+      "source_sha256": "c8869866b4190dac55e4d006285b577685a8b61041df8d5b375b0a7dc8f58a11",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-59-small.png": {
+          "sha256": "c1bfa0535c37e381125cc2606e5b595fcd854d06a63c003af6327a773f381e12",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-59-large.png": {
+          "sha256": "b037a0f21b3240d3aa13662f440d2eee5c9848e6ef4ff1f21655a24459707d1e",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-59-small.png",
       "large": "champion-59-large.png"
     },
     "Renata Glasc": {
-      "url": "https://tft.ninja/img/sets/19/champions/renata-glasc.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/renataglasc/ui/t_19_renataglasc_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/renataglasc/ui/t_19_renataglasc_teamplanner_portrait.png",
+      "source_sha256": "3a41d95482ab602601cf07940a8954eebd95ae3f73d0d9530ca5a76d21be67a5",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-60-small.png": {
+          "sha256": "a38b30e718ebd63e41874e505a0bb115c946c9d63ec93cb88d931b6deeb621b7",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-60-large.png": {
+          "sha256": "7bfeda427594d89624c34bd4972e8cd0d513bcd2d62fd4432c01c5b44e6e4c22",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-60-small.png",
       "large": "champion-60-large.png"
     },
     "Renekton": {
-      "url": "https://tft.ninja/img/sets/19/champions/renekton.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/renekton/ui/t_19_renekton_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/renekton/ui/t_19_renekton_teamplanner_portrait.png",
+      "source_sha256": "892808cefd3a3c179fe99190eaa6217c4f2e020ee8291fe1c5811be88433ff4d",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-61-small.png": {
+          "sha256": "63f48f86553da0b6c1359be65b64677fee21cc9e205048c329efaf8cb9125615",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-61-large.png": {
+          "sha256": "c0d3034eec6c55da04443cc8600062c678b4e2c644740e1348ce456f9a91e08b",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-61-small.png",
       "large": "champion-61-large.png"
     },
     "Samira": {
-      "url": "https://tft.ninja/img/sets/19/champions/samira.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/samira/ui/t_19_samira_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/samira/ui/t_19_samira_teamplanner_portrait.png",
+      "source_sha256": "7cc083b56ac928defa2b3628e5fdf512988d1b872e52d53a4ef4e4d549568809",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-62-small.png": {
+          "sha256": "4951eaf8c492fc5f08100fe549a62dd568e2d362be3f9a83611b45ae565dc29a",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-62-large.png": {
+          "sha256": "684a65db6b52e762331944518b7a103adfa8c254129c545bd9ffee19f4d229c0",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-62-small.png",
       "large": "champion-62-large.png"
     },
     "Senna": {
-      "url": "https://tft.ninja/img/sets/19/champions/senna.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/senna/ui/t_19_senna_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/senna/ui/t_19_senna_teamplanner_portrait.png",
+      "source_sha256": "9f9f84b555bb138e33e760c1cec11e383c2d16e6f63780e46457ecd2d8435f4b",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-63-small.png": {
+          "sha256": "e39d8dffeddd021adde9b961d99fff719ad1ef1b85a46e1e81946d9e95366f99",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-63-large.png": {
+          "sha256": "7c9958959565eaea66906cac585ca7a71addbf2050b28592d52b3cb4076b8277",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-63-small.png",
       "large": "champion-63-large.png"
     },
     "Seraphine": {
-      "url": "https://tft.ninja/img/sets/19/champions/seraphine.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/seraphine/ui/t_set19_seraphinef1_teamplanner_256x256.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/seraphine/ui/t_set19_seraphinef1_teamplanner_256x256.png",
+      "source_sha256": "baadd1c0a5179c0b07439f602b13c3fe0161a443372758c022f6a48c2bf9cd46",
+      "source_dimensions": [
+        256,
+        256
+      ],
+      "outputs": {
+        "champion-64-small.png": {
+          "sha256": "376e2c79c2780a424c48de35ddcfe061057aa89db95bc29108d4a5572cf060a6",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-64-large.png": {
+          "sha256": "c5b5c31a9322b8295a7f4caab935e4630573ceaab9d7e04e34f98406c89c09ae",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-64-small.png",
-      "large": "champion-64-large.png"
+      "large": "champion-64-large.png",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/units",
+        "json_pointer": "/DA_SeraphineIndie19/origin",
+        "note": "F1 Indie starting form; F2 Rising Star and F3 Superstar are later forms."
+      }
     },
     "Sett": {
-      "url": "https://tft.ninja/img/sets/19/champions/sett.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/sett/ui/t_set19_sett_teamplanner_256x256.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/sett/ui/t_set19_sett_teamplanner_256x256.png",
+      "source_sha256": "1ba72957bf00db82edcee3fc1fd53501492eed72ee04db00e0b15015b204ab2b",
+      "source_dimensions": [
+        256,
+        256
+      ],
+      "outputs": {
+        "champion-65-small.png": {
+          "sha256": "37a8ffe1fbad0e96e216ff25b054f058dce460e63fec9fb43a6b89b99b99bdf6",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-65-large.png": {
+          "sha256": "c60075673fb8923093a7dfff82e85266bd4f75fd031f7887734984463180f221",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-65-small.png",
       "large": "champion-65-large.png"
     },
     "Shyvana": {
-      "url": "https://tft.ninja/img/sets/19/champions/shyvana.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/shyvana/ui/t_19_shyvana_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/shyvana/ui/t_19_shyvana_teamplanner_portrait.png",
+      "source_sha256": "c56c634dfdc3c905d6b3902982b8a066c389b534094817713cbd541926e000df",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-66-small.png": {
+          "sha256": "0fb82b07aa657ded134dd1d316ce1aae58a3b87dca967274ad62af11ff8ae780",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-66-large.png": {
+          "sha256": "5a9a3f72a39cff3a8fa55df5a076132f950b8a0040084af5674248cb5f319378",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-66-small.png",
       "large": "champion-66-large.png"
     },
     "Smeech": {
-      "url": "https://tft.ninja/img/sets/19/champions/smeech.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/smeech/ui/t_19_smeech_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/smeech/ui/t_19_smeech_teamplanner_portrait.png",
+      "source_sha256": "80b125a6d38f3ed19e82c1ae92415f52fa60091ac939f9805e0addcbbf54fe1d",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-67-small.png": {
+          "sha256": "23d65b9921c9ca70b6c8328f7d78c0cea021cc22586c476e46abc888e4ca7137",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-67-large.png": {
+          "sha256": "bc956b1214771cf08f14fb711b1d77727dfeab85d28c244c49486b8f245426d4",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-67-small.png",
       "large": "champion-67-large.png"
     },
     "Sona": {
-      "url": "https://tft.ninja/img/sets/19/champions/sona.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/sona/ui/t_19_sona_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/sona/ui/t_19_sona_teamplanner_portrait.png",
+      "source_sha256": "4cdfd80700b753fddc24a06b3355cf3d6bd359412cde4e04b86e3cf7421f0cc8",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-68-small.png": {
+          "sha256": "c7340d8973d03f1a6321ccbddafd728792520284c423defd055889f354a2905e",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-68-large.png": {
+          "sha256": "674feefa59258b7887d8abe6988090729d53f0f15f7412b824773d194e258737",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-68-small.png",
       "large": "champion-68-large.png"
     },
     "Swain": {
-      "url": "https://tft.ninja/img/sets/19/champions/swain.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/swain/ui/t_19_swain_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/swain/ui/t_19_swain_teamplanner_portrait.png",
+      "source_sha256": "eed00b07026195b78c45b2558d7116485e690b5f9142d686e2ad1df6019abb15",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-69-small.png": {
+          "sha256": "8668da645e56da025276b24ac587dd98f33f2031aab9d71238d74a17c3b155b1",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-69-large.png": {
+          "sha256": "ee77d201511a0eb5049341feddf1d1002ca5b89fccfde76aa4511043f03f4c9d",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-69-small.png",
       "large": "champion-69-large.png"
     },
     "Syndra": {
-      "url": "https://tft.ninja/img/sets/19/champions/syndra.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/syndra/ui/t_19_syndra_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/syndra/ui/t_19_syndra_teamplanner_portrait.png",
+      "source_sha256": "591de99df6c243460f52ad70cef90a0ecb57a2e7be11883f02cca0613fc637fd",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-70-small.png": {
+          "sha256": "54988c9f7ebc8201aa4ab5625150f4bcb32bfd9a63d3ed70a06e4b809c9949ae",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-70-large.png": {
+          "sha256": "329b28ef9cff7178855c4971d4f5a53115fb217fcb15ff83a6e65a50933bf938",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-70-small.png",
       "large": "champion-70-large.png"
     },
     "Taliyah": {
-      "url": "https://tft.ninja/img/sets/19/champions/taliyah.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/taliyah/ui/t_19_taliyah_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/taliyah/ui/t_19_taliyah_teamplanner_portrait.png",
+      "source_sha256": "9e6cdb527707c6670f7da4205f5797d75b8e75e6c12e0e64daef3046020f9a0d",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-71-small.png": {
+          "sha256": "2df964add064c79c15034890d6dec22d0d93994333c5056030590155c0111b7c",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-71-large.png": {
+          "sha256": "a9af9203b4d5b253f7e95c527616659c221949f7263eae82cee49b9ace2caf51",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-71-small.png",
       "large": "champion-71-large.png"
     },
     "Taric": {
-      "url": "https://tft.ninja/img/sets/19/champions/taric.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/taric/ui/t_19_taric_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/taric/ui/t_19_taric_teamplanner_portrait.png",
+      "source_sha256": "ef16d41843712c9a9b0c2e591724bd768fa1105ddb9e96923d7869881e8a4b56",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-72-small.png": {
+          "sha256": "fb2a853fbd4870afa42401d6b359f860c6a2a2dc7c3fec65d355bb182dc6eeac",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-72-large.png": {
+          "sha256": "f80aca9fa641ade9800d7ed0c900fc2fa8084166303341549fe1cde3711161c6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-72-small.png",
       "large": "champion-72-large.png"
     },
     "Teemo": {
-      "url": "https://tft.ninja/img/sets/19/champions/teemo.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/teemo/ui/t_19_teemo_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/teemo/ui/t_19_teemo_teamplanner_portrait.png",
+      "source_sha256": "91802a9e49b31717f5249dad8eacf897bbeca1d12291acb4d48f5f7fc1fb53ac",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-73-small.png": {
+          "sha256": "0fd8cbf7036ff82c5d2ef0ada72b615644c52e91ce323af3743f7c409fa9469d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-73-large.png": {
+          "sha256": "c1bee0769f7b1394e95de140f016acac1fbb7d0b47da6429b469037e1df58af7",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-73-small.png",
       "large": "champion-73-large.png"
     },
     "Thresh": {
-      "url": "https://tft.ninja/img/sets/19/champions/thresh.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/thresh/ui/t_19_thresh_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/thresh/ui/t_19_thresh_teamplanner_portrait.png",
+      "source_sha256": "29eea4415eb3cf0d809e0a6ea7d8501c410d31581bc9dcc1bbb016e7a9e493cd",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-74-small.png": {
+          "sha256": "7f150a7fb040afe1a4231cfa99576b6eb5fe53e3d9f56beaccce44fe5b21bfca",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-74-large.png": {
+          "sha256": "c283abe155acdf41f597e9de65ff0d5f4ec14b0a855d92649f0d235d967e3447",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-74-small.png",
       "large": "champion-74-large.png"
     },
     "Tibbers": {
-      "url": "https://tft.ninja/img/sets/19/champions/tibbers.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/tibbers/ui/t_19_tibbers_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/tibbers/ui/t_19_tibbers_teamplanner_portrait.png",
+      "source_sha256": "45a85532c1e0c5f2f3a185932d0b87de71894da3a90f2957af22bc2716e924d3",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-75-small.png": {
+          "sha256": "00f168531bdf3e62b195ec51807b040ce88042b56f1cfc5ec78390832735d709",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-75-large.png": {
+          "sha256": "29cd57fe9accbc58c0451b993a26be6fedaac789722e984b729dfbcd89024d52",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-75-small.png",
       "large": "champion-75-large.png"
     },
     "Tristana": {
-      "url": "https://tft.ninja/img/sets/19/champions/tristana.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/tristana/ui/t_19_tristana_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/tristana/ui/t_19_tristana_teamplanner_portrait.png",
+      "source_sha256": "80fb941d0525ce3a103bc3360262356818b01f76b92ac6700bd7e5470daa3b33",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-76-small.png": {
+          "sha256": "9cdaadc9427419cd86d299a3067ae9d7b4ae76dffdb09d5e16d6761e65224add",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-76-large.png": {
+          "sha256": "8db6dbd49c5887bf39e14b8ad41f21bb7cae1bc4c4c804612326f6036cd5ff83",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-76-small.png",
       "large": "champion-76-large.png"
     },
     "Twisted Fate": {
-      "url": "https://tft.ninja/img/sets/19/champions/twisted-fate.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/twisted_fate/ui/t_19_twistedfate_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/twisted_fate/ui/t_19_twistedfate_teamplanner_portrait.png",
+      "source_sha256": "84bf582f4a9640fe6d39419b3c55900e4aad013bf57af6960bb5fd2d8f2044a6",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-77-small.png": {
+          "sha256": "4731ea7e0aadef7cef223a2e50d7ed603faf41b2456ed59cd6d502e602a7624f",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-77-large.png": {
+          "sha256": "57e634aa20fb7f0db482cae68a9af83f90181551a60daaec87791d6c4558f397",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-77-small.png",
       "large": "champion-77-large.png"
     },
     "Varus": {
-      "url": "https://tft.ninja/img/sets/19/champions/varus.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/varus/ui/t_19_varus_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/varus/ui/t_19_varus_teamplanner_portrait.png",
+      "source_sha256": "3f9b90bab955befb06aa47d607a6fbb1529769c8769384c84834f20a23fa81b4",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-78-small.png": {
+          "sha256": "b8981c6633a24d4f6abd84a1511a9550bbc88b696ba4589d39c08833b8a934a4",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-78-large.png": {
+          "sha256": "9b43c163686a3f7b8027a8594cb3df345e5cb05c96caf0a1a3698e85af152f6f",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-78-small.png",
       "large": "champion-78-large.png"
     },
     "Vayne": {
-      "url": "https://tft.ninja/img/sets/19/champions/vayne.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/vayne/ui/t_19_vayne_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/vayne/ui/t_19_vayne_teamplanner_portrait.png",
+      "source_sha256": "0a9910bc3c342fdecb928fc3489653e5a53959626ccc3e2df305a2432610d6a2",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-79-small.png": {
+          "sha256": "fab7defa3df94d7945610f8128513cab7d68050e7660cf35c2838440e706e067",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-79-large.png": {
+          "sha256": "a4f57d23805a719cfa5749f3397b8a9925b85010eb61083d5e131be4a3b648ed",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-79-small.png",
       "large": "champion-79-large.png"
     },
     "Vi": {
-      "url": "https://tft.ninja/img/sets/19/champions/vi.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/vi/ui/t_19_vi_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/vi/ui/t_19_vi_teamplanner_portrait.png",
+      "source_sha256": "0da20d007e9a68e47437a5847abc45d59580e5954ea2a9b67b5b27c40dfbfa67",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-80-small.png": {
+          "sha256": "15a8a9326e466bbc3aab4f1d5946f5603d1f1282f938df8c20c5b6a46337b6f0",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-80-large.png": {
+          "sha256": "50800cb2a732daf0ee13e069efd2e6c54156d6b7e226a79251f2337a68e2f567",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-80-small.png",
       "large": "champion-80-large.png"
     },
     "Viego": {
-      "url": "https://tft.ninja/img/sets/19/champions/viego.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/viego/ui/t_19_viego_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/viego/ui/t_19_viego_teamplanner_portrait.png",
+      "source_sha256": "46fda1e6097b6dfe79fe41b88f16a17d30ca6eae5bdfff43bb9aec3f2bdd132f",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-81-small.png": {
+          "sha256": "67b65e2923d10e81e6ed0b2257665dd7b8ef4fa813b85313273e2366640211c5",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-81-large.png": {
+          "sha256": "ac96670822e0f1ee1c50f82a846579abc4c756671247a03d23a09d9ba5e08c5c",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-81-small.png",
       "large": "champion-81-large.png"
     },
     "Vladimir": {
-      "url": "https://tft.ninja/img/sets/19/champions/vladimir.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/vladimir/ui/t_19_vladimir_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/vladimir/ui/t_19_vladimir_teamplanner_portrait.png",
+      "source_sha256": "0b19fc8f4dcc1cd79e3d62d95a31ec1c26248e3beb086d662f5c15e35cf8b2ff",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-82-small.png": {
+          "sha256": "f6efa0c1b9e9ba134792d2803f4a46001912b15aa65a1548c98e018601956cd3",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-82-large.png": {
+          "sha256": "7a9d8e6a482c7a9c6bdd84b08edb4b7cdaf971b036332b7c6a26d85d91fb3768",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-82-small.png",
       "large": "champion-82-large.png"
     },
     "Wukong": {
-      "url": "https://tft.ninja/img/sets/19/champions/wukong.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/wukong/ui/t_19_wukong_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/wukong/ui/t_19_wukong_teamplanner_portrait.png",
+      "source_sha256": "7f3fbabf563726a866f6df6cb3c45c6f65a15c21a849260a2b28a24f73815b4a",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-83-small.png": {
+          "sha256": "8b2fdd401f4a1fb28da9f3b600f2e646c58b39aa4e70267f16c1c54259cb4799",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-83-large.png": {
+          "sha256": "da2a33a36c2064a16e3cb7a943552b2aff7440cf67a69ffb6169fc9db7a387d5",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-83-small.png",
       "large": "champion-83-large.png"
     },
     "Xayah": {
-      "url": "https://tft.ninja/img/sets/19/champions/xayah.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/xayah/ui/t_19_xayah_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/xayah/ui/t_19_xayah_teamplanner_portrait.png",
+      "source_sha256": "d34522567fbf6d8670a397ed4d705c14b2fb13fb5c0d7656e0e263d5c6d0684d",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-84-small.png": {
+          "sha256": "59a0b02a5b3105cd8c83077e075dd198a5ee6e734e4735c7f26f4ee22e56dab9",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-84-large.png": {
+          "sha256": "ca865cfca2116de08280082524041f62cbeded99dcdbdd9f14bf9ff8227ba8b7",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-84-small.png",
       "large": "champion-84-large.png"
     },
     "Yasuo": {
-      "url": "https://tft.ninja/img/sets/19/champions/yasuo.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/yasuo/ui/t_19_yasuo_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/yasuo/ui/t_19_yasuo_teamplanner_portrait.png",
+      "source_sha256": "3307d30f5659dd9bf901e2976288cd2aaadda6754abcf03bf18a5080c026f998",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-85-small.png": {
+          "sha256": "8499886ba8c6c489e04fcf99fa42ee3e292a5cf65b859c8e053d229654986e3e",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-85-large.png": {
+          "sha256": "98c7e296b4874d6cd93408316608010e90619132442cb95395c86b851e4b2bc6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-85-small.png",
       "large": "champion-85-large.png"
     },
     "Yone": {
-      "url": "https://tft.ninja/img/sets/19/champions/yone.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/yone/ui/t_19_yone_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/yone/ui/t_19_yone_teamplanner_portrait.png",
+      "source_sha256": "2cf1bab62d261232b591b66d4d444fb775031fd13730d66e58268d095774fb9f",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-86-small.png": {
+          "sha256": "bd884097f099caac2d79fd8b1856657de10b0f25228db0648c11d7e8814b0217",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-86-large.png": {
+          "sha256": "281c4ae6243402814c998de6c0b108ab246aae14ae1257d17870f1b2bb2ef9f0",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-86-small.png",
       "large": "champion-86-large.png"
     },
     "Yorick": {
-      "url": "https://tft.ninja/img/sets/19/champions/yorick.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/yorick/ui/t_19_yorick_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/yorick/ui/t_19_yorick_teamplanner_portrait.png",
+      "source_sha256": "4d7448806e0b31364b498b6cbe36433d2728971ac4bea32a6d2f152b89acff1c",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-87-small.png": {
+          "sha256": "d2f23ecc8241e3f21d83b39eaa1e2ca673b7ebe6c9a54677ab04f17b143051e9",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-87-large.png": {
+          "sha256": "d1283b26ab37311d9ed5b29d1c23f77253c3819d9af26564df1b3e529d0e33e6",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-87-small.png",
       "large": "champion-87-large.png"
     },
     "Yunara": {
-      "url": "https://tft.ninja/img/sets/19/champions/yunara.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/yunara/ui/t_19_yunara_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/yunara/ui/t_19_yunara_teamplanner_portrait.png",
+      "source_sha256": "ad8066e1a5c86c0a7a5d06eea124c1502a9e05facd6b04b9671e418495281aa5",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-88-small.png": {
+          "sha256": "d4c1425a0ae1186af41090ecf44c47fa3d3589f8d00845929bb3c0c4babdf03b",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-88-large.png": {
+          "sha256": "481f816aa9f4ffc0a49befb1b9f2128094edea241b09e1233dd7a2ba131e2244",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-88-small.png",
       "large": "champion-88-large.png"
     },
     "Yuumi": {
-      "url": "https://tft.ninja/img/sets/19/champions/yuumi.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/yuumi/ui/t_19_yuumi_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/yuumi/ui/t_19_yuumi_teamplanner_portrait.png",
+      "source_sha256": "893c6273eb2aa4c17bbcc2b32f6fba12143d604fbfa57de2ed8036243fc5f061",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-89-small.png": {
+          "sha256": "4fba76b8d05f64aa032f31651c6cfa05d0a814a668f6d0ce7feea3e6b4bed94f",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-89-large.png": {
+          "sha256": "3299c9856f794d57fab7182dad37a8550910432fb3e4ececbc41d481a9c5601e",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-89-small.png",
       "large": "champion-89-large.png"
     },
     "Zac": {
-      "url": "https://tft.ninja/img/sets/19/champions/zac.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/zac/ui/t_19_zac_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/zac/ui/t_19_zac_teamplanner_portrait.png",
+      "source_sha256": "52b7faa542a79c6ac48b0204766377413dea74cf07daa98aa92f51ffc16b354e",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-90-small.png": {
+          "sha256": "26d8bfe154aaf4b03b5f5f8adb1e6c85a1f7d0ef0f9e4666c64cd6ed79335bb7",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-90-large.png": {
+          "sha256": "4ff9887551cc10664b158e41482b8d873c26aba25cbe719e9c3159324811eb9a",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-90-small.png",
       "large": "champion-90-large.png"
     },
     "Zeri": {
-      "url": "https://tft.ninja/img/sets/19/champions/zeri.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/zeri/ui/t_19_zeri_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/zeri/ui/t_19_zeri_teamplanner_portrait.png",
+      "source_sha256": "10316d57bb11702b6641ed3660016088704b2e4df87aa9d0ec424c61e49f0164",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-91-small.png": {
+          "sha256": "cb587ad7f737caaed45d176f445bbd66a5c656edbe237891b84736d9e424856d",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-91-large.png": {
+          "sha256": "b2e2c98df08303e2c575f25f0f563a2a0c415e24e46df67cc6e2e48bc4d28d43",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-91-small.png",
       "large": "champion-91-large.png"
     },
     "Ziggs": {
-      "url": "https://tft.ninja/img/sets/19/champions/ziggs.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/ziggs/ui/t_19_ziggs_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/ziggs/ui/t_19_ziggs_teamplanner_portrait.png",
+      "source_sha256": "c9a7489e846f7d1a5553f950f54bc94a4eb328a76f7b3155122c4ca08010f5c8",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-92-small.png": {
+          "sha256": "d5d733e8f0c7c11074a307d97117e7daa5615c8f44195303aefa69280edbfec7",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-92-large.png": {
+          "sha256": "ed50ccabd0187f7fd094935a1c1fc8c75781c74ae6611fd41d4fb29baf022a22",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-92-small.png",
       "large": "champion-92-large.png"
     },
     "Zoe": {
-      "url": "https://tft.ninja/img/sets/19/champions/zoe.webp",
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/zoe/ui/t_19_zoe_teamplanner_portrait.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/zoe/ui/t_19_zoe_teamplanner_portrait.png",
+      "source_sha256": "bc1d855b36b46b3068fa9ba31de32dee76ed245d08b59af1fa14bccda3c6a5db",
+      "source_dimensions": [
+        128,
+        128
+      ],
+      "outputs": {
+        "champion-93-small.png": {
+          "sha256": "61a8a0c137deee7a51c8d48a7a9e326bf5f10e38a1fa010e88d589fb06c9e9b4",
+          "dimensions": [
+            32,
+            32
+          ]
+        },
+        "champion-93-large.png": {
+          "sha256": "f442ab9437e66112a0f929a3fddddabdfe131dace0ce001f4c73e685a3a6f155",
+          "dimensions": [
+            56,
+            56
+          ]
+        }
+      },
       "small": "champion-93-small.png",
       "large": "champion-93-large.png"
     }
   },
   "traits": {
     "8-Bit": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/missfortune/uniquetrait/t_missfortune19_uniquetrait_icon.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/missfortune/uniquetrait/t_missfortune19_uniquetrait_icon.png",
+      "source_sha256": "a2779cead5b730b4b6d722c88f7ab10762eef75b1dc071b7393e0cfddc03d91b",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-0.png": {
+          "sha256": "76aca18f4a5e3a4a5cd68e3c6351203ac66649eb5548fc1a9e577ed2f960cd56",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-0-dark.png": {
+          "sha256": "c5936bc5b85c7ea4d6ad341675bf67a1d625fe91c1c895d951caa8d30212ed58",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-0.png",
-      "url": "https://tft.ninja/img/sets/19/traits/8-bit.svg"
+      "dark_file": "trait-0-dark.png",
+      "catalog_key": "DA_MissFortune19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_MissFortune19_UniqueTrait/name"
+      }
     },
     "Arcanist": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/t_arcanist19.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/t_arcanist19.png",
+      "source_sha256": "dbba9361f7d36846709c7c176cf40e20cc36f7e7920411f2736deb2ef3986087",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-1.png": {
+          "sha256": "b51be5804d9c02a9e881c2edb12cfd67241c51ffa9fe7ea0d3607bdc8108bdb3",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-1-dark.png": {
+          "sha256": "5c50baafda24a9aa2511c293d5bca8c6fe32a3886c331806fe9541edd58f75ad",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-1.png",
-      "url": "https://tft.ninja/img/sets/19/traits/arcanist.svg"
+      "dark_file": "trait-1-dark.png",
+      "catalog_key": "DA_Arcanist19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Arcanist19/name"
+      }
     },
     "Beach Pop": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/ui_shared/content/textures/icons/set19/t_traiticon_19_beachpop.png",
+      "source_path": "tft/plugins/gamefeatures/ui_shared/content/textures/icons/set19/t_traiticon_19_beachpop.png",
+      "source_sha256": "1b80785a241d6b6d556d8e80fb5aed2029a6a8bd147883f57645ca96c23496f3",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-2.png": {
+          "sha256": "7e1e787e561b83c86b15a10a1cef9116ab5fb120fb71fc63ee0943a8d8080dbb",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-2-dark.png": {
+          "sha256": "b4d47bf9c957ccacc6d3d2c33b1a283b013c14f0716a056953f3804fa50490f8",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-2.png",
-      "url": "https://tft.ninja/img/sets/19/traits/beach-pop.svg"
+      "dark_file": "trait-2-dark.png",
+      "catalog_key": "DA_OceanSong19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_OceanSong19/name"
+      }
     },
     "Beat Master": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_synchmancer.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_synchmancer.png",
+      "source_sha256": "4541dfd6292fa77cd7408b4f15fab767e29670d454f9a8f63e420a183a452f39",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-3.png": {
+          "sha256": "ddf5871962f5ab55771ba09557b3df38e5b38468c65f71e12435f144a03b04b7",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-3-dark.png": {
+          "sha256": "2f704ad57cc6b9a91dbccd31cf57627dda7372eedb33025c3e2a8ccc22529711",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-3.png",
-      "url": "https://tft.ninja/img/sets/19/traits/beat-master.svg"
+      "dark_file": "trait-3-dark.png",
+      "catalog_key": "DA_Rell19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Rell19_UniqueTrait/name"
+      },
+      "mapping_note": "Synchmancer speaker mask; visually matched to the previously bundled Beat Master glyph."
     },
     "Bodyguard": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_bodyguard.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_bodyguard.png",
+      "source_sha256": "79d844e8082c5a835817fa760ccdb535bb259b3b2ea006a4cbde2fb355e3c263",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-4.png": {
+          "sha256": "e645396aef067d3b5c78c3602a60cdc853af71365ca29c1d022e583a2977f920",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-4-dark.png": {
+          "sha256": "fef2e10e158b25b094ccd488e3e7f23cb61bb95fa6eab26f3579ec693aa8a323",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-4.png",
-      "url": "https://tft.ninja/img/sets/19/traits/bodyguard.svg"
+      "dark_file": "trait-4-dark.png",
+      "catalog_key": "DA_Bodyguard19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Bodyguard19/name"
+      }
     },
     "Boy Band": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/rakan/uniquetrait/t_rakan19_uniquetrait_icon.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/rakan/uniquetrait/t_rakan19_uniquetrait_icon.png",
+      "source_sha256": "f84b33d63b898acec39a9e199ad7a1c11576345eb2bfd82d35e7ce0feecacf44",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-5.png": {
+          "sha256": "685a4af5f1b1f8f3de2f014259021594d84c4937fe3b18cf9331126928c0e052",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-5-dark.png": {
+          "sha256": "e9da79f7628ac7ce07810f5c16997693e8914745ca8e2e4209315c5388b6afec",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-5.png",
-      "url": "https://tft.ninja/img/sets/19/traits/boy-band.svg"
+      "dark_file": "trait-5-dark.png",
+      "catalog_key": "DA_Rakan19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Rakan19_UniqueTrait/name"
+      }
     },
     "Choreographer": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_choreographer.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_choreographer.png",
+      "source_sha256": "4f07be15299c160a37bc99da2a7efbef73bb1d58aca6c79b6ba7de5d3d910bd0",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-6.png": {
+          "sha256": "9d451967e350641354bde9ac36bcc482d7ae8fcb505fa76de967430c1f7f913d",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-6-dark.png": {
+          "sha256": "d8cad9af8d874cd9f9decac2689a283ef50eed147a941c5cc3650fe5e2c728ed",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-6.png",
-      "url": "https://tft.ninja/img/sets/19/traits/choreographer.svg"
+      "dark_file": "trait-6-dark.png",
+      "catalog_key": "DA_Choreographer19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Choreographer19/name"
+      }
     },
     "Classical": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_virtuoso.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_virtuoso.png",
+      "source_sha256": "8d299c049c17753406d4aeb3549ee51323732f6eadc3e7a57f1ef8b356443f45",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-7.png": {
+          "sha256": "66fdbe2e2ba13fb3aa407379c49e4b1c0aec7e0e7b9131923613aa69cc12e84e",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-7-dark.png": {
+          "sha256": "780133a50b5505071af1387fefb81c4a30c940e65a83f6382f5d878ec62e7e70",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-7.png",
-      "url": "https://tft.ninja/img/sets/19/traits/classical.svg"
+      "dark_file": "trait-7-dark.png",
+      "catalog_key": "DA_Virtuosos19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Virtuosos19/name"
+      }
     },
     "Collab": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_collab.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_collab.png",
+      "source_sha256": "6f5284368487dac199ef7777b006a34aa3f6ba3cf3db4764652ff65f3ee9a4c3",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-8.png": {
+          "sha256": "42f4482cade38c035f3e6cd48da073a39a535efb01d3caf33abee2236449ffc4",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-8-dark.png": {
+          "sha256": "3ba602760f7ac18c53893799229f8675e89c330a26d5db36a9e06e85e27d9cdd",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-8.png",
-      "url": "https://tft.ninja/img/sets/19/traits/collab.svg"
+      "dark_file": "trait-8-dark.png",
+      "catalog_key": "DA_Collab19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Collab19/name"
+      }
     },
     "Composer": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_composer.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_composer.png",
+      "source_sha256": "339e3a1f550bca07e943615a66d8128e8ed15255874c133e34060d927151e4c2",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-9.png": {
+          "sha256": "73fa6bdaced0332f3d4e0ac037eecffac124b54d08357182011e20cdcc2abdb9",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-9-dark.png": {
+          "sha256": "c6fdc3f28960842ac0ecd068d44a761bfd5c0496f54270bf38ced25aae80c82c",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-9.png",
-      "url": "https://tft.ninja/img/sets/19/traits/composer.svg"
+      "dark_file": "trait-9-dark.png",
+      "catalog_key": "DA_Malzahar19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Malzahar19_UniqueTrait/name"
+      }
     },
     "Country": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_country.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_country.png",
+      "source_sha256": "22f6138ba549f2eee1f58ceefb62ed8bc73b2cc7db4e0eefe36458f8b8c8cb34",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-10.png": {
+          "sha256": "d6f12589ffe3d2e24d439ae164ac8ab72d2042cd4f1b8e960dc73417c8a5adc5",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-10-dark.png": {
+          "sha256": "6feee4d60bea574d13fe31d5c96335820af7954c566b4baa8b48e62599188ab9",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-10.png",
-      "url": "https://tft.ninja/img/sets/19/traits/country.svg"
+      "dark_file": "trait-10-dark.png",
+      "catalog_key": "DA_Alistar19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Alistar19_UniqueTrait/name"
+      }
     },
     "Disco": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_disco.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_disco.png",
+      "source_sha256": "e6767afff10d3d607f0c676bfcdb535651d731cd0439401334056753f615c540",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-11.png": {
+          "sha256": "2ee0f845e1ac32d44dfc029ed427f9a07968d60f711894d6da02e54cfb764e21",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-11-dark.png": {
+          "sha256": "55d12cfb7fafbb5e07f90d60b87b8b74e981789142656ddb89ae9dd0e859e8a9",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-11.png",
-      "url": "https://tft.ninja/img/sets/19/traits/disco.svg"
+      "dark_file": "trait-11-dark.png",
+      "catalog_key": "DA_Nunu19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Nunu19_UniqueTrait/name"
+      }
     },
     "EDM": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_edm.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_edm.png",
+      "source_sha256": "9cc8a3639c5042c5784ef6c529f8d5409c3d3b04223a9098d512658476b8a9b4",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-12.png": {
+          "sha256": "6906b267dd2c7e56c82bd928cdd79e8ea9239f2a9e469785e557cc5ac37c27f9",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-12-dark.png": {
+          "sha256": "32c3435ebe62b77fd59a56a7c0aa785429bf99dc7bad76e0d79b27be6a1457e2",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-12.png",
-      "url": "https://tft.ninja/img/sets/19/traits/edm.svg"
+      "dark_file": "trait-12-dark.png",
+      "catalog_key": "DA_EDM19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_EDM19/name"
+      }
     },
     "Emo": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/amumu/uniquetrait/t_amumu19_uniquetrait_icon.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/amumu/uniquetrait/t_amumu19_uniquetrait_icon.png",
+      "source_sha256": "b94477c776d3410c93ffe6207c99a6b8fc3aee6105e6b426534f4799b2e9925e",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-13.png": {
+          "sha256": "d803d92e406229b5e486ccd17d36cb878592eed8beb68e001af707cfd6681147",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-13-dark.png": {
+          "sha256": "1fe8a31cde82ef6dc2d07cd8569ba32be543b29c1897ddf8c3ef9670cb6f64a9",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-13.png",
-      "url": "https://tft.ninja/img/sets/19/traits/emo.svg"
+      "dark_file": "trait-13-dark.png",
+      "catalog_key": "DA_Amumu19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Amumu19_UniqueTrait/name"
+      }
     },
     "Encore": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_encore.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_encore.png",
+      "source_sha256": "890976633f0d024e6d6d778be0a82c5a0840458076fcfcb038c1339703dd2b66",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-14.png": {
+          "sha256": "031c64aa7343c6d168b7e7b842bc14a1443b2590de83656a2293dc333ebf89b4",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-14-dark.png": {
+          "sha256": "037a1147dc5e7ce5b4bc1a784eecd4bbb6fc61c7a97f6430947b7721a1f60f38",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-14.png",
-      "url": "https://tft.ninja/img/sets/19/traits/encore.svg"
+      "dark_file": "trait-14-dark.png",
+      "catalog_key": "DA_Encore19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Encore19/name"
+      }
     },
     "Freestyle": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_freestyle.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_freestyle.png",
+      "source_sha256": "33a6a8469b635df3b382880450be45c76d7283e3c2fe5a41745296aa3650d5b6",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-15.png": {
+          "sha256": "c21bd3e744a3c16ea6c15d1560fc99e008c70eb247270fa502be062444ebf934",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-15-dark.png": {
+          "sha256": "96af8ca554d90265eadfdf2f452156a1768bd5865b6f9c438a469615e131a30d",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-15.png",
-      "url": "https://tft.ninja/img/sets/19/traits/freestyle.svg"
+      "dark_file": "trait-15-dark.png",
+      "catalog_key": "DA_Akali_TrueDamage19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Akali_TrueDamage19_UniqueTrait/name"
+      }
     },
     "Frontman": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_frontman.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_frontman.png",
+      "source_sha256": "08fbad2b79325a3836a141009b0828f138581c9abc1b7526d9da183b9e43ac34",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-16.png": {
+          "sha256": "ea2a1a469badf5ea311aec138da749471ddb7b364641cd1a6cc78f3e8cd9a458",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-16-dark.png": {
+          "sha256": "cea49ff5eed187699268007bb9e70a0b8a5e4ad06fb182882412a26383e3fa97",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-16.png",
-      "url": "https://tft.ninja/img/sets/19/traits/frontman.svg"
+      "dark_file": "trait-16-dark.png",
+      "catalog_key": "DA_Frontman19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Frontman19/name"
+      }
     },
     "Goth": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/zeri/uniquetrait/t_traiticon_19_goth.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/zeri/uniquetrait/t_traiticon_19_goth.png",
+      "source_sha256": "3624f03d54043a2b825678a1ef05af5261dc9751ef0ee1d35c0c39a758d02187",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-17.png": {
+          "sha256": "1fcf85cf89d37c7a130238c16fc8d6a03d2e98fe553c2da926f9381a24ee9ca4",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-17-dark.png": {
+          "sha256": "c71d7915f98779aefecea71ed43d9e7b71138501824a08d70676e069ba615d00",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-17.png",
-      "url": "https://tft.ninja/img/sets/19/traits/goth.svg"
+      "dark_file": "trait-17-dark.png",
+      "catalog_key": "DA_Zeri19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Zeri19_UniqueTrait/name"
+      }
     },
     "Gu Feng": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_heavenscale.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_heavenscale.png",
+      "source_sha256": "b3b88f3f9dd7e9ab2d50102e0b714fd46a2145a620cc541179436090dc2770ea",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-18.png": {
+          "sha256": "7ad0c6a2d31add852a8c83c23e7a97f08ee0c44398fcde3620e5530520798054",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-18-dark.png": {
+          "sha256": "f58d35c98c90760040d6e82d0feeffdfa46f32f0a7d0bce17ce1cfe98f2cdb94",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-18.png",
-      "url": "https://tft.ninja/img/sets/19/traits/gu-feng.svg"
+      "dark_file": "trait-18-dark.png",
+      "catalog_key": "DA_Heavenscale19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Heavenscale19/name"
+      }
     },
     "Heartsteel": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_heartsteel.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_heartsteel.png",
+      "source_sha256": "274a2c6a99ea8bd3e3dc79a7f430f2983195db4014b3477e593439e83f746414",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-19.png": {
+          "sha256": "deb3820d43b9bda7ede2611ccb7cd1c06d8949f7975dca1cc1c17797c188f5da",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-19-dark.png": {
+          "sha256": "70c6d5138694a4266511030daff0b5e6c12aae0004ab21ca226cabf66506d073",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-19.png",
-      "url": "https://tft.ninja/img/sets/19/traits/heartsteel.svg"
+      "dark_file": "trait-19-dark.png",
+      "catalog_key": "DA_Heartsteel19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Heartsteel19/name"
+      }
     },
     "Hitmaker": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hitmaker.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hitmaker.png",
+      "source_sha256": "acafa54dae75b80e9c1a296bf221ff76603a97594ecbcf40ee7ce6acdd04fc3d",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-20.png": {
+          "sha256": "9e04da094a3e9783034fde52556c6e76574b5e2845328f1693c9f562081942ab",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-20-dark.png": {
+          "sha256": "7d0493a7dc56c190d717e74a0c0c9cba8da06aebd760725edf18bc96732808af",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-20.png",
-      "url": "https://tft.ninja/img/sets/19/traits/hitmaker.svg"
+      "dark_file": "trait-20-dark.png",
+      "catalog_key": "DA_Hitmaker19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Hitmaker19/name"
+      }
     },
     "Hype Man": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hypeman.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hypeman.png",
+      "source_sha256": "9039c253c79c4f9f27b5ad4ad05c4bc9f35c703fa5b19960faf1bfd4602d1357",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-21.png": {
+          "sha256": "d464c7f1c9b2f5887d103a8af32dee828ed1630c66947948ecb5521311b4f8f7",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-21-dark.png": {
+          "sha256": "1101c33fb7b47e7c92c68804c209254066a21aae9d953a1772bd0294c2781de6",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-21.png",
-      "url": "https://tft.ninja/img/sets/19/traits/hype-man.svg"
+      "dark_file": "trait-21-dark.png",
+      "catalog_key": "DA_Teemo19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Teemo19_UniqueTrait/name"
+      }
     },
     "Hyperpop": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hyperpop.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_hyperpop.png",
+      "source_sha256": "37b995b796aa63257cb39142e99f0a659b4124f2c032d43193a635ba5c0162e8",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-22.png": {
+          "sha256": "90ce85fe8fb06d8b5533a146a52e605cf4c8315a34491a2cb47036a95602e4e3",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-22-dark.png": {
+          "sha256": "c319772b528d68d1faff106ff5666c004d98206d3ab685ffd9d011ffad7fb4c1",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-22.png",
-      "url": "https://tft.ninja/img/sets/19/traits/hyperpop.svg"
+      "dark_file": "trait-22-dark.png",
+      "catalog_key": "DA_GlitterBomb19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_GlitterBomb19/name"
+      }
     },
     "Illbeats": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_illbeats.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_illbeats.png",
+      "source_sha256": "e2fed44df0b199252ec3c524e87e1d9880580ef0a2f22cba67e0dea653ead6b2",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-23.png": {
+          "sha256": "f770fee634dc33096835c3cd375618b952e632d8dc893bb7df5aed5a06448e4e",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-23-dark.png": {
+          "sha256": "349d06a82bc238d4769969df4e7aaa3b8c5db225aa2a9d7c0eaa2be67cf090de",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-23.png",
-      "url": "https://tft.ninja/img/sets/19/traits/illbeats.svg"
+      "dark_file": "trait-23-dark.png",
+      "catalog_key": "DA_Illbeats19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Illbeats19/name"
+      }
     },
     "Indie": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_indie.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_indie.png",
+      "source_sha256": "a9675a86477da397cd85c62df2b25c0c7d608402c1c439c1d276e47d82c682fd",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-24.png": {
+          "sha256": "9b935fd8ec0c966e02be0673a732293b9ebf785e7eaa4e01a455e9f9f1f9586b",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-24-dark.png": {
+          "sha256": "5962653cd2b0b017dc60681266ff8199bc50bdec264db864f4d9d8e3685e8563",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-24.png",
-      "url": "https://tft.ninja/img/sets/19/traits/indie.svg"
+      "dark_file": "trait-24-dark.png",
+      "catalog_key": "DA_Seraphine19_IndieTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Seraphine19_IndieTrait/name"
+      }
     },
     "Ionic Spark": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/ui_shared/content/textures/icons/set19/t_traiticon_19_ionicspark.png",
+      "source_path": "tft/plugins/gamefeatures/ui_shared/content/textures/icons/set19/t_traiticon_19_ionicspark.png",
+      "source_sha256": "c64d39b393de1f46ded0f6c9c1d50a21caa4fedb3c94ae6ffc6453604d553ec2",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-25.png": {
+          "sha256": "d02b5974b0222f2154b9d13b4f1a8be4bbb9dfdcc155f8cca502893e5bc318de",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-25-dark.png": {
+          "sha256": "3c6e83b15532b1227f8053eb6bfc92ef99a0f0bc97e41e24fe52fed561c412e5",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-25.png",
-      "url": "https://tft.ninja/img/sets/19/traits/ionic-spark.svg"
+      "dark_file": "trait-25-dark.png",
+      "catalog_key": "DA_IonicSpark19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_IonicSpark19/name"
+      }
     },
     "Jazz": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_jazz.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_jazz.png",
+      "source_sha256": "4b3e4fce3eb463d4b9931afe4b68bfa46c68482d7690d8981e61551bd32a35ab",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-26.png": {
+          "sha256": "c1c0fd0e8ea1bd5921e3afedcce4ab6bb5cbb1b75984211e01004087544cd7cf",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-26-dark.png": {
+          "sha256": "a1f4ac39b9f855236498d82f5f03f6a9547e8f59b696206c79fd021af4f52376",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-26.png",
-      "url": "https://tft.ninja/img/sets/19/traits/jazz.svg"
+      "dark_file": "trait-26-dark.png",
+      "catalog_key": "DA_Jazz19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Jazz19/name"
+      }
     },
     "Juggernaut": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_juggernaut.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_juggernaut.png",
+      "source_sha256": "90e8f825480667e4574a48cf6167539e1e2d0b88f40d9f98f6b6892174b267bd",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-27.png": {
+          "sha256": "274f879ef0b3af1c4a1c6eebaa5885655986ef978007609776e22b1da2b67edc",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-27-dark.png": {
+          "sha256": "83bb2d84353db86f6e2e36f65cc0200d882fce89babf80308685cfd5b743eeb7",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-27.png",
-      "url": "https://tft.ninja/img/sets/19/traits/juggernaut.svg"
+      "dark_file": "trait-27-dark.png",
+      "catalog_key": "DA_Juggernaut19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Juggernaut19/name"
+      }
     },
     "K/DA": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_kda.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_kda.png",
+      "source_sha256": "f054b8328e265ec25eece507333953f0501af1031d90b394a73c67a35508aa32",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-28.png": {
+          "sha256": "6d89f3e336a1b7063ff2479463171d357d80b42b3d7ea50b4bf8958ddfae41dc",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-28-dark.png": {
+          "sha256": "f1febbbc205ed8cabf33e4b886081f8d09fb9639915026c6cf3643d82eebad13",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-28.png",
-      "url": "https://tft.ninja/img/sets/19/traits/k-da.svg"
+      "dark_file": "trait-28-dark.png",
+      "catalog_key": "DA_KDA19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_KDA19/name"
+      }
     },
     "Manager": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_manager.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_manager.png",
+      "source_sha256": "136de4265dc310b8af36637c1848927b150b8ddbd4376cf84d05a01757468166",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-29.png": {
+          "sha256": "185856f941393b8354b0e1ce3152349849523bcde130253b7f7a1f4497cc0787",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-29-dark.png": {
+          "sha256": "7d40b33a3076e956ac1b1c81e8a500155f552d2e17406d3921c52039491b529c",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-29.png",
-      "url": "https://tft.ninja/img/sets/19/traits/manager.svg"
+      "dark_file": "trait-29-dark.png",
+      "catalog_key": "DA_Manager19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Manager19/name"
+      }
     },
     "Mariachi": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_mariachi.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_mariachi.png",
+      "source_sha256": "83d1f90e6936b073b9b6acdb5ebdfe24771b65c90c1dd3709a275573a805cc00",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-30.png": {
+          "sha256": "eeb59822a47294d8c29602e9e68b73bc89f9e2f2a222257d638bed03c5ff194d",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-30-dark.png": {
+          "sha256": "3f76177c8b69cdc9c9bc1d3cc7078f45a937b22d8f37a36d50451e7508f97458",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-30.png",
-      "url": "https://tft.ninja/img/sets/19/traits/mariachi.svg"
+      "dark_file": "trait-30-dark.png",
+      "catalog_key": "DA_Nidalee19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Nidalee19_UniqueTrait/name"
+      }
     },
     "Melodic Heart": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_melodicheart.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_melodicheart.png",
+      "source_sha256": "b7058097e340f1569f74a657839691c0504e4e2cc5ec22623c6edd4cb9bba83b",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-31.png": {
+          "sha256": "b7cfce27c62292d8c0f6889a87486129c5c79906e52a8446c48a162e5d061be3",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-31-dark.png": {
+          "sha256": "dfab378a71eaee361bc303583b3476a922b2f4f202093d1e486fac32ac1b78ad",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-31.png",
-      "url": "https://tft.ninja/img/sets/19/traits/melodic-heart.svg"
+      "dark_file": "trait-31-dark.png",
+      "catalog_key": "DA_Gwen19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Gwen19_UniqueTrait/name"
+      }
     },
     "One Monster Band": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_onemonsterband.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_onemonsterband.png",
+      "source_sha256": "edef769a77fa929f89599a82913d712ed9b389a9f3a3e65a189c0fa056a70ea6",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-32.png": {
+          "sha256": "84b58b8f4f1d1813ac9ff0d89085878391670f99a97386acb0904db6cecff175",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-32-dark.png": {
+          "sha256": "91e4ed0bc904e0e924f42aea29c93d42e307c616245f6dbb22caccb732ad60f9",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-32.png",
-      "url": "https://tft.ninja/img/sets/19/traits/one-monster-band.svg"
+      "dark_file": "trait-32-dark.png",
+      "catalog_key": "DA_BaronNashor19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_BaronNashor19_UniqueTrait/name"
+      }
     },
     "Pentakill": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_pentakill.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_pentakill.png",
+      "source_sha256": "49654dbec98cd36affec383cd17562282638bc231eb8a9a758baef7bdbdfce5d",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-33.png": {
+          "sha256": "03d05087c729f5c6b798524f0eec89575f492eb5c295dda262b2e52d3500e1c3",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-33-dark.png": {
+          "sha256": "f4f118e8814a13796f817d87050441c422156aba0a7ccf50bd7ec06c8dafb46b",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-33.png",
-      "url": "https://tft.ninja/img/sets/19/traits/pentakill.svg"
+      "dark_file": "trait-33-dark.png",
+      "catalog_key": "DA_Pentakill19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Pentakill19/name"
+      }
     },
     "Prodigy": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_prodigy.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_prodigy.png",
+      "source_sha256": "66bfc57048b2372339a5347853ac95c0e087129273a377f56372ae079a5b23cb",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-34.png": {
+          "sha256": "c9177505fb7b309d46ccbae902c7879269b4c2fd42767b9b631a3d60e4c61f24",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-34-dark.png": {
+          "sha256": "ba263c293f398968780bdaac353a6346d8038280befb9f6cd49d7323e58dfbc4",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-34.png",
-      "url": "https://tft.ninja/img/sets/19/traits/prodigy.svg"
+      "dark_file": "trait-34-dark.png",
+      "catalog_key": "DA_Prodigy19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Prodigy19/name"
+      }
     },
     "Producer": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_producer.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_producer.png",
+      "source_sha256": "45769a10d80ac3940c741225ded99e28fe3274d32650bd336663fcb9ff0887d9",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-35.png": {
+          "sha256": "dc15a186d85954402322799c06996eabf392410463a94e5edd1d5bdb8501123b",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-35-dark.png": {
+          "sha256": "65c758dc4053b851f9152b8798895c4c4ca7ea2797d232ba4627fd876456d589",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-35.png",
-      "url": "https://tft.ninja/img/sets/19/traits/producer.svg"
+      "dark_file": "trait-35-dark.png",
+      "catalog_key": "DA_Sona19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Sona19_UniqueTrait/name"
+      }
     },
     "R&B": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_rnb.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_rnb.png",
+      "source_sha256": "3ecaf19dd6723784247e10c59e4de8b7ff73cc21a04c55bef0f9adc1709eeb52",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-36.png": {
+          "sha256": "63d37ee5c80b3198d2306f9fe53d1ad497427ea1f15fca2d2356cdedf924259e",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-36-dark.png": {
+          "sha256": "a696f351741c2aeca90648eb212a70e7cfc07cfd69c137e8f85aa7cc1772142e",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-36.png",
-      "url": "https://tft.ninja/img/sets/19/traits/r-and-b.svg"
+      "dark_file": "trait-36-dark.png",
+      "catalog_key": "DA_RnB19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_RnB19/name"
+      }
     },
     "Record Mogul": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/drmundo/uniquetrait/textures/t_traiticon_19_recordmogul.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/drmundo/uniquetrait/textures/t_traiticon_19_recordmogul.png",
+      "source_sha256": "0362c3719fa137fbd40f1181762835679556d9e40f8fa777f8101cacb6a639df",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-37.png": {
+          "sha256": "51fb8680516b026944cbee4907358ea108fd0ee616a0efc850fdbdb048a15638",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-37-dark.png": {
+          "sha256": "0b4d464b495980182f9c1e5569c12d2a2386da7d5c6f2aca1fa037885477ba98",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-37.png",
-      "url": "https://tft.ninja/img/sets/19/traits/record-mogul.svg"
+      "dark_file": "trait-37-dark.png",
+      "catalog_key": "DA_DrMundo19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_DrMundo19_UniqueTrait/name"
+      }
     },
     "Renegade": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_renegade.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_renegade.png",
+      "source_sha256": "13bb9ad16e9e5ffd3cfa3cbc5f705a32fb252e3cae1f6b8e2762ccb0dd9159dd",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-38.png": {
+          "sha256": "e60db481fce1a736dcc2cfbe9d058b2e13b562406a80e878014a26d3ac1976c8",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-38-dark.png": {
+          "sha256": "c439ab512fa12bc6a7b4a24da82004f202a73c1ca9d5eba1ee9e6c98e7804a9b",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-38.png",
-      "url": "https://tft.ninja/img/sets/19/traits/renegade.svg"
+      "dark_file": "trait-38-dark.png",
+      "catalog_key": "DA_Renegade19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Renegade19/name"
+      }
     },
     "Rock": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_rock.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_rock.png",
+      "source_sha256": "d4edf36e5cb7a863d6f78381376716af07cd38fedce65219d84e92a4c7da6b5c",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-39.png": {
+          "sha256": "ff5f262e21c63c272551e10a94ac0da4c8a624ea0bcff2319d405af36997abaf",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-39-dark.png": {
+          "sha256": "a3f3bd9835e7e7043bdb28c6302779ddc70a19f38d76c45454f481a68e298bc0",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-39.png",
-      "url": "https://tft.ninja/img/sets/19/traits/rock.svg"
+      "dark_file": "trait-39-dark.png",
+      "catalog_key": "DA_DemonVision19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_DemonVision19/name"
+      }
     },
     "Slayer": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_slayer.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_slayer.png",
+      "source_sha256": "69ff823becfd86c232187c476a8b832d358992a9ef54e16f95586d19f79ca079",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-40.png": {
+          "sha256": "12ce644819af07ffe54c8987a4a01662fe8c444b3de271c5e81298caa306d6ac",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-40-dark.png": {
+          "sha256": "cc98e356c80f88499eb54a881b5c230992880ca5530e94dc911f28affe960b8d",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-40.png",
-      "url": "https://tft.ninja/img/sets/19/traits/slayer.svg"
+      "dark_file": "trait-40-dark.png",
+      "catalog_key": "DA_Mosher19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Mosher19/name"
+      }
     },
     "Swiftstriker": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_swiftstriker.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_swiftstriker.png",
+      "source_sha256": "99f8e3c26b515baefba88ab18fd825021fdcb2402674f727cb5129d20deaeb38",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-41.png": {
+          "sha256": "d950d8b174da1456e3730d96f10a4cb612c00d39d866bf9d13a955f81f42df52",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-41-dark.png": {
+          "sha256": "ea1ac961692b595f6aee11d70321ba62f81f00d45e4fd30ec2c52c6bbc8e041d",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-41.png",
-      "url": "https://tft.ninja/img/sets/19/traits/swiftstriker.svg"
+      "dark_file": "trait-41-dark.png",
+      "catalog_key": "DA_Swiftstriker19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Swiftstriker19/name"
+      }
     },
     "Synthwave": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/garen/uniquetrait/t_traiticon_19_synthwave.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/garen/uniquetrait/t_traiticon_19_synthwave.png",
+      "source_sha256": "57a86f47a534845ee82655934e3501783c5d27f6ee61ce83315ddaf04e6e97e5",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-42.png": {
+          "sha256": "ef6db4152ee3bab1395c7d78914e3b0653a615c730f683ad77a41b620b57704d",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-42-dark.png": {
+          "sha256": "5294c968e3e3c78666f52fdfd0cf458e79303c80f9eba229545d1cf99e5ef466",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-42.png",
-      "url": "https://tft.ninja/img/sets/19/traits/synthwave.svg"
+      "dark_file": "trait-42-dark.png",
+      "catalog_key": "DA_Garen19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Garen19_UniqueTrait/name"
+      }
     },
     "Tango": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/champions/twisted_fate/uniquetrait/t_traiticon_19_tango.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/champions/twisted_fate/uniquetrait/t_traiticon_19_tango.png",
+      "source_sha256": "641e1d8b42ff226608c75c7b0c837348da10793cf25e78f2078d9fab8392290f",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-43.png": {
+          "sha256": "d48bcacd645773210df7c45431bccf4c1c2d3912f9c35583cd372607f696e4dd",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-43-dark.png": {
+          "sha256": "7b3c6d66ae57116fd0880b0b3e36225dc74590cf399fb0c048d1c706c96a9490",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-43.png",
-      "url": "https://tft.ninja/img/sets/19/traits/tango.svg"
+      "dark_file": "trait-43-dark.png",
+      "catalog_key": "DA_TwistedFate19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_TwistedFate19_UniqueTrait/name"
+      }
     },
     "Trickshot": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_trickshot.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_trickshot.png",
+      "source_sha256": "db7229734f00cf97e6854f837cf7f2b86e179c63d936bef53eaa869fb3e84f36",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-44.png": {
+          "sha256": "231802666a6947d96a8d8602dd98645f87db8558b4ddd100e7a721cb90f44ae2",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-44-dark.png": {
+          "sha256": "25772d59a55cb1c1a8125ca846386fd01e373c533d8b0b68b1465ec97bff14b8",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-44.png",
-      "url": "https://tft.ninja/img/sets/19/traits/trickshot.svg"
+      "dark_file": "trait-44-dark.png",
+      "catalog_key": "DA_Trickshot19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Trickshot19/name"
+      }
     },
     "True Damage": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_truedamage.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_truedamage.png",
+      "source_sha256": "79bedfd6757bf29c7c8e8f2f4f23028be7dcea7105c1da6dd1154e950d459763",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-45.png": {
+          "sha256": "db3a1a4039f959ec7b950b8ac8bd1b8a71fc9ed92956710e7fc59f7360567882",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-45-dark.png": {
+          "sha256": "5d342b265f3815dd81ae1cae2a520a35aadc6416448e2df537cc22cf94ab1bba",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-45.png",
-      "url": "https://tft.ninja/img/sets/19/traits/true-damage.svg"
+      "dark_file": "trait-45-dark.png",
+      "catalog_key": "DA_TrueDamage19",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_TrueDamage19/name"
+      }
     },
     "Windblessed": {
+      "url": "https://explore.communitydragon.org/tft/19.1.0/tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_windblessed.png",
+      "source_path": "tft/plugins/gamefeatures/set_19/content/traits/_traiticons/iconmask/t_traiticon_19_windblessed.png",
+      "source_sha256": "b1ba2b5fb1136e9c85849f4e7605e8217db8c69fea66d0b6aa14bf33072a5d93",
+      "source_dimensions": [
+        32,
+        32
+      ],
+      "outputs": {
+        "trait-46.png": {
+          "sha256": "3d2bc2a9ad0927ad490756b5772b82e607a1e3a26108dec9952063d7a730208f",
+          "dimensions": [
+            24,
+            24
+          ]
+        },
+        "trait-46-dark.png": {
+          "sha256": "a6b762648235dd62f54c981a91b064f01551d9b0483543747b9765e661f7fda9",
+          "dimensions": [
+            24,
+            24
+          ]
+        }
+      },
       "file": "trait-46.png",
-      "url": "https://tft.ninja/img/sets/19/traits/windblessed.svg"
+      "dark_file": "trait-46-dark.png",
+      "catalog_key": "DA_Janna19_UniqueTrait",
+      "mapping_evidence": {
+        "url": "https://utils.iesdev.com/static/json/tftTest/set19/en_us/traits",
+        "json_pointer": "/DA_Janna19_UniqueTrait/name"
+      }
+    }
+  },
+  "generated": {
+    "unlock-badge.png": {
+      "sha256": "49beaad4bad56fa3820424c226f5db4d1e1d335a1020bf5f0a2c6825d4a389af",
+      "dimensions": [
+        16,
+        18
+      ]
     }
   }
 }

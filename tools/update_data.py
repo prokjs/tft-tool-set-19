@@ -5,8 +5,10 @@ Refresh-only dependency: python -m pip install beautifulsoup4
 The desktop application itself does not need Beautiful Soup or internet access.
 
 For archived/reproducible input, use --html-dir DIRECTORY containing full UTF-8
-traits.html, units.html, collab.html, unlocks.html and unlock_roster.html responses
-from the URLs below. unlocks.html may contain content-negotiated Markdown.
+traits.html, units.html, collab.html, unlocks.html, unlock_roster.html and
+champion_ranges.json responses from the URLs below. unlocks.html may contain
+content-negotiated Markdown. Champion ranges come from stats.offense.range in
+the IES Set 19 JSON; a full refresh never drops their HTTPS provenance.
 HTTPS certificate verification is never disabled. A fetch or parsing failure
 leaves the existing snapshot unchanged. Review source changes before publishing.
 
@@ -27,7 +29,6 @@ from __future__ import annotations
 
 import argparse
 from datetime import date
-import json
 from pathlib import Path
 import re
 import sys
@@ -42,10 +43,12 @@ if __package__:
     from .update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
     from .update_trait_descriptions import description_fields
     from .update_champion_roles import role_fields
+    from .update_champion_ranges import SOURCE_URL as RANGE_URL, apply_ranges, load_ranges, write_snapshot
 else:
     from update_unlocks import BLITZ_URL, GUIDE_URL, apply_unlocks
     from update_trait_descriptions import description_fields
     from update_champion_roles import role_fields
+    from update_champion_ranges import SOURCE_URL as RANGE_URL, apply_ranges, load_ranges, write_snapshot
 
 
 SOURCES = {
@@ -54,6 +57,7 @@ SOURCES = {
     "collab": "https://tftflow.com/tables/set19/collab",
     "unlocks": GUIDE_URL,
     "unlock_roster": BLITZ_URL,
+    "champion_ranges": RANGE_URL,
 }
 EXPECTED = {"traits": 47, "champions": 94, "collab_groups": 40}
 AKALI_EXCLUSION_NOTE = (
@@ -78,12 +82,14 @@ def text(node, description: str) -> str:
 def fetch_pages(html_dir: Path | None) -> dict[str, str]:
     pages = {}
     for key, url in SOURCES.items():
+        suffix = "json" if key == "champion_ranges" else "html"
         if html_dir is not None:
-            pages[key] = (html_dir / f"{key}.html").read_text(encoding="utf-8-sig")
+            pages[key] = (html_dir / f"{key}.{suffix}").read_text(encoding="utf-8-sig")
         else:
             request = Request(url, headers={
                 "User-Agent": "Set19CollabOptimizer/1.0",
-                "Accept": "text/markdown" if key == "unlocks" else "text/html",
+                "Accept": ("application/json" if key == "champion_ranges" else
+                           "text/markdown" if key == "unlocks" else "text/html"),
             })
             with urlopen(request, timeout=45) as response:
                 charset = response.headers.get_content_charset() or "utf-8"
@@ -92,7 +98,8 @@ def fetch_pages(html_dir: Path | None) -> dict[str, str]:
 
 
 def parse_pages(pages: dict[str, str], snapshot_date: str) -> dict:
-    soups = {key: BeautifulSoup(page, "html.parser") for key, page in pages.items()}
+    soups = {key: BeautifulSoup(page, "html.parser") for key, page in pages.items()
+             if key != "champion_ranges"}
     traits = []
     source_members = {}
     for section in soups["traits"].select("section.set-roster-section"):
@@ -174,6 +181,7 @@ def parse_pages(pages: dict[str, str], snapshot_date: str) -> dict:
         "collab_groups": groups,
     }
     data["sources"].extend(apply_unlocks(champions, pages["unlocks"], pages["unlock_roster"], snapshot_date))
+    apply_ranges(data, load_ranges(pages["champion_ranges"]))
     validate_data(data, source_members, champion_slugs)
     return data
 
@@ -221,19 +229,16 @@ def validate_data(data: dict, source_members: dict[str, set[str]], champion_slug
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--html-dir", type=Path, help="Read archived full HTML instead of fetching")
+    parser.add_argument("--html-dir", type=Path, help="Read archived HTML and champion_ranges.json instead of fetching")
     parser.add_argument("--snapshot-date", default=date.today().isoformat(), help="ISO date used in the snapshot version")
     parser.add_argument("--output", type=Path, default=Path(__file__).resolve().parents[1] / "data" / "set19.json")
     args = parser.parse_args()
     try:
         date.fromisoformat(args.snapshot_date)
         data = parse_pages(fetch_pages(args.html_dir), args.snapshot_date)
-        serialized = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
         args.output.parent.mkdir(parents=True, exist_ok=True)
-        temporary = args.output.with_suffix(args.output.suffix + ".tmp")
-        temporary.write_text(serialized, encoding="utf-8")
-        temporary.replace(args.output)
-    except (OSError, ValueError, KeyError) as exc:
+        write_snapshot(args.output, data)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f"Snapshot refresh failed: {exc}", file=sys.stderr)
         return 1
     print(f"Wrote {args.output}: {len(data['champions'])} champions, {len(data['traits'])} traits, {len(data['collab_groups'])} groups")

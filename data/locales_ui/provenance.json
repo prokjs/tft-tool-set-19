@@ -1,0 +1,32 @@
+{
+  "catalogs": {
+    "kind": "community-AI-translation",
+    "generation": "Authorized internal model completion helpers; no third-party translation endpoint requests",
+    "quality": "Not human-reviewed; not official Riot translation; no endorsement or accuracy guarantee",
+    "usage": "Bundled offline UI wording. Regional English/Spanish/Simplified Chinese variants share language catalogs with explicit provenance.",
+    "legal_scope": "UI wording provenance is not permission to reuse Riot artwork, trademarks, game text or data on an ad-supported website. Separate source and Riot-policy review is required."
+  },
+  "locale_list": {
+    "source": "https://ddragon.leagueoflegends.com/cdn/languages.json",
+    "count": 28
+  },
+  "runtime_dependencies": [
+    {
+      "name": "arabic-reshaper",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notice": "licenses/arabic-reshaper-3.0.0-MIT.txt",
+      "source": "https://github.com/mpcabd/python-arabic-reshaper",
+      "package": "https://pypi.org/project/arabic-reshaper/3.0.0/"
+    },
+    {
+      "name": "Windows system ICU",
+      "version": "OS-serviced version; Windows 10 1903+ / Windows 11",
+      "distribution": "Not bundled or redistributed; loaded from System32 with restricted DLL search",
+      "functions": ["ubidi_open", "ubidi_setPara", "ubidi_writeReordered", "ubidi_close"],
+      "documentation": "https://learn.microsoft.com/en-us/windows/win32/intl/international-components-for-unicode--icu-"
+    }
+  ],
+  "browser_note": "Future browser deployments should use logical Unicode and native browser RTL/shaping, never desktop presentation-form glyph strings.",
+  "network_policy": "No runtime network; updater imports provided community catalogs and exports missing keys only. No undocumented Google endpoint, credentials or service-license assumptions."
+}

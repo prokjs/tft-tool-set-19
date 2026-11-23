@@ -1,11 +1,12 @@
 """TFT-inspired trait bars. Badge colors indicate breakpoint progress, not Riot's
 patch-specific rarity metadata (which is not included in the bundled snapshot).
 """
+import re
 import tkinter as tk
 from tkinter import font as tkfont
-from tkinter import ttk
 
 from visuals import COST_COLORS
+from localization import tr, display_text, localized_trait, localized_trait_description, localize_tree
 
 PALETTES = {
     'inactive': {'badge': '#29333e', 'edge': '#526171', 'bar': '#172230', 'text': '#96a2af'},
@@ -29,6 +30,7 @@ def badge_style(trait, definition):
 class TraitRow(tk.Canvas):
     def __init__(self, parent, trait, definition, artwork, *, height=44, on_wheel=None, members=()):
         super().__init__(parent, height=height, bg='#192337', highlightthickness=0, takefocus=False)
+        self._preserve_text = True
         self.trait = trait
         self.definition = definition
         self.artwork = artwork
@@ -38,8 +40,7 @@ class TraitRow(tk.Canvas):
         self._fonts = {}
         self._height = None
         self.tip = None
-        self.tip_job = None
-        self._tip_leave_job = None
+        self.tip_canvas = None
         self.bind('<MouseWheel>', self.wheel)
         self.bind('<Enter>', self.queue_tip)
         self.bind('<Leave>', self.leave_tip)
@@ -67,15 +68,26 @@ class TraitRow(tk.Canvas):
         track_width = sum(max(track_font.measure(str(point)), current_font.measure(str(point))) + 3
                           for point in self.definition['breakpoints'])
         track_width += gap * max(0, len(self.definition['breakpoints']) - 1)
-        width = text_x + max(name_font.measure(self.trait['name']), track_width) + 12
+        width = text_x + max(name_font.measure(display_text(localized_trait(self.trait['name']))), track_width) + 12
         return width, badge_right, divider, text_x, count, gap, self._fonts[height]
 
     def natural_width(self, height=None):
         """Exact content width: full name and full breakpoint track, never 306px."""
         return self._metrics(self._height if height is None else height)[0]
 
+    def fitted_height(self, height):
+        """Keep both text lines and the active underline inside the trait bar."""
+        while True:
+            fonts = self._metrics(height)[-1]
+            required = fonts[0].metrics('linespace') + max(
+                fonts[1].metrics('linespace'), fonts[2].metrics('linespace')) + 10
+            if required <= height:
+                return height
+            height = required
+
     def set_height(self, height):
         """Redraw this same canvas in a compact or default size, retaining all data."""
+        height = self.fitted_height(height)
         if self._height == height:
             return
         self.hide_tip()
@@ -88,8 +100,8 @@ class TraitRow(tk.Canvas):
         center_x = 25 if height >= 44 else (badge_right + 3) / 2
         center_y = height / 2
         half_badge = 18 if height >= 44 else (height - 6) / 2
-        self.create_polygon(badge_right, 5, width - 12, 5, width - 3, 12,
-                            width - 3, height - 5, badge_right, height - 5,
+        self.create_polygon(badge_right, 2, width - 12, 2, width - 3, 9,
+                            width - 3, height - 2, badge_right, height - 2,
                             fill=palette['bar'], outline=palette['edge'], width=1)
         self.create_polygon(center_x, 1, center_x + half_badge, height / 4,
                             center_x + half_badge, height * 3 / 4,
@@ -101,9 +113,9 @@ class TraitRow(tk.Canvas):
         self.create_line(divider, 8, divider, height - 8, fill=palette['edge'])
         self.create_text((badge_right + divider) / 2, center_y, text=count, fill=palette['text'],
                          font=count_font, tags='count')
-        name_y = 14 if height >= 44 else 11 if height >= 36 else 9
-        track_y = height - 13 if height >= 44 else height - 9
-        self.create_text(text_x, name_y, text=self.trait['name'], anchor='w',
+        name_y = 4 + name_font.metrics('linespace') / 2
+        track_y = height - 4 - max(track_font.metrics('linespace'), current_font.metrics('linespace')) / 2
+        self.create_text(text_x, name_y, text=display_text(localized_trait(self.trait['name'])), anchor='w',
                          fill=palette['text'], font=name_font, tags='name')
         x = text_x
         for index, point in enumerate(self.definition['breakpoints']):
@@ -117,13 +129,64 @@ class TraitRow(tk.Canvas):
                              font=current_font if current else track_font, tags=f'breakpoint-{point}')
             point_width = max(track_font.measure(str(point)), current_font.measure(str(point))) + 3
             if current:
-                self.create_line(x, height - 4, x + point_width - 2, height - 4,
+                self.create_line(x, height - 2, x + point_width - 2, height - 2,
                                  fill=palette['edge'], width=2, tags='active-breakpoint')
             x += point_width
 
+    def _effect_text(self, parent, description, background, wrap):
+        """Keep sourced wording intact while separating effects and tier changes."""
+        text = tk.Text(parent, wrap='word', height=1, width=1, bg=background,
+                       fg='#e5e7eb', font=('Segoe UI', 10), relief='flat',
+                       borderwidth=0, highlightthickness=0, takefocus=False,
+                       cursor='arrow', padx=0, pady=2)
+        text.pack(fill='x', padx=10)
+        bold = ('Segoe UI', 10, 'bold')
+        text.tag_configure('section', foreground='#c4b5fd', font=bold, spacing1=5, spacing3=4)
+        text.tag_configure('current', foreground='#86efac', font=bold)
+        text.tag_configure('muted', foreground='#a6b1c4')
+        for tag, color in (('value', '#f1d69b'), ('ad', '#fdba74'), ('ap', '#d8b4fe'),
+                           ('defense', '#67e8f9'), ('control', '#93c5fd')):
+            text.tag_configure(tag, foreground=color, font=bold)
+        text.insert('end', display_text(tr('WHAT IT DOES')) + '\n', 'section')
+        has_breakpoints = False
+        for line in description.splitlines():
+            match = re.match(r'^(\d+)\s+(.+)$', line)
+            if match and int(match[1]) in self.definition['breakpoints']:
+                if not has_breakpoints:
+                    text.insert('end', '\n' + display_text(tr('BREAKPOINTS')) + '\n', 'section')
+                    has_breakpoints = True
+                current = int(match[1]) == self.trait['tier']
+                text.insert('end', f"({match[1]}) " + (display_text(tr('ACTIVE')) + ' · ' if current else ''),
+                            'current' if current else 'muted')
+                text.insert('end', display_text(match[2]) + '\n')
+            else:
+                text.insert('end', display_text(line) + '\n')
+        wording = text.get('1.0', 'end-1c')
+        highlights = {
+            'value': r'\b\d+(?:\.\d+)?(?:%|x)?',
+            'ad': ('Attack Damage',),
+            'ap': ('Ability Power', 'magic damage'),
+            'defense': ('Health', 'Shield', 'Durability', 'Armor', 'Magic Resist', 'Healing'),
+            'control': ('Mana', 'Attack Speed', 'Stun', 'Freeze', 'inspirations'),
+        }
+        for tag, pattern in highlights.items():
+            if isinstance(pattern, tuple):
+                pattern = '|'.join(re.escape(display_text(tr(term))) for term in pattern)
+            for match in re.finditer(pattern, wording, re.IGNORECASE):
+                text.tag_add(tag, f'1.0+{match.start()}c', f'1.0+{match.end()}c')
+        # Text display-line metrics are unavailable while its popup is withdrawn.
+        # Measure wrapped text on the already-realized canvas instead; bold is a
+        # conservative width for the mixed normal/bold body and tier headings.
+        measure = self.create_text(-10000, -10000, text=wording, font=bold,
+                                   width=max(1, wrap - 2), anchor='nw')
+        bounds = self.bbox(measure)
+        self.delete(measure)
+        pixels = bounds[3] - bounds[1] + 24
+        line_height = tkfont.Font(root=text, font=text.cget('font')).metrics('linespace')
+        text.configure(height=max(1, (pixels + line_height - 1) // line_height), state='disabled')
+
     def queue_tip(self, event):
-        self.hide_tip()
-        self.tip_job = self.after(400, lambda: self.show_tip(event.x_root, event.y_root))
+        self.show_tip(event.x_root, event.y_root)
 
     def show_tip(self, x=None, y=None):
         """Show sourced effects and the full supplied catalogue, using cached art."""
@@ -134,26 +197,30 @@ class TraitRow(tk.Canvas):
             x = self.winfo_pointerx()
         if y is None:
             y = self.winfo_pointery()
-        description = self.definition['description']
+        description = localized_trait_description(self.trait['name'], self.definition['description'])
         source = self.definition['description_source']
         self.tip = tk.Toplevel(self)
+        tip = self.tip
+        self.tip.withdraw()
         self.tip.overrideredirect(True)
         self.tip.attributes('-topmost', True)
-        self.tip.bind('<Enter>', self.keep_tip)
-        self.tip.bind('<Leave>', self.leave_tip)
+        self.tip.bind('<Enter>', lambda _event: self.hide_tip())
         background = '#253047'
         wrap = min(440, max(120, self.winfo_screenwidth() - 60))
         canvas = tk.Canvas(self.tip, bg=background, highlightthickness=0, width=wrap + 20, height=1)
         canvas.pack(side='left', fill='both', expand=True)
+        self.tip_canvas = canvas
         content = tk.Frame(canvas, bg=background)
         canvas.create_window(0, 0, window=content, anchor='nw', width=wrap + 20)
         count = str(self.trait['count']) + ('★' if self.definition.get('count_mode') == 'stars' else '')
         tier = f"active breakpoint {self.trait['tier']}" if self.trait['tier'] else 'inactive'
         tk.Label(content, text=f"{self.trait['name']} · {count} · {tier}", justify='left',
-                 wraplength=wrap, bg=background, fg='#ffffff', padx=10, pady=7,
-                 font=('Segoe UI', 10, 'bold')).pack(fill='x', anchor='w')
-        tk.Label(content, text=description, justify='left', wraplength=wrap, bg=background,
-                 fg='#ffffff', padx=10, font=('Segoe UI', 10)).pack(fill='x', anchor='w')
+                 wraplength=wrap, bg=background, fg='#f1d69b', padx=10, pady=7,
+                 font=('Segoe UI', 12, 'bold')).pack(fill='x', anchor='w')
+        tk.Label(content, text='Scroll on the trait for long effects · move off it to close',
+                 bg=background, fg='#a6b1c4', padx=10,
+                 font=('Segoe UI', 8)).pack(fill='x', anchor='w')
+        self._effect_text(content, description, background, wrap)
         if self.members:
             tk.Label(content, text=f'CHAMPIONS · {len(self.members)}', bg=background,
                      fg='#c4b5fd', anchor='w', padx=10, pady=6,
@@ -174,25 +241,33 @@ class TraitRow(tk.Canvas):
         tk.Label(content, text='Source: ' + source, justify='left', wraplength=wrap,
                  bg=background, fg='#b9c5d5', padx=10, pady=7,
                  font=('Segoe UI', 8)).pack(fill='x', anchor='w')
-        self.tip.update_idletasks()
+        localize_tree(self.tip)
+        tip.update_idletasks()
+        if self.tip is not tip:
+            return
         content_height = content.winfo_reqheight()
         height = min(content_height, max(80, self.winfo_screenheight() - 40))
         canvas.configure(height=height, scrollregion=(0, 0, wrap + 20, content_height))
-        if content_height > height:
-            scrollbar = ttk.Scrollbar(self.tip, orient='vertical', command=canvas.yview)
-            scrollbar.pack(side='right', fill='y')
-            canvas.configure(yscrollcommand=scrollbar.set)
-        self._bind_tip_wheel(content, canvas)
-        canvas.bind('<MouseWheel>', lambda event: self._scroll_tip(canvas, event))
-        self.tip.update_idletasks()
-        x = max(0, min(x + 14, self.winfo_screenwidth() - self.tip.winfo_reqwidth()))
-        y = max(0, min(y + 18, self.winfo_screenheight() - self.tip.winfo_reqheight()))
+        tip.update_idletasks()
+        if self.tip is not tip:
+            return
+        width = self.tip.winfo_reqwidth()
+        left, top = self.winfo_rootx(), self.winfo_rooty()
+        right, bottom = left + self.winfo_width(), top + self.winfo_height()
+        screen_width, screen_height = self.winfo_screenwidth(), self.winfo_screenheight()
+        if right + width + 8 <= screen_width:
+            x = right + 8
+        elif left >= width + 8:
+            x = left - width - 8
+        else:
+            x = max(0, min(left, screen_width - width))
+            below, above = screen_height - bottom - 8, top - 8
+            height = min(height, max(below, above))
+            canvas.configure(height=max(1, height))
+            y = bottom + 8 if below >= above else top - height - 8
+        y = max(0, min(y, screen_height - height))
         self.tip.geometry(f'+{x}+{y}')
-
-    def _bind_tip_wheel(self, widget, canvas):
-        widget.bind('<MouseWheel>', lambda event: self._scroll_tip(canvas, event))
-        for child in widget.winfo_children():
-            self._bind_tip_wheel(child, canvas)
+        self.tip.deiconify()
 
     @staticmethod
     def _scroll_tip(canvas, event):
@@ -200,44 +275,23 @@ class TraitRow(tk.Canvas):
             canvas.yview_scroll(-1 if event.delta > 0 else 1, 'units')
         return 'break'
 
-    def keep_tip(self, _event=None):
-        if self._tip_leave_job is not None:
-            self.after_cancel(self._tip_leave_job)
-            self._tip_leave_job = None
-
-    def leave_tip(self, _event=None):
-        # Cancel a pending open immediately, but allow transfer to a tall popup's
-        # scrollbar without the popup vanishing as the pointer leaves its row.
-        if self.tip_job is not None:
-            self.after_cancel(self.tip_job)
-            self.tip_job = None
-        self.keep_tip()
-        if self.tip is not None:
-            self._tip_leave_job = self.after(120, self._close_tip_if_outside)
-
-    def _close_tip_if_outside(self):
-        self._tip_leave_job = None
-        widget = self.winfo_containing(self.winfo_pointerx(), self.winfo_pointery())
-        while widget is not None:
-            if widget is self or widget is self.tip:
-                return
-            widget = widget.master
-        self.hide_tip()
 
     def hide_tip(self):
-        self.keep_tip()
-        if self.tip_job is not None:
-            self.after_cancel(self.tip_job)
-            self.tip_job = None
         if self.tip is not None:
             self.tip.destroy()
             self.tip = None
+        self.tip_canvas = None
+
+    def leave_tip(self, _event=None):
+        self.hide_tip()
 
     def cleanup(self, event):
         if event.widget is self:
             self.hide_tip()
 
     def wheel(self, event):
+        if self.tip_canvas is not None and self.tip_canvas.yview() != (0.0, 1.0):
+            return self._scroll_tip(self.tip_canvas, event)
         self.hide_tip()
         if self.on_wheel is not None:
             return self.on_wheel(event)

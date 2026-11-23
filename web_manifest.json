@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "engine": {
+    "language": "Rust",
+    "crate": "tft-core",
+    "native_command": "engine_dispatch",
+    "browser_worker": "web/rust-worker.js",
+    "wasm_module": "web/pkg/tft_core.js",
+    "wasm_binary": "web/pkg/tft_core_bg.wasm",
+    "runtime_downloads": false
+  },
+  "static_directories": ["web", "data", "assets"],
+  "static_files": ["web_manifest.json", "README.md", "LEGAL.md", "THIRD_PARTY_NOTICES.txt"],
+  "source_documents": {
+    "directory": "engine-source",
+    "files": ["lib.rs", "resources.rs", "model.rs", "optimizer.rs", "planner.rs", "pool.rs", "guidance.rs", "positioning.rs", "trait_support.rs", "item_builds.rs", "team_code.rs"]
+  },
+  "build": {
+    "requirements": [
+      "Node.js 20 or newer",
+      "Rust stable with wasm32-unknown-unknown installed; desktop plugins require Rust 1.90+",
+      "wasm-bindgen-cli matching the wasm-bindgen crate version in Cargo.lock",
+      "Windows desktop: MSVC C++ Build Tools and WebView2 Runtime"
+    ],
+    "setup": [
+      "npm install",
+      "rustup target add wasm32-unknown-unknown",
+      "cargo install wasm-bindgen-cli --version 0.2.130 --locked",
+      "npm run build:icons",
+      "npm run build:frontend"
+    ],
+    "wasm": "npm run build:wasm",
+    "browser": "npm run build:web",
+    "browser_preview": "npm run preview",
+    "desktop": "npm run tauri:build",
+    "static_output": "frontend-dist",
+    "wasm_steps": [
+      "cargo build -p tft-core --release --target wasm32-unknown-unknown --features wasm",
+      "wasm-bindgen target/wasm32-unknown-unknown/release/tft_core.wasm --target web --out-dir web/pkg --out-name tft_core --no-typescript"
+    ]
+  }
+}

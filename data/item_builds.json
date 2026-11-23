@@ -1,0 +1,1175 @@
+{
+  "snapshot_date": "2026-11-20",
+  "set": 19,
+  "patch": "19.1",
+  "source": "https://blitz.gg/tft/set19/champions",
+  "selection": "Published trios where available; explicit role-based suggestions otherwise.",
+  "champions": {
+    "Ahri": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/ahri",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/ahri"
+    },
+    "Akali (K/DA)": {
+      "items": [
+        "Bloodthirster",
+        "Edge of Night",
+        "Red Buff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/akali-kda",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "9529a77e0efe6d8b09edf87412a8047e4ea582bb5d6aabfe7af6615f59859192"
+    },
+    "Akali (True Damage)": {
+      "items": [
+        "Bloodthirster",
+        "Jeweled Gauntlet",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/akali-true-damage",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/akali-true-damage"
+    },
+    "Alistar": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/alistar",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/alistar"
+    },
+    "Alune": {
+      "items": [
+        "Blue Buff",
+        "Morellonomicon",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/alune",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "ec02bbe503a8382c12b068c26fd2ea143311b044989ca738c960690bf59ee9b9"
+    },
+    "Amumu": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/amumu",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/amumu"
+    },
+    "Annie": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/annie",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "f9d62512da49b0f37c5d606ecf183c268da9b06051b6536403309a0a11e447bf"
+    },
+    "Aphelios": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Kraken's Fury"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/aphelios",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "eec526101459206d06fec91eebd3289939558ef0f3105f1a7fb0fdecaa949cba"
+    },
+    "Ashe": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/ashe",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/ashe"
+    },
+    "Aurora": {
+      "items": [
+        "Morellonomicon",
+        "Spear of Shojin",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/aurora",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "4d7f04836e9175d0134a7f7a6e61d0a32fe0e0f45f6c4d5b2ea9318ada6ea13f"
+    },
+    "Bard": {
+      "items": [
+        "Bard's Horn of the Traveler",
+        "Guinsoo's Rageblade",
+        "Spear of Shojin"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/bard",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "db4b19c1285baf82e65005fb080d1cad99fe85e9c5630938af4cf401343f3031"
+    },
+    "Baron Nashor": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/baron-nashor",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/baron-nashor"
+    },
+    "Braum": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/braum",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "a96f73e36e824c47adf95aebc6aaa4cde91abb15379731492ba450c9bf95215a"
+    },
+    "Briar": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/briar",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/briar"
+    },
+    "Camille": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/camille",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/camille"
+    },
+    "Dr. Mundo": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/dr-mundo",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "4d0c8c9343ceff13234ad605541aeec5e3ab99ccd04188bacb370dd42b607aae"
+    },
+    "Draven": {
+      "items": [
+        "Infinity Edge",
+        "Last Whisper",
+        "Spear of Shojin"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/draven",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "44e3004bd4013a7a6988bc6b8c6ffe5dd602123b55ec1e8a15de4d1e001c9e5a"
+    },
+    "Ekko": {
+      "items": [
+        "Crownguard",
+        "Gargoyle Stoneplate",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/ekko",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "1a008a83138a5bf8bda9bdb8d3dec29ae398c3f636bbdd13e2555f805ceee54d"
+    },
+    "Elise": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/elise",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/elise"
+    },
+    "Evelynn": {
+      "items": [
+        "Edge of Night",
+        "Hand Of Justice",
+        "Jeweled Gauntlet"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/evelynn",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "9bc50d9d9f197b935ec9b26abfa5974beef0e11c7a7477de897a657820cdde51"
+    },
+    "Ezreal": {
+      "items": [
+        "Spear of Shojin",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/ezreal",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/ezreal"
+    },
+    "Galio": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/galio",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "68571a1a81b3bfe66cc696bd641d5bbdc462e124cfeff4545a7db2f8976d8e74"
+    },
+    "Garen": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/garen",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/garen"
+    },
+    "Gnar": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/gnar",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/gnar"
+    },
+    "Gragas": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Steadfast Heart",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/gragas",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "e40fa6db0314eb1e16fcd6657958eb3142e0d66f23d6471f78b9d773c33b2cb8"
+    },
+    "Graves": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/graves",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/graves"
+    },
+    "Gwen": {
+      "items": [
+        "Hand Of Justice",
+        "Jeweled Gauntlet",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/gwen",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "9cc99c77620a51175ac7229dde08b36f986af3c9f11754519e53ca23ba3fd61f"
+    },
+    "Illaoi": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/illaoi",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/illaoi"
+    },
+    "Janna": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/janna",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/janna"
+    },
+    "Jax": {
+      "items": [
+        "Bloodthirster",
+        "Spear of Shojin",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/jax",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "843583c6a1b8994c85fffe99043f0e9f1f4dfd90bdac940722a6555e6b4e191e"
+    },
+    "Jhin": {
+      "items": [
+        "Deathblade",
+        "Guinsoo's Rageblade",
+        "Infinity Edge"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/jhin",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "2e4a0f1afe14351abd968d015e49d1fffd50a0652d00a431977a7fd65ab53d30"
+    },
+    "Jinx": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/jinx",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "817c67073e89bbee6c58dbc51096ae2208c422d5004b42b3823e534e50315b10"
+    },
+    "K'Sante": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/ksante",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "500a707e8f2b4c783f1bf3ff3909c004533e86a0098342b39f644f3ac9481968"
+    },
+    "Kai'Sa": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Kraken's Fury"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/kaisa",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "285abeee75cae1aabd695d14e6b83b7f9626b034df6cf3e1299fb55f702a2f3f"
+    },
+    "Karthus": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/karthus",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/karthus"
+    },
+    "Katarina": {
+      "items": [
+        "Bloodthirster",
+        "Jeweled Gauntlet",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/katarina",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/katarina"
+    },
+    "Kayle": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Jeweled Gauntlet",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/kayle",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "504691955587333feecb80f399ee6d04378d2f4eeb83d688ae2830bf72324257"
+    },
+    "Kayn": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/kayn",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/kayn"
+    },
+    "Kennen": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/kennen",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/kennen"
+    },
+    "Kobuko": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Gargoyle Stoneplate",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/kobuko",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "9f807b8a42507b6248802d9711ef962025f79249ae8bb8aeab58550ad89811ce"
+    },
+    "Lee Sin": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/lee-sin",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/lee-sin"
+    },
+    "Leona": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/leona",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "27df26eeaa9df78e7af5983a96c31fa60c17f9ba93dc779fdb2984fa60617faa"
+    },
+    "Lillia": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/lillia",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "10fa898b8720839eb193778e2706765ae572e2302eb2a6d2ba3ff509e5c581df"
+    },
+    "Locke": {
+      "items": [
+        "Edge of Night",
+        "Hand Of Justice",
+        "Jeweled Gauntlet"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/locke",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "2f60a351282f37475d1f40c6563b5073831ea701c06643962222e79bae219656"
+    },
+    "Lucian": {
+      "items": [
+        "Spear of Shojin",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/lucian",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/lucian"
+    },
+    "Lulu": {
+      "items": [
+        "Morellonomicon",
+        "Spear of Shojin",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/lulu",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "3c046219a244f601bb8c20cfca298913b14f324c1bf49a5ece49d49f3cdde07b"
+    },
+    "Lux": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/lux",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/lux"
+    },
+    "Malzahar": {
+      "items": [
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/malzahar",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "1af9df8092cc028d211bc1c1e2553947a4ca25e9b7fda5986242b2dbd7f72522"
+    },
+    "Mel": {
+      "items": [
+        "Jeweled Gauntlet",
+        "Spear of Shojin",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/mel",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "aa54ef4a55343b3a86b64bbd85079858f98e06d855a36f14b8f800e293143335"
+    },
+    "Miss Fortune": {
+      "items": [
+        "Infinity Edge",
+        "Spear of Shojin",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/miss-fortune",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "d76ded7b26dc078ac6d6e867fa7e9e132d829867d20aafd85c44f3eb73f8b021"
+    },
+    "Mordekaiser": {
+      "items": [
+        "Bloodthirster",
+        "Edge of Night",
+        "Guinsoo's Rageblade"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/mordekaiser",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "0b23df04a52e33288eb3fe31b6e4a8d4a314d8a15fb7424b79bb676d8195ed5a"
+    },
+    "Nasus": {
+      "items": [
+        "Ionic Spark",
+        "Spirit Visage",
+        "Sunfire Cape"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/nasus",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "065fa41cc5bc7cc8fad6f113b94282a12016ed5ae86b305f393dcba171401da1"
+    },
+    "Neeko": {
+      "items": [
+        "Jeweled Gauntlet",
+        "Spear of Shojin",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/neeko",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "f7e882896854eb3546ecf2e9c0c1d02e7b42ae8349e9ec61e1002ec8d0b02940"
+    },
+    "Nidalee": {
+      "items": [
+        "Bloodthirster",
+        "Jeweled Gauntlet",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/nidalee",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/nidalee"
+    },
+    "Nunu & Willump": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/nunu-and-willump",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/nunu-and-willump"
+    },
+    "Olaf": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Kraken's Fury"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/olaf",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "ecba874b67b562b94c953de3967b8b4736b07406f8ac02a053ec098180afdd01"
+    },
+    "Pyke": {
+      "items": [
+        "Edge of Night",
+        "Hand Of Justice",
+        "Infinity Edge"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/pyke",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "d8461aad753d99d44c121be22d2d06554caf93ab9e259c7f448cb4abbd461ef6"
+    },
+    "Qiyana": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/qiyana",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/qiyana"
+    },
+    "Rakan": {
+      "items": [
+        "Bloodthirster",
+        "Jeweled Gauntlet",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/rakan",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/rakan"
+    },
+    "Rell": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/rell",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "5fa30192c42a548f3d05e0c86a21e9adf3fd433be0783797aaa0f7a080fa89f8"
+    },
+    "Renata Glasc": {
+      "items": [
+        "Archangel's Staff",
+        "Hextech Gunblade",
+        "Spear of Shojin"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/renata-glasc",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "55c87822809dd110e4496919196ab4b2b0c7cea2caeb974a396760bca9fa2abf"
+    },
+    "Renekton": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/renekton",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "9653126fb65e6976b34fd21c869854c16c63ff9826a6d2589831f85535760eaa"
+    },
+    "Samira": {
+      "items": [
+        "Spear of Shojin",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/samira",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/samira"
+    },
+    "Senna": {
+      "items": [
+        "Spear of Shojin",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/senna",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/senna"
+    },
+    "Seraphine": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/seraphine",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/seraphine"
+    },
+    "Sett": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/sett",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "36a8cfb5bc29eff7cb4e13c14e7a96dc582ca21f929265e525c4ff1279820604"
+    },
+    "Shyvana": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/shyvana",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "6d60bdecec9a8bf12c98d2c8f81391813606361d32e5b56abc00ea726fea996d"
+    },
+    "Smeech": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/smeech",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "4707de5b082578a045d78f00a68e999c82f56981ee8412c9a7a1b17dbfb1151d"
+    },
+    "Sona": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/sona",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/sona"
+    },
+    "Swain": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Sunfire Cape"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/swain",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "5a96da14007c2e6c211a75824bc9f4c8698c9c309a39b8d4de26ee4c8d157685"
+    },
+    "Syndra": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/syndra",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/syndra"
+    },
+    "Taliyah": {
+      "items": [
+        "Jeweled Gauntlet",
+        "Spear of Shojin",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/taliyah",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "7ced9bdcc055e50ae57ba0cd729394506b377bf2185454c76fc7b10735eca072"
+    },
+    "Taric": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Warmog's Armor",
+        "Spirit Visage"
+      ],
+      "source": "https://tft.ninja/sets/19/units/taric",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/taric"
+    },
+    "Teemo": {
+      "items": [
+        "Morellonomicon",
+        "Spear of Shojin",
+        "Void Staff"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/teemo",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "f0ec0f8bc084b8f19c843beb4120d72bd6c1762a59fbb709f2680d0a1e18cc4d"
+    },
+    "Thresh": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/thresh",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "5441c0debd9fa27f38c92fc9a05d7bf07151fe04e4741371c01e8b462e908f43"
+    },
+    "Tibbers": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/tibbers",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "92550a166cdeef11bff9f476f888a34ed5d969f213f82e75a5e0c12ea93ed31d"
+    },
+    "Tristana": {
+      "items": [
+        "Infinity Edge",
+        "Last Whisper",
+        "Spear of Shojin"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/tristana",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "7003098560852b8f96e37f82f72fb4f1bfcb0b2928a284aaacda83087ed91ae6"
+    },
+    "Twisted Fate": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/twisted-fate",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/twisted-fate"
+    },
+    "Varus": {
+      "items": [
+        "Spear of Shojin",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/varus",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/varus"
+    },
+    "Vayne": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Kraken's Fury",
+        "Last Whisper"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/vayne",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "d2b019d5abfe5e9b310d8f250a879db077ced21c3d79825a235d7022983597eb"
+    },
+    "Vi": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://tft.ninja/sets/19/units/vi",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/vi"
+    },
+    "Viego": {
+      "items": [
+        "Edge of Night",
+        "Hand Of Justice",
+        "Infinity Edge"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/viego",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "164466e3803fe90fc2f2a4a68acc7e39642933f15bc9c7799b3eeb551626141b"
+    },
+    "Vladimir": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tftflow.com/tables/set19/vladimir",
+      "kind": "published_recommendations",
+      "label": "Published recommended items",
+      "selection_note": "First three items from the published recommended list, not a measured item-trio ranking.",
+      "source_sha256": "992b13bfd2fa6774809ea6b2bc78eeeb6f496445e1a12ffba5a09bd57a11fc1a"
+    },
+    "Wukong": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/wukong",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "8d04b5d183875690206ea34e1348222b87885f1c86d710c2af4af8b016042a92"
+    },
+    "Xayah": {
+      "items": [
+        "Deathblade",
+        "Guinsoo's Rageblade",
+        "Infinity Edge"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/xayah",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "b51fdee2b341b56fae83754f48e7a80ee05f887dc80188d5b6c6795044b30267"
+    },
+    "Yasuo": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/yasuo",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "94a2ae310984a0f5acf5db74f92b8308c5b0309aee9d7ecd1247d03bc7575ade"
+    },
+    "Yone": {
+      "items": [
+        "Bloodthirster",
+        "Sterak's Gage",
+        "Titan's Resolve"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/yone",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "dc975be5d4d64019b0f3a8ca52c88eda08e3ca6d03ee75cbe7aefd36eb6cb7e1"
+    },
+    "Yorick": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Spirit Visage",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/yorick",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "cdc868752f5358f5c3ad69da20b014ce7bdfae509a1149f09c0b4722ffdfbf25"
+    },
+    "Yunara": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Infinity Edge",
+        "Last Whisper"
+      ],
+      "source": "https://tft.ninja/sets/19/units/yunara",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/yunara"
+    },
+    "Yuumi": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/yuumi",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/yuumi"
+    },
+    "Zac": {
+      "items": [
+        "Gargoyle Stoneplate",
+        "Sunfire Cape",
+        "Warmog's Armor"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/zac",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "70d584ffba69b8a0132102d797853100e7e20c2c653460d1bbffba396f2779d5"
+    },
+    "Zeri": {
+      "items": [
+        "Infinity Edge",
+        "Spear of Shojin",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/zeri",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "c5ee3189b486fc4c8379d24a8e2cc64dc441c258eedb0cba2de08c38edbdc418"
+    },
+    "Ziggs": {
+      "items": [
+        "Guinsoo's Rageblade",
+        "Jeweled Gauntlet",
+        "Striker's Flail"
+      ],
+      "source": "https://blitz.gg/tft/set19/champions/ziggs",
+      "kind": "published_trio",
+      "label": "Published item trio",
+      "selection_note": "Published champion item-trio suggestion; not guaranteed best items.",
+      "source_sha256": "7c8b54bc8a544ca0c44dfa06013536afe65a6839c04432b22f940dc05b901238"
+    },
+    "Zoe": {
+      "items": [
+        "Spear of Shojin",
+        "Jeweled Gauntlet",
+        "Rabadon's Deathcap"
+      ],
+      "source": "https://tft.ninja/sets/19/units/zoe",
+      "kind": "role_based",
+      "label": "Role-based item suggestion",
+      "items_source": "https://blitz.gg/tft/set19/items",
+      "selection_note": "Role-based suggestion using the sourced combat role and Set 19 item catalog. No champion-specific published trio is available; this is not verified best-in-slot.",
+      "availability_source": "https://blitz.gg/tft/set19/champions/zoe"
+    }
+  }
+}

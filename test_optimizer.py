@@ -10,6 +10,24 @@ from pathlib import Path
 from optimizer import BAND_TRAITS, _evaluate_team, load_data, optimize, planned_stars
 
 
+class LateCarryPresenceTests(unittest.TestCase):
+    def test_capped_fielded_presence_and_level_gate(self):
+        champions = {
+            "Cheap": {"name": "Cheap", "cost": 1, "traits": [], "role": "Attack Marksman"},
+            "Carry": {"name": "Carry", "cost": 3, "traits": [], "role": "Magic Caster"},
+            "Core": {"name": "Core", "cost": 2, "traits": [], "role": "Magic Tank"},
+        }
+        def score(names, level=10, mode="balanced", stars=None):
+            return _evaluate_team(names, {}, champions, [], mode, "", stars or {}, level)["score"]
+        self.assertEqual(score(["Carry"]) - score(["Cheap"]), 300.0)
+        self.assertEqual(score(["Carry", "Cheap"]), 320.0)
+        self.assertEqual(score(["Carry"], 9), score(["Cheap"], 9))
+        self.assertEqual(score(["Carry"], mode="synergies"), score(["Cheap"], mode="synergies"))
+        self.assertEqual(score(["Cheap"], stars={"Core": 3}), 20.0)
+        self.assertEqual(score(["Cheap", "Core"], stars={"Core": 3}), 700.0)
+        self.assertEqual(score(["Cheap"], stars={"Cheap": 3}), 220.0)
+
+
 def fixture():
     def trait(name, points, unique=False, **extra):
         return {"name": name, "breakpoints": points, "unique": unique, **extra}
@@ -837,6 +855,26 @@ class OptimizerTests(unittest.TestCase):
         self.assertIn("K/DA", BAND_TRAITS)
         self.assertIn("Jazz", BAND_TRAITS)
         self.assertNotIn("Bodyguard", BAND_TRAITS)
+
+
+class KdaPlannedStarsTests(unittest.TestCase):
+    def test_fielded_star_sum_and_dynamic_sona_preserve_manual_rerolls(self):
+        champions = {
+            name: {"name": name, "cost": cost, "traits": traits}
+            for name, cost, traits in [("A", 1, ["K/DA"]), ("B", 2, ["K/DA"]),
+                                       ("Absent", 1, ["K/DA"]), ("Sona", 7, [])]
+        }
+        traits = {"K/DA": {"name": "K/DA", "breakpoints": [3, 5, 7, 10],
+                          "unique": False, "count_mode": "stars"},
+                  "Collab": {"name": "Collab", "breakpoints": [3, 5], "unique": False}}
+        def count(level, stars, band="K/DA", names=("A", "B", "Sona")):
+            result = _evaluate_team(list(names), traits, champions, [], "balanced", band, stars, level)
+            return next(row["count"] for row in result["traits"] if row["name"] == "K/DA")
+        self.assertEqual(count(10, {}), 6)
+        self.assertEqual(count(10, {"A": 1, "Absent": 4}), 5)
+        self.assertEqual(count(8, {"A": 3, "B": 3}, "", ("A", "B")), 6)
+        self.assertEqual(planned_stars(champions, 8, sona_band="K/DA")["A"], 1)
+        self.assertEqual(planned_stars(champions, 10)["Sona"], 1)
 
 
 if __name__ == "__main__":

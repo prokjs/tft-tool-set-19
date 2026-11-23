@@ -1,0 +1,50 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "prokjs's Set 19 TFT tool",
+  "version": "0.7.5",
+  "identifier": "com.prokjs.set19tfttool",
+  "build": {
+    "beforeDevCommand": "npm run build:icons && npm run build:frontend",
+    "beforeBuildCommand": "npm run build:icons && npm run build:frontend",
+    "frontendDist": "../frontend-dist"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "prokjs's Set 19 TFT tool",
+        "url": "web/index.html",
+        "width": 1440,
+        "height": 960,
+        "minWidth": 900,
+        "minHeight": 620,
+        "resizable": true,
+        "dragDropEnabled": false
+      }
+    ],
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "script-src": "'self' 'wasm-unsafe-eval'",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' asset: http://asset.localhost data: blob:",
+        "connect-src": "'self' ipc: http://ipc.localhost",
+        "worker-src": "'self'",
+        "object-src": "'none'",
+        "base-uri": "'self'",
+        "frame-src": "'none'"
+      }
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": ["icons/icon.ico", "icons/icon.png"],
+    "shortDescription": "Offline Set 19 team explorer by prokjs",
+    "longDescription": "Local Rust team optimization, unlock preparation, item planning and team-code exports. An independent fan tool, not endorsed by Riot Games.",
+    "windows": {
+      "webviewInstallMode": { "type": "downloadBootstrapper", "silent": true }
+    }
+  }
+}

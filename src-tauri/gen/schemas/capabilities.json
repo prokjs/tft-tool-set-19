@@ -1,0 +1,1 @@
+{"main-window":{"identifier":"main-window","description":"Only the bundled local main window may invoke application commands.","local":true,"windows":["main"],"permissions":["core:default"]}}

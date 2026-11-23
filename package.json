@@ -1,0 +1,21 @@
+{
+  "name": "prokjs-set19-tft-tool",
+  "version": "0.7.5",
+  "private": true,
+  "type": "module",
+  "description": "Rust/Tauri desktop and browser-local Set 19 team explorer",
+  "author": "prokjs",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build:frontend": "node tools/build_frontend.mjs",
+    "build:icons": "tauri icon src-tauri/icons/app.svg --output src-tauri/icons",
+    "build:wasm": "node tools/build_wasm.mjs",
+    "build:web": "npm run build:wasm && node tools/build_frontend.mjs --wasm",
+    "preview": "node tools/serve_frontend.mjs",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0"
+  }
+}

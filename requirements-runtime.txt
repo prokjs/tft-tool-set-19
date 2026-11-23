@@ -1,0 +1,3 @@
+# Arabic joining; bidirectional reordering uses the Windows 10 1903+ ICU OS API.
+# MIT license bundled at data/locales_ui/licenses/arabic-reshaper-3.0.0-MIT.txt.
+arabic-reshaper==3.0.0
